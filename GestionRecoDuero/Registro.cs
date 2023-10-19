@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Net.Mail;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -15,7 +17,6 @@ namespace GestionRecoDuero
             InitializeComponent();
             Bordes.BordesRedondos(this);
         }
-
         
         private void Registro_Load(object sender, EventArgs e)
         {
@@ -38,6 +39,12 @@ namespace GestionRecoDuero
 
         }
 
+        // MOVER LA PANTALLA
+        private void Registro_MouseDown(object sender, MouseEventArgs e)
+        {
+            MoverPantalla.ReleaseCapture();
+            MoverPantalla.SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
 
         //BOTONES
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -63,55 +70,58 @@ namespace GestionRecoDuero
         {
             bool passwordValida = VerificarPassword(passwordTextBox.Text);
 
-            //Compruebo si existe el email
-            var emailUsuario = usuarioBindingSource.Find("Email", emailTextBox.Text);
-            if (emailUsuario == -1)
+            //Compruebo que sea la dirección de correo válida
+            if (EsDireccionCorreoValida(emailTextBox.Text))
             {
-                // Comprueba que la contraseña sea válida
-                if (passwordValida)
+                //Compruebo si existe el email
+                var emailUsuario = usuarioBindingSource.Find("Email", emailTextBox.Text);
+                if (emailUsuario == -1)
                 {
-                    usuarioBindingSource.EndEdit();
-                    tableAdapterManager.UpdateAll(recoDueroDataSet);
+                    // Comprueba que la contraseña sea válida
+                    if (passwordValida)
+                    {
+                        usuarioBindingSource.EndEdit();
+                        tableAdapterManager.UpdateAll(recoDueroDataSet);
 
-                   // EnvioMail mail = new EnvioMail();
-                   // mail.envioCorreo(emailTextBox.Text, false);               
-              
-                    //Limpio los campos
-                    usuarioTextBox.Clear();
-                    emailTextBox.Clear();
-                    passwordTextBox.Clear();
+                        EnvioMail mail = new EnvioMail();
+                        mail.envioCorreo(emailTextBox.Text, false);
 
-                    Login login = new Login();
-                    Close();
-                    login.Show();
+                        //Limpio los campos
+                        usuarioTextBox.Clear();
+                        emailTextBox.Clear();
+                        passwordTextBox.Clear();
+
+                        Login login = new Login();
+                        Close();
+                        login.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("La contraseña debe poseer al menos una minúscula, una mayúscula,un número y un carácter especial", "Error en la contraseña", MessageBoxButtons.OKCancel);
+                        return;
+                    }
 
                 }
                 else
                 {
-                    //MessageBox.Show("La contraseña debe poseer al menos una minúscula, una mayúscula,un número y un carácter especial");
-                    MessageBox.Show("La contraseña debe poseer al menos una minúscula, una mayúscula,un número y un carácter especial", "Error en la contraseña", MessageBoxButtons.OKCancel);
+                    MessageBox.Show("El email ya está en uso.", "Email no encontrado", MessageBoxButtons.OKCancel);
                     return;
                 }
-                
             }
             else
             {
-                MessageBox.Show("El email ya está en uso.");
+                MessageBox.Show("El formato del email introducido no es correcto.", "Formato de Email Erróneo", MessageBoxButtons.OKCancel);
                 return;
-            }        
+            }  
 
         }
 
-        // MOVER LA PANTALLA
-        private void Registro_MouseDown(object sender, MouseEventArgs e)
+        private void buttonMostrarPass_Click(object sender, EventArgs e)
         {
-            MoverPantalla.ReleaseCapture();
-            MoverPantalla.SendMessage(this.Handle, 0x112, 0xf012, 0);
+            passwordTextBox.UseSystemPasswordChar = !passwordTextBox.UseSystemPasswordChar;
         }
-
 
         // TEXTBOXS
-
 
         //Usuario
         private void usuarioTextBox_Validating(object sender, CancelEventArgs e)
@@ -125,6 +135,13 @@ namespace GestionRecoDuero
             {
                 errorProvider1.Clear();
             }
+        }
+
+        private void usuarioTextBox_Validated(object sender, EventArgs e)
+        {
+            // Si todas las condiciones se cumplen se limpia los errores del ErrorProvider
+            errorProvider1.SetError(usuarioTextBox, "");
+            errorProvider1.Clear();
         }
 
         private void usuarioTextBox_Enter(object sender, EventArgs e)
@@ -143,13 +160,6 @@ namespace GestionRecoDuero
                 usuarioTextBox.Text = "USUARIO";
                 usuarioTextBox.ForeColor = Color.DimGray;
             }
-        }
-
-        private void usuarioTextBox_Validated(object sender, EventArgs e)
-        {
-            // Si todas las condiciones se cumplen se limpia los errores del ErrorProvider
-            errorProvider1.SetError(usuarioTextBox, "");
-            errorProvider1.Clear();
         }
 
         // Email
@@ -191,8 +201,27 @@ namespace GestionRecoDuero
             }
         }
 
-
         // Password
+        private void passwordTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (passwordTextBox.Text.Length > 30)
+            {
+                errorProvider1.SetError(passwordTextBox, "La contraseña no debe superar los 30 caracteres introducidos ");
+                passwordTextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+
+        private void passwordTextBox_Validated(object sender, EventArgs e)
+        {
+            // Si todas las condiciones se cumplen se limpia los errores del ErrorProvider
+            errorProvider1.SetError(usuarioTextBox, "");
+            errorProvider1.Clear();
+        }
+
         private void passwordTextBox_Enter(object sender, EventArgs e)
         {
             if (passwordTextBox.Text == "CONTRASEÑA")
@@ -211,55 +240,17 @@ namespace GestionRecoDuero
             }
         }
 
-        private void passwordTextBox_Validated(object sender, EventArgs e)
+        // Métodos
+        private bool EsDireccionCorreoValida(string correo)
         {
-            // Si todas las condiciones se cumplen se limpia los errores del ErrorProvider
-            errorProvider1.SetError(usuarioTextBox, "");
-            errorProvider1.Clear();
+            string patron = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(correo, patron);
         }
 
-        private void passwordTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (passwordTextBox.Text.Length > 30)
-            {
-                errorProvider1.SetError(passwordTextBox, "La contraseña no debe superar los 30 caracteres introducidos ");
-                passwordTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void buttonMostrarPass_Click(object sender, EventArgs e)
-        {
-            passwordTextBox.UseSystemPasswordChar = !passwordTextBox.UseSystemPasswordChar;
-        }
-
+        //Comprueba que tenga al menos 1 mayuscula,1 minuscula,1 numero y 1 caracter especial
         private bool VerificarPassword(string password)
         {
-            // Define las expresiones regulares 
-            string mayuscula = @"[A-Z]";
-            string minuscula = @"[a-z]";
-            string numero = @"\d";
-            string caracterEspecial = @"[\W_]"; // \W verifica cualquier carácter que no sea una letra o un número.
-
-            // Comprueba cada requisito usando expresiones regulares.
-            bool tieneMayuscula = Regex.IsMatch(password, mayuscula);
-            bool tieneMinuscula = Regex.IsMatch(password, minuscula);
-            bool tieneNumero = Regex.IsMatch(password, numero);
-            bool tieneCaracterEspecial = Regex.IsMatch(password, caracterEspecial);
-
-            // La contraseña es válida si cumple con todos los requisitos.
-            return tieneMayuscula && tieneMinuscula && tieneNumero && tieneCaracterEspecial;
-        }
-
-        private void usuarioBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.usuarioBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
-
+            return Regex.IsMatch(password, @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).*$");
         }
     }
 }

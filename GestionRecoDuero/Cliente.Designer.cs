@@ -589,6 +589,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";
             this.Load += new System.EventHandler(this.Cliente_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cliente_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contratoPictureBox)).EndInit();

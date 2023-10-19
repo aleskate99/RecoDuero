@@ -1,9 +1,15 @@
-﻿using System;
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Gmail.v1;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,8 +23,34 @@ namespace GestionRecoDuero
             string asunto = "";
             string cuerpo = "";
 
+            string idCliente = "1050222614005-ut0umllaa69cv2tdgkd4q7ef2oc68p4s.apps.googleusercontent.com";
+            string secretoCliente = "1050222614005-ut0umllaa69cv2tdgkd4q7ef2oc68p4s.apps.googleusercontent.com";
+
             try
             {
+                UserCredential credential;
+                using (var stream = new System.IO.FileStream("token.json", System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                {
+                    string[] scopes = { GmailService.Scope.GmailSend };
+                    credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                        new ClientSecrets
+                        {
+                            ClientId = idCliente,
+                            ClientSecret = secretoCliente
+                        },
+                        scopes,
+                        "usuario",
+                        CancellationToken.None,
+                        new FileDataStore("token.json")).Result;
+                }
+
+                var service = new GmailService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "RecoDuero"
+                });
+
+
                 // Verificar si la dirección de correo electrónico de destino no está vacía
                 if (string.IsNullOrEmpty(correoDestino))
                 {
@@ -27,7 +59,7 @@ namespace GestionRecoDuero
                 }
 
                 // Configurar la información del remitente
-                string remitente = "recoduerozamora@gmail.com"; //TODO Crear correo de prueba
+                string remitente = "recoduerosl@gmail.com"; //TODO Crear correo de prueba
                 string contraseña = "recoDuero00!";
 
                 if (recuperarPass)

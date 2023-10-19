@@ -89,11 +89,11 @@
             // labelUsuario
             // 
             this.labelUsuario.AutoSize = true;
-            this.labelUsuario.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsuario.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUsuario.ForeColor = System.Drawing.Color.DimGray;
             this.labelUsuario.Location = new System.Drawing.Point(327, 198);
             this.labelUsuario.Name = "labelUsuario";
-            this.labelUsuario.Size = new System.Drawing.Size(148, 44);
+            this.labelUsuario.Size = new System.Drawing.Size(134, 40);
             this.labelUsuario.TabIndex = 4;
             this.labelUsuario.Text = "Usuario";
             // 

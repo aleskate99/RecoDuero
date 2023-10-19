@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -16,6 +11,7 @@ namespace GestionRecoDuero
         public Empleado()
         {
             InitializeComponent();
+            KeyPreview = true;
         }
 
         private void Empleado_Load(object sender, EventArgs e)
@@ -23,8 +19,8 @@ namespace GestionRecoDuero
             this.empleadoTableAdapter.Fill(this.recoDueroDataSet.Empleado);
             AjustarImagenes();
             EstadoControlesInicioApp();
-            toolStripStatusLabel1.Text = "Inicio";
             RefrescarToolstripLabelEmpleado();
+            toolStripStatusLabel1.Text = "Inicio";
         }
 
         private void buttonCerrar_Click(object sender, EventArgs e)
@@ -112,19 +108,7 @@ namespace GestionRecoDuero
             toolStripButtonAnterior.Enabled = false;
 
             //Campos
-            idEmpleadoLabel1.Enabled = false;
-            nombreTextBox.Enabled = false;
-            apellidosTextBox.Enabled = false;
-            dNITextBox.Enabled = false; 
-            fechaNacimientoDateTimePicker.Enabled = false;
-            telefonoTextBox.Enabled = false;
-            emailTextBox.Enabled = false;
-            generoComboBox.Enabled = false;
-
-            puestoComboBox.Enabled = false;
-            situacionLaboralComboBox.Enabled = false;
-            salarioTextBox.Enabled = false;
-            imagenPictureBox.Enabled = false;
+            OcultarCampos();
 
             //Aceptar y cancelar invisibles hasta que se realice una operación
             buttonAceptar.Visible = false;
@@ -174,6 +158,7 @@ namespace GestionRecoDuero
 
         }
 
+        //FLECHAS
         private void toolStripButtonInicio_Click(object sender, EventArgs e)
         {
             empleadoBindingSource.MoveFirst();
@@ -192,11 +177,11 @@ namespace GestionRecoDuero
         private void toolStripButtonAnterior_Click(object sender, EventArgs e)
         {
             empleadoBindingSource.MovePrevious();
+
             if (empleadoBindingSource.Position <= 0)
             {
                 toolStripButtonAnterior.Enabled = false;
                 toolStripButtonInicio.Enabled = false;
-
             }
 
             if (empleadoBindingSource.Count > 1)
@@ -208,14 +193,13 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelEmpleado();
         }
 
-        private void toolStripButtonSiguiente_Click_1(object sender, EventArgs e)
+        private void toolStripButtonSiguiente_Click(object sender, EventArgs e)
         {
             empleadoBindingSource.MoveNext();
             if (empleadoBindingSource.Count <= 0 || empleadoBindingSource.Position + 1 == empleadoBindingSource.Count)
             {
                 toolStripButtonSiguiente.Enabled = false;
                 toolStripButtonFinal.Enabled = false;
-
             }
 
             if (empleadoBindingSource.Count > 1)
@@ -242,6 +226,7 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelEmpleado();
         }
 
+        //BOTONES
         private void toolStripButtonAnadir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Añadir empleado";
@@ -263,25 +248,12 @@ namespace GestionRecoDuero
             toolStripButtonGuardar.Enabled = false;
 
             //Campos
-            idEmpleadoLabel1.Enabled = true;
-            nombreTextBox.Enabled = true;
-            apellidosTextBox.Enabled = true;
-            dNITextBox.Enabled = true;
-            fechaNacimientoDateTimePicker.Enabled = true;
-            telefonoTextBox.Enabled = true;
-            emailTextBox.Enabled = true;
-            generoComboBox.Enabled = true;
-
-            puestoComboBox.Enabled = true;
-            situacionLaboralComboBox.Enabled = true;
-            salarioTextBox.Enabled = true;
-            imagenPictureBox.Enabled = true;
+            MostrarCampos();
 
             //ComboBox por defecto a una opción
             generoComboBox.SelectedIndex = 0;
             puestoComboBox.SelectedIndex = 0;
             situacionLaboralComboBox.SelectedIndex = 0;
-
         }
 
         //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
@@ -297,7 +269,6 @@ namespace GestionRecoDuero
             toolStripButtonBuscar.Enabled = false;
             toolStripComboBoxBuscarEmpleados.Enabled = false;
             toolStripTextBoxBuscar.Enabled = false;
-
         }
 
         private void toolStripButtonEliminar_Click(object sender, EventArgs e)
@@ -354,21 +325,8 @@ namespace GestionRecoDuero
             buttonCancelar.Visible = true;
             toolStripButtonGuardar.Enabled = false;
 
-
             //Campos
-            idEmpleadoLabel1.Enabled = true;
-            nombreTextBox.Enabled = true;
-            apellidosTextBox.Enabled = true;
-            dNITextBox.Enabled = true;
-            fechaNacimientoDateTimePicker.Enabled = true;
-            telefonoTextBox.Enabled = true;
-            emailTextBox.Enabled = true;
-            generoComboBox.Enabled = true;
-
-            puestoComboBox.Enabled = true;
-            situacionLaboralComboBox.Enabled = true;
-            salarioTextBox.Enabled = true;
-            imagenPictureBox.Enabled = true;
+            MostrarCampos();
 
             //Botones barra
             toolStripButtonAnadir.Enabled = false;
@@ -403,7 +361,6 @@ namespace GestionRecoDuero
             toolStripButtonGuardar.Enabled = false;
             toolStripButtonBuscar.Enabled = true;
 
-
             if (empleadoBindingSource.Count <= 0)
             {
                 toolStripButtonAnterior.Enabled = false;
@@ -416,7 +373,6 @@ namespace GestionRecoDuero
             {
                 toolStripButtonAnterior.Enabled = true;
                 toolStripButtonInicio.Enabled = true;
-
             }
 
             if (empleadoBindingSource.Position + 1 == empleadoBindingSource.Count && empleadoBindingSource.Count > 1)
@@ -459,19 +415,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = true;
 
             //Campos
-            idEmpleadoLabel1.Enabled = false;
-            nombreTextBox.Enabled = false;
-            apellidosTextBox.Enabled = false;
-            dNITextBox.Enabled = false;
-            fechaNacimientoDateTimePicker.Enabled = false;
-            telefonoTextBox.Enabled = false;
-            emailTextBox.Enabled = false;
-            generoComboBox.Enabled = false;
-
-            puestoComboBox.Enabled = false;
-            situacionLaboralComboBox.Enabled = false;
-            salarioTextBox.Enabled = false;
-            imagenPictureBox.Enabled = false;
+            OcultarCampos();
         }
 
         private void toolStripButtonBuscar_Click(object sender, EventArgs e)
@@ -511,7 +455,6 @@ namespace GestionRecoDuero
                         }
                     }
 
-
                     if (toolStripComboBoxBuscarEmpleados.Text.Equals("Nombre"))
                     {
                         if (empleadoBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text) == -1)
@@ -529,7 +472,6 @@ namespace GestionRecoDuero
                 RefrescarToolstripLabelEmpleado();
 
                 EstadoControlesBuscar();
-
             }
             catch (FormatException)
             {
@@ -551,7 +493,6 @@ namespace GestionRecoDuero
             {
                 toolStripButtonAnterior.Enabled = true;
                 toolStripButtonInicio.Enabled = true;
-
             }
 
             if (empleadoBindingSource.Position + 1 == empleadoBindingSource.Count && empleadoBindingSource.Count > 1)
@@ -589,15 +530,12 @@ namespace GestionRecoDuero
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-            
            if (ComprobarDatosIntroducidos())
            {
                errorProvider1.Clear();
                empleadoBindingSource.EndEdit(); //Lo guarda en memoria
                EstadoControlesAceptar();
-
-           }
-           
+           } 
         }
 
         private void EstadoControlesAceptar()
@@ -611,26 +549,12 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = true;
             toolStripButtonGuardar.Enabled = true;
 
-
             //Campos
-            idEmpleadoLabel1.Enabled = false;
-            nombreTextBox.Enabled = false;
-            apellidosTextBox.Enabled = false;
-            dNITextBox.Enabled = false;
-            fechaNacimientoDateTimePicker.Enabled = false;
-            telefonoTextBox.Enabled = false;
-            emailTextBox.Enabled = false;
-            generoComboBox.Enabled = false;
-
-            puestoComboBox.Enabled = false;
-            situacionLaboralComboBox.Enabled = false;
-            salarioTextBox.Enabled = false;
-            imagenPictureBox.Enabled = false;
+            OcultarCampos();
 
             //Botones
             buttonAceptar.Visible = false;
             buttonCancelar.Visible = false;
-
 
             //Flechas
             if (empleadoBindingSource.Count <= 0)
@@ -645,7 +569,6 @@ namespace GestionRecoDuero
             {
                 toolStripButtonAnterior.Enabled = true;
                 toolStripButtonInicio.Enabled = true;
-
             }
 
             if (empleadoBindingSource.Position + 1 == empleadoBindingSource.Count && empleadoBindingSource.Count > 1)
@@ -679,228 +602,9 @@ namespace GestionRecoDuero
                 toolStripButtonSiguiente.Enabled = true;
                 toolStripButtonFinal.Enabled = true;
             }
-
-        }
-        
-        private bool ComprobarDatosIntroducidos()
-        {
-            //DNI
-            if (dNITextBox.Text.Length == 0)
-            {
-                errorProvider1.SetError(dNITextBox, " DNI obligatorio");
-                dNITextBox.Clear();
-                return false;
-            }
-
-            else if (!ComprobarDni(dNITextBox.Text))
-            {
-                errorProvider1.SetError(dNITextBox, "Debe tener 8 números y 1 Letra");
-                dNITextBox.Clear();
-                return false;
-            }
-
-            //Nombre
-            if (nombreTextBox.Text.Length == 0)
-            {
-                errorProvider1.SetError(nombreTextBox, " Nombre obligatorio");
-                nombreTextBox.Clear();
-                return false;
-            }
-
-            else if (nombreTextBox.TextLength > 30)
-            {
-                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
-                nombreTextBox.Clear();
-                return false;
-            }
-            else if (!ContieneSoloLetras(nombreTextBox.Text))
-            {
-                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
-                nombreTextBox.Clear();
-                return false;
-            }
-
-            //Apellidos
-            if (apellidosTextBox.Text.Length == 0)
-            {
-                errorProvider1.SetError(apellidosTextBox, " Apellidos obligatorios");
-                apellidosTextBox.Clear();
-                return false;
-            }
-
-            else if (apellidosTextBox.TextLength > 50)
-            {
-                errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
-                apellidosTextBox.Clear();
-                return false;
-            }
-            else if (!ContieneSoloLetras(apellidosTextBox.Text))
-            {
-                errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
-                apellidosTextBox.Clear();
-                return false;
-            }
-
-            //Telefono
-            if (ContieneNumeros(telefonoTextBox.Text) == false)
-            {
-                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números");
-                telefonoTextBox.Clear();
-                return false;
-            }
-
-            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
-                telefonoTextBox.Clear();
-                return false;
-            }
-
-            //si todo es valido
-            return true;
         }
 
-        private void dNITextBox_Validating(object sender, CancelEventArgs e)
-        {
-
-            if (ComprobarDni(dNITextBox.Text) == false && (dNITextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(dNITextBox, "El DNI debe tener 8 números y 1 letra");
-                dNITextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void nombreTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (nombreTextBox.TextLength > 30)
-            {
-                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
-                nombreTextBox.Clear();
-            }
-
-            else if (!ContieneSoloLetras(nombreTextBox.Text))
-            {
-                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
-                nombreTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void apellidosTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (apellidosTextBox.TextLength > 50)
-            {
-                errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
-                apellidosTextBox.Clear();
-            }
-            else if (!ContieneSoloLetras(apellidosTextBox.Text))
-            {
-                errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
-                apellidosTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void telefonoTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (ContieneNumeros(telefonoTextBox.Text) == false)
-            {
-                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números ");
-                telefonoTextBox.Clear();
-            }
-            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
-                telefonoTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private bool ContieneNumeros(String campo)
-        {
-            bool devolver = true;
-
-            foreach (char num in campo)
-            {
-                if (num >= 48 && num <= 57)
-                {
-                    devolver = true;
-                }
-                else
-                {
-                    devolver = false;
-                }
-
-            }
-            return devolver;
-        }
-
-
-        private bool ComprobarDni(String campo)
-        {
-            int contaLetras = 0;
-            int contaNumeros = 0;
-
-            foreach (char letra in campo)
-            {
-                if ((letra >= 65 && letra <= 90) || (letra >= 97 && letra <= 122))
-                {
-                    contaLetras++;
-                }
-
-                if (letra >= 48 && letra <= 57)
-                {
-                    contaNumeros++;
-                }
-
-            }
-
-            if (contaNumeros == 8 && contaLetras == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-
-        //Controla mayusculas,minusculas,Ñ,ñ y vocales acentuadas
-        private bool ContieneSoloLetras(String campo)
-        {
-            bool devolver = true;
-
-            foreach (char letra in campo)
-            {
-                if ((letra >= 65 && letra <= 90) || (letra >= 97 && letra <= 122) || (letra >= 160 && letra <= 165) || (letra == 130)
-                    || (letra == 181) || (letra == 144) || (letra == 214) || (letra == 224) || (letra == 233))
-                {
-                    devolver = true;
-                }
-                else
-                {
-                    devolver = false;
-                }
-
-            }
-            return devolver;
-        }
-
-        private void buttonCancelar_Click_1(object sender, EventArgs e)
+        private void buttonCancelar_Click(object sender, EventArgs e)
         {
             var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
             if (resultado == DialogResult.OK)
@@ -923,26 +627,12 @@ namespace GestionRecoDuero
             toolStripComboBoxBuscarEmpleados.Enabled = true;
             toolStripTextBoxBuscar.Enabled = true;
 
-
             //Campos
-            idEmpleadoLabel1.Enabled = false;
-            nombreTextBox.Enabled = false;
-            apellidosTextBox.Enabled = false;
-            dNITextBox.Enabled = false;
-            fechaNacimientoDateTimePicker.Enabled = false;
-            telefonoTextBox.Enabled = false;
-            emailTextBox.Enabled = false;
-            generoComboBox.Enabled = false;
-
-            puestoComboBox.Enabled = false;
-            situacionLaboralComboBox.Enabled = false;
-            salarioTextBox.Enabled = false;
-            imagenPictureBox.Enabled = false;
+            OcultarCampos();
 
             //Botones
             buttonAceptar.Visible = false;
             buttonCancelar.Visible = false;
-
 
             if (empleadoBindingSource.Count <= 0)
             {
@@ -956,7 +646,6 @@ namespace GestionRecoDuero
             {
                 toolStripButtonAnterior.Enabled = true;
                 toolStripButtonInicio.Enabled = true;
-
             }
 
             if (empleadoBindingSource.Position + 1 == empleadoBindingSource.Count && empleadoBindingSource.Count > 1)
@@ -1008,11 +697,6 @@ namespace GestionRecoDuero
             }
         }
 
-        private void RefrescarToolstripLabelEmpleado()
-        {
-            this.toolstripLabelContadorEmpleados.Text = $"Empleado {empleadoBindingSource.Position + 1} de {empleadoBindingSource.Count}";
-        }
-
         private void toolStripButtonImprimir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Imprimiendo...";
@@ -1031,9 +715,7 @@ namespace GestionRecoDuero
             string salario = salarioTextBox.Text;
             Image imagen = imagenPictureBox.Image;
 
-
             PrintDialog printDialog1 = new PrintDialog();
-
             printDialog1.AllowPrintToFile = false;
             printDialog1.AllowSelection = false;
             printDialog1.AllowSomePages = false;
@@ -1072,19 +754,7 @@ namespace GestionRecoDuero
             }
         }
 
-        private void Empleado_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (!(recoDueroDataSet.GetChanges() is null))
-            {
-                if (MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos", this.Text, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                {
-                    this.empleadoBindingSource.CancelEdit();
-                    this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
-                }
-            }
-        }
-
+        //TODO: Falta de hacer
         private void toolStripButtonInforme_Click(object sender, EventArgs e)
         {
             /*
@@ -1114,6 +784,223 @@ namespace GestionRecoDuero
             */
         }
 
+        private void Empleado_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!(recoDueroDataSet.GetChanges() is null))
+            {
+                if (MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos", this.Text, MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    this.empleadoBindingSource.CancelEdit();
+                    this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
+                }
+            }
+        }
+
+        private void RefrescarToolstripLabelEmpleado()
+        {
+            this.toolstripLabelContadorEmpleados.Text = $"Empleado {empleadoBindingSource.Position + 1} de {empleadoBindingSource.Count}";
+        }
+
+        private void OcultarCampos()
+        {
+            idEmpleadoLabel1.Enabled = false;
+            nombreTextBox.Enabled = false;
+            apellidosTextBox.Enabled = false;
+            dNITextBox.Enabled = false;
+            fechaNacimientoDateTimePicker.Enabled = false;
+            telefonoTextBox.Enabled = false;
+            emailTextBox.Enabled = false;
+            generoComboBox.Enabled = false;
+
+            puestoComboBox.Enabled = false;
+            situacionLaboralComboBox.Enabled = false;
+            salarioTextBox.Enabled = false;
+            imagenPictureBox.Enabled = false;
+        }
+
+        private void MostrarCampos() 
+        {
+            idEmpleadoLabel1.Enabled = true;
+            nombreTextBox.Enabled = true;
+            apellidosTextBox.Enabled = true;
+            dNITextBox.Enabled = true;
+            fechaNacimientoDateTimePicker.Enabled = true;
+            telefonoTextBox.Enabled = true;
+            emailTextBox.Enabled = true;
+            generoComboBox.Enabled = true;
+
+            puestoComboBox.Enabled = true;
+            situacionLaboralComboBox.Enabled = true;
+            salarioTextBox.Enabled = true;
+            imagenPictureBox.Enabled = true;
+        }
+
+        //TODO: Si llamo al validating de cada campo puedo borrar el codigo de aqui?
+        private bool ComprobarDatosIntroducidos()
+        {
+            //Nombre 
+            nombreTextBox_Validating(this, null);
+
+            //if (nombreTextBox.Text.Length == 0)
+            //{
+            //    errorProvider1.SetError(nombreTextBox, " Nombre obligatorio");
+            //    nombreTextBox.Clear();
+            //    return false;
+            //}
+
+            //else if (nombreTextBox.TextLength > 30)
+            //{
+            //    errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
+            //    nombreTextBox.Clear();
+            //    return false;
+            //}
+            //else if (!ContieneSoloLetras(nombreTextBox.Text))
+            //{
+            //    errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
+            //    nombreTextBox.Clear();
+            //    return false;
+            //}
+
+            //Apellidos
+            if (apellidosTextBox.Text.Length == 0)
+            {
+                errorProvider1.SetError(apellidosTextBox, " Apellidos obligatorios");
+                apellidosTextBox.Clear();
+                return false;
+            }
+
+            else if (apellidosTextBox.TextLength > 50)
+            {
+                errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
+                apellidosTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text))
+            {
+                errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
+                apellidosTextBox.Clear();
+                return false;
+            }
+
+            //DNI
+            if (string.IsNullOrWhiteSpace(dNITextBox.Text))
+            {
+                errorProvider1.SetError(dNITextBox, " DNI obligatorio");
+                dNITextBox.Clear();
+                return false;
+            }
+
+            else if (!Comun.ComprobarDni(dNITextBox.Text))
+            {
+                errorProvider1.SetError(dNITextBox, "Debe tener 8 números y 1 Letra");
+                dNITextBox.Clear();
+                return false;
+            }
+
+            //Telefono
+            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false)
+            {
+                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números");
+                telefonoTextBox.Clear();
+                return false;
+            }
+
+            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
+            {
+                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
+                telefonoTextBox.Clear();
+                return false;
+            }
+
+            //si todo es valido
+            return true;
+        }
+
+        private void nombreTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (nombreTextBox.TextLength > 30)
+            {
+                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
+                nombreTextBox.Clear();
+            }
+            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text))
+            {
+                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
+                nombreTextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+
+        private void apellidosTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (apellidosTextBox.TextLength > 50)
+            {
+                errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
+                apellidosTextBox.Clear();
+            }
+            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text))
+            {
+                errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
+                apellidosTextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+
+        private void dNITextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (Comun.ComprobarDni(dNITextBox.Text) == false && (dNITextBox.Text.Length != 0))
+            {
+                errorProvider1.SetError(dNITextBox, "El DNI debe tener 8 números y 1 letra");
+                dNITextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+
+        private void telefonoTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false)
+            {
+                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números ");
+                telefonoTextBox.Clear();
+            }
+            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
+            {
+                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
+                telefonoTextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+
        
+        //Atajos de teclado
+        private void Empleado_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Guardar
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                toolStripButtonGuardar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Añadir
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                toolStripButtonAnadir_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+        }
     }
 }

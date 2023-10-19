@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -16,19 +10,11 @@ namespace GestionRecoDuero
         public Cliente()
         {
             InitializeComponent();
-        }
-
-        private void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.clienteBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
-
+            KeyPreview = true;
         }
 
         private void Cliente_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'recoDueroDataSet.Cliente' Puede moverla o quitarla según sea necesario.
             this.clienteTableAdapter.Fill(this.recoDueroDataSet.Cliente);
             EstadoControlesInicioApp();
             AjustarImagenes();
@@ -112,15 +98,7 @@ namespace GestionRecoDuero
             toolStripButtonAnterior.Enabled = false;
 
             //Campos
-            nombreTextBox.Enabled = false;
-            apellidosTextBox.Enabled = false;
-            direccionTextBox.Enabled = false;
-            telefonoTextBox.Enabled = false;
-            emailTextBox.Enabled = false;
-
-            tipoComboBox.Enabled = false;
-            observacionesTextBox.Enabled = false;
-            contratoPictureBox.Enabled = false;
+            OcultarCampos();
 
             //Aceptar y cancelar invisibles hasta que se realice una operación
             buttonAceptar.Visible = false;
@@ -169,6 +147,7 @@ namespace GestionRecoDuero
             }
         }
 
+        //FLECHAS
         private void toolStripButtonInicio_Click(object sender, EventArgs e)
         {
             clienteBindingSource.MoveFirst();
@@ -249,6 +228,7 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelCliente();
         }
 
+        //BOTONES
         private void HabilitarControlesEnAnadir()
         {
             //Botones
@@ -257,15 +237,7 @@ namespace GestionRecoDuero
             toolStripButtonGuardar.Enabled = false;
 
             //Campos
-            nombreTextBox.Enabled = true;
-            apellidosTextBox.Enabled = true;
-            direccionTextBox.Enabled = true;
-            telefonoTextBox.Enabled = true;
-            emailTextBox.Enabled = true;
-
-            tipoComboBox.Enabled = true;
-            observacionesTextBox.Enabled = true;
-            contratoPictureBox.Enabled = true;
+            MostrarCampos();
 
             //ComboBox por defecto a una opción
             // tipoComboBox.SelectAll();
@@ -346,15 +318,7 @@ namespace GestionRecoDuero
             buttonCancelar.Visible = true;
 
             //Campos
-            nombreTextBox.Enabled = true;
-            apellidosTextBox.Enabled = true;
-            direccionTextBox.Enabled = true;
-            telefonoTextBox.Enabled = true;
-            emailTextBox.Enabled = true;
-
-            tipoComboBox.Enabled = true;
-            observacionesTextBox.Enabled = true;
-            contratoPictureBox.Enabled = true;
+            MostrarCampos();
 
             //Botones barra
             toolStripButtonAnadir.Enabled = false;
@@ -446,15 +410,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = true;
 
             //Campos
-            nombreTextBox.Enabled = false;
-            apellidosTextBox.Enabled = false;
-            direccionTextBox.Enabled = false;
-            telefonoTextBox.Enabled = false;
-            emailTextBox.Enabled = false;
-
-            tipoComboBox.Enabled = false;
-            observacionesTextBox.Enabled = false;
-            contratoPictureBox.Enabled = false;
+            OcultarCampos();
         }
 
         private void toolStripButtonBuscar_Click(object sender, EventArgs e)
@@ -511,7 +467,6 @@ namespace GestionRecoDuero
         //Controla el estado de las flechas en Buscar
         private void EstadoControlesBuscar()
         {
-
             if (clienteBindingSource.Count <= 0)
             {
                 toolStripButtonAnterior.Enabled = false;
@@ -524,7 +479,6 @@ namespace GestionRecoDuero
             {
                 toolStripButtonAnterior.Enabled = true;
                 toolStripButtonInicio.Enabled = true;
-
             }
 
             if (clienteBindingSource.Position + 1 == clienteBindingSource.Count && clienteBindingSource.Count > 1)
@@ -582,15 +536,7 @@ namespace GestionRecoDuero
             toolStripButtonGuardar.Enabled = true;
 
             //Campos
-            nombreTextBox.Enabled = false;
-            apellidosTextBox.Enabled = false;
-            direccionTextBox.Enabled = false;
-            telefonoTextBox.Enabled = false;
-            emailTextBox.Enabled = false;
-
-            tipoComboBox.Enabled = false;
-            observacionesTextBox.Enabled = false;
-            contratoPictureBox.Enabled = false;
+            OcultarCampos();
 
             //Botones
             buttonAceptar.Visible = false;
@@ -609,7 +555,6 @@ namespace GestionRecoDuero
             {
                 toolStripButtonAnterior.Enabled = true;
                 toolStripButtonInicio.Enabled = true;
-
             }
 
             if (clienteBindingSource.Position + 1 == clienteBindingSource.Count && clienteBindingSource.Count > 1)
@@ -644,114 +589,6 @@ namespace GestionRecoDuero
                 toolStripButtonFinal.Enabled = true;
             }
 
-        }
-
-        private bool ComprobarDatosIntroducidos()
-        {
-            //Nombre
-            if (nombreTextBox.Text.Length == 0)
-            {
-                errorProvider1.SetError(nombreTextBox, " Nombre obligatorio");
-                nombreTextBox.Clear();
-                return false;
-            }
-
-            else if (nombreTextBox.Text.Length > 30)
-            {
-                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
-                nombreTextBox.Clear();
-                return false;
-            }
-
-            else if (!ContieneSoloLetras(nombreTextBox.Text))
-            {
-                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
-                nombreTextBox.Clear();
-                return false;
-            }
-
-            //Apellidos 
-            if (apellidosTextBox.Text.Length == 0)
-            {
-                errorProvider1.SetError(apellidosTextBox, " Apellidos obligatorios");
-                apellidosTextBox.Clear();
-                return false;
-            }
-
-            else if (apellidosTextBox.Text.Length > 50)
-            {
-                errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
-                apellidosTextBox.Clear();
-                return false;
-            }
-
-            else if (!ContieneSoloLetras(apellidosTextBox.Text))
-            {
-                errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
-                apellidosTextBox.Clear();
-                return false;
-            }
-
-            //Telefono
-            if (ContieneNumeros(telefonoTextBox.Text) == false && (telefonoTextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números ");
-                telefonoTextBox.Clear();
-                return false;
-            }
-
-            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
-                telefonoTextBox.Clear();
-                return false;
-            }
-
-            
-
-            //si todo es valido
-            return true;
-        }
-
-        //Controla mayusculas,minusculas,Ñ,ñ y vocales acentuadas
-        private bool ContieneSoloLetras(String campo)
-        {
-            bool devolver = true;
-
-            foreach (char letra in campo)
-            {
-                if ((letra >= 65 && letra <= 90) || (letra >= 97 && letra <= 122) || (letra >= 160 && letra <= 165) || (letra == 130)
-                    || (letra == 181) || (letra == 144) || (letra == 214) || (letra == 224) || (letra == 233))
-                {
-                    devolver = true;
-                }
-                else
-                {
-                    devolver = false;
-                }
-
-            }
-            return devolver;
-        }
-
-        //Comprueba números del 0 al 9
-        private bool ContieneNumeros(String campo)
-        {
-            bool devolver = true;
-
-            foreach (char num in campo)
-            {
-                if (num >= 48 && num <= 57)
-                {
-                    devolver = true;
-                }
-                else
-                {
-                    devolver = false;
-                }
-
-            }
-            return devolver;
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -778,15 +615,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = true;
 
             //Campos
-            nombreTextBox.Enabled = false;
-            apellidosTextBox.Enabled = false;
-            direccionTextBox.Enabled = false;
-            telefonoTextBox.Enabled = false;
-            emailTextBox.Enabled = false;
-
-            tipoComboBox.Enabled = false;
-            observacionesTextBox.Enabled = false;
-            contratoPictureBox.Enabled = false;
+            OcultarCampos();
 
             //Botones
             buttonAceptar.Visible = false;
@@ -839,11 +668,6 @@ namespace GestionRecoDuero
                 toolStripButtonSiguiente.Enabled = true;
                 toolStripButtonFinal.Enabled = true;
             }
-        }
-
-        private void RefrescarToolstripLabelCliente()
-        {
-            this.toolstripLabelContadorClientes.Text = $"Cliente {clienteBindingSource.Position + 1} de {clienteBindingSource.Count}";
         }
 
         private void contratoPictureBox_Click(object sender, EventArgs e)
@@ -913,6 +737,7 @@ namespace GestionRecoDuero
             }
         }
 
+        //TODO: FALTA
         private void toolStripButtonInforme_Click(object sender, EventArgs e)
         {
             /*
@@ -942,7 +767,121 @@ namespace GestionRecoDuero
             */
         }
 
-        //TODO HACER LOS VALIDATING DE CADA CAMPO
+        private void RefrescarToolstripLabelCliente()
+        {
+            this.toolstripLabelContadorClientes.Text = $"Cliente {clienteBindingSource.Position + 1} de {clienteBindingSource.Count}";
+        }
 
+        private void OcultarCampos() 
+        {
+            nombreTextBox.Enabled = false;
+            apellidosTextBox.Enabled = false;
+            direccionTextBox.Enabled = false;
+            telefonoTextBox.Enabled = false;
+            emailTextBox.Enabled = false;
+
+            tipoComboBox.Enabled = false;
+            observacionesTextBox.Enabled = false;
+            contratoPictureBox.Enabled = false;
+        }
+
+        private void MostrarCampos()
+        {
+            nombreTextBox.Enabled = true;
+            apellidosTextBox.Enabled = true;
+            direccionTextBox.Enabled = true;
+            telefonoTextBox.Enabled = true;
+            emailTextBox.Enabled = true;
+
+            tipoComboBox.Enabled = true;
+            observacionesTextBox.Enabled = true;
+            contratoPictureBox.Enabled = true;
+        }
+
+        private bool ComprobarDatosIntroducidos()
+        {
+            //Nombre
+            if (nombreTextBox.Text.Length == 0)
+            {
+                errorProvider1.SetError(nombreTextBox, " Nombre obligatorio");
+                nombreTextBox.Clear();
+                return false;
+            }
+
+            else if (nombreTextBox.Text.Length > 30)
+            {
+                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
+                nombreTextBox.Clear();
+                return false;
+            }
+
+            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text))
+            {
+                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
+                nombreTextBox.Clear();
+                return false;
+            }
+
+            //Apellidos 
+            if (apellidosTextBox.Text.Length == 0)
+            {
+                errorProvider1.SetError(apellidosTextBox, " Apellidos obligatorios");
+                apellidosTextBox.Clear();
+                return false;
+            }
+
+            else if (apellidosTextBox.Text.Length > 50)
+            {
+                errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
+                apellidosTextBox.Clear();
+                return false;
+            }
+
+            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text))
+            {
+                errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
+                apellidosTextBox.Clear();
+                return false;
+            }
+
+            //Telefono
+            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false && (telefonoTextBox.Text.Length != 0))
+            {
+                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números ");
+                telefonoTextBox.Clear();
+                return false;
+            }
+
+            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
+            {
+                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
+                telefonoTextBox.Clear();
+                return false;
+            }
+
+            //si todo es valido
+            return true;
+        }
+
+        //TODO: HACER LOS VALIDATING DE CADA CAMPO
+
+
+        //Atajos de teclado
+        private void Cliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Guardar
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                toolStripButtonGuardar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Añadir
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                toolStripButtonAnadir_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+        }
     }
 }

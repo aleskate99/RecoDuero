@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Drawing2D;
+﻿using System.Drawing.Drawing2D;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -14,7 +8,7 @@ namespace GestionRecoDuero
     {
         public static void BordesRedondos(Form formulario)
         {
-            int borderRadius = 20; // Puedes ajustar este valor según tus preferencias
+            int borderRadius = 20;
             GraphicsPath path = GetRoundedPath(formulario.ClientRectangle, borderRadius);
             formulario.Region = new Region(path);   
         }
@@ -36,7 +30,6 @@ namespace GestionRecoDuero
             path.CloseFigure();
             return path;
         }
-
 
     }
 }

@@ -471,7 +471,7 @@
             this.toolStripButtonSiguiente.Name = "toolStripButtonSiguiente";
             this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonSiguiente.ToolTipText = "Siguiente";
-            this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click_1);
+            this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click);
             // 
             // toolStripButtonFinal
             // 
@@ -619,7 +619,7 @@
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCancelar.UseVisualStyleBackColor = false;
-            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click_1);
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // buttonAceptar
             // 
@@ -701,6 +701,7 @@
             this.Text = "Empleado";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Empleado_FormClosed);
             this.Load += new System.EventHandler(this.Empleado_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Empleado_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.buttonCerrar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
