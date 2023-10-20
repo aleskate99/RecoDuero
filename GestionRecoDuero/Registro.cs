@@ -68,10 +68,10 @@ namespace GestionRecoDuero
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-            bool passwordValida = VerificarPassword(passwordTextBox.Text);
+            bool passwordValida = Comun.VerificarPassword(passwordTextBox.Text);
 
             //Compruebo que sea la dirección de correo válida
-            if (EsDireccionCorreoValida(emailTextBox.Text))
+            if (Comun.EsDireccionCorreoValida(emailTextBox.Text))
             {
                 //Compruebo si existe el email
                 var emailUsuario = usuarioBindingSource.Find("Email", emailTextBox.Text);
@@ -238,19 +238,6 @@ namespace GestionRecoDuero
                 passwordTextBox.Text = "CONTRASEÑA";
                 passwordTextBox.ForeColor = Color.DimGray;
             }
-        }
-
-        // Métodos
-        private bool EsDireccionCorreoValida(string correo)
-        {
-            string patron = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            return Regex.IsMatch(correo, patron);
-        }
-
-        //Comprueba que tenga al menos 1 mayuscula,1 minuscula,1 numero y 1 caracter especial
-        private bool VerificarPassword(string password)
-        {
-            return Regex.IsMatch(password, @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).*$");
         }
     }
 }

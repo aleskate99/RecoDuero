@@ -800,21 +800,19 @@ namespace GestionRecoDuero
 
         private bool ComprobarDatosIntroducidos()
         {
-            //Nombre
-            if (nombreTextBox.Text.Length == 0)
+            //Nombre 
+            if (string.IsNullOrWhiteSpace(nombreTextBox.Text))
             {
                 errorProvider1.SetError(nombreTextBox, " Nombre obligatorio");
                 nombreTextBox.Clear();
                 return false;
             }
-
-            else if (nombreTextBox.Text.Length > 30)
+            else if (nombreTextBox.TextLength > 30)
             {
                 errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
                 nombreTextBox.Clear();
                 return false;
             }
-
             else if (!Comun.ContieneSoloLetras(nombreTextBox.Text))
             {
                 errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
@@ -822,21 +820,19 @@ namespace GestionRecoDuero
                 return false;
             }
 
-            //Apellidos 
-            if (apellidosTextBox.Text.Length == 0)
+            //Apellidos
+            if (string.IsNullOrWhiteSpace(apellidosTextBox.Text))
             {
                 errorProvider1.SetError(apellidosTextBox, " Apellidos obligatorios");
                 apellidosTextBox.Clear();
                 return false;
             }
-
-            else if (apellidosTextBox.Text.Length > 50)
+            else if (apellidosTextBox.TextLength > 50)
             {
                 errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
                 apellidosTextBox.Clear();
                 return false;
             }
-
             else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text))
             {
                 errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
@@ -844,18 +840,33 @@ namespace GestionRecoDuero
                 return false;
             }
 
-            //Telefono
-            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false && (telefonoTextBox.Text.Length != 0))
+            //Dirección
+            if (string.IsNullOrWhiteSpace(direccionTextBox.Text))
             {
-                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números ");
+                errorProvider1.SetError(direccionTextBox, " Dirección obligatoria");
+                direccionTextBox.Clear();
+                return false;
+            }
+
+            //Telefono
+            if (string.IsNullOrWhiteSpace(telefonoTextBox.Text))
+            {
+                errorProvider1.SetError(telefonoTextBox, " Teléfono obligatorio");
+                telefonoTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ComprobarTelefono(telefonoTextBox.Text))
+            {
+                errorProvider1.SetError(telefonoTextBox, "Formato de teléfono no válido, debe empezar por 6,7 o 9 y contener 9 números");
                 telefonoTextBox.Clear();
                 return false;
             }
 
-            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
+            //Email
+            if (!(Comun.EsDireccionCorreoValida(emailTextBox.Text)) && emailTextBox.Text.Length != 0)
             {
-                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
-                telefonoTextBox.Clear();
+                errorProvider1.SetError(emailTextBox, "Formato de email no válido");
+                emailTextBox.Clear();
                 return false;
             }
 
@@ -863,8 +874,59 @@ namespace GestionRecoDuero
             return true;
         }
 
-        //TODO: HACER LOS VALIDATING DE CADA CAMPO
+        private void nombreTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (nombreTextBox.TextLength > 30)
+            {
+                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
+                nombreTextBox.Clear();
+            }
+            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text))
+            {
+                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
+                nombreTextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
 
+        private void apellidosTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (apellidosTextBox.TextLength > 50)
+            {
+                errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
+                apellidosTextBox.Clear();
+            }
+            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text))
+            {
+                errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
+                apellidosTextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+
+        private void telefonoTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false)
+            {
+                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números ");
+                telefonoTextBox.Clear();
+            }
+            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
+            {
+                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
+                telefonoTextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
 
         //Atajos de teclado
         private void Cliente_KeyDown(object sender, KeyEventArgs e)

@@ -712,7 +712,7 @@ namespace GestionRecoDuero
 
             string puesto = puestoComboBox.Text;
             string situacionLaboral = situacionLaboralComboBox.Text;
-            string salario = salarioTextBox.Text;
+            string salario = salarioLabel1.Text;
             Image imagen = imagenPictureBox.Image;
 
             PrintDialog printDialog1 = new PrintDialog();
@@ -815,7 +815,7 @@ namespace GestionRecoDuero
 
             puestoComboBox.Enabled = false;
             situacionLaboralComboBox.Enabled = false;
-            salarioTextBox.Enabled = false;
+            salarioLabel1.Enabled = false;
             imagenPictureBox.Enabled = false;
         }
 
@@ -832,44 +832,39 @@ namespace GestionRecoDuero
 
             puestoComboBox.Enabled = true;
             situacionLaboralComboBox.Enabled = true;
-            salarioTextBox.Enabled = true;
+            salarioLabel1.Enabled = true;
             imagenPictureBox.Enabled = true;
         }
 
-        //TODO: Si llamo al validating de cada campo puedo borrar el codigo de aqui?
         private bool ComprobarDatosIntroducidos()
         {
             //Nombre 
-            nombreTextBox_Validating(this, null);
-
-            //if (nombreTextBox.Text.Length == 0)
-            //{
-            //    errorProvider1.SetError(nombreTextBox, " Nombre obligatorio");
-            //    nombreTextBox.Clear();
-            //    return false;
-            //}
-
-            //else if (nombreTextBox.TextLength > 30)
-            //{
-            //    errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
-            //    nombreTextBox.Clear();
-            //    return false;
-            //}
-            //else if (!ContieneSoloLetras(nombreTextBox.Text))
-            //{
-            //    errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
-            //    nombreTextBox.Clear();
-            //    return false;
-            //}
+            if (string.IsNullOrWhiteSpace(nombreTextBox.Text))
+            {
+                errorProvider1.SetError(nombreTextBox, " Nombre obligatorio");
+                nombreTextBox.Clear();
+                return false;
+            }
+            else if (nombreTextBox.TextLength > 30)
+            {
+                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
+                nombreTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text))
+            {
+                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
+                nombreTextBox.Clear();
+                return false;
+            }
 
             //Apellidos
-            if (apellidosTextBox.Text.Length == 0)
+            if (string.IsNullOrWhiteSpace(apellidosTextBox.Text))
             {
                 errorProvider1.SetError(apellidosTextBox, " Apellidos obligatorios");
                 apellidosTextBox.Clear();
                 return false;
             }
-
             else if (apellidosTextBox.TextLength > 50)
             {
                 errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
@@ -890,7 +885,6 @@ namespace GestionRecoDuero
                 dNITextBox.Clear();
                 return false;
             }
-
             else if (!Comun.ComprobarDni(dNITextBox.Text))
             {
                 errorProvider1.SetError(dNITextBox, "Debe tener 8 números y 1 Letra");
@@ -899,17 +893,24 @@ namespace GestionRecoDuero
             }
 
             //Telefono
-            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false)
+            if (string.IsNullOrWhiteSpace(telefonoTextBox.Text))
             {
-                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números");
+                errorProvider1.SetError(telefonoTextBox, " Teléfono obligatorio");
+                telefonoTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ComprobarTelefono(telefonoTextBox.Text))
+            {
+                errorProvider1.SetError(telefonoTextBox, "Formato de teléfono no válido, debe empezar por 6,7 o 9 y contener 9 números");
                 telefonoTextBox.Clear();
                 return false;
             }
 
-            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
+            //Email
+            if (!(Comun.EsDireccionCorreoValida(emailTextBox.Text)) && emailTextBox.Text.Length!=0)
             {
-                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
-                telefonoTextBox.Clear();
+                errorProvider1.SetError(emailTextBox, "Formato de email no válido");
+                emailTextBox.Clear();
                 return false;
             }
 
@@ -984,7 +985,6 @@ namespace GestionRecoDuero
             }
         }
 
-       
         //Atajos de teclado
         private void Empleado_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1000,6 +1000,25 @@ namespace GestionRecoDuero
             {
                 toolStripButtonAnadir_Click(this, EventArgs.Empty);
                 e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+        }
+
+        //Salario campo calculado
+        private void puestoComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string seleccion = puestoComboBox.SelectedItem.ToString();
+
+            switch(seleccion)
+            {
+            case "Maestro de obra":
+                    salarioLabel1.Text = "2000€";
+                    break;
+            case "Capataz":
+                    salarioLabel1.Text = "1500€";
+                    break;
+            case "Albañil":
+                    salarioLabel1.Text = "1000€";
+                    break;
             }
         }
     }
