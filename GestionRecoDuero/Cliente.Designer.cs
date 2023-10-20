@@ -77,6 +77,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             idClienteLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             apellidosLabel = new System.Windows.Forms.Label();
@@ -93,6 +94,7 @@
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
             this.SuspendLayout();
             // 
             // idClienteLabel
@@ -573,11 +575,24 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // buttonVolverInicio
+            // 
+            this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1285, 174);
+            this.buttonVolverInicio.Name = "buttonVolverInicio";
+            this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
+            this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buttonVolverInicio.TabIndex = 37;
+            this.buttonVolverInicio.TabStop = false;
+            this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
+            // 
             // Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1357, 785);
+            this.Controls.Add(this.buttonVolverInicio);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
@@ -605,6 +620,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -650,5 +666,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox buttonVolverInicio;
     }
 }

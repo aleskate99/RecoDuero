@@ -98,6 +98,7 @@ namespace GestionRecoDuero
                     else
                     {
                         MessageBox.Show("La contraseña debe poseer al menos una minúscula, una mayúscula,un número y un carácter especial", "Error en la contraseña", MessageBoxButtons.OKCancel);
+                        passwordTextBox.Clear();
                         return;
                     }
 

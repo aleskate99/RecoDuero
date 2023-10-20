@@ -94,14 +94,12 @@ namespace GestionRecoDuero
             //AbrirFormInPanel(new Vehiculo());
         }
 
-        private void pictureBoxSalir_Click(object sender, EventArgs e)
+        private void pictureBoxCerrarApp_Click(object sender, EventArgs e)
         {
-            var volver = MessageBox.Show("¿Quiere volver a la ventana Login?", "Cerrar Sesión", MessageBoxButtons.OKCancel);
+            var volver = MessageBox.Show("¿Está seguro que desea cerrar la aplicación?", "Cerrar Aplicación", MessageBoxButtons.OKCancel);
             if (volver == DialogResult.OK)
             {
-                this.Close();
-                Login login = new Login();
-                login.Show();
+                Application.Exit();
             }
         }
 

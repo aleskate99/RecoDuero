@@ -23,7 +23,7 @@ namespace GestionRecoDuero
             toolStripStatusLabel1.Text = "Inicio";
         }
 
-        private void buttonCerrar_Click(object sender, EventArgs e)
+        private void buttonVolverInicio_Click(object sender, EventArgs e)
         {
             var volver = MessageBox.Show("¿Quiere volver a la ventana principal?", "Cerrar empleados", MessageBoxButtons.OKCancel);
             if (volver == DialogResult.OK)
@@ -313,7 +313,7 @@ namespace GestionRecoDuero
 
         private void toolStripButtonEditar_Click(object sender, EventArgs e)
         {
-            toolStripStatusLabel1.Text = "Editar cliente";
+            toolStripStatusLabel1.Text = "Editar empleado";
             EstadoControlesEditar();
             ComprobarDatosIntroducidos();
         }
@@ -754,10 +754,9 @@ namespace GestionRecoDuero
             }
         }
 
-        //TODO: Falta de hacer
         private void toolStripButtonInforme_Click(object sender, EventArgs e)
         {
-            /*
+            
             toolStripStatusLabel1.Text = "Informe Empleados";
             Boolean abierto = false;
 
@@ -781,7 +780,6 @@ namespace GestionRecoDuero
                 InformeEmpleados informeEmpleados = new InformeEmpleados();
                 informeEmpleados.ShowDialog();
             }
-            */
         }
 
         private void Empleado_FormClosed(object sender, FormClosedEventArgs e)
@@ -887,7 +885,7 @@ namespace GestionRecoDuero
             }
             else if (!Comun.ComprobarDni(dNITextBox.Text))
             {
-                errorProvider1.SetError(dNITextBox, "Debe tener 8 números y 1 Letra");
+                errorProvider1.SetError(dNITextBox, "Debe tener 8 números y 1 letra");
                 dNITextBox.Clear();
                 return false;
             }
@@ -999,6 +997,13 @@ namespace GestionRecoDuero
             if (e.Control && e.KeyCode == Keys.A)
             {
                 toolStripButtonAnadir_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Imprimir
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                toolStripButtonImprimir_Click(this, EventArgs.Empty);
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
         }

@@ -28,13 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.panelzquierda = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.labelUsuario = new System.Windows.Forms.Label();
             this.buttonVehiculos = new System.Windows.Forms.Button();
             this.buttonObras = new System.Windows.Forms.Button();
             this.buttonMateriales = new System.Windows.Forms.Button();
-            this.pictureBoxSalir = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCerrarApp = new System.Windows.Forms.PictureBox();
             this.buttonClientes = new System.Windows.Forms.Button();
             this.buttonEmpleados = new System.Windows.Forms.Button();
             this.panelArriba = new System.Windows.Forms.Panel();
@@ -42,11 +46,9 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.panelCentral = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelzquierda.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalir)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrarApp)).BeginInit();
             this.panelArriba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
@@ -63,7 +65,7 @@
             this.panelzquierda.Controls.Add(this.buttonVehiculos);
             this.panelzquierda.Controls.Add(this.buttonObras);
             this.panelzquierda.Controls.Add(this.buttonMateriales);
-            this.panelzquierda.Controls.Add(this.pictureBoxSalir);
+            this.panelzquierda.Controls.Add(this.pictureBoxCerrarApp);
             this.panelzquierda.Controls.Add(this.buttonClientes);
             this.panelzquierda.Controls.Add(this.buttonEmpleados);
             this.panelzquierda.Dock = System.Windows.Forms.DockStyle.Left;
@@ -71,6 +73,60 @@
             this.panelzquierda.Name = "panelzquierda";
             this.panelzquierda.Size = new System.Drawing.Size(107, 900);
             this.panelzquierda.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(12, 691);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(210, 60);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Factura";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.button3, "Factura");
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(12, 599);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(210, 60);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Presupuesto";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.button2, "Presupuesto");
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(12, 504);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(210, 60);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "         Servicios Externos";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.button1, "Servicios Externos");
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // labelUsuario
             // 
@@ -97,6 +153,7 @@
             this.buttonVehiculos.TabIndex = 5;
             this.buttonVehiculos.Text = "Vehículos";
             this.buttonVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonVehiculos, "Vehículos");
             this.buttonVehiculos.UseVisualStyleBackColor = true;
             this.buttonVehiculos.Click += new System.EventHandler(this.buttonVehiculos_Click);
             // 
@@ -115,6 +172,7 @@
             this.buttonObras.TabIndex = 4;
             this.buttonObras.Text = "Obras";
             this.buttonObras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonObras, "Obras");
             this.buttonObras.UseVisualStyleBackColor = true;
             this.buttonObras.Click += new System.EventHandler(this.buttonObras_Click);
             // 
@@ -133,20 +191,22 @@
             this.buttonMateriales.TabIndex = 3;
             this.buttonMateriales.Text = "Materiales";
             this.buttonMateriales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonMateriales, "Materiales");
             this.buttonMateriales.UseVisualStyleBackColor = true;
             this.buttonMateriales.Click += new System.EventHandler(this.buttonMateriales_Click);
             // 
-            // pictureBoxSalir
+            // pictureBoxCerrarApp
             // 
-            this.pictureBoxSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxSalir.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSalir.Image")));
-            this.pictureBoxSalir.Location = new System.Drawing.Point(12, 835);
-            this.pictureBoxSalir.Name = "pictureBoxSalir";
-            this.pictureBoxSalir.Size = new System.Drawing.Size(72, 42);
-            this.pictureBoxSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxSalir.TabIndex = 2;
-            this.pictureBoxSalir.TabStop = false;
-            this.pictureBoxSalir.Click += new System.EventHandler(this.pictureBoxSalir_Click);
+            this.pictureBoxCerrarApp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxCerrarApp.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCerrarApp.Image")));
+            this.pictureBoxCerrarApp.Location = new System.Drawing.Point(12, 835);
+            this.pictureBoxCerrarApp.Name = "pictureBoxCerrarApp";
+            this.pictureBoxCerrarApp.Size = new System.Drawing.Size(72, 42);
+            this.pictureBoxCerrarApp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCerrarApp.TabIndex = 2;
+            this.pictureBoxCerrarApp.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxCerrarApp, "Cerrar Aplicación");
+            this.pictureBoxCerrarApp.Click += new System.EventHandler(this.pictureBoxCerrarApp_Click);
             // 
             // buttonClientes
             // 
@@ -163,6 +223,7 @@
             this.buttonClientes.TabIndex = 1;
             this.buttonClientes.Text = "Clientes";
             this.buttonClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonClientes, "Clientes");
             this.buttonClientes.UseVisualStyleBackColor = true;
             this.buttonClientes.Click += new System.EventHandler(this.buttonClientes_Click);
             // 
@@ -181,6 +242,7 @@
             this.buttonEmpleados.TabIndex = 0;
             this.buttonEmpleados.Text = "Empleados";
             this.buttonEmpleados.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.buttonEmpleados, "Empleados");
             this.buttonEmpleados.UseVisualStyleBackColor = true;
             this.buttonEmpleados.Click += new System.EventHandler(this.buttonEmpleados_Click);
             // 
@@ -217,6 +279,7 @@
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnCerrar.TabIndex = 8;
             this.btnCerrar.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnCerrar, "Cerrar sesión");
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnMinimizar
@@ -229,6 +292,7 @@
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnMinimizar.TabIndex = 9;
             this.btnMinimizar.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnMinimizar, "Minimizar");
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // panelCentral
@@ -238,57 +302,6 @@
             this.panelCentral.Name = "panelCentral";
             this.panelCentral.Size = new System.Drawing.Size(1493, 850);
             this.panelCentral.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 504);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(210, 60);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "         Servicios Externos";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 599);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(210, 60);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Presupuesto";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(12, 691);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(210, 60);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Factura";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // Inicio
             // 
@@ -304,7 +317,7 @@
             this.Text = "Inicio";
             this.panelzquierda.ResumeLayout(false);
             this.panelzquierda.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrarApp)).EndInit();
             this.panelArriba.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
@@ -323,7 +336,7 @@
         private System.Windows.Forms.Button buttonEmpleados;
         private System.Windows.Forms.Button buttonClientes;
         private System.Windows.Forms.Panel panelCentral;
-        private System.Windows.Forms.PictureBox pictureBoxSalir;
+        private System.Windows.Forms.PictureBox pictureBoxCerrarApp;
         private System.Windows.Forms.Button buttonMateriales;
         private System.Windows.Forms.Button buttonVehiculos;
         private System.Windows.Forms.Button buttonObras;
@@ -331,5 +344,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

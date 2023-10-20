@@ -22,6 +22,15 @@ namespace GestionRecoDuero
             toolStripStatusLabel1.Text = "Inicio";
         }
 
+        private void buttonVolverInicio_Click(object sender, EventArgs e)
+        {
+            var volver = MessageBox.Show("¿Quiere volver a la ventana principal?", "Cerrar clientes", MessageBoxButtons.OKCancel);
+            if (volver == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+
         private void AjustarImagenes()
         {
             //Ajustar imágen botón añadir
@@ -942,6 +951,13 @@ namespace GestionRecoDuero
             if (e.Control && e.KeyCode == Keys.A)
             {
                 toolStripButtonAnadir_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Imprimir
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                toolStripButtonImprimir_Click(this, EventArgs.Empty);
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
         }

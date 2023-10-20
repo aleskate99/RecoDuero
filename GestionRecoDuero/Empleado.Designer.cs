@@ -42,7 +42,7 @@
             System.Windows.Forms.Label imagenLabel;
             System.Windows.Forms.Label fechaNacimientoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Empleado));
-            this.buttonCerrar = new System.Windows.Forms.PictureBox();
+            this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.fechaNacimientoDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.empleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -97,7 +97,7 @@
             dNILabel = new System.Windows.Forms.Label();
             imagenLabel = new System.Windows.Forms.Label();
             fechaNacimientoLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
@@ -228,17 +228,17 @@
             fechaNacimientoLabel.TabIndex = 22;
             fechaNacimientoLabel.Text = "Fecha Nacimiento *";
             // 
-            // buttonCerrar
+            // buttonVolverInicio
             // 
-            this.buttonCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCerrar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCerrar.Image")));
-            this.buttonCerrar.Location = new System.Drawing.Point(1297, 81);
-            this.buttonCerrar.Name = "buttonCerrar";
-            this.buttonCerrar.Size = new System.Drawing.Size(60, 54);
-            this.buttonCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.buttonCerrar.TabIndex = 9;
-            this.buttonCerrar.TabStop = false;
-            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
+            this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1297, 81);
+            this.buttonVolverInicio.Name = "buttonVolverInicio";
+            this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
+            this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buttonVolverInicio.TabIndex = 9;
+            this.buttonVolverInicio.TabStop = false;
+            this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
             // groupBox1
             // 
@@ -438,7 +438,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1357, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1357, 28);
             this.toolStrip1.TabIndex = 30;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -448,7 +448,7 @@
             this.toolStripButtonInicio.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInicio.Image")));
             this.toolStripButtonInicio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInicio.Name = "toolStripButtonInicio";
-            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonInicio.ToolTipText = "Ir al principio";
             this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click);
             // 
@@ -458,14 +458,14 @@
             this.toolStripButtonAnterior.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnterior.Image")));
             this.toolStripButtonAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnterior.Name = "toolStripButtonAnterior";
-            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonAnterior.ToolTipText = "Anterior";
             this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click);
             // 
             // toolstripLabelContadorEmpleados
             // 
             this.toolstripLabelContadorEmpleados.Name = "toolstripLabelContadorEmpleados";
-            this.toolstripLabelContadorEmpleados.Size = new System.Drawing.Size(111, 28);
+            this.toolstripLabelContadorEmpleados.Size = new System.Drawing.Size(111, 25);
             this.toolstripLabelContadorEmpleados.Text = "toolStripLabel1";
             // 
             // toolStripButtonSiguiente
@@ -474,7 +474,7 @@
             this.toolStripButtonSiguiente.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSiguiente.Image")));
             this.toolStripButtonSiguiente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSiguiente.Name = "toolStripButtonSiguiente";
-            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonSiguiente.ToolTipText = "Siguiente";
             this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click);
             // 
@@ -484,14 +484,14 @@
             this.toolStripButtonFinal.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFinal.Image")));
             this.toolStripButtonFinal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFinal.Name = "toolStripButtonFinal";
-            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonFinal.ToolTipText = "Ir al final";
             this.toolStripButtonFinal.Click += new System.EventHandler(this.toolStripButtonFinal_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButtonAnadir
             // 
@@ -499,7 +499,7 @@
             this.toolStripButtonAnadir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnadir.Image")));
             this.toolStripButtonAnadir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
-            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonAnadir.ToolTipText = "Añadir empleado";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
             // 
@@ -509,7 +509,7 @@
             this.toolStripButtonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEliminar.Image")));
             this.toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonEliminar.ToolTipText = "Eliminar empleado";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
             // 
@@ -519,14 +519,14 @@
             this.toolStripButtonEditar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditar.Image")));
             this.toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
-            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonEditar.ToolTipText = "Editar empleado";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButtonGuardar
             // 
@@ -534,7 +534,7 @@
             this.toolStripButtonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGuardar.Image")));
             this.toolStripButtonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGuardar.Name = "toolStripButtonGuardar";
-            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonGuardar.ToolTipText = "Guardar ";
             this.toolStripButtonGuardar.Click += new System.EventHandler(this.toolStripButtonGuardar_Click);
             // 
@@ -544,7 +544,7 @@
             this.toolStripButtonImprimir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImprimir.Image")));
             this.toolStripButtonImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonImprimir.Name = "toolStripButtonImprimir";
-            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonImprimir.ToolTipText = "Imprimir ";
             this.toolStripButtonImprimir.Click += new System.EventHandler(this.toolStripButtonImprimir_Click);
             // 
@@ -554,14 +554,14 @@
             this.toolStripButtonInforme.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInforme.Image")));
             this.toolStripButtonInforme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInforme.Name = "toolStripButtonInforme";
-            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonInforme.ToolTipText = "Informe";
             this.toolStripButtonInforme.Click += new System.EventHandler(this.toolStripButtonInforme_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripComboBoxBuscarEmpleados
             // 
@@ -570,7 +570,7 @@
             "DNI",
             "Nombre"});
             this.toolStripComboBoxBuscarEmpleados.Name = "toolStripComboBoxBuscarEmpleados";
-            this.toolStripComboBoxBuscarEmpleados.Size = new System.Drawing.Size(160, 31);
+            this.toolStripComboBoxBuscarEmpleados.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBoxBuscarEmpleados.Text = "Buscar empleado";
             this.toolStripComboBoxBuscarEmpleados.ToolTipText = "Seleccione mediante que campo desea buscar al empleado";
             // 
@@ -578,7 +578,7 @@
             // 
             this.toolStripTextBoxBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxBuscar.Name = "toolStripTextBoxBuscar";
-            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 31);
+            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 28);
             this.toolStripTextBoxBuscar.ToolTipText = "Escribe el empleado que desee buscar";
             // 
             // toolStripButtonBuscar
@@ -587,7 +587,7 @@
             this.toolStripButtonBuscar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBuscar.Image")));
             this.toolStripButtonBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBuscar.Name = "toolStripButtonBuscar";
-            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonBuscar.ToolTipText = "Buscar";
             this.toolStripButtonBuscar.Click += new System.EventHandler(this.toolStripButtonBuscar_Click);
             // 
@@ -699,7 +699,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonCerrar);
+            this.Controls.Add(this.buttonVolverInicio);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Empleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -707,7 +707,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Empleado_FormClosed);
             this.Load += new System.EventHandler(this.Empleado_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Empleado_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.buttonCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).EndInit();
@@ -727,7 +727,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox buttonCerrar;
+        private System.Windows.Forms.PictureBox buttonVolverInicio;
         private RecoDueroDataSet recoDueroDataSet;
         private System.Windows.Forms.BindingSource empleadoBindingSource;
         private RecoDueroDataSetTableAdapters.EmpleadoTableAdapter empleadoTableAdapter;

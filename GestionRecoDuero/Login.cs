@@ -16,7 +16,7 @@ namespace GestionRecoDuero
 
         private void Login_Load(object sender, EventArgs e)
         {
-            this.usuarioTableAdapter.Fill(this.recoDueroDataSet.Usuario);
+            this.usuarioTableAdapter.Fill(this.recoDueroDataSet.Usuario);     
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -41,18 +41,12 @@ namespace GestionRecoDuero
             MoverPantalla.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private bool EsDireccionCorreoValida(string correo)
-        {
-            string patron = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            return Regex.IsMatch(correo, patron);
-        }
-
         private void buttonAcceder_Click(object sender, EventArgs e)
         {
             string usuario = emailTextBox.Text;
             string pass = passwordTextBox.Text;
 
-            if (EsDireccionCorreoValida(emailTextBox.Text))
+            if (Comun.EsDireccionCorreoValida(emailTextBox.Text))
             {
                 //Compruebo si existe el email
                 var indiceResultadoBusquedaUsuario = usuarioBindingSource.Find("Email", usuario);
@@ -77,6 +71,7 @@ namespace GestionRecoDuero
                     else
                     {
                         MessageBox.Show("La contraseña no coincide", "Error en la contraseña", MessageBoxButtons.OKCancel);
+                        passwordTextBox.Clear();
                         return;
                     }
                 }
@@ -156,6 +151,7 @@ namespace GestionRecoDuero
             {
                 passwordTextBox.Text = "";
                 passwordTextBox.ForeColor = Color.LightGray;
+                passwordTextBox.UseSystemPasswordChar = true;
             }
         }
 
@@ -182,7 +178,7 @@ namespace GestionRecoDuero
             }
             else
             {
-                MessageBox.Show("Nombre de Usuario no encontrado");
+                MessageBox.Show("Email no encontrado", " Error en la búsqueda del email ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }  
         }
