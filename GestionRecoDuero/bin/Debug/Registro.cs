@@ -1,11 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Net.Mail;
-using System.Net;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -54,67 +49,116 @@ namespace GestionRecoDuero
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Login login = new Login();
-            login.Show();
+            CerrarFormYMostrarLogin();
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            CerrarFormYMostrarLogin();
+        }
+
+        private void CerrarFormYMostrarLogin()
+        {
             this.Close();
             Login login = new Login();
             login.Show();
         }
 
+        //private void buttonAceptar_Click(object sender, EventArgs e)
+        //{
+        //    bool passwordValida = Comun.VerificarPassword(passwordTextBox.Text);
+
+        //    //Compruebo que sea la dirección de correo válida
+        //    if (Comun.EsDireccionCorreoValida(emailTextBox.Text))
+        //    {
+        //        //Compruebo si existe el email
+        //        var emailUsuario = usuarioBindingSource.Find("Email", emailTextBox.Text);
+        //        if (emailUsuario == -1)
+        //        {
+        //            // Comprueba que la contraseña sea válida
+        //            if (passwordValida)
+        //            {
+        //                usuarioBindingSource.EndEdit();
+        //                tableAdapterManager.UpdateAll(recoDueroDataSet);
+
+        //                EnvioMail mail = new EnvioMail();
+        //                mail.envioCorreo(emailTextBox.Text, false);
+
+        //                LimpiarCampos();
+
+        //                Login login = new Login();
+        //                Close();
+        //                login.Show();
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("La contraseña debe poseer al menos una minúscula, una mayúscula,un número y un carácter especial", "Error en la contraseña", MessageBoxButtons.OKCancel);
+        //                passwordTextBox.Clear();
+        //                return;
+        //            }
+
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("El email ya está en uso.", "Email no encontrado", MessageBoxButtons.OKCancel);
+        //            return;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("El formato del email introducido no es correcto.", "Formato de Email Erróneo", MessageBoxButtons.OKCancel);
+        //        return;
+        //    }  
+
+        //}
+
         private void buttonAceptar_Click(object sender, EventArgs e)
+        {
+            if (ValidarCampos())
+            {
+                usuarioBindingSource.EndEdit();
+                tableAdapterManager.UpdateAll(recoDueroDataSet);
+
+                EnvioMail mail = new EnvioMail();
+                mail.envioCorreo(emailTextBox.Text, false);
+
+                LimpiarCampos();
+                CerrarFormYMostrarLogin();
+            }
+        }
+
+        private bool ValidarCampos()
         {
             bool passwordValida = Comun.VerificarPassword(passwordTextBox.Text);
 
-            //Compruebo que sea la dirección de correo válida
-            if (Comun.EsDireccionCorreoValida(emailTextBox.Text))
+            if (!Comun.EsDireccionCorreoValida(emailTextBox.Text))
             {
-                //Compruebo si existe el email
-                var emailUsuario = usuarioBindingSource.Find("Email", emailTextBox.Text);
-                if (emailUsuario == -1)
-                {
-                    // Comprueba que la contraseña sea válida
-                    if (passwordValida)
-                    {
-                        usuarioBindingSource.EndEdit();
-                        tableAdapterManager.UpdateAll(recoDueroDataSet);
-
-                        EnvioMail mail = new EnvioMail();
-                        mail.envioCorreo(emailTextBox.Text, false);
-
-                        //Limpio los campos
-                        usuarioTextBox.Clear();
-                        emailTextBox.Clear();
-                        passwordTextBox.Clear();
-
-                        Login login = new Login();
-                        Close();
-                        login.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("La contraseña debe poseer al menos una minúscula, una mayúscula,un número y un carácter especial", "Error en la contraseña", MessageBoxButtons.OKCancel);
-                        passwordTextBox.Clear();
-                        return;
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("El email ya está en uso.", "Email no encontrado", MessageBoxButtons.OKCancel);
-                    return;
-                }
+                Comun.MostrarMensajeDeError("El formato del email introducido no es correcto.", "Formato de Email Erróneo");
+                return false;
             }
-            else
-            {
-                MessageBox.Show("El formato del email introducido no es correcto.", "Formato de Email Erróneo", MessageBoxButtons.OKCancel);
-                return;
-            }  
 
+            var emailUsuario = usuarioBindingSource.Find("Email", emailTextBox.Text);
+            if (emailUsuario != -1)
+            {
+                Comun.MostrarMensajeDeError("El email ya está en uso.", "Email no encontrado");
+                return false;
+            }
+
+            if (!passwordValida)
+            {
+                Comun.MostrarMensajeDeError("La contraseña debe poseer al menos una minúscula, una mayúscula, un número y un carácter especial", "Error en la contraseña");
+                passwordTextBox.Clear();
+                return false;
+            }
+
+            return true;
+        }
+
+        private void LimpiarCampos()
+        {
+            usuarioTextBox.Clear();
+            emailTextBox.Clear();
+            passwordTextBox.Clear();
         }
 
         private void buttonMostrarPass_Click(object sender, EventArgs e)
@@ -229,6 +273,7 @@ namespace GestionRecoDuero
             {
                 passwordTextBox.Text = "";
                 passwordTextBox.ForeColor = Color.LightGray;
+                passwordTextBox.UseSystemPasswordChar = true;
             }
         }
 

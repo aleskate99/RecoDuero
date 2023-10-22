@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GestionRecoDuero
 {
@@ -46,6 +47,11 @@ namespace GestionRecoDuero
         public static bool VerificarPassword(string password)
         {
             return Regex.IsMatch(password, @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).*$");
+        }
+
+        public static void MostrarMensajeDeError(string mensaje, string titulo)
+        {
+            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
 
     }

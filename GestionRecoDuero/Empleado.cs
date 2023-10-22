@@ -135,12 +135,12 @@ namespace GestionRecoDuero
 
             RefrescarToolstripLabelEmpleado();
         }
- 
+
         private void toolStripButtonInicio_Click(object sender, EventArgs e)
         {
             NavegarRegistro(0); // Ir al primer registro (con índice 0)
         }
- 
+
         private void toolStripButtonAnterior_Click(object sender, EventArgs e)
         {
             NavegarRegistro(empleadoBindingSource.Position - 1); // Ir al registro anterior (índice actual menos 1)
@@ -167,6 +167,7 @@ namespace GestionRecoDuero
 
             DeshabilitarBotonesEnAnadir();
             HabilitarControlesEnAnadir();
+
             RefrescarToolstripLabelEmpleado();
         }
 
@@ -211,7 +212,8 @@ namespace GestionRecoDuero
             {
                 if (empleadoBindingSource.Count <= 0)
                 {
-                    MessageBox.Show("No se puede eliminar el empleado porque no existe en la base de datos ", "Error en la eliminación de un empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Comun.MostrarMensajeDeError("No se puede eliminar el empleado porque no existe en la base de datos.", "Error en la eliminación de un empleado");
+                    //MessageBox.Show(" No se puede eliminar el empleado porque no existe en la base de datos", "Error en la eliminación de un empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -283,7 +285,8 @@ namespace GestionRecoDuero
                 EstadoControlesGuardar();
                 RefrescarToolstripLabelEmpleado();
 
-                MessageBox.Show("Guardado con éxito", "Guardado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
+                //MessageBox.Show("Guardado con éxito", "Guardado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -359,7 +362,8 @@ namespace GestionRecoDuero
             {
                 if (toolStripButtonBuscar.Equals(""))
                 {
-                    MessageBox.Show("Introduzca un campo a buscar en el cuadro de texto", " no existe ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Comun.MostrarMensajeDeError("Introduzca un campo a buscar en el cuadro de texto.", "Introduzca un campo");
+                    //MessageBox.Show("Introduzca un campo a buscar en el cuadro de texto", " no existe ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -367,7 +371,8 @@ namespace GestionRecoDuero
                     {
                         if (empleadoBindingSource.Find("DNI", toolStripTextBoxBuscar.Text) == -1)
                         {
-                            MessageBox.Show("El empleado no existe");
+                            Comun.MostrarMensajeDeError("El empleado no existe.", "Empleado no encontrado");
+                            //MessageBox.Show("El empleado no existe");
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                         else
@@ -380,7 +385,8 @@ namespace GestionRecoDuero
                     {
                         if (empleadoBindingSource.Find("IdEmpleado", toolStripTextBoxBuscar.Text) == -1)
                         {
-                            MessageBox.Show("El empleado no existe");
+                            Comun.MostrarMensajeDeError("El empleado no existe.", "Empleado no encontrado");
+                            //MessageBox.Show("El empleado no existe");
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                         else
@@ -393,7 +399,8 @@ namespace GestionRecoDuero
                     {
                         if (empleadoBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text) == -1)
                         {
-                            MessageBox.Show("El empleado no existe");
+                            Comun.MostrarMensajeDeError("El empleado no existe.", "Empleado no encontrado");
+                            //MessageBox.Show("El empleado no existe");
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                         else
@@ -550,7 +557,7 @@ namespace GestionRecoDuero
                 }
 
                 imagenPictureBox.ImageLocation = imagenPath;
-                imagenPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                imagenPictureBox.SizeMode = PictureBoxSizeMode.StretchImage; // PictureBoxSizeMode.Zoom;
 
                 // Mostrar información adicional sobre la imagen
                 FileInfo fileInfo = new FileInfo(imagenPath);
@@ -566,12 +573,10 @@ namespace GestionRecoDuero
             }
         }
 
-        //TODO: NO SACA LA IMÁGEN DE FORMA CORRECTA
         private void toolStripButtonImprimir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Imprimiendo...";
 
-            // Crear un objeto PrintDocument
             PrintDocument printDocument1 = new PrintDocument();
 
             // Manejar el evento PrintPage para imprimir los campos y la imagen
@@ -599,14 +604,6 @@ namespace GestionRecoDuero
                     PrintLine("Puesto: ", puestoComboBox.Text);
                     PrintLine("Situación laboral: ", situacionLaboralComboBox.Text);
                     PrintLine("Salario: ", salarioLabel1.Text);
-
-                    Point loc = new Point(100, 500);
-
-                    // Verificar si hay una imagen y si es válida
-                    if (imagenPictureBox.Image != null)
-                    {
-                        e1.Graphics.DrawImage(imagenPictureBox.Image, loc);
-                    }
                 }
             };
 
@@ -874,16 +871,8 @@ namespace GestionRecoDuero
             }
         }
 
-        //Atajos de teclado TODO: HACER MAS ATAJOS DE TECLADO
         private void Empleado_KeyDown(object sender, KeyEventArgs e)
         {
-            //Guardar
-            if (e.Control && e.KeyCode == Keys.S)
-            {
-                toolStripButtonGuardar_Click(this, EventArgs.Empty);
-                e.Handled = true; // Evita que el evento de teclado se propague.
-            }
-
             //Añadir
             if (e.Control && e.KeyCode == Keys.A)
             {
@@ -891,10 +880,45 @@ namespace GestionRecoDuero
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
 
+            //Eliminar (control suprimir)
+            if (e.Control && e.KeyCode == Keys.Delete)
+            {
+                toolStripButtonEliminar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Editar
+            if (e.Control && e.KeyCode == Keys.E)
+            {
+                toolStripButtonEditar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Guardar
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                toolStripButtonGuardar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
             //Imprimir
             if (e.Control && e.KeyCode == Keys.P)
             {
                 toolStripButtonImprimir_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            // Informe
+            if (e.Control && e.KeyCode == Keys.I)
+            {
+                toolStripButtonInforme_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Buscar
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                toolStripButtonBuscar_Click(this, EventArgs.Empty);
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
         }

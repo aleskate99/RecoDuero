@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using static GestionRecoDuero.RecoDueroDataSet;
 namespace GestionRecoDuero
 
 {
@@ -43,62 +41,53 @@ namespace GestionRecoDuero
 
         private void buttonAcceder_Click(object sender, EventArgs e)
         {
-            string usuario = emailTextBox.Text;
+            string emailUsuario = emailTextBox.Text;
             string pass = passwordTextBox.Text;
 
-            if (Comun.EsDireccionCorreoValida(emailTextBox.Text))
+            if (!Comun.EsDireccionCorreoValida(emailUsuario))
             {
-                //Compruebo si existe el email
-                var indiceResultadoBusquedaUsuario = usuarioBindingSource.Find("Email", usuario);
-                if (indiceResultadoBusquedaUsuario != -1)
-                {
-                    //Encriptar.EncriptarMD5(pass);
-                    var usuarioRow = recoDueroDataSet.Tables["Usuario"].Rows[indiceResultadoBusquedaUsuario];
-                    var passwordUsuario = usuarioRow["Password"].ToString();
-                    DatosSesion.Email = usuarioRow["Email"].ToString();
+                Comun.MostrarMensajeDeError("El formato del email introducido no es correcto.", "Formato de Email Erróneo");
+                return;
+            }
 
-                    if (passwordUsuario == pass)
-                    {
-                        passwordTextBox.Clear();
+            var indiceResultadoBusquedaUsuario = usuarioBindingSource.Find("Email", emailUsuario);
+            if (indiceResultadoBusquedaUsuario == -1)
+            {
+                Comun.MostrarMensajeDeError("Nombre de Usuario no encontrado", "Error en el mail");
+                return;
+            }
 
-                        Hide();
-                        Bienvenida bienvenida = new Bienvenida();
-                        bienvenida.ShowDialog();
+            //Encriptar.EncriptarMD5(passwordTextBox.Text);
+            var usuarioRow = recoDueroDataSet.Tables["Usuario"].Rows[indiceResultadoBusquedaUsuario];
+            var passwordUsuario = usuarioRow["Password"].ToString();
+            DatosSesion.Email = usuarioRow["Email"].ToString();
 
-                        Inicio inicio = new Inicio();
-                        inicio.ShowDialog(this);
-                    }
-                    else
-                    {
-                        MessageBox.Show("La contraseña no coincide", "Error en la contraseña", MessageBoxButtons.OKCancel);
-                        passwordTextBox.Clear();
-                        return;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Nombre de Usuario no encontrado", "Error en el mail", MessageBoxButtons.OKCancel);
-                    return;
-                }
+            if (passwordUsuario == pass)
+            {
+                passwordTextBox.Clear();
+                AbrirInicioConBienvenida();
             }
             else
             {
-                MessageBox.Show("El formato del email introducido no es correcto.", "Formato de Email Erróneo", MessageBoxButtons.OKCancel);
-                return;
+                Comun.MostrarMensajeDeError("La contraseña no coincide", "Error en la contraseña");
+                passwordTextBox.Clear();
             }
-            
+
+        }
+
+        private void AbrirInicioConBienvenida()
+        {
+            Hide();
+            Bienvenida bienvenida = new Bienvenida();
+            bienvenida.ShowDialog();
+
+            Inicio inicio = new Inicio();
+            inicio.ShowDialog(this);
         }
 
         private void buttonMostrarPassAcceder_Click(object sender, EventArgs e)
         {
             passwordTextBox.UseSystemPasswordChar = !passwordTextBox.UseSystemPasswordChar;
-        }
-
-        private void usuarioBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.usuarioBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
         }
 
         private void linkLabelRegistro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -178,7 +167,8 @@ namespace GestionRecoDuero
             }
             else
             {
-                MessageBox.Show("Email no encontrado", " Error en la búsqueda del email ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Comun.MostrarMensajeDeError("Email no encontrado", "Error en la búsqueda del email");
+                //MessageBox.Show("Email no encontrado", " Error en la búsqueda del email ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }  
         }
