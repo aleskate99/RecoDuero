@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -34,71 +35,25 @@ namespace GestionRecoDuero
 
         private void AjustarImagenes()
         {
-            //Ajustar imágen botón añadir
-            this.toolStripButtonAnadir.AutoSize = false;
-            this.toolStripButtonAnadir.Width = 50;
-            this.toolStripButtonAnadir.Height = 50;
-            this.toolStripButtonAnadir.ImageScaling = ToolStripItemImageScaling.None;
+            AjustarBoton(toolStripButtonAnadir);
+            AjustarBoton(toolStripButtonEliminar);
+            AjustarBoton(toolStripButtonEditar);
+            AjustarBoton(toolStripButtonGuardar);
+            AjustarBoton(toolStripButtonBuscar);
+            AjustarBoton(toolStripButtonImprimir);
+            AjustarBoton(toolStripButtonAnterior);
+            AjustarBoton(toolStripButtonInicio);
+            AjustarBoton(toolStripButtonInforme);
+            AjustarBoton(toolStripButtonSiguiente);
+            AjustarBoton(toolStripButtonFinal);
+        }
 
-            //Ajustar imágen botón eliminar
-            this.toolStripButtonEliminar.AutoSize = false;
-            this.toolStripButtonEliminar.Width = 50;
-            this.toolStripButtonEliminar.Height = 50;
-            this.toolStripButtonEliminar.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón editar
-            this.toolStripButtonEditar.AutoSize = false;
-            this.toolStripButtonEditar.Width = 50;
-            this.toolStripButtonEditar.Height = 50;
-            this.toolStripButtonEditar.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón guardar
-            this.toolStripButtonGuardar.AutoSize = false;
-            this.toolStripButtonGuardar.Width = 50;
-            this.toolStripButtonGuardar.Height = 50;
-            this.toolStripButtonGuardar.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón buscar
-            this.toolStripButtonBuscar.AutoSize = false;
-            this.toolStripButtonBuscar.Width = 50;
-            this.toolStripButtonBuscar.Height = 50;
-            this.toolStripButtonBuscar.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón imprimir
-            this.toolStripButtonImprimir.AutoSize = false;
-            this.toolStripButtonImprimir.Width = 50;
-            this.toolStripButtonImprimir.Height = 50;
-            this.toolStripButtonImprimir.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón anterior
-            this.toolStripButtonAnterior.AutoSize = false;
-            this.toolStripButtonAnterior.Width = 50;
-            this.toolStripButtonAnterior.Height = 50;
-            this.toolStripButtonAnterior.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón principio
-            this.toolStripButtonInicio.AutoSize = false;
-            this.toolStripButtonInicio.Width = 50;
-            this.toolStripButtonInicio.Height = 50;
-            this.toolStripButtonInicio.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón formulario
-            this.toolStripButtonInforme.AutoSize = false;
-            this.toolStripButtonInforme.Width = 50;
-            this.toolStripButtonInforme.Height = 50;
-            this.toolStripButtonInforme.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón siguiente
-            this.toolStripButtonSiguiente.AutoSize = false;
-            this.toolStripButtonSiguiente.Width = 50;
-            this.toolStripButtonSiguiente.Height = 50;
-            this.toolStripButtonSiguiente.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón final
-            this.toolStripButtonFinal.AutoSize = false;
-            this.toolStripButtonFinal.Width = 50;
-            this.toolStripButtonFinal.Height = 50;
-            this.toolStripButtonFinal.ImageScaling = ToolStripItemImageScaling.None;
+        private void AjustarBoton(ToolStripButton boton)
+        {
+            boton.AutoSize = false;
+            boton.Width = 50;
+            boton.Height = 50;
+            boton.ImageScaling = ToolStripItemImageScaling.None;
         }
 
         private void EstadoControlesInicioApp()
@@ -159,71 +114,46 @@ namespace GestionRecoDuero
         }
 
         //FLECHAS
-        private void toolStripButtonInicio_Click(object sender, EventArgs e)
+        private void NavegarRegistro(int indice)
         {
-            empleadoBindingSource.MoveFirst();
-            toolStripButtonInicio.Enabled = false;
-            toolStripButtonAnterior.Enabled = false;
+            // Comprobar si no hay registros en el origen de datos
+            if (empleadoBindingSource.Count <= 0)
+                return;
 
-            if (empleadoBindingSource.Count > 1)
-            {
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
+            // Mover el cursor del origen de datos al registro especificado por 'index'
+            empleadoBindingSource.Position = indice;
+
+            // Determinar si el registro actual es el primer o el último
+            bool enPrimerRegistro = empleadoBindingSource.Position == 0;
+            bool enUltimoRegistro = empleadoBindingSource.Position == empleadoBindingSource.Count - 1;
+
+            // Habilitar o deshabilitar los botones de navegación según la posición del registro
+            toolStripButtonInicio.Enabled = !enPrimerRegistro;
+            toolStripButtonAnterior.Enabled = !enPrimerRegistro;
+            toolStripButtonSiguiente.Enabled = !enUltimoRegistro;
+            toolStripButtonFinal.Enabled = !enUltimoRegistro;
 
             RefrescarToolstripLabelEmpleado();
         }
-
+ 
+        private void toolStripButtonInicio_Click(object sender, EventArgs e)
+        {
+            NavegarRegistro(0); // Ir al primer registro (con índice 0)
+        }
+ 
         private void toolStripButtonAnterior_Click(object sender, EventArgs e)
         {
-            empleadoBindingSource.MovePrevious();
-
-            if (empleadoBindingSource.Position <= 0)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-            }
-
-            if (empleadoBindingSource.Count > 1)
-            {
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
-
-            RefrescarToolstripLabelEmpleado();
+            NavegarRegistro(empleadoBindingSource.Position - 1); // Ir al registro anterior (índice actual menos 1)
         }
 
         private void toolStripButtonSiguiente_Click(object sender, EventArgs e)
         {
-            empleadoBindingSource.MoveNext();
-            if (empleadoBindingSource.Count <= 0 || empleadoBindingSource.Position + 1 == empleadoBindingSource.Count)
-            {
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (empleadoBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-            }
-
-            RefrescarToolstripLabelEmpleado();
+            NavegarRegistro(empleadoBindingSource.Position + 1); // Ir al registro siguiente (índice actual más 1)
         }
 
         private void toolStripButtonFinal_Click(object sender, EventArgs e)
         {
-            empleadoBindingSource.MoveLast();
-            toolStripButtonSiguiente.Enabled = false;
-            toolStripButtonFinal.Enabled = false;
-
-            if (empleadoBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-            }
-
-            RefrescarToolstripLabelEmpleado();
+            NavegarRegistro(empleadoBindingSource.Count - 1); // Ir al último registro
         }
 
         //BOTONES
@@ -343,14 +273,18 @@ namespace GestionRecoDuero
 
         private void toolStripButtonGuardar_Click(object sender, EventArgs e)
         {
-            ComprobarDatosIntroducidos();
+            if (ComprobarDatosIntroducidos())
+            {
+                errorProvider1.Clear();
 
-            this.empleadoTableAdapter.Update(this.recoDueroDataSet); //Guarda en la base de datos
+                empleadoBindingSource.EndEdit();
+                this.empleadoTableAdapter.Update(this.recoDueroDataSet);
 
-            EstadoControlesGuardar();
-            RefrescarToolstripLabelEmpleado();
+                EstadoControlesGuardar();
+                RefrescarToolstripLabelEmpleado();
 
-            MessageBox.Show("Guardado con éxito", " Guardado con exito ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Guardado con éxito", "Guardado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void EstadoControlesGuardar()
@@ -530,77 +464,11 @@ namespace GestionRecoDuero
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-           if (ComprobarDatosIntroducidos())
-           {
-               errorProvider1.Clear();
-               empleadoBindingSource.EndEdit(); //Lo guarda en memoria
-               EstadoControlesAceptar();
-           } 
-        }
-
-        private void EstadoControlesAceptar()
-        {
-            //Botones
-            toolStripButtonAnadir.Enabled = true;
-            toolStripButtonEditar.Enabled = true;
-            toolStripButtonEliminar.Enabled = true;
-            toolStripButtonBuscar.Enabled = true;
-            toolStripComboBoxBuscarEmpleados.Enabled = true;
-            toolStripTextBoxBuscar.Enabled = true;
-            toolStripButtonGuardar.Enabled = true;
-
-            //Campos
-            OcultarCampos();
-
-            //Botones
-            buttonAceptar.Visible = false;
-            buttonCancelar.Visible = false;
-
-            //Flechas
-            if (empleadoBindingSource.Count <= 0)
+            if (ComprobarDatosIntroducidos())
             {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (empleadoBindingSource.Position + 1 > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-            }
-
-            if (empleadoBindingSource.Position + 1 == empleadoBindingSource.Count && empleadoBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (empleadoBindingSource.Position + 1 == empleadoBindingSource.Count && empleadoBindingSource.Count == 1)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (empleadoBindingSource.Count > 2 && empleadoBindingSource.Position + 1 != empleadoBindingSource.Count && empleadoBindingSource.Position + 1 != 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
-
-            if (empleadoBindingSource.Position + 1 == 1 && empleadoBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
+                errorProvider1.Clear();
+                empleadoBindingSource.EndEdit();
+                EstadoControlesAceptar();
             }
         }
 
@@ -617,9 +485,20 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelEmpleado();
         }
 
+        private void EstadoControlesAceptar()
+        {
+            HabilitarControlesComunes();
+            toolStripButtonGuardar.Enabled = true;
+        }
+
         private void EstadoControlesCancelar()
         {
-            //Botones
+            HabilitarControlesComunes();
+        }
+
+        private void HabilitarControlesComunes()
+        {
+            // Botones
             toolStripButtonAnadir.Enabled = true;
             toolStripButtonEditar.Enabled = true;
             toolStripButtonEliminar.Enabled = true;
@@ -627,69 +506,59 @@ namespace GestionRecoDuero
             toolStripComboBoxBuscarEmpleados.Enabled = true;
             toolStripTextBoxBuscar.Enabled = true;
 
-            //Campos
+            // Campos
             OcultarCampos();
 
-            //Botones
+            // Botones
             buttonAceptar.Visible = false;
             buttonCancelar.Visible = false;
 
-            if (empleadoBindingSource.Count <= 0)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (empleadoBindingSource.Position + 1 > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-            }
-
-            if (empleadoBindingSource.Position + 1 == empleadoBindingSource.Count && empleadoBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (empleadoBindingSource.Position + 1 == empleadoBindingSource.Count && empleadoBindingSource.Count == 1)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (empleadoBindingSource.Count > 2 && empleadoBindingSource.Position + 1 != empleadoBindingSource.Count && empleadoBindingSource.Position + 1 != 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
-
-            if (empleadoBindingSource.Position + 1 == 1 && empleadoBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
+            // Flechas
+            ActualizarEstadoFlechas();
         }
 
+        private void ActualizarEstadoFlechas()
+        {
+            bool tieneRegistros = empleadoBindingSource.Count > 0;
+            bool esElPrimero = empleadoBindingSource.Position == 0;
+            bool esElUltimo = empleadoBindingSource.Position == empleadoBindingSource.Count - 1;
+
+            toolStripButtonInicio.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonAnterior.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonSiguiente.Enabled = !esElUltimo && tieneRegistros;
+            toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
+        }
+
+        //TODO: REVISAR
         private void imagenPictureBox_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
             openFileDialog1.FilterIndex = 1;
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string imagen = openFileDialog1.FileName;
-                imagenPictureBox.Image = Image.FromFile(imagen);
+                string imagenPath = openFileDialog1.FileName;
+
+                // Verificar el tamaño de la imagen
+                using (var img = Image.FromFile(imagenPath))
+                {
+                    if (img.Width > 800 || img.Height > 600)
+                    {
+                        MessageBox.Show("La imagen es demasiado grande. Seleccione una imagen más pequeña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                imagenPictureBox.ImageLocation = imagenPath;
                 imagenPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                // Mostrar información adicional sobre la imagen
+                FileInfo fileInfo = new FileInfo(imagenPath);
+                long fileSize = fileInfo.Length;
+                DateTime lastModified = fileInfo.LastWriteTime;
+
+                string info = $"Tamaño: {fileSize / 1024} KB\nÚltima modificación: {lastModified}";
+                MessageBox.Show(info, "Información de la imagen", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -697,52 +566,59 @@ namespace GestionRecoDuero
             }
         }
 
+        //TODO: NO SACA LA IMÁGEN DE FORMA CORRECTA
         private void toolStripButtonImprimir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Imprimiendo...";
 
-            string id = idEmpleadoLabel1.Text;
-            string nombre = nombreTextBox.Text;
-            string apellidos = apellidosTextBox.Text;
-            string dni = dNITextBox.Text;
-            string fechaNacimiento = fechaNacimientoDateTimePicker.Text;
-            string telefono = telefonoTextBox.Text;
-            string email = emailTextBox.Text;
-            string genero = generoComboBox.Text;
+            // Crear un objeto PrintDocument
+            PrintDocument printDocument1 = new PrintDocument();
 
-            string puesto = puestoComboBox.Text;
-            string situacionLaboral = situacionLaboralComboBox.Text;
-            string salario = salarioLabel1.Text;
-            Image imagen = imagenPictureBox.Image;
+            // Manejar el evento PrintPage para imprimir los campos y la imagen
+            printDocument1.PrintPage += (sender1, e1) =>
+            {
+                using (var font = new Font("Times New Roman", 12))
+                {
+                    float y = 100;
 
+                    // Crear un método para imprimir cada línea
+                    void PrintLine(string label, string value)
+                    {
+                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
+                        y += 25;
+                    }
+
+                    PrintLine("Id: ", idEmpleadoLabel1.Text);
+                    PrintLine("Nombre: ", nombreTextBox.Text);
+                    PrintLine("Apellidos: ", apellidosTextBox.Text);
+                    PrintLine("DNI: ", dNITextBox.Text);
+                    PrintLine("Fecha de nacimiento: ", fechaNacimientoDateTimePicker.Text);
+                    PrintLine("Teléfono: ", telefonoTextBox.Text);
+                    PrintLine("Email: ", emailTextBox.Text);
+                    PrintLine("Género: ", generoComboBox.Text);
+                    PrintLine("Puesto: ", puestoComboBox.Text);
+                    PrintLine("Situación laboral: ", situacionLaboralComboBox.Text);
+                    PrintLine("Salario: ", salarioLabel1.Text);
+
+                    Point loc = new Point(100, 500);
+
+                    // Verificar si hay una imagen y si es válida
+                    if (imagenPictureBox.Image != null)
+                    {
+                        e1.Graphics.DrawImage(imagenPictureBox.Image, loc);
+                    }
+                }
+            };
+
+            // Mostrar el cuadro de diálogo de impresión
             PrintDialog printDialog1 = new PrintDialog();
             printDialog1.AllowPrintToFile = false;
             printDialog1.AllowSelection = false;
             printDialog1.AllowSomePages = false;
+            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
 
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
-                PrintDocument printDocument1 = new PrintDocument();
-                printDocument1.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
-                {
-                    e1.Graphics.DrawString("Id: " + id, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 100, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Nombre: " + nombre, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 125, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Apellidos: " + apellidos, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 150, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("DNI: " + dni, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 175, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Fecha de nacimiento: " + fechaNacimiento, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 200, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Teléfono: " + telefono, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 225, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-
-                    e1.Graphics.DrawString("Email: " + email, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 250, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Género: " + genero, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 275, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Puesto: " + puesto, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 300, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Situación laboral: " + situacionLaboral, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 325, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Salario: " + salario, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 350, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-
-                    Point loc = new Point(100, 500);
-                    e1.Graphics.DrawImage(imagen, loc);
-
-                };
-                printDocument1.PrinterSettings = printDialog1.PrinterSettings;
                 try
                 {
                     printDocument1.Print();
@@ -782,14 +658,18 @@ namespace GestionRecoDuero
             }
         }
 
+        //TODO: NO FUNCIONA COMO DEBERIA 
         private void Empleado_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!(recoDueroDataSet.GetChanges() is null))
+            if (recoDueroDataSet.HasChanges())
             {
-                if (MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos", this.Text, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
+                    this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+
+                if (result == DialogResult.Yes)
                 {
-                    this.empleadoBindingSource.CancelEdit();
+                    this.Validate();
+                    this.empleadoBindingSource.EndEdit();
                     this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
                 }
             }
@@ -983,7 +863,18 @@ namespace GestionRecoDuero
             }
         }
 
-        //Atajos de teclado
+        private void fechaNacimientoDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionada = fechaNacimientoDateTimePicker.Value;
+
+            if (fechaSeleccionada > DateTime.Today)
+            {
+                MessageBox.Show("No puedes seleccionar una fecha futura al día de hoy.");
+                fechaNacimientoDateTimePicker.Value = DateTime.Today;
+            }
+        }
+
+        //Atajos de teclado TODO: HACER MAS ATAJOS DE TECLADO
         private void Empleado_KeyDown(object sender, KeyEventArgs e)
         {
             //Guardar

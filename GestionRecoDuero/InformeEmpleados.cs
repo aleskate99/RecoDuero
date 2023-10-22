@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -28,8 +21,36 @@ namespace GestionRecoDuero
         {
             empleadoBindingSource.RemoveFilter();
             reportViewer1.RefreshReport();
-            //textBoxFiltrarNombre.Clear();
-            //textBoxFiltrarDNI.Clear();
+            textBoxFiltrarNombre.Clear();
+            textBoxFiltrarDNI.Clear();
+        }
+
+        private void buttonFiltrarNombre_Click(object sender, EventArgs e)
+        {
+            empleadoBindingSource.Filter = "Nombre='" + textBoxFiltrarNombre.Text + "'";
+            reportViewer1.RefreshReport();
+            textBoxFiltrarNombre.Clear();
+        }
+
+        private void buttonFiltrarDni_Click(object sender, EventArgs e)
+        {
+            empleadoBindingSource.Filter = "DNI='" + textBoxFiltrarDNI.Text + "'";
+            reportViewer1.RefreshReport();
+            textBoxFiltrarDNI.Clear();
+        }
+
+        private void buttonFiltrarPuesto_Click(object sender, EventArgs e)
+        {
+            empleadoBindingSource.Filter = "Puesto='" + comboBoxFiltrarPuesto.Text + "'";
+            reportViewer1.RefreshReport();
+            comboBoxFiltrarPuesto.Text = (" ");
+        }
+
+        private void buttonFiltrarSituacionLaboral_Click(object sender, EventArgs e)
+        {
+            empleadoBindingSource.Filter = "SituacionLaboral='" + comboBoxFiltrarSituacionLaboral.Text + "'";
+            reportViewer1.RefreshReport();
+            comboBoxFiltrarSituacionLaboral.Text = (" ");
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)

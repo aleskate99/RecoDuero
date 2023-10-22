@@ -275,6 +275,7 @@
             this.fechaNacimientoDateTimePicker.Name = "fechaNacimientoDateTimePicker";
             this.fechaNacimientoDateTimePicker.Size = new System.Drawing.Size(237, 30);
             this.fechaNacimientoDateTimePicker.TabIndex = 4;
+            this.fechaNacimientoDateTimePicker.ValueChanged += new System.EventHandler(this.fechaNacimientoDateTimePicker_ValueChanged);
             // 
             // empleadoBindingSource
             // 
@@ -655,7 +656,7 @@
             this.imagenPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imagenPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.empleadoBindingSource, "Imagen", true));
             this.imagenPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("imagenPictureBox.Image")));
-            this.imagenPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("imagenPictureBox.InitialImage")));
+            this.imagenPictureBox.InitialImage = null;
             this.imagenPictureBox.Location = new System.Drawing.Point(919, 377);
             this.imagenPictureBox.Name = "imagenPictureBox";
             this.imagenPictureBox.Size = new System.Drawing.Size(239, 191);

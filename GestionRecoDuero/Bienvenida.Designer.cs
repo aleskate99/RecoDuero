@@ -93,7 +93,7 @@
             this.labelUsuario.ForeColor = System.Drawing.Color.DimGray;
             this.labelUsuario.Location = new System.Drawing.Point(327, 198);
             this.labelUsuario.Name = "labelUsuario";
-            this.labelUsuario.Size = new System.Drawing.Size(134, 40);
+            this.labelUsuario.Size = new System.Drawing.Size(133, 40);
             this.labelUsuario.TabIndex = 4;
             this.labelUsuario.Text = "Usuario";
             // 
@@ -157,6 +157,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Bienvenida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bienvenida";
