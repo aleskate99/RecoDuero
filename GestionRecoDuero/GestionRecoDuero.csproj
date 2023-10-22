@@ -130,6 +130,12 @@
     </Compile>
     <Compile Include="Encriptar.cs" />
     <Compile Include="EnvioMail.cs" />
+    <Compile Include="InformeClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformeClientes.Designer.cs">
+      <DependentUpon>InformeClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="InformeEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Empleado.resx">
       <DependentUpon>Empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformeCliente.rdlc" />
+    <EmbeddedResource Include="InformeClientes.resx">
+      <DependentUpon>InformeClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InformeEmpleado.rdlc" />
     <EmbeddedResource Include="InformeEmpleados.resx">

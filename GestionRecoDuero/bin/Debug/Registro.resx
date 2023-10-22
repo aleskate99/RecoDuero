@@ -862,6 +862,31 @@
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>808, 17</value>
   </metadata>
+  <data name="buttonMostrarRepetirPass.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAABHNJREFUaEPtmPtvFFUUx5fECMpPauQR8JWgkd1tSWznsYbQdtt50J25My0sQU2A
+        nwBtxVj1/5AI+IjxR/uj/uYDWlrCq4j/k9/vnTNldrpbty0Lv9xPctN7z9y595wz55x7txWDwWAwGAwG
+        w85x/farrq8+cXz1g+2rFSdIlvD3Npv0V/jM8pOPOVdee+7scv04dPzkdztI/rADNdfwo/ed8NSwNiZQ
+        C2zsuyeTIWcqPWr78TwM+RPy3/gu18iWesY0/ORD8fR3I1PRm267/RIM+AbGPICCPzt+etHy04iN/Uym
+        7uP5V2NjY3sa07NvoX+Na1hB2pBlBw8Uftv2k0Uoe8MOZw5Tpo0J1BoVhXIv6Ild4DPOwdd6aIexS9mo
+        n7wBQ76Hcb/SKD1xUDhBPItP/9jy1AkRVdwgPQODbh4P26+L6H/hXL5je+q0iCo0iE6wg/QjET09svBI
+        fsKm37IvYgmj5GYYhrtF1Dd8RxshX4LofbAHnPRjcZ8dYU2mryFsli0vPi8ijcT8WtnzR6BYfTy6UhuP
+        lqoT8Qqb9D/nM5mmaXgz+5gzZQc4njqLPVedZrxfRNvDmWq9C8/fdYPoAxGtkyVselGGmmPN1iEou1od
+        jy657hMPsl9vRpdr4/EdzhGxButfYmLLcB1rSo1ij3uoVEdEtDWsIK5h4Uc0QkQdsKIUE5bepfJDJ5Ih
+        EW2g3oyHOaf4JbgGFZVhB9bJ9D3qYIeqKqL+4IusFCyPIupg1JupsyzKUMOwoedluAGUy3O2FzdhwGfV
+        ZjwvYg32+qWXktSBulAnEW2ONT19AIn0Lw8kEW2Ap2k5fKD8cjFsynBdGH1nJIpeZk6IWMMw2qz6UBfq
+        xDVE1B0mJo99VhcRdQWLfY3P3pKhhgZItyeoLn/xGsHEFpHG9ZK4Wx4UGQ0ji4fesOftFdFG+jWAm/GE
+        laEGSt2Wbk8KBnTMhVyhLciwK30ZQAYaQiiN2wmh7A7VRwjlZEms1nolcVahOpOYdZ6lkn0mbHGzkWDm
+        IObfgnwChs51S2IqKcMOeL2gLn0ncY5WMkj+6fVirzLKUmmFySQTliGjG/pUvjbROsY51Xb7RXlt0zKq
+        b7bQYctlNCc7yNQ9xp+I1mEi9zrIahPxpwwnxvvxVusVhg09z2flg8wK1GXcib6U4To4jR06adsHWU5+
+        lUC7ICINPLeH9bl8laB3GSIw4pY2JmtLlBU9T7KrhLpfvkowH5gvfC6inZHde/Rl7ir7Iob30gZkO7rM
+        uX5qiyi/zF1F2D29y1yR/DrthumYiCq8ElORrXiLc/kOyvEpEWln6GvDIK7TRfBp9Q8aeimvUrwSY/MH
+        LIfFxC7DZ4z5LLYzz2dVRn/dxYH/oCnCw45xiupynUYxJGDUApVjWaSiPGHZdKLyvoOCwITV4ePF72B8
+        g4fTM/1JWaL4o/5vGHCFJQ8hUudhR2XZ2NcyXZrVFzp8nveP+jLFf6vwy6Atw7v5v1VYxVb5jMawtMpr
+        BoPBYDAYDIZtU6n8B4tDzejRuWUtAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="buttonMostrarPass.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL

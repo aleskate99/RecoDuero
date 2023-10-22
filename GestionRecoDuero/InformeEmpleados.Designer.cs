@@ -101,6 +101,7 @@
             // 
             // comboBoxFiltrarSituacionLaboral
             // 
+            this.comboBoxFiltrarSituacionLaboral.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFiltrarSituacionLaboral.FormattingEnabled = true;
             this.comboBoxFiltrarSituacionLaboral.Items.AddRange(new object[] {
             "Activo",
@@ -162,6 +163,7 @@
             // 
             // comboBoxFiltrarPuesto
             // 
+            this.comboBoxFiltrarPuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFiltrarPuesto.FormattingEnabled = true;
             this.comboBoxFiltrarPuesto.Items.AddRange(new object[] {
             "Maestro de obra",

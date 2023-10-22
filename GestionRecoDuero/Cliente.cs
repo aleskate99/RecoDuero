@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -33,71 +34,25 @@ namespace GestionRecoDuero
 
         private void AjustarImagenes()
         {
-            //Ajustar imágen botón añadir
-            this.toolStripButtonAnadir.AutoSize = false;
-            this.toolStripButtonAnadir.Width = 50;
-            this.toolStripButtonAnadir.Height = 50;
-            this.toolStripButtonAnadir.ImageScaling = ToolStripItemImageScaling.None;
+            AjustarBoton(toolStripButtonAnadir);
+            AjustarBoton(toolStripButtonEliminar);
+            AjustarBoton(toolStripButtonEditar);
+            AjustarBoton(toolStripButtonGuardar);
+            AjustarBoton(toolStripButtonBuscar);
+            AjustarBoton(toolStripButtonImprimir);
+            AjustarBoton(toolStripButtonAnterior);
+            AjustarBoton(toolStripButtonInicio);
+            AjustarBoton(toolStripButtonInforme);
+            AjustarBoton(toolStripButtonSiguiente);
+            AjustarBoton(toolStripButtonFinal);
+        }
 
-            //Ajustar imágen botón eliminar
-            this.toolStripButtonEliminar.AutoSize = false;
-            this.toolStripButtonEliminar.Width = 50;
-            this.toolStripButtonEliminar.Height = 50;
-            this.toolStripButtonEliminar.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón editar
-            this.toolStripButtonEditar.AutoSize = false;
-            this.toolStripButtonEditar.Width = 50;
-            this.toolStripButtonEditar.Height = 50;
-            this.toolStripButtonEditar.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón guardar
-            this.toolStripButtonGuardar.AutoSize = false;
-            this.toolStripButtonGuardar.Width = 50;
-            this.toolStripButtonGuardar.Height = 50;
-            this.toolStripButtonGuardar.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón buscar
-            this.toolStripButtonBuscar.AutoSize = false;
-            this.toolStripButtonBuscar.Width = 50;
-            this.toolStripButtonBuscar.Height = 50;
-            this.toolStripButtonBuscar.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón imprimir
-            this.toolStripButtonImprimir.AutoSize = false;
-            this.toolStripButtonImprimir.Width = 50;
-            this.toolStripButtonImprimir.Height = 50;
-            this.toolStripButtonImprimir.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón formulario
-            this.toolStripButtonInforme.AutoSize = false;
-            this.toolStripButtonInforme.Width = 50;
-            this.toolStripButtonInforme.Height = 50;
-            this.toolStripButtonInforme.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón anterior
-            this.toolStripButtonAnterior.AutoSize = false;
-            this.toolStripButtonAnterior.Width = 50;
-            this.toolStripButtonAnterior.Height = 50;
-            this.toolStripButtonAnterior.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón principio
-            this.toolStripButtonInicio.AutoSize = false;
-            this.toolStripButtonInicio.Width = 50;
-            this.toolStripButtonInicio.Height = 50;
-            this.toolStripButtonInicio.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón siguiente
-            this.toolStripButtonSiguiente.AutoSize = false;
-            this.toolStripButtonSiguiente.Width = 50;
-            this.toolStripButtonSiguiente.Height = 50;
-            this.toolStripButtonSiguiente.ImageScaling = ToolStripItemImageScaling.None;
-
-            //Ajustar imágen botón final
-            this.toolStripButtonFinal.AutoSize = false;
-            this.toolStripButtonFinal.Width = 50;
-            this.toolStripButtonFinal.Height = 50;
-            this.toolStripButtonFinal.ImageScaling = ToolStripItemImageScaling.None;
+        private void AjustarBoton(ToolStripButton boton)
+        {
+            boton.AutoSize = false;
+            boton.Width = 50;
+            boton.Height = 50;
+            boton.ImageScaling = ToolStripItemImageScaling.None;
         }
 
         private void EstadoControlesInicioApp()
@@ -157,73 +112,49 @@ namespace GestionRecoDuero
         }
 
         //FLECHAS
-        private void toolStripButtonInicio_Click(object sender, EventArgs e)
+        private void NavegarRegistro(int indice)
         {
-            clienteBindingSource.MoveFirst();
-            toolStripButtonInicio.Enabled = false;
-            toolStripButtonAnterior.Enabled = false;
+            // Comprobar si no hay registros en el origen de datos
+            if (clienteBindingSource.Count <= 0)
+                return;
 
-            if (clienteBindingSource.Count > 1)
-            {
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
+            // Mover el cursor del origen de datos al registro especificado por 'index'
+            clienteBindingSource.Position = indice;
+
+            // Determinar si el registro actual es el primer o el último
+            bool enPrimerRegistro = clienteBindingSource.Position == 0;
+            bool enUltimoRegistro = clienteBindingSource.Position == clienteBindingSource.Count - 1;
+
+            // Habilitar o deshabilitar los botones de navegación según la posición del registro
+            toolStripButtonInicio.Enabled = !enPrimerRegistro;
+            toolStripButtonAnterior.Enabled = !enPrimerRegistro;
+            toolStripButtonSiguiente.Enabled = !enUltimoRegistro;
+            toolStripButtonFinal.Enabled = !enUltimoRegistro;
 
             RefrescarToolstripLabelCliente();
+        }
+
+        private void toolStripButtonInicio_Click(object sender, EventArgs e)
+        {
+            NavegarRegistro(0); // Ir al primer registro (con índice 0)
         }
 
         private void toolStripButtonAnterior_Click(object sender, EventArgs e)
         {
-            clienteBindingSource.MovePrevious();
-            if (clienteBindingSource.Position <= 0)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-            }
-
-            if (clienteBindingSource.Count > 1)
-            {
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
-
-            RefrescarToolstripLabelCliente();
+            NavegarRegistro(clienteBindingSource.Position - 1); // Ir al registro anterior (índice actual menos 1)
         }
 
         private void toolStripButtonSiguiente_Click(object sender, EventArgs e)
         {
-            clienteBindingSource.MoveNext();
-
-            if (clienteBindingSource.Count <= 0 || clienteBindingSource.Position + 1 == clienteBindingSource.Count)
-            {
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (clienteBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-            }
-
-            RefrescarToolstripLabelCliente();
+            NavegarRegistro(clienteBindingSource.Position + 1); // Ir al registro siguiente (índice actual más 1)
         }
 
         private void toolStripButtonFinal_Click(object sender, EventArgs e)
         {
-            clienteBindingSource.MoveLast();
-            toolStripButtonSiguiente.Enabled = false;
-            toolStripButtonFinal.Enabled = false;
-
-            if (clienteBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-            }
-
-            RefrescarToolstripLabelCliente();
+            NavegarRegistro(clienteBindingSource.Count - 1); // Ir al último registro
         }
 
+        //BOTONES
         private void toolStripButtonAnadir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Añadir cliente";
@@ -234,10 +165,10 @@ namespace GestionRecoDuero
 
             DeshabilitarBotonesEnAnadir();
             HabilitarControlesEnAnadir();
+
             RefrescarToolstripLabelCliente();
         }
 
-        //BOTONES
         private void HabilitarControlesEnAnadir()
         {
             //Botones
@@ -249,13 +180,7 @@ namespace GestionRecoDuero
             MostrarCampos();
 
             //ComboBox por defecto a una opción
-            // tipoComboBox.SelectAll();
-            // tipoComboBox.SelectedText = "M";
-            //tipoComboBox.Text = "M";
-            //tipoComboBox.DropDownStyle=System.Windows.Forms.ComboBoxStyle.DropDownList;
-            //tipoComboBox.SelectedItem = 0;
             tipoComboBox.SelectedIndex = 0;
-          
         }
 
         //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
@@ -283,11 +208,13 @@ namespace GestionRecoDuero
             {
                 if (clienteBindingSource.Count <= 0)
                 {
-                    MessageBox.Show("No se puede eliminar el cliente porque no existe en la base de datos ", "Error en la eliminación de un cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Comun.MostrarMensajeDeError("No se puede eliminar el cliente porque no existe en la base de datos.", "Error en la eliminación de un cliente");
                 }
                 else
                 {
                     clienteBindingSource.RemoveCurrent();
+                    clienteBindingSource.EndEdit();
+                    this.clienteTableAdapter.Update(this.recoDueroDataSet);
                 }
 
                 if (clienteBindingSource.Count == 1)
@@ -345,14 +272,18 @@ namespace GestionRecoDuero
 
         private void toolStripButtonGuardar_Click(object sender, EventArgs e)
         {
-            ComprobarDatosIntroducidos();
+            if (ComprobarDatosIntroducidos())
+            {
+                errorProvider1.Clear();
 
-            this.clienteTableAdapter.Update(this.recoDueroDataSet); //Guarda en la base de datos
+                clienteBindingSource.EndEdit();
+                this.clienteTableAdapter.Update(this.recoDueroDataSet);
 
-            EstadoControlesGuardar();
-            RefrescarToolstripLabelCliente();
+                EstadoControlesGuardar();
+                RefrescarToolstripLabelCliente();
 
-            MessageBox.Show("Guardado con éxito", " Guardado con exito ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
+            }
         }
 
         private void EstadoControlesGuardar()
@@ -429,7 +360,7 @@ namespace GestionRecoDuero
             {
                 if (toolStripButtonBuscar.Equals(""))
                 {
-                    MessageBox.Show("Introduzca un campo a buscar en el cuadro de texto", " no existe ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Comun.MostrarMensajeDeError("Introduzca un campo a buscar en el cuadro de texto.", "Introduzca un campo");
                 }
                 else
                 {
@@ -438,7 +369,7 @@ namespace GestionRecoDuero
                     {
                         if (clienteBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text) == -1)
                         {
-                            MessageBox.Show("El cliente no existe");
+                            Comun.MostrarMensajeDeError("El cliente no existe.", "Cliente no encontrado");
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                         else
@@ -450,14 +381,14 @@ namespace GestionRecoDuero
                     //Busca por Id
                     if (toolStripComboBoxBuscarClientes.Text.Equals("Id"))
                     {
-                        if (clienteBindingSource.Find("Id", toolStripTextBoxBuscar.Text) == -1)
+                        if (clienteBindingSource.Find("IdCliente", toolStripTextBoxBuscar.Text) == -1)
                         {
-                            MessageBox.Show("El cliente no existe");
+                            Comun.MostrarMensajeDeError("El cliente no existe.", "Cliente no encontrado");
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                         else
                         {
-                            clienteBindingSource.Position = clienteBindingSource.Find("Id", toolStripTextBoxBuscar.Text);
+                            clienteBindingSource.Position = clienteBindingSource.Find("IdCliente", toolStripTextBoxBuscar.Text);
                         }
                     }
 
@@ -533,73 +464,6 @@ namespace GestionRecoDuero
             }
         }
 
-        private void EstadoControlesAceptar()
-        {
-            //Botones
-            toolStripButtonAnadir.Enabled = true;
-            toolStripButtonEditar.Enabled = true;
-            toolStripButtonEliminar.Enabled = true;
-            toolStripButtonBuscar.Enabled = true;
-            toolStripComboBoxBuscarClientes.Enabled = true;
-            toolStripTextBoxBuscar.Enabled = true;
-            toolStripButtonGuardar.Enabled = true;
-
-            //Campos
-            OcultarCampos();
-
-            //Botones
-            buttonAceptar.Visible = false;
-            buttonCancelar.Visible = false;
-
-            //Flechas
-            if (clienteBindingSource.Count <= 0)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (clienteBindingSource.Position + 1 > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-            }
-
-            if (clienteBindingSource.Position + 1 == clienteBindingSource.Count && clienteBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (clienteBindingSource.Position + 1 == clienteBindingSource.Count && clienteBindingSource.Count == 1)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (clienteBindingSource.Count > 2 && clienteBindingSource.Position + 1 != clienteBindingSource.Count && clienteBindingSource.Position + 1 != 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
-
-            if (clienteBindingSource.Position + 1 == 1 && clienteBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
-
-        }
-
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
@@ -613,9 +477,20 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelCliente();
         }
 
+        private void EstadoControlesAceptar()
+        {
+            HabilitarControlesComunes();
+            toolStripButtonGuardar.Enabled = true;
+        }
+
         private void EstadoControlesCancelar()
         {
-            //Botones
+            HabilitarControlesComunes();
+        }
+
+        private void HabilitarControlesComunes()
+        {
+            // Botones
             toolStripButtonAnadir.Enabled = true;
             toolStripButtonEditar.Enabled = true;
             toolStripButtonEliminar.Enabled = true;
@@ -623,71 +498,59 @@ namespace GestionRecoDuero
             toolStripComboBoxBuscarClientes.Enabled = true;
             toolStripTextBoxBuscar.Enabled = true;
 
-            //Campos
+            // Campos
             OcultarCampos();
 
-            //Botones
+            // Botones
             buttonAceptar.Visible = false;
             buttonCancelar.Visible = false;
 
-            //Flechas
-            if (clienteBindingSource.Count <= 0)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (clienteBindingSource.Position + 1 > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-
-            }
-
-            if (clienteBindingSource.Position + 1 == clienteBindingSource.Count && clienteBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (clienteBindingSource.Position + 1 == clienteBindingSource.Count && clienteBindingSource.Count == 1)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = false;
-                toolStripButtonFinal.Enabled = false;
-            }
-
-            if (clienteBindingSource.Count > 2 && clienteBindingSource.Position + 1 != clienteBindingSource.Count && clienteBindingSource.Position + 1 != 1)
-            {
-                toolStripButtonAnterior.Enabled = true;
-                toolStripButtonInicio.Enabled = true;
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
-
-            if (clienteBindingSource.Position + 1 == 1 && clienteBindingSource.Count > 1)
-            {
-                toolStripButtonAnterior.Enabled = false;
-                toolStripButtonInicio.Enabled = false;
-                toolStripButtonSiguiente.Enabled = true;
-                toolStripButtonFinal.Enabled = true;
-            }
+            // Flechas
+            ActualizarEstadoFlechas();
         }
 
+        private void ActualizarEstadoFlechas()
+        {
+            bool tieneRegistros = clienteBindingSource.Count > 0;
+            bool esElPrimero = clienteBindingSource.Position == 0;
+            bool esElUltimo = clienteBindingSource.Position == clienteBindingSource.Count - 1;
+
+            toolStripButtonInicio.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonAnterior.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonSiguiente.Enabled = !esElUltimo && tieneRegistros;
+            toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
+        }
+
+        //TODO: REVISAR
         private void contratoPictureBox_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
             openFileDialog1.FilterIndex = 1;
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string imagen = openFileDialog1.FileName;
-                contratoPictureBox.Image = Image.FromFile(imagen);
-                contratoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                string imagenPath = openFileDialog1.FileName;
+
+                // Verificar el tamaño de la imagen
+                using (var img = Image.FromFile(imagenPath))
+                {
+                    if (img.Width > 800 || img.Height > 600)
+                    {
+                        MessageBox.Show("La imagen es demasiado grande. Seleccione una imagen más pequeña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                contratoPictureBox.ImageLocation = imagenPath;
+                contratoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage; // PictureBoxSizeMode.Zoom;
+
+                // Mostrar información adicional sobre la imagen
+                FileInfo fileInfo = new FileInfo(imagenPath);
+                long fileSize = fileInfo.Length;
+                DateTime lastModified = fileInfo.LastWriteTime;
+
+                string info = $"Tamaño: {fileSize / 1024} KB\nÚltima modificación: {lastModified}";
+                MessageBox.Show(info, "Información de la imagen", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -699,42 +562,43 @@ namespace GestionRecoDuero
         {
             toolStripStatusLabel1.Text = "Imprimiendo...";
 
-            string id = idClienteLabel1.Text;
-            string nombre = nombreTextBox.Text;
-            string apellidos = apellidosTextBox.Text;
-            string direccion = direccionTextBox.Text;
-      
-            string telefono = telefonoTextBox.Text;
-            string email = emailTextBox.Text;
-            string tipo = tipoComboBox.Text;
-            Image contrato = contratoPictureBox.Image;
-            string observaciones = observacionesTextBox.Text;
+            PrintDocument printDocument1 = new PrintDocument();
 
+            // Manejar el evento PrintPage para imprimir los campos y la imagen
+            printDocument1.PrintPage += (sender1, e1) =>
+            {
+                using (var font = new Font("Times New Roman", 12))
+                {
+                    float y = 100;
 
+                    // Crear un método para imprimir cada línea
+                    void PrintLine(string label, string value)
+                    {
+                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
+                        y += 25;
+                    }
+
+                    //TODO: ARREGLAR CAMPOS
+                    PrintLine("Id: ", idClienteLabel1.Text);
+                    PrintLine("Nombre: ", nombreTextBox.Text);
+                    PrintLine("Apellidos: ", apellidosTextBox.Text);
+                    PrintLine("Dirección: ", direccionTextBox.Text);
+                    PrintLine("Teléfono: ", telefonoTextBox.Text);
+                    PrintLine("Email: ", emailTextBox.Text);
+                    PrintLine("Tipo: ", tipoComboBox.Text);
+                    PrintLine("Observaciones: ", observacionesTextBox.Text);
+                }
+            };
+
+            // Mostrar el cuadro de diálogo de impresión
             PrintDialog printDialog1 = new PrintDialog();
-
             printDialog1.AllowPrintToFile = false;
             printDialog1.AllowSelection = false;
             printDialog1.AllowSomePages = false;
+            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
 
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
-                PrintDocument printDocument1 = new PrintDocument();
-                printDocument1.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
-                {
-                    e1.Graphics.DrawString("Id: " + id, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 100, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Nombre: " + nombre, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 125, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Apellidos: " + apellidos, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 150, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Dirección: " + direccion, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 175, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Teléfono: " + telefono, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 200, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Email: " + email, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 225, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Tipo: " + tipo, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 250, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    e1.Graphics.DrawString("Observaciones: " + observaciones, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(50, 275, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                    Point loc = new Point(100, 500);
-                    e1.Graphics.DrawImage(contrato, loc);
-
-                };
-                printDocument1.PrinterSettings = printDialog1.PrinterSettings;
                 try
                 {
                     printDocument1.Print();
@@ -746,10 +610,9 @@ namespace GestionRecoDuero
             }
         }
 
-        //TODO: FALTA
         private void toolStripButtonInforme_Click(object sender, EventArgs e)
         {
-            /*
+
             toolStripStatusLabel1.Text = "Informe Clientes";
             Boolean abierto = false;
 
@@ -773,7 +636,24 @@ namespace GestionRecoDuero
                 InformeClientes informeClientes = new InformeClientes();
                 informeClientes.ShowDialog();
             }
-            */
+
+        }
+
+        //TODO: NO FUNCIONA COMO DEBERIA
+        private void Cliente_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //if (recoDueroDataSet.HasChanges())
+            //{
+            //    DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
+            //        this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        this.Validate();
+            //        this.clienteBindingSource.EndEdit();
+            //        this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
+            //    }
+            //}
         }
 
         private void RefrescarToolstripLabelCliente()
@@ -940,13 +820,6 @@ namespace GestionRecoDuero
         //Atajos de teclado
         private void Cliente_KeyDown(object sender, KeyEventArgs e)
         {
-            //Guardar
-            if (e.Control && e.KeyCode == Keys.S)
-            {
-                toolStripButtonGuardar_Click(this, EventArgs.Empty);
-                e.Handled = true; // Evita que el evento de teclado se propague.
-            }
-
             //Añadir
             if (e.Control && e.KeyCode == Keys.A)
             {
@@ -954,10 +827,45 @@ namespace GestionRecoDuero
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
 
+            //Eliminar (control suprimir)
+            if (e.Control && e.KeyCode == Keys.Delete)
+            {
+                toolStripButtonEliminar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Editar
+            if (e.Control && e.KeyCode == Keys.E)
+            {
+                toolStripButtonEditar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Guardar
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                toolStripButtonGuardar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
             //Imprimir
             if (e.Control && e.KeyCode == Keys.P)
             {
                 toolStripButtonImprimir_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            // Informe
+            if (e.Control && e.KeyCode == Keys.I)
+            {
+                toolStripButtonInforme_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Buscar
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                toolStripButtonBuscar_Click(this, EventArgs.Empty);
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
         }

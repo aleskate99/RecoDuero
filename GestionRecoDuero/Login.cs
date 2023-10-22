@@ -53,7 +53,7 @@ namespace GestionRecoDuero
             var indiceResultadoBusquedaUsuario = usuarioBindingSource.Find("Email", emailUsuario);
             if (indiceResultadoBusquedaUsuario == -1)
             {
-                Comun.MostrarMensajeDeError("Nombre de Usuario no encontrado", "Error en el mail");
+                Comun.MostrarMensajeDeError("Email no encontrado", "Error en el mail");
                 return;
             }
 

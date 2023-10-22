@@ -98,3 +98,4 @@ C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\bin\Debug\ru\Mic
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.InformeEmpleados.resources
+C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.InformeClientes.resources

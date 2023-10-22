@@ -47,6 +47,8 @@
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.repetirPassTextBox = new System.Windows.Forms.TextBox();
+            this.buttonMostrarRepetirPass = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
@@ -104,9 +106,9 @@
             this.usuarioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usuarioBindingSource, "Usuario", true));
             this.usuarioTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usuarioTextBox.ForeColor = System.Drawing.Color.DimGray;
-            this.usuarioTextBox.Location = new System.Drawing.Point(571, 106);
+            this.usuarioTextBox.Location = new System.Drawing.Point(475, 94);
             this.usuarioTextBox.Name = "usuarioTextBox";
-            this.usuarioTextBox.Size = new System.Drawing.Size(295, 25);
+            this.usuarioTextBox.Size = new System.Drawing.Size(335, 25);
             this.usuarioTextBox.TabIndex = 1;
             this.usuarioTextBox.Text = "USUARIO";
             this.usuarioTextBox.Enter += new System.EventHandler(this.usuarioTextBox_Enter);
@@ -123,11 +125,11 @@
             this.buttonCancelar.ForeColor = System.Drawing.Color.DimGray;
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(683, 299);
+            this.buttonCancelar.Location = new System.Drawing.Point(678, 328);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(195, 80);
-            this.buttonCancelar.TabIndex = 6;
+            this.buttonCancelar.TabIndex = 8;
             this.buttonCancelar.Text = "CANCELAR";
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCancelar.UseVisualStyleBackColor = false;
@@ -142,11 +144,11 @@
             this.buttonAceptar.ForeColor = System.Drawing.Color.DimGray;
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(438, 299);
+            this.buttonAceptar.Location = new System.Drawing.Point(433, 328);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
-            this.buttonAceptar.TabIndex = 5;
+            this.buttonAceptar.TabIndex = 7;
             this.buttonAceptar.Text = "ACEPTAR";
             this.buttonAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAceptar.UseVisualStyleBackColor = false;
@@ -195,7 +197,7 @@
             this.buttonMostrarPass.FlatAppearance.BorderSize = 0;
             this.buttonMostrarPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMostrarPass.Image = ((System.Drawing.Image)(resources.GetObject("buttonMostrarPass.Image")));
-            this.buttonMostrarPass.Location = new System.Drawing.Point(800, 210);
+            this.buttonMostrarPass.Location = new System.Drawing.Point(704, 198);
             this.buttonMostrarPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonMostrarPass.Name = "buttonMostrarPass";
             this.buttonMostrarPass.Size = new System.Drawing.Size(59, 49);
@@ -227,7 +229,7 @@
             this.emailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.emailTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailTextBox.ForeColor = System.Drawing.Color.DimGray;
-            this.emailTextBox.Location = new System.Drawing.Point(571, 167);
+            this.emailTextBox.Location = new System.Drawing.Point(475, 155);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(335, 25);
             this.emailTextBox.TabIndex = 2;
@@ -243,7 +245,7 @@
             this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.passwordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTextBox.ForeColor = System.Drawing.Color.DimGray;
-            this.passwordTextBox.Location = new System.Drawing.Point(571, 220);
+            this.passwordTextBox.Location = new System.Drawing.Point(475, 208);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(223, 25);
             this.passwordTextBox.TabIndex = 3;
@@ -253,12 +255,44 @@
             this.passwordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.passwordTextBox_Validating);
             this.passwordTextBox.Validated += new System.EventHandler(this.passwordTextBox_Validated);
             // 
+            // repetirPassTextBox
+            // 
+            this.repetirPassTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.repetirPassTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.repetirPassTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.repetirPassTextBox.ForeColor = System.Drawing.Color.DimGray;
+            this.repetirPassTextBox.Location = new System.Drawing.Point(475, 264);
+            this.repetirPassTextBox.Name = "repetirPassTextBox";
+            this.repetirPassTextBox.Size = new System.Drawing.Size(243, 25);
+            this.repetirPassTextBox.TabIndex = 5;
+            this.repetirPassTextBox.Text = "REPETIR CONTRASEÑA";
+            this.repetirPassTextBox.Enter += new System.EventHandler(this.repetirPassTextBox_Enter);
+            this.repetirPassTextBox.Leave += new System.EventHandler(this.repetirPassTextBox_Leave);
+            this.repetirPassTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.repetirPassTextBox_Validating);
+            this.repetirPassTextBox.Validated += new System.EventHandler(this.repetirPassTextBox_Validated);
+            // 
+            // buttonMostrarRepetirPass
+            // 
+            this.buttonMostrarRepetirPass.BackColor = System.Drawing.Color.Transparent;
+            this.buttonMostrarRepetirPass.FlatAppearance.BorderSize = 0;
+            this.buttonMostrarRepetirPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMostrarRepetirPass.Image = ((System.Drawing.Image)(resources.GetObject("buttonMostrarRepetirPass.Image")));
+            this.buttonMostrarRepetirPass.Location = new System.Drawing.Point(724, 251);
+            this.buttonMostrarRepetirPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonMostrarRepetirPass.Name = "buttonMostrarRepetirPass";
+            this.buttonMostrarRepetirPass.Size = new System.Drawing.Size(59, 49);
+            this.buttonMostrarRepetirPass.TabIndex = 6;
+            this.buttonMostrarRepetirPass.UseVisualStyleBackColor = false;
+            this.buttonMostrarRepetirPass.Click += new System.EventHandler(this.buttonMostrarRepetirPass_Click);
+            // 
             // Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.ClientSize = new System.Drawing.Size(1005, 421);
+            this.Controls.Add(this.repetirPassTextBox);
+            this.Controls.Add(this.buttonMostrarRepetirPass);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.usuarioTextBox);
@@ -308,5 +342,7 @@
         private System.Windows.Forms.TextBox usuarioTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.TextBox repetirPassTextBox;
+        private System.Windows.Forms.Button buttonMostrarRepetirPass;
     }
 }

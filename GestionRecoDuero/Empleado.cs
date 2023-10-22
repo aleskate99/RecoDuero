@@ -213,11 +213,13 @@ namespace GestionRecoDuero
                 if (empleadoBindingSource.Count <= 0)
                 {
                     Comun.MostrarMensajeDeError("No se puede eliminar el empleado porque no existe en la base de datos.", "Error en la eliminación de un empleado");
-                    //MessageBox.Show(" No se puede eliminar el empleado porque no existe en la base de datos", "Error en la eliminación de un empleado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     empleadoBindingSource.RemoveCurrent();
+                    empleadoBindingSource.EndEdit();
+                    this.empleadoTableAdapter.Update(this.recoDueroDataSet);
+
                 }
 
                 if (empleadoBindingSource.Count == 1)
@@ -255,7 +257,6 @@ namespace GestionRecoDuero
             //Botones
             buttonAceptar.Visible = true;
             buttonCancelar.Visible = true;
-            toolStripButtonGuardar.Enabled = false;
 
             //Campos
             MostrarCampos();
@@ -268,6 +269,7 @@ namespace GestionRecoDuero
             toolStripButtonFinal.Enabled = false;
             toolStripButtonEditar.Enabled = false;
             toolStripButtonEliminar.Enabled = false;
+            toolStripButtonGuardar.Enabled = false;
             toolStripButtonBuscar.Enabled = false;
             toolStripComboBoxBuscarEmpleados.Enabled = false;
             toolStripTextBoxBuscar.Enabled = false;
@@ -286,7 +288,6 @@ namespace GestionRecoDuero
                 RefrescarToolstripLabelEmpleado();
 
                 Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
-                //MessageBox.Show("Guardado con éxito", "Guardado con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -363,7 +364,6 @@ namespace GestionRecoDuero
                 if (toolStripButtonBuscar.Equals(""))
                 {
                     Comun.MostrarMensajeDeError("Introduzca un campo a buscar en el cuadro de texto.", "Introduzca un campo");
-                    //MessageBox.Show("Introduzca un campo a buscar en el cuadro de texto", " no existe ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -372,7 +372,6 @@ namespace GestionRecoDuero
                         if (empleadoBindingSource.Find("DNI", toolStripTextBoxBuscar.Text) == -1)
                         {
                             Comun.MostrarMensajeDeError("El empleado no existe.", "Empleado no encontrado");
-                            //MessageBox.Show("El empleado no existe");
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                         else
@@ -386,7 +385,6 @@ namespace GestionRecoDuero
                         if (empleadoBindingSource.Find("IdEmpleado", toolStripTextBoxBuscar.Text) == -1)
                         {
                             Comun.MostrarMensajeDeError("El empleado no existe.", "Empleado no encontrado");
-                            //MessageBox.Show("El empleado no existe");
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                         else
@@ -400,7 +398,6 @@ namespace GestionRecoDuero
                         if (empleadoBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text) == -1)
                         {
                             Comun.MostrarMensajeDeError("El empleado no existe.", "Empleado no encontrado");
-                            //MessageBox.Show("El empleado no existe");
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                         else
@@ -658,18 +655,18 @@ namespace GestionRecoDuero
         //TODO: NO FUNCIONA COMO DEBERIA 
         private void Empleado_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (recoDueroDataSet.HasChanges())
-            {
-                DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
-                    this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            //if (recoDueroDataSet.HasChanges())
+            //{
+            //    DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
+            //        this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
 
-                if (result == DialogResult.Yes)
-                {
-                    this.Validate();
-                    this.empleadoBindingSource.EndEdit();
-                    this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
-                }
-            }
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        this.Validate();
+            //        this.empleadoBindingSource.EndEdit();
+            //        this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
+            //    }
+            //}
         }
 
         private void RefrescarToolstripLabelEmpleado()
@@ -926,20 +923,24 @@ namespace GestionRecoDuero
         //Salario campo calculado
         private void puestoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string seleccion = puestoComboBox.SelectedItem.ToString();
-
-            switch(seleccion)
+            if (puestoComboBox.SelectedIndex >= 0)
             {
-            case "Maestro de obra":
-                    salarioLabel1.Text = "2000€";
-                    break;
-            case "Capataz":
-                    salarioLabel1.Text = "1500€";
-                    break;
-            case "Albañil":
-                    salarioLabel1.Text = "1000€";
-                    break;
+                string seleccion = puestoComboBox.SelectedItem.ToString();
+
+                switch (seleccion)
+                {
+                    case "Maestro de obra":
+                        salarioLabel1.Text = "2000€";
+                        break;
+                    case "Capataz":
+                        salarioLabel1.Text = "1500€";
+                        break;
+                    case "Albañil":
+                        salarioLabel1.Text = "1000€";
+                        break;
+                }
             }
+           
         }
     }
 }

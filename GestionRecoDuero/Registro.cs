@@ -31,6 +31,7 @@ namespace GestionRecoDuero
             usuarioTextBox.Text = "USUARIO";
             emailTextBox.Text = "EMAIL";
             passwordTextBox.Text = "CONTRASEÑA";
+            repetirPassTextBox.Text = "REPETIR CONTRASEÑA";
 
         }
 
@@ -64,58 +65,17 @@ namespace GestionRecoDuero
             login.Show();
         }
 
-        //private void buttonAceptar_Click(object sender, EventArgs e)
-        //{
-        //    bool passwordValida = Comun.VerificarPassword(passwordTextBox.Text);
-
-        //    //Compruebo que sea la dirección de correo válida
-        //    if (Comun.EsDireccionCorreoValida(emailTextBox.Text))
-        //    {
-        //        //Compruebo si existe el email
-        //        var emailUsuario = usuarioBindingSource.Find("Email", emailTextBox.Text);
-        //        if (emailUsuario == -1)
-        //        {
-        //            // Comprueba que la contraseña sea válida
-        //            if (passwordValida)
-        //            {
-        //                usuarioBindingSource.EndEdit();
-        //                tableAdapterManager.UpdateAll(recoDueroDataSet);
-
-        //                EnvioMail mail = new EnvioMail();
-        //                mail.envioCorreo(emailTextBox.Text, false);
-
-        //                LimpiarCampos();
-
-        //                Login login = new Login();
-        //                Close();
-        //                login.Show();
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("La contraseña debe poseer al menos una minúscula, una mayúscula,un número y un carácter especial", "Error en la contraseña", MessageBoxButtons.OKCancel);
-        //                passwordTextBox.Clear();
-        //                return;
-        //            }
-
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("El email ya está en uso.", "Email no encontrado", MessageBoxButtons.OKCancel);
-        //            return;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("El formato del email introducido no es correcto.", "Formato de Email Erróneo", MessageBoxButtons.OKCancel);
-        //        return;
-        //    }  
-
-        //}
-
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
+                if (passwordTextBox.Text != repetirPassTextBox.Text)
+                {
+                    Comun.MostrarMensajeDeError("Las contraseñas no coinciden. Por favor, asegúrate de que ambas contraseñas sean iguales.", "Error");
+                    repetirPassTextBox.Clear();
+                    return;
+                }
+
                 usuarioBindingSource.EndEdit();
                 tableAdapterManager.UpdateAll(recoDueroDataSet);
 
@@ -159,11 +119,17 @@ namespace GestionRecoDuero
             usuarioTextBox.Clear();
             emailTextBox.Clear();
             passwordTextBox.Clear();
+            repetirPassTextBox.Clear();
         }
 
         private void buttonMostrarPass_Click(object sender, EventArgs e)
         {
             passwordTextBox.UseSystemPasswordChar = !passwordTextBox.UseSystemPasswordChar;
+        }
+
+        private void buttonMostrarRepetirPass_Click(object sender, EventArgs e)
+        {
+            repetirPassTextBox.UseSystemPasswordChar = !repetirPassTextBox.UseSystemPasswordChar;
         }
 
         // TEXTBOXS
@@ -263,7 +229,7 @@ namespace GestionRecoDuero
         private void passwordTextBox_Validated(object sender, EventArgs e)
         {
             // Si todas las condiciones se cumplen se limpia los errores del ErrorProvider
-            errorProvider1.SetError(usuarioTextBox, "");
+            errorProvider1.SetError(passwordTextBox, "");
             errorProvider1.Clear();
         }
 
@@ -283,6 +249,46 @@ namespace GestionRecoDuero
             {
                 passwordTextBox.Text = "CONTRASEÑA";
                 passwordTextBox.ForeColor = Color.DimGray;
+            }
+        }
+
+        // Repetir password
+        private void repetirPassTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (repetirPassTextBox.Text.Length > 30)
+            {
+                errorProvider1.SetError(repetirPassTextBox, "La contraseña no debe superar los 30 caracteres introducidos ");
+                repetirPassTextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+
+        private void repetirPassTextBox_Validated(object sender, EventArgs e)
+        {
+            // Si todas las condiciones se cumplen se limpia los errores del ErrorProvider
+            errorProvider1.SetError(repetirPassTextBox, "");
+            errorProvider1.Clear();
+        }
+
+        private void repetirPassTextBox_Enter(object sender, EventArgs e)
+        {
+            if (repetirPassTextBox.Text == "REPETIR CONTRASEÑA")
+            {
+                repetirPassTextBox.Text = "";
+                repetirPassTextBox.ForeColor = Color.LightGray;
+                repetirPassTextBox.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void repetirPassTextBox_Leave(object sender, EventArgs e)
+        {
+            if (repetirPassTextBox.Text == "")
+            {
+                repetirPassTextBox.Text = "REPETIR CONTRASEÑA";
+                repetirPassTextBox.ForeColor = Color.DimGray;
             }
         }
     }
