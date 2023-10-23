@@ -358,29 +358,22 @@ namespace GestionRecoDuero
             toolStripStatusLabel1.Text = "Buscar cliente";
             try
             {
-                if (toolStripButtonBuscar.Equals(""))
+                if (string.IsNullOrWhiteSpace(toolStripTextBoxBuscar.Text))
                 {
                     Comun.MostrarMensajeDeError("Introduzca un campo a buscar en el cuadro de texto.", "Introduzca un campo");
                 }
                 else
                 {
-                    //Busca por Nombre
-                    if (toolStripComboBoxBuscarClientes.Text.Equals("Nombre"))
-                    {
-                        if (clienteBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text) == -1)
-                        {
-                            Comun.MostrarMensajeDeError("El cliente no existe.", "Cliente no encontrado");
-                            toolStripTextBoxBuscar.Text = String.Empty;
-                        }
-                        else
-                        {
-                            clienteBindingSource.Position = clienteBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text);
-                        }
-                    }
-
-                    //Busca por Id
+                    //ID
                     if (toolStripComboBoxBuscarClientes.Text.Equals("Id"))
                     {
+                        if (!Comun.ContieneNumeros(toolStripTextBoxBuscar.Text))
+                        {
+                            MessageBox.Show("El formato no es válido. Debe ingresar un número, no letras.", "Formato no válido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                            return;
+                        }
+
                         if (clienteBindingSource.Find("IdCliente", toolStripTextBoxBuscar.Text) == -1)
                         {
                             Comun.MostrarMensajeDeError("El cliente no existe.", "Cliente no encontrado");
@@ -392,11 +385,31 @@ namespace GestionRecoDuero
                         }
                     }
 
+                    //Nombre
+                    if (toolStripComboBoxBuscarClientes.Text.Equals("Nombre"))
+                    {
+                        if (Comun.ContieneNumeros(toolStripTextBoxBuscar.Text))
+                        {
+                            MessageBox.Show("El formato no es válido. Debe ingresar un nombre, no un número.", "Formato no válido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                            return;
+                        }
+
+                        if (clienteBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text) == -1)
+                        {
+                            Comun.MostrarMensajeDeError("El cliente no existe.", "Cliente no encontrado");
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                        }
+                        else
+                        {
+                            clienteBindingSource.Position = clienteBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text);
+                        }
+                    }
+
                 }
                 RefrescarToolstripLabelCliente();
 
                 EstadoControlesBuscar();
-
             }
             catch (FormatException)
             {
@@ -404,7 +417,6 @@ namespace GestionRecoDuero
             }
         }
 
-        //Controla el estado de las flechas en Buscar
         private void EstadoControlesBuscar()
         {
             if (clienteBindingSource.Count <= 0)
@@ -663,6 +675,7 @@ namespace GestionRecoDuero
 
         private void OcultarCampos() 
         {
+            idClienteLabel1.Enabled = false;
             nombreTextBox.Enabled = false;
             apellidosTextBox.Enabled = false;
             direccionTextBox.Enabled = false;
@@ -676,6 +689,7 @@ namespace GestionRecoDuero
 
         private void MostrarCampos()
         {
+            idClienteLabel1.Enabled = true;
             nombreTextBox.Enabled = true;
             apellidosTextBox.Enabled = true;
             direccionTextBox.Enabled = true;

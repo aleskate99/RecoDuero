@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 namespace GestionRecoDuero
@@ -14,7 +15,8 @@ namespace GestionRecoDuero
 
         private void Login_Load(object sender, EventArgs e)
         {
-            this.usuarioTableAdapter.Fill(this.recoDueroDataSet.Usuario);     
+            this.usuarioTableAdapter.Fill(this.recoDueroDataSet.Usuario);
+            string contrasena = ObtenerContrasenaDeBaseDeDatos(); // ***
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -162,16 +164,41 @@ namespace GestionRecoDuero
 
             if (existeMail != -1)
             {
-                mail.envioCorreo(emailTextBox.Text , true);
-                MessageBox.Show("Correo enviado!");  
+                // TODO: Asignar al correo que ha puesto la contraseña recoDuero00!
+                var usuario = usuarioBindingSource[existeMail] as DataRowView;
+                usuario["Password"] = "recoDuero00!";
+                tableAdapterManager.UpdateAll(recoDueroDataSet);
+
+                mail.envioCorreo(emailTextBox.Text, true);
+                MessageBox.Show("Correo enviado!");
             }
             else
             {
                 Comun.MostrarMensajeDeError("Email no encontrado", "Error en la búsqueda del email");
-                //MessageBox.Show("Email no encontrado", " Error en la búsqueda del email ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }  
         }
+
+        private string ObtenerContrasenaDeBaseDeDatos()
+        {
+            string emailUsuario = emailTextBox.Text; // Obtén el email del usuario actual
+
+            // Intenta encontrar el usuario en usuarioBindingSource
+            int indiceUsuario = usuarioBindingSource.Find("Email", emailUsuario);
+
+            if (indiceUsuario != -1)
+            {
+                // El usuario se encontró en usuarioBindingSource
+                // Ahora, obtén la contraseña del usuario y devuélvela
+                DataRowView usuarioSeleccionado = (DataRowView)usuarioBindingSource[indiceUsuario];
+                string contrasena = usuarioSeleccionado["Password"].ToString();
+                return contrasena;
+            }
+
+            // En caso de no encontrar el usuario, puedes devolver un valor predeterminado o manejar la situación según tus requisitos.
+            return "ContraseñaPredeterminada"; // Cambia esto según tu lógica.
+        }
+
 
         //Atajos de teclado
         private void Login_KeyDown(object sender, KeyEventArgs e)

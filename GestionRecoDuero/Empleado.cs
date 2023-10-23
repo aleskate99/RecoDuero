@@ -361,14 +361,22 @@ namespace GestionRecoDuero
             toolStripStatusLabel1.Text = "Buscar empleado";
             try
             {
-                if (toolStripButtonBuscar.Equals(""))
+                if (string.IsNullOrWhiteSpace(toolStripTextBoxBuscar.Text))
                 {
                     Comun.MostrarMensajeDeError("Introduzca un campo a buscar en el cuadro de texto.", "Introduzca un campo");
                 }
                 else
                 {
+                    //DNI
                     if (toolStripComboBoxBuscarEmpleados.Text.Equals("DNI"))
                     {
+                        if (!Comun.ComprobarDni(toolStripTextBoxBuscar.Text))
+                        {
+                            MessageBox.Show("El formato no es válido. Debe ingresar 8 numeros y una letra.", "Formato no válido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                            return;
+                        }
+
                         if (empleadoBindingSource.Find("DNI", toolStripTextBoxBuscar.Text) == -1)
                         {
                             Comun.MostrarMensajeDeError("El empleado no existe.", "Empleado no encontrado");
@@ -380,8 +388,16 @@ namespace GestionRecoDuero
                         }
                     }
 
+                    //ID
                     if (toolStripComboBoxBuscarEmpleados.Text.Equals("Id"))
                     {
+                        if (!Comun.ContieneNumeros(toolStripTextBoxBuscar.Text))
+                        {
+                            MessageBox.Show("El formato no es válido. Debe ingresar un número, no letras.", "Formato no válido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                            return;
+                        }
+
                         if (empleadoBindingSource.Find("IdEmpleado", toolStripTextBoxBuscar.Text) == -1)
                         {
                             Comun.MostrarMensajeDeError("El empleado no existe.", "Empleado no encontrado");
@@ -393,8 +409,16 @@ namespace GestionRecoDuero
                         }
                     }
 
+                    //Nombre
                     if (toolStripComboBoxBuscarEmpleados.Text.Equals("Nombre"))
                     {
+                        if (Comun.ContieneNumeros(toolStripTextBoxBuscar.Text))
+                        {
+                            MessageBox.Show("El formato no es válido. Debe ingresar un nombre, no un número.", "Formato no válido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                            return;
+                        }
+
                         if (empleadoBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text) == -1)
                         {
                             Comun.MostrarMensajeDeError("El empleado no existe.", "Empleado no encontrado");
