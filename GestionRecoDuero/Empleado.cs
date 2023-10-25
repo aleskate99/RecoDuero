@@ -650,7 +650,6 @@ namespace GestionRecoDuero
 
         private void toolStripButtonInforme_Click(object sender, EventArgs e)
         {
-            
             toolStripStatusLabel1.Text = "Informe Empleados";
             Boolean abierto = false;
 
@@ -667,7 +666,6 @@ namespace GestionRecoDuero
                     abierto = true;
                     break;
                 }
-
             }
             if (!abierto)
             {
@@ -940,6 +938,13 @@ namespace GestionRecoDuero
             if (e.Control && e.KeyCode == Keys.F)
             {
                 toolStripButtonBuscar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Cancelar
+            if (e.KeyCode == Keys.Escape)
+            {
+                buttonCancelar_Click(this, EventArgs.Empty);
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
         }

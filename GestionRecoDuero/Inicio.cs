@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -18,7 +9,7 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
             Bordes.BordesRedondos(this);
-            labelUsuario.Text = DatosSesion.Email;
+            labelUsuario.Text = DatosSesion.Email.ToString();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -94,6 +85,21 @@ namespace GestionRecoDuero
             //AbrirFormInPanel(new Vehiculo());
         }
 
+        private void buttonServiciosExternos_Click(object sender, EventArgs e)
+        {
+            //AbrirFormInPanel(new ServicioExterno());
+        }
+
+        private void buttonPresupuesto_Click(object sender, EventArgs e)
+        {
+            //AbrirFormInPanel(new Presupuesto());
+        }
+
+        private void buttonFactura_Click(object sender, EventArgs e)
+        {
+            //AbrirFormInPanel(new Factura());
+        }
+
         private void pictureBoxCerrarApp_Click(object sender, EventArgs e)
         {
             var volver = MessageBox.Show("¿Está seguro que desea cerrar la aplicación?", "Cerrar Aplicación", MessageBoxButtons.OKCancel);
@@ -102,8 +108,6 @@ namespace GestionRecoDuero
                 Application.Exit();
             }
         }
-
-     
     }
 }
 

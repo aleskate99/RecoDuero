@@ -624,7 +624,6 @@ namespace GestionRecoDuero
 
         private void toolStripButtonInforme_Click(object sender, EventArgs e)
         {
-
             toolStripStatusLabel1.Text = "Informe Clientes";
             Boolean abierto = false;
 
@@ -641,14 +640,12 @@ namespace GestionRecoDuero
                     abierto = true;
                     break;
                 }
-
             }
             if (!abierto)
             {
                 InformeClientes informeClientes = new InformeClientes();
                 informeClientes.ShowDialog();
             }
-
         }
 
         //TODO: NO FUNCIONA COMO DEBERIA
@@ -880,6 +877,13 @@ namespace GestionRecoDuero
             if (e.Control && e.KeyCode == Keys.F)
             {
                 toolStripButtonBuscar_Click(this, EventArgs.Empty);
+                e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+
+            //Cancelar
+            if (e.KeyCode == Keys.Escape)
+            {
+                buttonCancelar_Click(this, EventArgs.Empty);
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
         }

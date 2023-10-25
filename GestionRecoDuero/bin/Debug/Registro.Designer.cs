@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registro));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.idUsuarioLabel1 = new System.Windows.Forms.Label();
             this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.usuarioTextBox = new System.Windows.Forms.TextBox();
@@ -49,6 +48,7 @@
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.repetirPassTextBox = new System.Windows.Forms.TextBox();
             this.buttonMostrarRepetirPass = new System.Windows.Forms.Button();
+            this.idUsuarioLabel1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
@@ -77,17 +77,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
-            // 
-            // idUsuarioLabel1
-            // 
-            this.idUsuarioLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usuarioBindingSource, "IdUsuario", true));
-            this.idUsuarioLabel1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idUsuarioLabel1.ForeColor = System.Drawing.Color.DimGray;
-            this.idUsuarioLabel1.Location = new System.Drawing.Point(347, 56);
-            this.idUsuarioLabel1.Name = "idUsuarioLabel1";
-            this.idUsuarioLabel1.Size = new System.Drawing.Size(100, 23);
-            this.idUsuarioLabel1.TabIndex = 8;
-            this.idUsuarioLabel1.Text = "label2";
             // 
             // usuarioBindingSource
             // 
@@ -285,6 +274,17 @@
             this.buttonMostrarRepetirPass.UseVisualStyleBackColor = false;
             this.buttonMostrarRepetirPass.Click += new System.EventHandler(this.buttonMostrarRepetirPass_Click);
             // 
+            // idUsuarioLabel1
+            // 
+            this.idUsuarioLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usuarioBindingSource, "IdUsuario", true));
+            this.idUsuarioLabel1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idUsuarioLabel1.ForeColor = System.Drawing.Color.DimGray;
+            this.idUsuarioLabel1.Location = new System.Drawing.Point(347, 56);
+            this.idUsuarioLabel1.Name = "idUsuarioLabel1";
+            this.idUsuarioLabel1.Size = new System.Drawing.Size(100, 23);
+            this.idUsuarioLabel1.TabIndex = 8;
+            this.idUsuarioLabel1.Text = "label2";
+            // 
             // Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -338,11 +338,11 @@
         private RecoDueroDataSet recoDueroDataSet;
         private RecoDueroDataSetTableAdapters.UsuarioTableAdapter usuarioTableAdapter;
         private RecoDueroDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Label idUsuarioLabel1;
         private System.Windows.Forms.TextBox usuarioTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.TextBox repetirPassTextBox;
         private System.Windows.Forms.Button buttonMostrarRepetirPass;
+        private System.Windows.Forms.Label idUsuarioLabel1;
     }
 }

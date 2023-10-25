@@ -16,7 +16,6 @@ namespace GestionRecoDuero
         private void Login_Load(object sender, EventArgs e)
         {
             this.usuarioTableAdapter.Fill(this.recoDueroDataSet.Usuario);
-            string contrasena = ObtenerContrasenaDeBaseDeDatos(); // ***
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -164,7 +163,6 @@ namespace GestionRecoDuero
 
             if (existeMail != -1)
             {
-                // TODO: Asignar al correo que ha puesto la contraseña recoDuero00!
                 var usuario = usuarioBindingSource[existeMail] as DataRowView;
                 usuario["Password"] = "recoDuero00!";
                 tableAdapterManager.UpdateAll(recoDueroDataSet);
@@ -179,31 +177,10 @@ namespace GestionRecoDuero
             }  
         }
 
-        private string ObtenerContrasenaDeBaseDeDatos()
-        {
-            string emailUsuario = emailTextBox.Text; // Obtén el email del usuario actual
-
-            // Intenta encontrar el usuario en usuarioBindingSource
-            int indiceUsuario = usuarioBindingSource.Find("Email", emailUsuario);
-
-            if (indiceUsuario != -1)
-            {
-                // El usuario se encontró en usuarioBindingSource
-                // Ahora, obtén la contraseña del usuario y devuélvela
-                DataRowView usuarioSeleccionado = (DataRowView)usuarioBindingSource[indiceUsuario];
-                string contrasena = usuarioSeleccionado["Password"].ToString();
-                return contrasena;
-            }
-
-            // En caso de no encontrar el usuario, puedes devolver un valor predeterminado o manejar la situación según tus requisitos.
-            return "ContraseñaPredeterminada"; // Cambia esto según tu lógica.
-        }
-
-
         //Atajos de teclado
         private void Login_KeyDown(object sender, KeyEventArgs e)
         {
-            //Aceptar
+            //Acceder
             if (e.KeyCode == Keys.Enter)
             {
                 buttonAcceder_Click(this, EventArgs.Empty);
