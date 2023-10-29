@@ -206,7 +206,7 @@ namespace GestionRecoDuero
         {
             toolStripStatusLabel1.Text = "Eliminar empleado";
 
-            var resultado = MessageBox.Show("¿Está seguro que desea elimina el empleado?", "Confirmación eliminar empleado", MessageBoxButtons.OKCancel);
+            var resultado = MessageBox.Show("¿Está seguro que desea eliminar el empleado?", "Confirmación eliminar empleado", MessageBoxButtons.OKCancel);
 
             if (resultado == DialogResult.OK)
             {
@@ -219,7 +219,6 @@ namespace GestionRecoDuero
                     empleadoBindingSource.RemoveCurrent();
                     empleadoBindingSource.EndEdit();
                     this.empleadoTableAdapter.Update(this.recoDueroDataSet);
-
                 }
 
                 if (empleadoBindingSource.Count == 1)

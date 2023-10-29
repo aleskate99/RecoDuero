@@ -83,3 +83,5 @@ C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\Gestio
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.csproj.CopyComplete
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.exe
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.pdb
+C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.InformeMateriales.resources
+C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.Material.resources

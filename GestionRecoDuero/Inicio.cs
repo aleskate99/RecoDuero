@@ -72,22 +72,22 @@ namespace GestionRecoDuero
 
         private void buttonMateriales_Click(object sender, EventArgs e)
         {
-            //AbrirFormInPanel(new Material());
+            AbrirFormInPanel(new Material());
         }
 
         private void buttonObras_Click(object sender, EventArgs e)
         {
-            //AbrirFormInPanel(new Obra());
+            AbrirFormInPanel(new Obra());
         }
 
         private void buttonVehiculos_Click(object sender, EventArgs e)
         {
-            //AbrirFormInPanel(new Vehiculo());
+            AbrirFormInPanel(new Vehiculo());
         }
 
         private void buttonServiciosExternos_Click(object sender, EventArgs e)
         {
-            //AbrirFormInPanel(new ServicioExterno());
+            AbrirFormInPanel(new ServicioExterno());
         }
 
         private void buttonPresupuesto_Click(object sender, EventArgs e)

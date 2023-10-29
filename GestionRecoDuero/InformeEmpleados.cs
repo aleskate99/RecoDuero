@@ -12,7 +12,6 @@ namespace GestionRecoDuero
 
         private void InformeEmpleados_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'recoDueroDataSet.Empleado' Puede moverla o quitarla según sea necesario.
             this.empleadoTableAdapter.Fill(this.recoDueroDataSet.Empleado);
             this.reportViewer1.RefreshReport();
         }

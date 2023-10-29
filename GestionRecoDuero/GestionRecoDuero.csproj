@@ -142,6 +142,12 @@
     <Compile Include="InformeEmpleados.Designer.cs">
       <DependentUpon>InformeEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="InformeMateriales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformeMateriales.Designer.cs">
+      <DependentUpon>InformeMateriales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,7 +160,19 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Material.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Material.Designer.cs">
+      <DependentUpon>Material.cs</DependentUpon>
+    </Compile>
     <Compile Include="MoverPantalla.cs" />
+    <Compile Include="Obra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Obra.Designer.cs">
+      <DependentUpon>Obra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -173,6 +191,12 @@
       <DependentUpon>Registro.cs</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="ServicioExterno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServicioExterno.Designer.cs">
+      <DependentUpon>ServicioExterno.cs</DependentUpon>
+    </Compile>
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +204,12 @@
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Vehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vehiculo.Designer.cs">
+      <DependentUpon>Vehiculo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Bienvenida.resx">
       <DependentUpon>Bienvenida.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,11 +227,21 @@
     <EmbeddedResource Include="InformeEmpleados.resx">
       <DependentUpon>InformeEmpleados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InformeMaterial.rdlc" />
+    <EmbeddedResource Include="InformeMateriales.resx">
+      <DependentUpon>InformeMateriales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Material.resx">
+      <DependentUpon>Material.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Obra.resx">
+      <DependentUpon>Obra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
