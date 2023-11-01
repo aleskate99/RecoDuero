@@ -9,7 +9,7 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
             Bordes.BordesRedondos(this);
-            labelUsuario.Text = DatosSesion.Email.ToString();
+            //labelUsuario.Text = DatosSesion.Email.ToString();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -33,10 +33,12 @@ namespace GestionRecoDuero
             if (panelzquierda.Width == 200)
             {
                 panelzquierda.Width = 70;
+                labelUsuario.Text = "Usuario";
             }
             else
             {
                 panelzquierda.Width = 200;
+                labelUsuario.Text = DatosSesion.Email.ToString();
             }  
         }
 

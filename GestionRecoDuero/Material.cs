@@ -593,7 +593,7 @@ namespace GestionRecoDuero
 
         private void RefrescarToolstripLabelMaterial()
         {
-            this.toolstripLabelContadorEmpleados.Text = $"Material {materialBindingSource.Position + 1} de {materialBindingSource.Count}";
+            this.toolstripLabelContadorMateriales.Text = $"Material {materialBindingSource.Position + 1} de {materialBindingSource.Count}";
         }
 
         private void OcultarCampos()

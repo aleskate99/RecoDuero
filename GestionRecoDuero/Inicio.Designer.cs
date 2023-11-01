@@ -46,8 +46,8 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.panelCentral = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelzquierda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerrarApp)).BeginInit();
             this.panelArriba.SuspendLayout();
@@ -140,9 +140,9 @@
             this.labelUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUsuario.Location = new System.Drawing.Point(18, 19);
             this.labelUsuario.Name = "labelUsuario";
-            this.labelUsuario.Size = new System.Drawing.Size(44, 16);
+            this.labelUsuario.Size = new System.Drawing.Size(54, 16);
             this.labelUsuario.TabIndex = 6;
-            this.labelUsuario.Text = "label1";
+            this.labelUsuario.Text = "Usuario";
             // 
             // buttonVehiculos
             // 

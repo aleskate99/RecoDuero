@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Material));
             System.Windows.Forms.Label idMaterialLabel;
             System.Windows.Forms.Label nombreLabel;
             System.Windows.Forms.Label cantidadLabel;
@@ -39,10 +38,11 @@
             System.Windows.Forms.Label garantiaLabel;
             System.Windows.Forms.Label fechaAdquisicionLabel;
             System.Windows.Forms.Label descripcionLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Material));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonInicio = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonAnterior = new System.Windows.Forms.ToolStripButton();
-            this.toolstripLabelContadorEmpleados = new System.Windows.Forms.ToolStripLabel();
+            this.toolstripLabelContadorMateriales = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButtonSiguiente = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonFinal = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -64,6 +64,8 @@
             this.buttonAceptar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.idMaterialLabel1 = new System.Windows.Forms.Label();
+            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.cantidadTextBox = new System.Windows.Forms.TextBox();
             this.costeTextBox = new System.Windows.Forms.TextBox();
@@ -73,8 +75,6 @@
             this.fechaAdquisicionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.materialTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.MaterialTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             idMaterialLabel = new System.Windows.Forms.Label();
@@ -90,10 +90,100 @@
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // idMaterialLabel
+            // 
+            idMaterialLabel.AutoSize = true;
+            idMaterialLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            idMaterialLabel.Location = new System.Drawing.Point(46, 44);
+            idMaterialLabel.Name = "idMaterialLabel";
+            idMaterialLabel.Size = new System.Drawing.Size(119, 22);
+            idMaterialLabel.TabIndex = 36;
+            idMaterialLabel.Text = "Id Material *";
+            // 
+            // nombreLabel
+            // 
+            nombreLabel.AutoSize = true;
+            nombreLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            nombreLabel.Location = new System.Drawing.Point(46, 89);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(88, 22);
+            nombreLabel.TabIndex = 38;
+            nombreLabel.Text = "Nombre *";
+            // 
+            // cantidadLabel
+            // 
+            cantidadLabel.AutoSize = true;
+            cantidadLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            cantidadLabel.Location = new System.Drawing.Point(46, 145);
+            cantidadLabel.Name = "cantidadLabel";
+            cantidadLabel.Size = new System.Drawing.Size(100, 22);
+            cantidadLabel.TabIndex = 40;
+            cantidadLabel.Text = "Cantidad *";
+            // 
+            // costeLabel
+            // 
+            costeLabel.AutoSize = true;
+            costeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            costeLabel.Location = new System.Drawing.Point(46, 201);
+            costeLabel.Name = "costeLabel";
+            costeLabel.Size = new System.Drawing.Size(71, 22);
+            costeLabel.TabIndex = 42;
+            costeLabel.Text = "Coste *";
+            // 
+            // distribuidorLabel
+            // 
+            distribuidorLabel.AutoSize = true;
+            distribuidorLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            distribuidorLabel.Location = new System.Drawing.Point(46, 256);
+            distribuidorLabel.Name = "distribuidorLabel";
+            distribuidorLabel.Size = new System.Drawing.Size(127, 22);
+            distribuidorLabel.TabIndex = 44;
+            distribuidorLabel.Text = "Distribuidor *";
+            // 
+            // estadoLabel
+            // 
+            estadoLabel.AutoSize = true;
+            estadoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            estadoLabel.Location = new System.Drawing.Point(46, 312);
+            estadoLabel.Name = "estadoLabel";
+            estadoLabel.Size = new System.Drawing.Size(81, 22);
+            estadoLabel.TabIndex = 46;
+            estadoLabel.Text = "Estado *";
+            // 
+            // garantiaLabel
+            // 
+            garantiaLabel.AutoSize = true;
+            garantiaLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            garantiaLabel.Location = new System.Drawing.Point(657, 170);
+            garantiaLabel.Name = "garantiaLabel";
+            garantiaLabel.Size = new System.Drawing.Size(99, 22);
+            garantiaLabel.TabIndex = 48;
+            garantiaLabel.Text = "Garantía *";
+            // 
+            // fechaAdquisicionLabel
+            // 
+            fechaAdquisicionLabel.AutoSize = true;
+            fechaAdquisicionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            fechaAdquisicionLabel.Location = new System.Drawing.Point(657, 231);
+            fechaAdquisicionLabel.Name = "fechaAdquisicionLabel";
+            fechaAdquisicionLabel.Size = new System.Drawing.Size(176, 22);
+            fechaAdquisicionLabel.TabIndex = 50;
+            fechaAdquisicionLabel.Text = "Fecha Adquisición *";
+            // 
+            // descripcionLabel
+            // 
+            descripcionLabel.AutoSize = true;
+            descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            descripcionLabel.Location = new System.Drawing.Point(657, 287);
+            descripcionLabel.Name = "descripcionLabel";
+            descripcionLabel.Size = new System.Drawing.Size(109, 22);
+            descripcionLabel.TabIndex = 52;
+            descripcionLabel.Text = "Descripción";
             // 
             // toolStrip1
             // 
@@ -102,7 +192,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonInicio,
             this.toolStripButtonAnterior,
-            this.toolstripLabelContadorEmpleados,
+            this.toolstripLabelContadorMateriales,
             this.toolStripButtonSiguiente,
             this.toolStripButtonFinal,
             this.toolStripSeparator1,
@@ -143,11 +233,11 @@
             this.toolStripButtonAnterior.ToolTipText = "Anterior";
             this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click_1);
             // 
-            // toolstripLabelContadorEmpleados
+            // toolstripLabelContadorMateriales
             // 
-            this.toolstripLabelContadorEmpleados.Name = "toolstripLabelContadorEmpleados";
-            this.toolstripLabelContadorEmpleados.Size = new System.Drawing.Size(111, 25);
-            this.toolstripLabelContadorEmpleados.Text = "toolStripLabel1";
+            this.toolstripLabelContadorMateriales.Name = "toolstripLabelContadorMateriales";
+            this.toolstripLabelContadorMateriales.Size = new System.Drawing.Size(111, 25);
+            this.toolstripLabelContadorMateriales.Text = "toolStripLabel1";
             // 
             // toolStripButtonSiguiente
             // 
@@ -339,16 +429,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // idMaterialLabel
-            // 
-            idMaterialLabel.AutoSize = true;
-            idMaterialLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idMaterialLabel.Location = new System.Drawing.Point(46, 44);
-            idMaterialLabel.Name = "idMaterialLabel";
-            idMaterialLabel.Size = new System.Drawing.Size(119, 22);
-            idMaterialLabel.TabIndex = 36;
-            idMaterialLabel.Text = "Id Material *";
-            // 
             // idMaterialLabel1
             // 
             this.idMaterialLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "IdMaterial", true));
@@ -359,15 +439,15 @@
             this.idMaterialLabel1.TabIndex = 37;
             this.idMaterialLabel1.Text = "label1";
             // 
-            // nombreLabel
+            // materialBindingSource
             // 
-            nombreLabel.AutoSize = true;
-            nombreLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nombreLabel.Location = new System.Drawing.Point(46, 89);
-            nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(88, 22);
-            nombreLabel.TabIndex = 38;
-            nombreLabel.Text = "Nombre *";
+            this.materialBindingSource.DataMember = "Material";
+            this.materialBindingSource.DataSource = this.recoDueroDataSet;
+            // 
+            // recoDueroDataSet
+            // 
+            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
+            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // nombreTextBox
             // 
@@ -378,16 +458,6 @@
             this.nombreTextBox.Size = new System.Drawing.Size(250, 30);
             this.nombreTextBox.TabIndex = 39;
             // 
-            // cantidadLabel
-            // 
-            cantidadLabel.AutoSize = true;
-            cantidadLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cantidadLabel.Location = new System.Drawing.Point(46, 145);
-            cantidadLabel.Name = "cantidadLabel";
-            cantidadLabel.Size = new System.Drawing.Size(100, 22);
-            cantidadLabel.TabIndex = 40;
-            cantidadLabel.Text = "Cantidad *";
-            // 
             // cantidadTextBox
             // 
             this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Cantidad", true));
@@ -396,16 +466,6 @@
             this.cantidadTextBox.Name = "cantidadTextBox";
             this.cantidadTextBox.Size = new System.Drawing.Size(250, 30);
             this.cantidadTextBox.TabIndex = 41;
-            // 
-            // costeLabel
-            // 
-            costeLabel.AutoSize = true;
-            costeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            costeLabel.Location = new System.Drawing.Point(46, 201);
-            costeLabel.Name = "costeLabel";
-            costeLabel.Size = new System.Drawing.Size(71, 22);
-            costeLabel.TabIndex = 42;
-            costeLabel.Text = "Coste *";
             // 
             // costeTextBox
             // 
@@ -416,16 +476,6 @@
             this.costeTextBox.Size = new System.Drawing.Size(250, 30);
             this.costeTextBox.TabIndex = 43;
             // 
-            // distribuidorLabel
-            // 
-            distribuidorLabel.AutoSize = true;
-            distribuidorLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            distribuidorLabel.Location = new System.Drawing.Point(46, 256);
-            distribuidorLabel.Name = "distribuidorLabel";
-            distribuidorLabel.Size = new System.Drawing.Size(127, 22);
-            distribuidorLabel.TabIndex = 44;
-            distribuidorLabel.Text = "Distribuidor *";
-            // 
             // distribuidorTextBox
             // 
             this.distribuidorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Distribuidor", true));
@@ -434,16 +484,6 @@
             this.distribuidorTextBox.Name = "distribuidorTextBox";
             this.distribuidorTextBox.Size = new System.Drawing.Size(250, 30);
             this.distribuidorTextBox.TabIndex = 45;
-            // 
-            // estadoLabel
-            // 
-            estadoLabel.AutoSize = true;
-            estadoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            estadoLabel.Location = new System.Drawing.Point(46, 312);
-            estadoLabel.Name = "estadoLabel";
-            estadoLabel.Size = new System.Drawing.Size(81, 22);
-            estadoLabel.TabIndex = 46;
-            estadoLabel.Text = "Estado *";
             // 
             // estadoComboBox
             // 
@@ -460,16 +500,6 @@
             this.estadoComboBox.Size = new System.Drawing.Size(250, 30);
             this.estadoComboBox.TabIndex = 47;
             // 
-            // garantiaLabel
-            // 
-            garantiaLabel.AutoSize = true;
-            garantiaLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            garantiaLabel.Location = new System.Drawing.Point(657, 170);
-            garantiaLabel.Name = "garantiaLabel";
-            garantiaLabel.Size = new System.Drawing.Size(99, 22);
-            garantiaLabel.TabIndex = 48;
-            garantiaLabel.Text = "Garantía *";
-            // 
             // garantiaCheckBox
             // 
             this.garantiaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.materialBindingSource, "Garantia", true));
@@ -481,16 +511,6 @@
             this.garantiaCheckBox.Text = "Tiene garantía";
             this.garantiaCheckBox.UseVisualStyleBackColor = true;
             // 
-            // fechaAdquisicionLabel
-            // 
-            fechaAdquisicionLabel.AutoSize = true;
-            fechaAdquisicionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fechaAdquisicionLabel.Location = new System.Drawing.Point(657, 231);
-            fechaAdquisicionLabel.Name = "fechaAdquisicionLabel";
-            fechaAdquisicionLabel.Size = new System.Drawing.Size(176, 22);
-            fechaAdquisicionLabel.TabIndex = 50;
-            fechaAdquisicionLabel.Text = "Fecha Adquisición *";
-            // 
             // fechaAdquisicionDateTimePicker
             // 
             this.fechaAdquisicionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.materialBindingSource, "FechaAdquisicion", true));
@@ -499,16 +519,6 @@
             this.fechaAdquisicionDateTimePicker.Name = "fechaAdquisicionDateTimePicker";
             this.fechaAdquisicionDateTimePicker.Size = new System.Drawing.Size(250, 30);
             this.fechaAdquisicionDateTimePicker.TabIndex = 51;
-            // 
-            // descripcionLabel
-            // 
-            descripcionLabel.AutoSize = true;
-            descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            descripcionLabel.Location = new System.Drawing.Point(657, 287);
-            descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(109, 22);
-            descripcionLabel.TabIndex = 52;
-            descripcionLabel.Text = "Descripción";
             // 
             // descripcionTextBox
             // 
@@ -541,16 +551,6 @@
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de los materiales";
-            // 
-            // materialBindingSource
-            // 
-            this.materialBindingSource.DataMember = "Material";
-            this.materialBindingSource.DataSource = this.recoDueroDataSet;
-            // 
-            // recoDueroDataSet
-            // 
-            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
-            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // materialTableAdapter
             // 
@@ -600,10 +600,10 @@
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -614,7 +614,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonInicio;
         private System.Windows.Forms.ToolStripButton toolStripButtonAnterior;
-        private System.Windows.Forms.ToolStripLabel toolstripLabelContadorEmpleados;
+        private System.Windows.Forms.ToolStripLabel toolstripLabelContadorMateriales;
         private System.Windows.Forms.ToolStripButton toolStripButtonSiguiente;
         private System.Windows.Forms.ToolStripButton toolStripButtonFinal;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
