@@ -109,7 +109,7 @@
             // 
             nombreLabel.AutoSize = true;
             nombreLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nombreLabel.Location = new System.Drawing.Point(46, 89);
+            nombreLabel.Location = new System.Drawing.Point(46, 94);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(88, 22);
             nombreLabel.TabIndex = 38;
@@ -119,7 +119,7 @@
             // 
             cantidadLabel.AutoSize = true;
             cantidadLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cantidadLabel.Location = new System.Drawing.Point(46, 145);
+            cantidadLabel.Location = new System.Drawing.Point(46, 150);
             cantidadLabel.Name = "cantidadLabel";
             cantidadLabel.Size = new System.Drawing.Size(100, 22);
             cantidadLabel.TabIndex = 40;
@@ -129,7 +129,7 @@
             // 
             costeLabel.AutoSize = true;
             costeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            costeLabel.Location = new System.Drawing.Point(46, 201);
+            costeLabel.Location = new System.Drawing.Point(46, 206);
             costeLabel.Name = "costeLabel";
             costeLabel.Size = new System.Drawing.Size(71, 22);
             costeLabel.TabIndex = 42;
@@ -139,7 +139,7 @@
             // 
             distribuidorLabel.AutoSize = true;
             distribuidorLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            distribuidorLabel.Location = new System.Drawing.Point(46, 256);
+            distribuidorLabel.Location = new System.Drawing.Point(46, 261);
             distribuidorLabel.Name = "distribuidorLabel";
             distribuidorLabel.Size = new System.Drawing.Size(127, 22);
             distribuidorLabel.TabIndex = 44;
@@ -149,7 +149,7 @@
             // 
             estadoLabel.AutoSize = true;
             estadoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            estadoLabel.Location = new System.Drawing.Point(46, 312);
+            estadoLabel.Location = new System.Drawing.Point(46, 317);
             estadoLabel.Name = "estadoLabel";
             estadoLabel.Size = new System.Drawing.Size(81, 22);
             estadoLabel.TabIndex = 46;
@@ -159,7 +159,7 @@
             // 
             garantiaLabel.AutoSize = true;
             garantiaLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            garantiaLabel.Location = new System.Drawing.Point(657, 170);
+            garantiaLabel.Location = new System.Drawing.Point(657, 181);
             garantiaLabel.Name = "garantiaLabel";
             garantiaLabel.Size = new System.Drawing.Size(99, 22);
             garantiaLabel.TabIndex = 48;
@@ -169,7 +169,7 @@
             // 
             fechaAdquisicionLabel.AutoSize = true;
             fechaAdquisicionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fechaAdquisicionLabel.Location = new System.Drawing.Point(657, 231);
+            fechaAdquisicionLabel.Location = new System.Drawing.Point(657, 236);
             fechaAdquisicionLabel.Name = "fechaAdquisicionLabel";
             fechaAdquisicionLabel.Size = new System.Drawing.Size(176, 22);
             fechaAdquisicionLabel.TabIndex = 50;
@@ -179,7 +179,7 @@
             // 
             descripcionLabel.AutoSize = true;
             descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            descripcionLabel.Location = new System.Drawing.Point(657, 287);
+            descripcionLabel.Location = new System.Drawing.Point(657, 292);
             descripcionLabel.Name = "descripcionLabel";
             descripcionLabel.Size = new System.Drawing.Size(109, 22);
             descripcionLabel.TabIndex = 52;
@@ -337,6 +337,7 @@
             // toolStripComboBoxBuscarMateriales
             // 
             this.toolStripComboBoxBuscarMateriales.Items.AddRange(new object[] {
+            "Id",
             "Nombre"});
             this.toolStripComboBoxBuscarMateriales.Name = "toolStripComboBoxBuscarMateriales";
             this.toolStripComboBoxBuscarMateriales.Size = new System.Drawing.Size(160, 28);
@@ -397,11 +398,11 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(1035, 440);
+            this.buttonCancelar.Location = new System.Drawing.Point(1047, 517);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
-            this.buttonCancelar.TabIndex = 35;
+            this.buttonCancelar.TabIndex = 10;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCancelar.UseVisualStyleBackColor = false;
@@ -415,11 +416,11 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(790, 440);
+            this.buttonAceptar.Location = new System.Drawing.Point(809, 517);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
-            this.buttonAceptar.TabIndex = 34;
+            this.buttonAceptar.TabIndex = 9;
             this.buttonAceptar.Text = "Aceptar";
             this.buttonAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAceptar.UseVisualStyleBackColor = false;
@@ -453,37 +454,37 @@
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Nombre", true));
             this.nombreTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreTextBox.Location = new System.Drawing.Point(219, 86);
+            this.nombreTextBox.Location = new System.Drawing.Point(219, 91);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(250, 30);
-            this.nombreTextBox.TabIndex = 39;
+            this.nombreTextBox.TabIndex = 1;
             // 
             // cantidadTextBox
             // 
             this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Cantidad", true));
             this.cantidadTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadTextBox.Location = new System.Drawing.Point(219, 142);
+            this.cantidadTextBox.Location = new System.Drawing.Point(219, 147);
             this.cantidadTextBox.Name = "cantidadTextBox";
             this.cantidadTextBox.Size = new System.Drawing.Size(250, 30);
-            this.cantidadTextBox.TabIndex = 41;
+            this.cantidadTextBox.TabIndex = 2;
             // 
             // costeTextBox
             // 
             this.costeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Coste", true));
             this.costeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeTextBox.Location = new System.Drawing.Point(219, 198);
+            this.costeTextBox.Location = new System.Drawing.Point(219, 203);
             this.costeTextBox.Name = "costeTextBox";
             this.costeTextBox.Size = new System.Drawing.Size(250, 30);
-            this.costeTextBox.TabIndex = 43;
+            this.costeTextBox.TabIndex = 3;
             // 
             // distribuidorTextBox
             // 
             this.distribuidorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Distribuidor", true));
             this.distribuidorTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.distribuidorTextBox.Location = new System.Drawing.Point(219, 253);
+            this.distribuidorTextBox.Location = new System.Drawing.Point(219, 258);
             this.distribuidorTextBox.Name = "distribuidorTextBox";
             this.distribuidorTextBox.Size = new System.Drawing.Size(250, 30);
-            this.distribuidorTextBox.TabIndex = 45;
+            this.distribuidorTextBox.TabIndex = 4;
             // 
             // estadoComboBox
             // 
@@ -495,19 +496,19 @@
             "Disponible",
             "Pendiente",
             "Agotado"});
-            this.estadoComboBox.Location = new System.Drawing.Point(219, 309);
+            this.estadoComboBox.Location = new System.Drawing.Point(219, 314);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(250, 30);
-            this.estadoComboBox.TabIndex = 47;
+            this.estadoComboBox.TabIndex = 5;
             // 
             // garantiaCheckBox
             // 
             this.garantiaCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.materialBindingSource, "Garantia", true));
             this.garantiaCheckBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.garantiaCheckBox.Location = new System.Drawing.Point(878, 161);
+            this.garantiaCheckBox.Location = new System.Drawing.Point(878, 172);
             this.garantiaCheckBox.Name = "garantiaCheckBox";
             this.garantiaCheckBox.Size = new System.Drawing.Size(250, 42);
-            this.garantiaCheckBox.TabIndex = 49;
+            this.garantiaCheckBox.TabIndex = 6;
             this.garantiaCheckBox.Text = "Tiene garantía";
             this.garantiaCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -515,20 +516,20 @@
             // 
             this.fechaAdquisicionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.materialBindingSource, "FechaAdquisicion", true));
             this.fechaAdquisicionDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaAdquisicionDateTimePicker.Location = new System.Drawing.Point(878, 231);
+            this.fechaAdquisicionDateTimePicker.Location = new System.Drawing.Point(878, 236);
             this.fechaAdquisicionDateTimePicker.Name = "fechaAdquisicionDateTimePicker";
             this.fechaAdquisicionDateTimePicker.Size = new System.Drawing.Size(250, 30);
-            this.fechaAdquisicionDateTimePicker.TabIndex = 51;
+            this.fechaAdquisicionDateTimePicker.TabIndex = 7;
             // 
             // descripcionTextBox
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Descripcion", true));
             this.descripcionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descripcionTextBox.Location = new System.Drawing.Point(878, 288);
+            this.descripcionTextBox.Location = new System.Drawing.Point(878, 293);
             this.descripcionTextBox.Multiline = true;
             this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(250, 69);
-            this.descripcionTextBox.TabIndex = 53;
+            this.descripcionTextBox.Size = new System.Drawing.Size(250, 132);
+            this.descripcionTextBox.TabIndex = 8;
             // 
             // groupBox1
             // 

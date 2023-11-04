@@ -781,7 +781,7 @@ namespace GestionRecoDuero
                 errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
                 nombreTextBox.Clear();
             }
-            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text))
+            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text) && (nombreTextBox.Text.Length != 0))
             {
                 errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
                 nombreTextBox.Clear();
@@ -799,7 +799,7 @@ namespace GestionRecoDuero
                 errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
                 apellidosTextBox.Clear();
             }
-            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text))
+            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text) && (nombreTextBox.Text.Length != 0))
             {
                 errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
                 apellidosTextBox.Clear();
@@ -812,7 +812,7 @@ namespace GestionRecoDuero
 
         private void telefonoTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false)
+            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false && (telefonoTextBox.Text.Length != 0))
             {
                 errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números ");
                 telefonoTextBox.Clear();

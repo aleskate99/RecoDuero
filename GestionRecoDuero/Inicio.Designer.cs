@@ -89,7 +89,7 @@
             this.buttonFactura.Location = new System.Drawing.Point(12, 691);
             this.buttonFactura.Name = "buttonFactura";
             this.buttonFactura.Size = new System.Drawing.Size(210, 60);
-            this.buttonFactura.TabIndex = 9;
+            this.buttonFactura.TabIndex = 8;
             this.buttonFactura.Text = "Factura";
             this.buttonFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonFactura, "Factura");
@@ -108,7 +108,7 @@
             this.buttonPresupuesto.Location = new System.Drawing.Point(12, 599);
             this.buttonPresupuesto.Name = "buttonPresupuesto";
             this.buttonPresupuesto.Size = new System.Drawing.Size(210, 60);
-            this.buttonPresupuesto.TabIndex = 8;
+            this.buttonPresupuesto.TabIndex = 7;
             this.buttonPresupuesto.Text = "Presupuesto";
             this.buttonPresupuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonPresupuesto, "Presupuesto");
@@ -127,7 +127,7 @@
             this.buttonServiciosExternos.Location = new System.Drawing.Point(12, 504);
             this.buttonServiciosExternos.Name = "buttonServiciosExternos";
             this.buttonServiciosExternos.Size = new System.Drawing.Size(210, 60);
-            this.buttonServiciosExternos.TabIndex = 7;
+            this.buttonServiciosExternos.TabIndex = 6;
             this.buttonServiciosExternos.Text = "         Servicios Externos";
             this.buttonServiciosExternos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonServiciosExternos, "Servicios Externos");
@@ -226,7 +226,7 @@
             this.buttonClientes.Location = new System.Drawing.Point(12, 163);
             this.buttonClientes.Name = "buttonClientes";
             this.buttonClientes.Size = new System.Drawing.Size(210, 60);
-            this.buttonClientes.TabIndex = 1;
+            this.buttonClientes.TabIndex = 2;
             this.buttonClientes.Text = "Clientes";
             this.buttonClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonClientes, "Clientes");
@@ -245,7 +245,7 @@
             this.buttonEmpleados.Location = new System.Drawing.Point(12, 87);
             this.buttonEmpleados.Name = "buttonEmpleados";
             this.buttonEmpleados.Size = new System.Drawing.Size(210, 60);
-            this.buttonEmpleados.TabIndex = 0;
+            this.buttonEmpleados.TabIndex = 1;
             this.buttonEmpleados.Text = "Empleados";
             this.buttonEmpleados.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonEmpleados, "Empleados");

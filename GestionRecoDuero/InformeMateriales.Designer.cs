@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InformeMateriales));
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.buttonVolverInicio = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.buttonFiltrarNombre = new System.Windows.Forms.Button();
@@ -40,12 +42,20 @@
             this.buttonFiltrarEstado = new System.Windows.Forms.Button();
             this.buttonFiltrarDistribuidor = new System.Windows.Forms.Button();
             this.textBoxFiltrarDistribuidor = new System.Windows.Forms.TextBox();
-            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
-            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.materialTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.MaterialTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // materialBindingSource
+            // 
+            this.materialBindingSource.DataMember = "Material";
+            this.materialBindingSource.DataSource = this.recoDueroDataSet;
+            // 
+            // recoDueroDataSet
+            // 
+            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
+            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // buttonVolverInicio
             // 
@@ -57,7 +67,7 @@
             this.buttonVolverInicio.Margin = new System.Windows.Forms.Padding(4);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(88, 68);
-            this.buttonVolverInicio.TabIndex = 26;
+            this.buttonVolverInicio.TabIndex = 8;
             this.buttonVolverInicio.UseVisualStyleBackColor = false;
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
@@ -75,29 +85,29 @@
             // 
             // buttonFiltrarNombre
             // 
-            this.buttonFiltrarNombre.Location = new System.Drawing.Point(1205, 204);
+            this.buttonFiltrarNombre.Location = new System.Drawing.Point(1196, 205);
             this.buttonFiltrarNombre.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarNombre.Name = "buttonFiltrarNombre";
             this.buttonFiltrarNombre.Size = new System.Drawing.Size(143, 28);
-            this.buttonFiltrarNombre.TabIndex = 30;
+            this.buttonFiltrarNombre.TabIndex = 2;
             this.buttonFiltrarNombre.Text = "Filtrar por nombre";
             this.buttonFiltrarNombre.UseVisualStyleBackColor = true;
             this.buttonFiltrarNombre.Click += new System.EventHandler(this.buttonFiltrarNombre_Click);
             // 
             // textBoxFiltrarNombre
             // 
-            this.textBoxFiltrarNombre.Location = new System.Drawing.Point(1040, 208);
+            this.textBoxFiltrarNombre.Location = new System.Drawing.Point(1031, 209);
             this.textBoxFiltrarNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFiltrarNombre.Name = "textBoxFiltrarNombre";
             this.textBoxFiltrarNombre.Size = new System.Drawing.Size(132, 22);
-            this.textBoxFiltrarNombre.TabIndex = 29;
+            this.textBoxFiltrarNombre.TabIndex = 1;
             // 
             // buttonQuitarFiltro
             // 
-            this.buttonQuitarFiltro.Location = new System.Drawing.Point(1135, 441);
+            this.buttonQuitarFiltro.Location = new System.Drawing.Point(1126, 442);
             this.buttonQuitarFiltro.Name = "buttonQuitarFiltro";
             this.buttonQuitarFiltro.Size = new System.Drawing.Size(123, 23);
-            this.buttonQuitarFiltro.TabIndex = 31;
+            this.buttonQuitarFiltro.TabIndex = 7;
             this.buttonQuitarFiltro.Text = "Quitar filtros";
             this.buttonQuitarFiltro.UseVisualStyleBackColor = true;
             this.buttonQuitarFiltro.Click += new System.EventHandler(this.buttonQuitarFiltro_Click);
@@ -110,50 +120,40 @@
             "Disponible",
             "Pendiente",
             "Agotado"});
-            this.comboBoxFiltrarEstado.Location = new System.Drawing.Point(1040, 374);
+            this.comboBoxFiltrarEstado.Location = new System.Drawing.Point(1031, 375);
             this.comboBoxFiltrarEstado.Name = "comboBoxFiltrarEstado";
             this.comboBoxFiltrarEstado.Size = new System.Drawing.Size(132, 24);
-            this.comboBoxFiltrarEstado.TabIndex = 38;
+            this.comboBoxFiltrarEstado.TabIndex = 5;
             // 
             // buttonFiltrarEstado
             // 
-            this.buttonFiltrarEstado.Location = new System.Drawing.Point(1205, 370);
+            this.buttonFiltrarEstado.Location = new System.Drawing.Point(1196, 371);
             this.buttonFiltrarEstado.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarEstado.Name = "buttonFiltrarEstado";
             this.buttonFiltrarEstado.Size = new System.Drawing.Size(143, 31);
-            this.buttonFiltrarEstado.TabIndex = 37;
+            this.buttonFiltrarEstado.TabIndex = 6;
             this.buttonFiltrarEstado.Text = "Filtrar por estado";
             this.buttonFiltrarEstado.UseVisualStyleBackColor = true;
             this.buttonFiltrarEstado.Click += new System.EventHandler(this.buttonFiltrarEstado_Click);
             // 
             // buttonFiltrarDistribuidor
             // 
-            this.buttonFiltrarDistribuidor.Location = new System.Drawing.Point(1205, 280);
+            this.buttonFiltrarDistribuidor.Location = new System.Drawing.Point(1196, 281);
             this.buttonFiltrarDistribuidor.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarDistribuidor.Name = "buttonFiltrarDistribuidor";
-            this.buttonFiltrarDistribuidor.Size = new System.Drawing.Size(143, 28);
-            this.buttonFiltrarDistribuidor.TabIndex = 36;
+            this.buttonFiltrarDistribuidor.Size = new System.Drawing.Size(166, 28);
+            this.buttonFiltrarDistribuidor.TabIndex = 4;
             this.buttonFiltrarDistribuidor.Text = "Filtrar por Distribuidor";
             this.buttonFiltrarDistribuidor.UseVisualStyleBackColor = true;
             this.buttonFiltrarDistribuidor.Click += new System.EventHandler(this.buttonFiltrarDistribuidor_Click);
             // 
             // textBoxFiltrarDistribuidor
             // 
-            this.textBoxFiltrarDistribuidor.Location = new System.Drawing.Point(1040, 282);
+            this.textBoxFiltrarDistribuidor.Location = new System.Drawing.Point(1031, 283);
             this.textBoxFiltrarDistribuidor.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFiltrarDistribuidor.Name = "textBoxFiltrarDistribuidor";
             this.textBoxFiltrarDistribuidor.Size = new System.Drawing.Size(132, 22);
-            this.textBoxFiltrarDistribuidor.TabIndex = 35;
-            // 
-            // recoDueroDataSet
-            // 
-            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
-            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // materialBindingSource
-            // 
-            this.materialBindingSource.DataMember = "Material";
-            this.materialBindingSource.DataSource = this.recoDueroDataSet;
+            this.textBoxFiltrarDistribuidor.TabIndex = 3;
             // 
             // materialTableAdapter
             // 
@@ -180,8 +180,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformeMateriales";
             this.Load += new System.EventHandler(this.InformeMateriales_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

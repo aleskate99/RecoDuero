@@ -78,6 +78,7 @@
             this.buttonAceptar = new System.Windows.Forms.Button();
             this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             idServicioExternoLabel = new System.Windows.Forms.Label();
             empresaLabel = new System.Windows.Forms.Label();
             telefonoLabel = new System.Windows.Forms.Label();
@@ -273,6 +274,7 @@
             // tipoComboBox
             // 
             this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.servicioExternoBindingSource, "Tipo", true));
+            this.tipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tipoComboBox.FormattingEnabled = true;
             this.tipoComboBox.Location = new System.Drawing.Point(315, 413);
@@ -283,6 +285,7 @@
             // estadoComboBox
             // 
             this.estadoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.servicioExternoBindingSource, "Estado", true));
+            this.estadoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estadoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estadoComboBox.FormattingEnabled = true;
             this.estadoComboBox.Location = new System.Drawing.Point(315, 467);
@@ -362,14 +365,14 @@
             this.toolStripButtonAnterior.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnterior.Image")));
             this.toolStripButtonAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnterior.Name = "toolStripButtonAnterior";
-            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonAnterior.ToolTipText = "Anterior";
             this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click);
             // 
             // toolstripLabelContadorVehiculos
             // 
             this.toolstripLabelContadorVehiculos.Name = "toolstripLabelContadorVehiculos";
-            this.toolstripLabelContadorVehiculos.Size = new System.Drawing.Size(111, 25);
+            this.toolstripLabelContadorVehiculos.Size = new System.Drawing.Size(111, 36);
             this.toolstripLabelContadorVehiculos.Text = "toolStripLabel1";
             // 
             // toolStripButtonSiguiente
@@ -378,7 +381,7 @@
             this.toolStripButtonSiguiente.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSiguiente.Image")));
             this.toolStripButtonSiguiente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSiguiente.Name = "toolStripButtonSiguiente";
-            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonSiguiente.ToolTipText = "Siguiente";
             this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click);
             // 
@@ -388,14 +391,14 @@
             this.toolStripButtonFinal.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFinal.Image")));
             this.toolStripButtonFinal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFinal.Name = "toolStripButtonFinal";
-            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonFinal.ToolTipText = "Ir al final";
             this.toolStripButtonFinal.Click += new System.EventHandler(this.toolStripButtonFinal_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // toolStripButtonAnadir
             // 
@@ -403,7 +406,7 @@
             this.toolStripButtonAnadir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnadir.Image")));
             this.toolStripButtonAnadir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
-            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonAnadir.ToolTipText = "Añadir vehículo";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
             // 
@@ -413,7 +416,7 @@
             this.toolStripButtonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEliminar.Image")));
             this.toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonEliminar.ToolTipText = "Eliminar vehículo";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
             // 
@@ -423,14 +426,14 @@
             this.toolStripButtonEditar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditar.Image")));
             this.toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
-            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonEditar.ToolTipText = "Editar vehículo";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
             // 
             // toolStripButtonGuardar
             // 
@@ -438,7 +441,7 @@
             this.toolStripButtonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGuardar.Image")));
             this.toolStripButtonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGuardar.Name = "toolStripButtonGuardar";
-            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonGuardar.ToolTipText = "Guardar ";
             this.toolStripButtonGuardar.Click += new System.EventHandler(this.toolStripButtonGuardar_Click);
             // 
@@ -448,7 +451,7 @@
             this.toolStripButtonImprimir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImprimir.Image")));
             this.toolStripButtonImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonImprimir.Name = "toolStripButtonImprimir";
-            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonImprimir.ToolTipText = "Imprimir ";
             this.toolStripButtonImprimir.Click += new System.EventHandler(this.toolStripButtonImprimir_Click);
             // 
@@ -458,21 +461,21 @@
             this.toolStripButtonInforme.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInforme.Image")));
             this.toolStripButtonInforme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInforme.Name = "toolStripButtonInforme";
-            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonInforme.ToolTipText = "Informe";
             this.toolStripButtonInforme.Click += new System.EventHandler(this.toolStripButtonInforme_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
             // 
             // toolStripComboBoxBuscarServiciosExternos
             // 
             this.toolStripComboBoxBuscarServiciosExternos.Items.AddRange(new object[] {
             "Nombre"});
             this.toolStripComboBoxBuscarServiciosExternos.Name = "toolStripComboBoxBuscarServiciosExternos";
-            this.toolStripComboBoxBuscarServiciosExternos.Size = new System.Drawing.Size(160, 28);
+            this.toolStripComboBoxBuscarServiciosExternos.Size = new System.Drawing.Size(160, 39);
             this.toolStripComboBoxBuscarServiciosExternos.Text = "Buscar servicio";
             this.toolStripComboBoxBuscarServiciosExternos.ToolTipText = "Seleccione mediante que campo desea buscar el vehículo\r\n";
             // 
@@ -480,7 +483,7 @@
             // 
             this.toolStripTextBoxBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxBuscar.Name = "toolStripTextBoxBuscar";
-            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 28);
+            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 39);
             this.toolStripTextBoxBuscar.ToolTipText = "Escribe la obra que desee buscar";
             // 
             // toolStripButtonBuscar
@@ -489,7 +492,7 @@
             this.toolStripButtonBuscar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBuscar.Image")));
             this.toolStripButtonBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBuscar.Name = "toolStripButtonBuscar";
-            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonBuscar.ToolTipText = "Buscar";
             this.toolStripButtonBuscar.Click += new System.EventHandler(this.toolStripButtonBuscar_Click);
             // 
@@ -562,11 +565,22 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(986, 209);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 22);
+            this.label1.TabIndex = 60;
+            this.label1.Text = "meses";
+            // 
             // ServicioExterno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1341, 794);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonVolverInicio);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
@@ -652,5 +666,6 @@
         private System.Windows.Forms.Button buttonAceptar;
         private System.Windows.Forms.PictureBox buttonVolverInicio;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label1;
     }
 }

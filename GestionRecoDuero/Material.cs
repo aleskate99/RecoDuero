@@ -15,7 +15,6 @@ namespace GestionRecoDuero
 
         private void Material_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'recoDueroDataSet.Material' Puede moverla o quitarla según sea necesario.
             this.materialTableAdapter.Fill(this.recoDueroDataSet.Material);
             AjustarImagenes();
             EstadoControlesInicioApp();
@@ -359,6 +358,27 @@ namespace GestionRecoDuero
                 }
                 else
                 {
+                    //ID
+                    if (toolStripComboBoxBuscarMateriales.Text.Equals("Id"))
+                    {
+                        if (!Comun.ContieneNumeros(toolStripTextBoxBuscar.Text))
+                        {
+                            MessageBox.Show("El formato no es válido. Debe ingresar un número, no letras.", "Formato no válido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                            return;
+                        }
+
+                        if (materialBindingSource.Find("IdMaterial", toolStripTextBoxBuscar.Text) == -1)
+                        {
+                            Comun.MostrarMensajeDeError("El material no existe.", "Material no encontrado");
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                        }
+                        else
+                        {
+                            materialBindingSource.Position = materialBindingSource.Find("IdMaterial", toolStripTextBoxBuscar.Text);
+                        }
+                    }
+
                     //Nombre
                     if (toolStripComboBoxBuscarMateriales.Text.Equals("Nombre"))
                     {
@@ -624,7 +644,6 @@ namespace GestionRecoDuero
             descripcionTextBox.Enabled = true;
         }
 
-        //TODO: Hacer mas
         private bool ComprobarDatosIntroducidos()
         {
             //Nombre 
@@ -647,7 +666,50 @@ namespace GestionRecoDuero
                 return false;
             }
 
+            //Cantidad
+            if (string.IsNullOrWhiteSpace(cantidadTextBox.Text))
+            {
+                errorProvider1.SetError(cantidadTextBox, " Cantidad obligatoria");
+                cantidadTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ContieneNumeros(cantidadTextBox.Text))
+            {
+                errorProvider1.SetError(cantidadTextBox, "Solo puede introducir números en el campo cantidad");
+                cantidadTextBox.Clear();
+                return false;
+            }
+
+            //Coste
+            if (string.IsNullOrWhiteSpace(costeTextBox.Text))
+            {
+                errorProvider1.SetError(costeTextBox, " Coste obligatorio");
+                costeTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ContieneNumeros(costeTextBox.Text))
+            {
+                errorProvider1.SetError(costeTextBox, "Solo puede introducir números en el campo coste");
+                costeTextBox.Clear();
+                return false;
+            }
+
+            //Distribuidor
+            if (string.IsNullOrWhiteSpace(distribuidorTextBox.Text))
+            {
+                errorProvider1.SetError(distribuidorTextBox, " Distribuidor obligatorio");
+                distribuidorTextBox.Clear();
+                return false;
+            }
+            else if (distribuidorTextBox.TextLength > 30)
+            {
+                errorProvider1.SetError(distribuidorTextBox, "No debe superar los 30 dígitos introducidos");
+                distribuidorTextBox.Clear();
+                return false;
+            }
+
             //si todo es valido
+            errorProvider1.Clear();
             return true;
         }
 

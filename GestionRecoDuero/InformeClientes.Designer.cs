@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InformeClientes));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.buttonVolverInicio = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clienteTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.ClienteTableAdapter();
             this.comboBoxFiltrarTipo = new System.Windows.Forms.ComboBox();
             this.buttonFiltrarTipo = new System.Windows.Forms.Button();
@@ -43,9 +43,19 @@
             this.buttonFiltrarNombre = new System.Windows.Forms.Button();
             this.textBoxFiltrarNombre = new System.Windows.Forms.TextBox();
             this.buttonQuitarFiltro = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataMember = "Cliente";
+            this.clienteBindingSource.DataSource = this.recoDueroDataSet;
+            // 
+            // recoDueroDataSet
+            // 
+            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
+            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // buttonVolverInicio
             // 
@@ -57,31 +67,21 @@
             this.buttonVolverInicio.Margin = new System.Windows.Forms.Padding(4);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(88, 68);
-            this.buttonVolverInicio.TabIndex = 25;
+            this.buttonVolverInicio.TabIndex = 8;
             this.buttonVolverInicio.UseVisualStyleBackColor = false;
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
             // reportViewer1
             // 
-            reportDataSource6.Name = "DataSet1";
-            reportDataSource6.Value = this.clienteBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource6);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.clienteBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "GestionRecoDuero.InformeCliente.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1, 3);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(1004, 763);
             this.reportViewer1.TabIndex = 26;
-            // 
-            // recoDueroDataSet
-            // 
-            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
-            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clienteBindingSource
-            // 
-            this.clienteBindingSource.DataMember = "Cliente";
-            this.clienteBindingSource.DataSource = this.recoDueroDataSet;
             // 
             // clienteTableAdapter
             // 
@@ -97,7 +97,7 @@
             this.comboBoxFiltrarTipo.Location = new System.Drawing.Point(1036, 398);
             this.comboBoxFiltrarTipo.Name = "comboBoxFiltrarTipo";
             this.comboBoxFiltrarTipo.Size = new System.Drawing.Size(132, 24);
-            this.comboBoxFiltrarTipo.TabIndex = 43;
+            this.comboBoxFiltrarTipo.TabIndex = 5;
             // 
             // buttonFiltrarTipo
             // 
@@ -105,7 +105,7 @@
             this.buttonFiltrarTipo.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarTipo.Name = "buttonFiltrarTipo";
             this.buttonFiltrarTipo.Size = new System.Drawing.Size(143, 31);
-            this.buttonFiltrarTipo.TabIndex = 42;
+            this.buttonFiltrarTipo.TabIndex = 6;
             this.buttonFiltrarTipo.Text = "Filtrar por tipo";
             this.buttonFiltrarTipo.UseVisualStyleBackColor = true;
             this.buttonFiltrarTipo.Click += new System.EventHandler(this.buttonFiltrarTipo_Click);
@@ -116,7 +116,7 @@
             this.buttonFiltrarTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarTelefono.Name = "buttonFiltrarTelefono";
             this.buttonFiltrarTelefono.Size = new System.Drawing.Size(143, 28);
-            this.buttonFiltrarTelefono.TabIndex = 39;
+            this.buttonFiltrarTelefono.TabIndex = 4;
             this.buttonFiltrarTelefono.Text = "Filtrar por teléfono";
             this.buttonFiltrarTelefono.UseVisualStyleBackColor = true;
             this.buttonFiltrarTelefono.Click += new System.EventHandler(this.buttonFiltrarTelefono_Click);
@@ -127,7 +127,7 @@
             this.textBoxFiltrarTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFiltrarTelefono.Name = "textBoxFiltrarTelefono";
             this.textBoxFiltrarTelefono.Size = new System.Drawing.Size(132, 22);
-            this.textBoxFiltrarTelefono.TabIndex = 38;
+            this.textBoxFiltrarTelefono.TabIndex = 3;
             // 
             // buttonFiltrarNombre
             // 
@@ -135,7 +135,7 @@
             this.buttonFiltrarNombre.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarNombre.Name = "buttonFiltrarNombre";
             this.buttonFiltrarNombre.Size = new System.Drawing.Size(143, 28);
-            this.buttonFiltrarNombre.TabIndex = 37;
+            this.buttonFiltrarNombre.TabIndex = 2;
             this.buttonFiltrarNombre.Text = "Filtrar por nombre";
             this.buttonFiltrarNombre.UseVisualStyleBackColor = true;
             this.buttonFiltrarNombre.Click += new System.EventHandler(this.buttonFiltrarNombre_Click);
@@ -146,14 +146,14 @@
             this.textBoxFiltrarNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFiltrarNombre.Name = "textBoxFiltrarNombre";
             this.textBoxFiltrarNombre.Size = new System.Drawing.Size(132, 22);
-            this.textBoxFiltrarNombre.TabIndex = 36;
+            this.textBoxFiltrarNombre.TabIndex = 1;
             // 
             // buttonQuitarFiltro
             // 
             this.buttonQuitarFiltro.Location = new System.Drawing.Point(1132, 485);
             this.buttonQuitarFiltro.Name = "buttonQuitarFiltro";
             this.buttonQuitarFiltro.Size = new System.Drawing.Size(123, 23);
-            this.buttonQuitarFiltro.TabIndex = 35;
+            this.buttonQuitarFiltro.TabIndex = 7;
             this.buttonQuitarFiltro.Text = "Quitar filtros";
             this.buttonQuitarFiltro.UseVisualStyleBackColor = true;
             this.buttonQuitarFiltro.Click += new System.EventHandler(this.buttonQuitarFiltro_Click);
@@ -179,8 +179,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformeClientes";
             this.Load += new System.EventHandler(this.InformeClientes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -16,5 +16,13 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
         }
+
+        private void InformeServiciosExternos_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'recoDueroDataSet.ServicioExterno' Puede moverla o quitarla según sea necesario.
+            this.servicioExternoTableAdapter.Fill(this.recoDueroDataSet.ServicioExterno);
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }

@@ -80,6 +80,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.vehiculoTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.VehiculoTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             idVehiculoLabel = new System.Windows.Forms.Label();
             matrículaLabel = new System.Windows.Forms.Label();
             modeloLabel = new System.Windows.Forms.Label();
@@ -98,13 +99,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // idVehiculoLabel
             // 
             idVehiculoLabel.AutoSize = true;
             idVehiculoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idVehiculoLabel.Location = new System.Drawing.Point(113, 162);
+            idVehiculoLabel.Location = new System.Drawing.Point(30, 70);
             idVehiculoLabel.Name = "idVehiculoLabel";
             idVehiculoLabel.Size = new System.Drawing.Size(109, 22);
             idVehiculoLabel.TabIndex = 38;
@@ -114,7 +116,7 @@
             // 
             matrículaLabel.AutoSize = true;
             matrículaLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            matrículaLabel.Location = new System.Drawing.Point(113, 320);
+            matrículaLabel.Location = new System.Drawing.Point(30, 228);
             matrículaLabel.Name = "matrículaLabel";
             matrículaLabel.Size = new System.Drawing.Size(99, 22);
             matrículaLabel.TabIndex = 40;
@@ -124,7 +126,7 @@
             // 
             modeloLabel.AutoSize = true;
             modeloLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            modeloLabel.Location = new System.Drawing.Point(113, 271);
+            modeloLabel.Location = new System.Drawing.Point(30, 179);
             modeloLabel.Name = "modeloLabel";
             modeloLabel.Size = new System.Drawing.Size(79, 22);
             modeloLabel.TabIndex = 42;
@@ -174,7 +176,7 @@
             // 
             tipoLabel.AutoSize = true;
             tipoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tipoLabel.Location = new System.Drawing.Point(113, 372);
+            tipoLabel.Location = new System.Drawing.Point(30, 280);
             tipoLabel.Name = "tipoLabel";
             tipoLabel.Size = new System.Drawing.Size(53, 22);
             tipoLabel.TabIndex = 52;
@@ -184,7 +186,7 @@
             // 
             estadoLabel.AutoSize = true;
             estadoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            estadoLabel.Location = new System.Drawing.Point(113, 421);
+            estadoLabel.Location = new System.Drawing.Point(30, 329);
             estadoLabel.Name = "estadoLabel";
             estadoLabel.Size = new System.Drawing.Size(73, 22);
             estadoLabel.TabIndex = 54;
@@ -194,7 +196,7 @@
             // 
             costeAdquisicionLabel.AutoSize = true;
             costeAdquisicionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            costeAdquisicionLabel.Location = new System.Drawing.Point(113, 478);
+            costeAdquisicionLabel.Location = new System.Drawing.Point(30, 386);
             costeAdquisicionLabel.Name = "costeAdquisicionLabel";
             costeAdquisicionLabel.Size = new System.Drawing.Size(164, 22);
             costeAdquisicionLabel.TabIndex = 56;
@@ -204,7 +206,7 @@
             // 
             marcaLabel.AutoSize = true;
             marcaLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            marcaLabel.Location = new System.Drawing.Point(113, 214);
+            marcaLabel.Location = new System.Drawing.Point(30, 122);
             marcaLabel.Name = "marcaLabel";
             marcaLabel.Size = new System.Drawing.Size(70, 22);
             marcaLabel.TabIndex = 58;
@@ -234,7 +236,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1338, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1673, 39);
             this.toolStrip1.TabIndex = 33;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -244,7 +246,7 @@
             this.toolStripButtonInicio.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInicio.Image")));
             this.toolStripButtonInicio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInicio.Name = "toolStripButtonInicio";
-            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonInicio.ToolTipText = "Ir al principio";
             this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click);
             // 
@@ -442,7 +444,7 @@
             // 
             this.idVehiculoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "IdVehiculo", true));
             this.idVehiculoLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idVehiculoLabel1.Location = new System.Drawing.Point(278, 162);
+            this.idVehiculoLabel1.Location = new System.Drawing.Point(195, 70);
             this.idVehiculoLabel1.Name = "idVehiculoLabel1";
             this.idVehiculoLabel1.Size = new System.Drawing.Size(200, 23);
             this.idVehiculoLabel1.TabIndex = 39;
@@ -462,7 +464,7 @@
             // 
             this.matrículaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "Matrícula", true));
             this.matrículaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.matrículaTextBox.Location = new System.Drawing.Point(278, 317);
+            this.matrículaTextBox.Location = new System.Drawing.Point(195, 225);
             this.matrículaTextBox.Name = "matrículaTextBox";
             this.matrículaTextBox.Size = new System.Drawing.Size(200, 30);
             this.matrículaTextBox.TabIndex = 41;
@@ -471,7 +473,7 @@
             // 
             this.modeloTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "Modelo", true));
             this.modeloTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modeloTextBox.Location = new System.Drawing.Point(278, 268);
+            this.modeloTextBox.Location = new System.Drawing.Point(195, 176);
             this.modeloTextBox.Name = "modeloTextBox";
             this.modeloTextBox.Size = new System.Drawing.Size(200, 30);
             this.modeloTextBox.TabIndex = 43;
@@ -482,7 +484,7 @@
             this.fechaItvDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaItvDateTimePicker.Location = new System.Drawing.Point(752, 267);
             this.fechaItvDateTimePicker.Name = "fechaItvDateTimePicker";
-            this.fechaItvDateTimePicker.Size = new System.Drawing.Size(200, 30);
+            this.fechaItvDateTimePicker.Size = new System.Drawing.Size(250, 30);
             this.fechaItvDateTimePicker.TabIndex = 45;
             // 
             // seguroTextBox
@@ -491,7 +493,7 @@
             this.seguroTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.seguroTextBox.Location = new System.Drawing.Point(752, 214);
             this.seguroTextBox.Name = "seguroTextBox";
-            this.seguroTextBox.Size = new System.Drawing.Size(200, 30);
+            this.seguroTextBox.Size = new System.Drawing.Size(250, 30);
             this.seguroTextBox.TabIndex = 47;
             // 
             // conductorComboBox
@@ -501,7 +503,7 @@
             this.conductorComboBox.FormattingEnabled = true;
             this.conductorComboBox.Location = new System.Drawing.Point(752, 160);
             this.conductorComboBox.Name = "conductorComboBox";
-            this.conductorComboBox.Size = new System.Drawing.Size(200, 30);
+            this.conductorComboBox.Size = new System.Drawing.Size(250, 30);
             this.conductorComboBox.TabIndex = 49;
             // 
             // fotoPictureBox
@@ -509,7 +511,7 @@
             this.fotoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.vehiculoBindingSource, "Foto", true));
             this.fotoPictureBox.Location = new System.Drawing.Point(752, 325);
             this.fotoPictureBox.Name = "fotoPictureBox";
-            this.fotoPictureBox.Size = new System.Drawing.Size(200, 146);
+            this.fotoPictureBox.Size = new System.Drawing.Size(250, 146);
             this.fotoPictureBox.TabIndex = 51;
             this.fotoPictureBox.TabStop = false;
             // 
@@ -518,7 +520,7 @@
             this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "Tipo", true));
             this.tipoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tipoComboBox.FormattingEnabled = true;
-            this.tipoComboBox.Location = new System.Drawing.Point(278, 369);
+            this.tipoComboBox.Location = new System.Drawing.Point(195, 277);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(200, 30);
             this.tipoComboBox.TabIndex = 53;
@@ -528,7 +530,7 @@
             this.estadoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "Estado", true));
             this.estadoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estadoComboBox.FormattingEnabled = true;
-            this.estadoComboBox.Location = new System.Drawing.Point(278, 419);
+            this.estadoComboBox.Location = new System.Drawing.Point(195, 327);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(200, 30);
             this.estadoComboBox.TabIndex = 55;
@@ -537,7 +539,7 @@
             // 
             this.costeAdquisicionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "CosteAdquisicion", true));
             this.costeAdquisicionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeAdquisicionTextBox.Location = new System.Drawing.Point(281, 476);
+            this.costeAdquisicionTextBox.Location = new System.Drawing.Point(198, 384);
             this.costeAdquisicionTextBox.Name = "costeAdquisicionTextBox";
             this.costeAdquisicionTextBox.Size = new System.Drawing.Size(200, 30);
             this.costeAdquisicionTextBox.TabIndex = 57;
@@ -546,7 +548,7 @@
             // 
             this.marcaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "Marca", true));
             this.marcaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.marcaTextBox.Location = new System.Drawing.Point(278, 214);
+            this.marcaTextBox.Location = new System.Drawing.Point(195, 122);
             this.marcaTextBox.Name = "marcaTextBox";
             this.marcaTextBox.Size = new System.Drawing.Size(200, 30);
             this.marcaTextBox.TabIndex = 59;
@@ -585,18 +587,37 @@
             this.tableAdapterManager.UsuarioTableAdapter = null;
             this.tableAdapterManager.VehiculoTableAdapter = this.vehiculoTableAdapter;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(idVehiculoLabel);
+            this.groupBox1.Controls.Add(this.marcaTextBox);
+            this.groupBox1.Controls.Add(marcaLabel);
+            this.groupBox1.Controls.Add(this.idVehiculoLabel1);
+            this.groupBox1.Controls.Add(this.costeAdquisicionTextBox);
+            this.groupBox1.Controls.Add(matrículaLabel);
+            this.groupBox1.Controls.Add(costeAdquisicionLabel);
+            this.groupBox1.Controls.Add(this.matrículaTextBox);
+            this.groupBox1.Controls.Add(this.estadoComboBox);
+            this.groupBox1.Controls.Add(modeloLabel);
+            this.groupBox1.Controls.Add(estadoLabel);
+            this.groupBox1.Controls.Add(this.modeloTextBox);
+            this.groupBox1.Controls.Add(this.tipoComboBox);
+            this.groupBox1.Controls.Add(tipoLabel);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(82, 100);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(479, 500);
+            this.groupBox1.TabIndex = 61;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos del vehículo";
+            // 
             // Vehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1338, 793);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonVolverInicio);
-            this.Controls.Add(idVehiculoLabel);
-            this.Controls.Add(this.idVehiculoLabel1);
-            this.Controls.Add(matrículaLabel);
-            this.Controls.Add(this.matrículaTextBox);
-            this.Controls.Add(modeloLabel);
-            this.Controls.Add(this.modeloTextBox);
             this.Controls.Add(fechaItvLabel);
             this.Controls.Add(this.fechaItvDateTimePicker);
             this.Controls.Add(seguroLabel);
@@ -605,14 +626,6 @@
             this.Controls.Add(this.conductorComboBox);
             this.Controls.Add(fotoLabel);
             this.Controls.Add(this.fotoPictureBox);
-            this.Controls.Add(tipoLabel);
-            this.Controls.Add(this.tipoComboBox);
-            this.Controls.Add(estadoLabel);
-            this.Controls.Add(this.estadoComboBox);
-            this.Controls.Add(costeAdquisicionLabel);
-            this.Controls.Add(this.costeAdquisicionTextBox);
-            this.Controls.Add(marcaLabel);
-            this.Controls.Add(this.marcaTextBox);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.statusStrip1);
@@ -633,6 +646,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -679,5 +694,6 @@
         private System.Windows.Forms.TextBox marcaTextBox;
         private System.Windows.Forms.PictureBox buttonVolverInicio;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

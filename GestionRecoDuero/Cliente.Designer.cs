@@ -424,6 +424,7 @@
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
             this.toolStripButtonAnadir.Size = new System.Drawing.Size(52, 88);
             this.toolStripButtonAnadir.Text = "Añadir";
+            this.toolStripButtonAnadir.ToolTipText = "Añadir cliente";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
             // 
             // toolStripButtonEliminar
@@ -434,6 +435,7 @@
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
             this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 88);
             this.toolStripButtonEliminar.Text = "Eliminar";
+            this.toolStripButtonEliminar.ToolTipText = "Eliminar cliente";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
             // 
             // toolStripButtonEditar
@@ -444,6 +446,7 @@
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
             this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 88);
             this.toolStripButtonEditar.Text = "Editar";
+            this.toolStripButtonEditar.ToolTipText = "Editar cliente";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
             // 
             // toolStripSeparator4

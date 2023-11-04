@@ -64,6 +64,8 @@
             this.buttonAceptar = new System.Windows.Forms.Button();
             this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             this.idObraLabel1 = new System.Windows.Forms.Label();
+            this.obraBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.ubicacionTextBox = new System.Windows.Forms.TextBox();
             this.estadoComboBox = new System.Windows.Forms.ComboBox();
             this.observacionesTextBox = new System.Windows.Forms.TextBox();
@@ -75,8 +77,6 @@
             this.duracionEstimadaNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.obraBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.obraTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.ObraTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             idObraLabel = new System.Windows.Forms.Label();
@@ -92,10 +92,10 @@
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.duracionEstimadaNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obraBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.duracionEstimadaNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // idObraLabel
@@ -222,7 +222,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1328, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1328, 28);
             this.toolStrip1.TabIndex = 32;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -232,7 +232,7 @@
             this.toolStripButtonInicio.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInicio.Image")));
             this.toolStripButtonInicio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInicio.Name = "toolStripButtonInicio";
-            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonInicio.ToolTipText = "Ir al principio";
             this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click);
             // 
@@ -448,6 +448,16 @@
             this.idObraLabel1.TabIndex = 40;
             this.idObraLabel1.Text = "label1";
             // 
+            // obraBindingSource
+            // 
+            this.obraBindingSource.DataMember = "Obra";
+            this.obraBindingSource.DataSource = this.recoDueroDataSet;
+            // 
+            // recoDueroDataSet
+            // 
+            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
+            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // ubicacionTextBox
             // 
             this.ubicacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.obraBindingSource, "Ubicacion", true));
@@ -463,6 +473,10 @@
             this.estadoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estadoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estadoComboBox.FormattingEnabled = true;
+            this.estadoComboBox.Items.AddRange(new object[] {
+            "Pendiente",
+            "En curso",
+            "Finalizada"});
             this.estadoComboBox.Location = new System.Drawing.Point(285, 329);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(250, 30);
@@ -513,6 +527,10 @@
             this.tipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tipoComboBox.FormattingEnabled = true;
+            this.tipoComboBox.Items.AddRange(new object[] {
+            "Residencial",
+            "Comercial",
+            "Institucional"});
             this.tipoComboBox.Location = new System.Drawing.Point(285, 393);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(250, 30);
@@ -550,16 +568,6 @@
             this.label1.Size = new System.Drawing.Size(58, 22);
             this.label1.TabIndex = 59;
             this.label1.Text = "meses";
-            // 
-            // obraBindingSource
-            // 
-            this.obraBindingSource.DataMember = "Obra";
-            this.obraBindingSource.DataSource = this.recoDueroDataSet;
-            // 
-            // recoDueroDataSet
-            // 
-            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
-            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // obraTableAdapter
             // 
@@ -622,10 +630,10 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.duracionEstimadaNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obraBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.duracionEstimadaNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
