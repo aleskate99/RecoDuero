@@ -9,6 +9,8 @@ namespace GestionRecoDuero
 {
     public partial class Vehiculo : Form
     {
+        private bool datosGuardados = true;
+
         public Vehiculo()
         {
             InitializeComponent();
@@ -111,6 +113,7 @@ namespace GestionRecoDuero
             }
         }
 
+        //FLECHAS
         private void NavegarRegistro(int indice)
         {
             // Comprobar si no hay registros en el origen de datos
@@ -153,6 +156,7 @@ namespace GestionRecoDuero
             NavegarRegistro(vehiculoBindingSource.Count - 1); // Ir al último registro
         }
 
+        //AÑADIR
         private void toolStripButtonAnadir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Añadir vehículo";
@@ -165,6 +169,7 @@ namespace GestionRecoDuero
             HabilitarControlesEnAnadir();
 
             RefrescarToolstripLabelVehiculo();
+            datosGuardados = false;
         }
 
         private void HabilitarControlesEnAnadir()
@@ -182,9 +187,9 @@ namespace GestionRecoDuero
             estadoComboBox.SelectedIndex = 0;
         }
 
-        //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
         private void DeshabilitarBotonesEnAnadir()
         {
+            //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
             toolStripButtonAnadir.Enabled = false;
             toolStripButtonAnterior.Enabled = false;
             toolStripButtonInicio.Enabled = false;
@@ -197,6 +202,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //ELIMINAR
         private void toolStripButtonEliminar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Eliminar vehículo";
@@ -239,11 +245,13 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelVehiculo();
         }
 
+        //EDITAR
         private void toolStripButtonEditar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Editar vehículo";
             EstadoControlesEditar();
             ComprobarDatosIntroducidos();
+            datosGuardados = false;
         }
 
         private void EstadoControlesEditar()
@@ -269,6 +277,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //GUARDAR
         private void toolStripButtonGuardar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -282,6 +291,7 @@ namespace GestionRecoDuero
                 RefrescarToolstripLabelVehiculo();
 
                 Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
+                datosGuardados = true;
             }
         }
 
@@ -350,6 +360,89 @@ namespace GestionRecoDuero
             OcultarCampos();
         }
 
+        //IMPRIMIR
+        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Imprimiendo...";
+
+            PrintDocument printDocument1 = new PrintDocument();
+
+            // Manejar el evento PrintPage para imprimir los campos y la imagen
+            printDocument1.PrintPage += (sender1, e1) =>
+            {
+                using (var font = new Font("Times New Roman", 12))
+                {
+                    float y = 100;
+
+                    // Crear un método para imprimir cada línea
+                    void PrintLine(string label, string value)
+                    {
+                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
+                        y += 25;
+                    }
+
+                    PrintLine("Id: ", idVehiculoLabel1.Text);
+                    PrintLine("Marca: ", marcaTextBox.Text);
+                    PrintLine("Modelo: ", modeloTextBox.Text);
+                    PrintLine("Matrícula: ", matrículaTextBox.Text);
+                    PrintLine("Tipo: ", tipoComboBox.Text);
+                    PrintLine("Estado: ", estadoComboBox.Text);
+                    PrintLine("Coste de adquisición: ", costeAdquisicionTextBox.Text);
+
+                    PrintLine("Conductor: ", conductorComboBox.Text);
+                    PrintLine("Seguro: ", seguroTextBox.Text);
+                    PrintLine("Fecha ITV: ", fechaItvDateTimePicker.Text);
+                }
+            };
+
+            // Mostrar el cuadro de diálogo de impresión
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.AllowPrintToFile = false;
+            printDialog1.AllowSelection = false;
+            printDialog1.AllowSomePages = false;
+            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
+
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    printDocument1.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        //INFORME
+        private void toolStripButtonInforme_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Informe Vehículos";
+            Boolean abierto = false;
+
+            //comprobamos que no esta abierto el formulario;
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(InformeVehiculos))
+                {
+                    if (frm.WindowState == FormWindowState.Minimized)
+                    {
+                        frm.WindowState = FormWindowState.Normal;
+                    }
+                    frm.BringToFront();
+                    abierto = true;
+                    break;
+                }
+            }
+            if (!abierto)
+            {
+                InformeVehiculos informeVehiculos = new InformeVehiculos();
+                informeVehiculos.ShowDialog();
+            }
+        }
+
+        //BUSCAR
         private void toolStripButtonBuscar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Buscar vehículo";
@@ -442,6 +535,7 @@ namespace GestionRecoDuero
             }
         }
 
+        //ACEPTAR
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -449,20 +543,8 @@ namespace GestionRecoDuero
                 errorProvider1.Clear();
                 vehiculoBindingSource.EndEdit();
                 EstadoControlesAceptar();
+                datosGuardados = false;
             }
-        }
-
-        private void buttonCancelar_Click(object sender, EventArgs e)
-        {
-            var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
-            if (resultado == DialogResult.OK)
-            {
-                vehiculoBindingSource.CancelEdit();
-                EstadoControlesCancelar();
-                errorProvider1.Clear();
-            }
-
-            RefrescarToolstripLabelVehiculo();
         }
 
         private void EstadoControlesAceptar()
@@ -471,44 +553,27 @@ namespace GestionRecoDuero
             toolStripButtonGuardar.Enabled = true;
         }
 
+        //CANCELAR
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
+            if (resultado == DialogResult.OK)
+            {
+                vehiculoBindingSource.CancelEdit();
+                EstadoControlesCancelar();
+                errorProvider1.Clear();
+                datosGuardados = false;
+            }
+
+            RefrescarToolstripLabelVehiculo();
+        }
+        
         private void EstadoControlesCancelar()
         {
             HabilitarControlesComunes();
         }
 
-        private void HabilitarControlesComunes()
-        {
-            // Botones
-            toolStripButtonAnadir.Enabled = true;
-            toolStripButtonEditar.Enabled = true;
-            toolStripButtonEliminar.Enabled = true;
-            toolStripButtonBuscar.Enabled = true;
-            toolStripComboBoxBuscarVehiculos.Enabled = true;
-            toolStripTextBoxBuscar.Enabled = true;
-
-            // Campos
-            OcultarCampos();
-
-            // Botones
-            buttonAceptar.Visible = false;
-            buttonCancelar.Visible = false;
-
-            // Flechas
-            ActualizarEstadoFlechas();
-        }
-
-        private void ActualizarEstadoFlechas()
-        {
-            bool tieneRegistros = vehiculoBindingSource.Count > 0;
-            bool esElPrimero = vehiculoBindingSource.Position == 0;
-            bool esElUltimo = vehiculoBindingSource.Position == vehiculoBindingSource.Count - 1;
-
-            toolStripButtonInicio.Enabled = !esElPrimero && tieneRegistros;
-            toolStripButtonAnterior.Enabled = !esElPrimero && tieneRegistros;
-            toolStripButtonSiguiente.Enabled = !esElUltimo && tieneRegistros;
-            toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
-        }
-
+        //IMÁGEN
         private void fotoPictureBox_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
@@ -545,97 +610,45 @@ namespace GestionRecoDuero
             }
         }
 
-        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Imprimiendo...";
-
-            PrintDocument printDocument1 = new PrintDocument();
-
-            // Manejar el evento PrintPage para imprimir los campos y la imagen
-            printDocument1.PrintPage += (sender1, e1) =>
-            {
-                using (var font = new Font("Times New Roman", 12))
-                {
-                    float y = 100;
-
-                    // Crear un método para imprimir cada línea
-                    void PrintLine(string label, string value)
-                    {
-                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                        y += 25;
-                    }
-
-                    PrintLine("Id: ", idVehiculoLabel1.Text);
-                    PrintLine("Marca: ", marcaTextBox.Text);
-                    PrintLine("Modelo: ", modeloTextBox.Text);
-                    PrintLine("Matrícula: ", matrículaTextBox.Text);
-                    PrintLine("Tipo: ", tipoComboBox.Text);
-                    PrintLine("Estado: ", estadoComboBox.Text);
-                    PrintLine("Coste de adquisición: ", costeAdquisicionTextBox.Text);
-
-                    PrintLine("Conductor: ", conductorComboBox.Text);
-                    PrintLine("Seguro: ", seguroTextBox.Text);
-                    PrintLine("Fecha ITV: ", fechaItvDateTimePicker.Text);
-                }
-            };
-
-            // Mostrar el cuadro de diálogo de impresión
-            PrintDialog printDialog1 = new PrintDialog();
-            printDialog1.AllowPrintToFile = false;
-            printDialog1.AllowSelection = false;
-            printDialog1.AllowSomePages = false;
-            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
-
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    printDocument1.Print();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-
-        private void toolStripButtonInforme_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Informe Vehículos";
-            Boolean abierto = false;
-
-            //comprobamos que no esta abierto el formulario;
-            foreach (Form frm in Application.OpenForms)
-            {
-                if (frm.GetType() == typeof(InformeVehiculos))
-                {
-                    if (frm.WindowState == FormWindowState.Minimized)
-                    {
-                        frm.WindowState = FormWindowState.Normal;
-                    }
-                    frm.BringToFront();
-                    abierto = true;
-                    break;
-                }
-            }
-            if (!abierto)
-            {
-                InformeVehiculos informeVehiculos = new InformeVehiculos();
-                informeVehiculos.ShowDialog();
-            }
-        }
-
-        //TODO: NO FUNCIONA COMO DEBERIA
-        private void Vehiculo_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
+        //MÉTODOS
         private void RefrescarToolstripLabelVehiculo()
         {
             this.toolstripLabelContadorVehiculos.Text = $"Vehículo {vehiculoBindingSource.Position + 1} de {vehiculoBindingSource.Count}";
         }
 
+        private void HabilitarControlesComunes()
+        {
+            // Botones
+            toolStripButtonAnadir.Enabled = true;
+            toolStripButtonEditar.Enabled = true;
+            toolStripButtonEliminar.Enabled = true;
+            toolStripButtonBuscar.Enabled = true;
+            toolStripComboBoxBuscarVehiculos.Enabled = true;
+            toolStripTextBoxBuscar.Enabled = true;
+
+            // Campos
+            OcultarCampos();
+
+            // Botones
+            buttonAceptar.Visible = false;
+            buttonCancelar.Visible = false;
+
+            // Flechas
+            ActualizarEstadoFlechas();
+        }
+
+        private void ActualizarEstadoFlechas()
+        {
+            bool tieneRegistros = vehiculoBindingSource.Count > 0;
+            bool esElPrimero = vehiculoBindingSource.Position == 0;
+            bool esElUltimo = vehiculoBindingSource.Position == vehiculoBindingSource.Count - 1;
+
+            toolStripButtonInicio.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonAnterior.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonSiguiente.Enabled = !esElUltimo && tieneRegistros;
+            toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
+        }
+        
         private void OcultarCampos()
         {
             idVehiculoLabel1.Enabled = false;
@@ -668,6 +681,26 @@ namespace GestionRecoDuero
             fotoPictureBox.Enabled = true;
         }
 
+        private void CargarEmpleados()
+        {
+            EmpleadoTableAdapter empleadoTableAdapter = new EmpleadoTableAdapter();
+            RecoDueroDataSet.EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData();
+
+            conductorComboBox.DataSource = empleadosData;
+            conductorComboBox.DisplayMember = "Nombre";
+
+            if (conductorComboBox.Items.Count > 0)
+            {
+                conductorComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                conductorComboBox.Text = "No hay empleados";
+            }
+
+        }
+
+        //COMPROBAR DATOS
         private bool ComprobarDatosIntroducidos()
         {
             //Marca
@@ -718,6 +751,9 @@ namespace GestionRecoDuero
             return true;
         }
 
+        //TODO: VALIDATINGS
+
+        //Atajos de teclado
         private void Vehiculo_KeyDown(object sender, KeyEventArgs e)
         {
             //Añadir
@@ -777,25 +813,29 @@ namespace GestionRecoDuero
             }
         }
 
-        private void CargarEmpleados()
+        private void Vehiculo_FormClosing(object sender, FormClosingEventArgs e)
         {
-            EmpleadoTableAdapter empleadoTableAdapter = new EmpleadoTableAdapter();
-            RecoDueroDataSet.EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData(); 
-
-            conductorComboBox.DataSource = empleadosData;
-            conductorComboBox.DisplayMember = "Nombre";
-
-            if (conductorComboBox.Items.Count > 0)
+            if (datosGuardados == false)
             {
-                conductorComboBox.SelectedIndex = 0;
-            }
-            else
-            {
-                conductorComboBox.Text = "No hay empleados";
-            }
+                DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
+                    "Tiene cambios sin guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
 
+                if (result == DialogResult.Yes)
+                {
+                    if (ComprobarDatosIntroducidos())
+                    {
+                        this.vehiculoBindingSource.EndEdit();
+                        this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
+                    }
+                    else
+                    {
+                        Comun.MostrarMensajeDeError("Hay datos erróneos porfavor reviselo", "Error al guardar");
+                        // Cancela el cierre del formulario
+                        e.Cancel = true;
+                    }
+
+                }
+            }
         }
-
-        
     }
 }

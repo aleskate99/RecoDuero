@@ -491,6 +491,7 @@
             // 
             // toolStripComboBoxBuscarClientes
             // 
+            this.toolStripComboBoxBuscarClientes.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarClientes.Items.AddRange(new object[] {
             "Id",
             "Nombre"});
@@ -611,7 +612,7 @@
             this.Name = "Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Cliente_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Cliente_FormClosing);
             this.Load += new System.EventHandler(this.Cliente_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cliente_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();

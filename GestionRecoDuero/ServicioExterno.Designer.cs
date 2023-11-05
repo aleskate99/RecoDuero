@@ -485,7 +485,6 @@
             // 
             // toolStripComboBoxBuscarServiciosExternos
             // 
-            this.toolStripComboBoxBuscarServiciosExternos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarServiciosExternos.Items.AddRange(new object[] {
             "Nombre"});
             this.toolStripComboBoxBuscarServiciosExternos.Name = "toolStripComboBoxBuscarServiciosExternos";
@@ -646,7 +645,7 @@
             this.Name = "ServicioExterno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ServicioExterno";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ServicioExterno_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServicioExterno_FormClosing);
             this.Load += new System.EventHandler(this.ServicioExterno_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ServicioExterno_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();

@@ -22,6 +22,14 @@ namespace GestionRecoDuero
             var volver = MessageBox.Show("¿Quiere volver a la ventana Login?", "Cerrar Sesión", MessageBoxButtons.OKCancel);
             if (volver == DialogResult.OK)
             {
+                EmpleadoAbierto();
+                ClienteAbierto();
+                MaterialAbierto();
+                ObraAbierto();
+                VehiculoAbierto();
+                ServicioExternoAbierto();
+                //PresupuestoAbierto();
+                //FacturaAbierto();
                 this.Close();
                 Login login = new Login();
                 login.Show();

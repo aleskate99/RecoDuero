@@ -17,8 +17,8 @@ namespace GestionRecoDuero
             KeyPreview = true;
 
             //Redondear controles
-            Bordes.BordesRedondosBoton(buttonAceptar);
-            Bordes.BordesRedondosBoton(buttonCancelar);
+            //Bordes.BordesRedondosBoton(buttonAceptar);
+            //Bordes.BordesRedondosBoton(buttonCancelar);
         }
 
         private void Empleado_Load(object sender, EventArgs e)
@@ -162,7 +162,7 @@ namespace GestionRecoDuero
             NavegarRegistro(empleadoBindingSource.Count - 1); // Ir al último registro
         }
 
-        //BOTONES
+        //AÑADIR
         private void toolStripButtonAnadir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Añadir empleado";
@@ -197,9 +197,9 @@ namespace GestionRecoDuero
             //imagenPictureBox.Image = 
         }
 
-        //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
         private void DeshabilitarBotonesEnAnadir()
         {
+            //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
             toolStripButtonAnadir.Enabled = false;
             toolStripButtonAnterior.Enabled = false;
             toolStripButtonInicio.Enabled = false;
@@ -212,6 +212,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //ELIMINAR
         private void toolStripButtonEliminar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Eliminar empleado";
@@ -254,6 +255,7 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelEmpleado();
         }
 
+        //EDITAR
         private void toolStripButtonEditar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Editar empleado";
@@ -285,6 +287,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //GUARDAR
         private void toolStripButtonGuardar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -367,6 +370,89 @@ namespace GestionRecoDuero
             OcultarCampos();
         }
 
+        //IMPRIMIR
+        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Imprimiendo...";
+
+            PrintDocument printDocument1 = new PrintDocument();
+
+            // Manejar el evento PrintPage para imprimir los campos y la imagen
+            printDocument1.PrintPage += (sender1, e1) =>
+            {
+                using (var font = new Font("Times New Roman", 12))
+                {
+                    float y = 100;
+
+                    // Crear un método para imprimir cada línea
+                    void PrintLine(string label, string value)
+                    {
+                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
+                        y += 25;
+                    }
+
+                    PrintLine("Id: ", idEmpleadoLabel1.Text);
+                    PrintLine("Nombre: ", nombreTextBox.Text);
+                    PrintLine("Apellidos: ", apellidosTextBox.Text);
+                    PrintLine("DNI: ", dNITextBox.Text);
+                    PrintLine("Fecha de nacimiento: ", fechaNacimientoDateTimePicker.Text);
+                    PrintLine("Teléfono: ", telefonoTextBox.Text);
+                    PrintLine("Email: ", emailTextBox.Text);
+                    PrintLine("Género: ", generoComboBox.Text);
+                    PrintLine("Puesto: ", puestoComboBox.Text);
+                    PrintLine("Situación laboral: ", situacionLaboralComboBox.Text);
+                    PrintLine("Salario: ", salarioLabel1.Text);
+                }
+            };
+
+            // Mostrar el cuadro de diálogo de impresión
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.AllowPrintToFile = false;
+            printDialog1.AllowSelection = false;
+            printDialog1.AllowSomePages = false;
+            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
+
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    printDocument1.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        //INFORME
+        private void toolStripButtonInforme_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Informe Empleados";
+            Boolean abierto = false;
+
+            //comprobamos que no esta abierto el formulario;
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(InformeEmpleados))
+                {
+                    if (frm.WindowState == FormWindowState.Minimized)
+                    {
+                        frm.WindowState = FormWindowState.Normal;
+                    }
+                    frm.BringToFront();
+                    abierto = true;
+                    break;
+                }
+            }
+            if (!abierto)
+            {
+                InformeEmpleados informeEmpleados = new InformeEmpleados();
+                informeEmpleados.ShowDialog();
+            }
+        }
+
+        //BUSCAR
         private void toolStripButtonBuscar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Buscar empleado";
@@ -501,6 +587,7 @@ namespace GestionRecoDuero
             }
         }
 
+        //ACEPTAR
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -512,6 +599,13 @@ namespace GestionRecoDuero
             }
         }
 
+        private void EstadoControlesAceptar()
+        {
+            HabilitarControlesComunes();
+            toolStripButtonGuardar.Enabled = true;
+        }
+
+        //CANCELAR
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
@@ -526,51 +620,12 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelEmpleado();
         }
 
-        private void EstadoControlesAceptar()
-        {
-            HabilitarControlesComunes();
-            toolStripButtonGuardar.Enabled = true;
-        }
-
         private void EstadoControlesCancelar()
         {
             HabilitarControlesComunes();
         }
 
-        private void HabilitarControlesComunes()
-        {
-            // Botones
-            toolStripButtonAnadir.Enabled = true;
-            toolStripButtonEditar.Enabled = true;
-            toolStripButtonEliminar.Enabled = true;
-            toolStripButtonBuscar.Enabled = true;
-            toolStripComboBoxBuscarEmpleados.Enabled = true;
-            toolStripTextBoxBuscar.Enabled = true;
-
-            // Campos
-            OcultarCampos();
-
-            // Botones
-            buttonAceptar.Visible = false;
-            buttonCancelar.Visible = false;
-
-            // Flechas
-            ActualizarEstadoFlechas();
-        }
-
-        private void ActualizarEstadoFlechas()
-        {
-            bool tieneRegistros = empleadoBindingSource.Count > 0;
-            bool esElPrimero = empleadoBindingSource.Position == 0;
-            bool esElUltimo = empleadoBindingSource.Position == empleadoBindingSource.Count - 1;
-
-            toolStripButtonInicio.Enabled = !esElPrimero && tieneRegistros;
-            toolStripButtonAnterior.Enabled = !esElPrimero && tieneRegistros;
-            toolStripButtonSiguiente.Enabled = !esElUltimo && tieneRegistros;
-            toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
-        }
-
-        //TODO: REVISAR
+        //IMÁGEN
         private void imagenPictureBox_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
@@ -607,89 +662,43 @@ namespace GestionRecoDuero
             }
         }
 
-        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Imprimiendo...";
-
-            PrintDocument printDocument1 = new PrintDocument();
-
-            // Manejar el evento PrintPage para imprimir los campos y la imagen
-            printDocument1.PrintPage += (sender1, e1) =>
-            {
-                using (var font = new Font("Times New Roman", 12))
-                {
-                    float y = 100;
-
-                    // Crear un método para imprimir cada línea
-                    void PrintLine(string label, string value)
-                    {
-                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                        y += 25;
-                    }
-
-                    PrintLine("Id: ", idEmpleadoLabel1.Text);
-                    PrintLine("Nombre: ", nombreTextBox.Text);
-                    PrintLine("Apellidos: ", apellidosTextBox.Text);
-                    PrintLine("DNI: ", dNITextBox.Text);
-                    PrintLine("Fecha de nacimiento: ", fechaNacimientoDateTimePicker.Text);
-                    PrintLine("Teléfono: ", telefonoTextBox.Text);
-                    PrintLine("Email: ", emailTextBox.Text);
-                    PrintLine("Género: ", generoComboBox.Text);
-                    PrintLine("Puesto: ", puestoComboBox.Text);
-                    PrintLine("Situación laboral: ", situacionLaboralComboBox.Text);
-                    PrintLine("Salario: ", salarioLabel1.Text);
-                }
-            };
-
-            // Mostrar el cuadro de diálogo de impresión
-            PrintDialog printDialog1 = new PrintDialog();
-            printDialog1.AllowPrintToFile = false;
-            printDialog1.AllowSelection = false;
-            printDialog1.AllowSomePages = false;
-            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
-
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    printDocument1.Print();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-
-        private void toolStripButtonInforme_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Informe Empleados";
-            Boolean abierto = false;
-
-            //comprobamos que no esta abierto el formulario;
-            foreach (Form frm in Application.OpenForms)
-            {
-                if (frm.GetType() == typeof(InformeEmpleados))
-                {
-                    if (frm.WindowState == FormWindowState.Minimized)
-                    {
-                        frm.WindowState = FormWindowState.Normal;
-                    }
-                    frm.BringToFront();
-                    abierto = true;
-                    break;
-                }
-            }
-            if (!abierto)
-            {
-                InformeEmpleados informeEmpleados = new InformeEmpleados();
-                informeEmpleados.ShowDialog();
-            }
-        }
-
+        //MÉTODOS
         private void RefrescarToolstripLabelEmpleado()
         {
             this.toolstripLabelContadorEmpleados.Text = $"Empleado {empleadoBindingSource.Position + 1} de {empleadoBindingSource.Count}";
+        }
+
+        private void HabilitarControlesComunes()
+        {
+            // Botones
+            toolStripButtonAnadir.Enabled = true;
+            toolStripButtonEditar.Enabled = true;
+            toolStripButtonEliminar.Enabled = true;
+            toolStripButtonBuscar.Enabled = true;
+            toolStripComboBoxBuscarEmpleados.Enabled = true;
+            toolStripTextBoxBuscar.Enabled = true;
+
+            // Campos
+            OcultarCampos();
+
+            // Botones
+            buttonAceptar.Visible = false;
+            buttonCancelar.Visible = false;
+
+            // Flechas
+            ActualizarEstadoFlechas();
+        }
+
+        private void ActualizarEstadoFlechas()
+        {
+            bool tieneRegistros = empleadoBindingSource.Count > 0;
+            bool esElPrimero = empleadoBindingSource.Position == 0;
+            bool esElUltimo = empleadoBindingSource.Position == empleadoBindingSource.Count - 1;
+
+            toolStripButtonInicio.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonAnterior.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonSiguiente.Enabled = !esElUltimo && tieneRegistros;
+            toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
         }
 
         private void OcultarCampos()
@@ -726,6 +735,7 @@ namespace GestionRecoDuero
             imagenPictureBox.Enabled = true;
         }
 
+        //COMPROBAR DATOS
         private bool ComprobarDatosIntroducidos()
         {
             //Nombre 
@@ -808,6 +818,7 @@ namespace GestionRecoDuero
             return true;
         }
 
+        //VALIDATINGS
         private void nombreTextBox_Validating(object sender, CancelEventArgs e)
         {
             if (nombreTextBox.TextLength > 30)

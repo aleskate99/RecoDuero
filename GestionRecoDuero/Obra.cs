@@ -8,6 +8,8 @@ namespace GestionRecoDuero
 {
     public partial class Obra : Form
     {
+        private bool datosGuardados = true;
+
         public Obra()
         {
             InitializeComponent();
@@ -113,6 +115,7 @@ namespace GestionRecoDuero
 
         }
 
+        //FLECHAS
         private void NavegarRegistro(int indice)
         {
             // Comprobar si no hay registros en el origen de datos
@@ -155,7 +158,7 @@ namespace GestionRecoDuero
             NavegarRegistro(obraBindingSource.Count - 1); // Ir al último registro
         }
 
-        //BOTONES
+        //AÑADIR
         private void toolStripButtonAnadir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Añadir obra";
@@ -168,6 +171,7 @@ namespace GestionRecoDuero
             HabilitarControlesEnAnadir();
 
             RefrescarToolstripLabelObra();
+            datosGuardados = false;
         }
 
         private void HabilitarControlesEnAnadir()
@@ -185,9 +189,9 @@ namespace GestionRecoDuero
             tipoComboBox.SelectedIndex = 0;
         }
 
-        //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
         private void DeshabilitarBotonesEnAnadir()
         {
+            //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
             toolStripButtonAnadir.Enabled = false;
             toolStripButtonAnterior.Enabled = false;
             toolStripButtonInicio.Enabled = false;
@@ -200,6 +204,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //ELIMINAR
         private void toolStripButtonEliminar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Eliminar obra";
@@ -242,11 +247,13 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelObra();
         }
 
+        //EDITAR
         private void toolStripButtonEditar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Editar obra";
             EstadoControlesEditar();
             ComprobarDatosIntroducidos();
+            datosGuardados = false;
         }
 
         private void EstadoControlesEditar()
@@ -272,6 +279,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //GUARDAR
         private void toolStripButtonGuardar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -285,6 +293,7 @@ namespace GestionRecoDuero
                 RefrescarToolstripLabelObra();
 
                 Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
+                datosGuardados = true;
             }
         }
 
@@ -353,6 +362,88 @@ namespace GestionRecoDuero
             OcultarCampos();
         }
 
+        //IMPRIMIR
+        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Imprimiendo...";
+
+            PrintDocument printDocument1 = new PrintDocument();
+
+            // Manejar el evento PrintPage para imprimir los campos y la imagen
+            printDocument1.PrintPage += (sender1, e1) =>
+            {
+                using (var font = new Font("Times New Roman", 12))
+                {
+                    float y = 100;
+
+                    // Crear un método para imprimir cada línea
+                    void PrintLine(string label, string value)
+                    {
+                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
+                        y += 25;
+                    }
+
+                    PrintLine("Id: ", idObraLabel1.Text);
+                    PrintLine("Nombre: ", nombreTextBox.Text);
+                    PrintLine("Ubicación: ", ubicacionTextBox.Text);
+                    PrintLine("Estado: ", estadoComboBox.Text);
+                    PrintLine("Tipo: ", tipoComboBox.Text);
+                    PrintLine("Responsable: ", responsableComboBox.Text);
+                    PrintLine("Duración estimada en meses: ", duracionEstimadaNumericUpDown.Text);
+                    PrintLine("Fecha de inico: ", fechaInicioDateTimePicker.Text);
+                    PrintLine("Fecha de finalización: ", fechaFinDateTimePicker.Text);
+                    PrintLine("Observaciones: ", observacionesTextBox.Text);
+                }
+            };
+
+            // Mostrar el cuadro de diálogo de impresión
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.AllowPrintToFile = false;
+            printDialog1.AllowSelection = false;
+            printDialog1.AllowSomePages = false;
+            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
+
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    printDocument1.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        //INFORME
+        private void toolStripButtonInforme_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Informe Obras";
+            Boolean abierto = false;
+
+            //comprobamos que no esta abierto el formulario;
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(InformeObras))
+                {
+                    if (frm.WindowState == FormWindowState.Minimized)
+                    {
+                        frm.WindowState = FormWindowState.Normal;
+                    }
+                    frm.BringToFront();
+                    abierto = true;
+                    break;
+                }
+            }
+            if (!abierto)
+            {
+                InformeObras informeObras = new InformeObras();
+                informeObras.ShowDialog();
+            }
+        }
+
+        //BUSCAR
         private void toolStripButtonBuscar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Buscar obra";
@@ -480,6 +571,7 @@ namespace GestionRecoDuero
             }
         }
 
+        //ACEPTAR
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -487,20 +579,8 @@ namespace GestionRecoDuero
                 errorProvider1.Clear();
                 obraBindingSource.EndEdit();
                 EstadoControlesAceptar();
+                datosGuardados = false;
             }
-        }
-
-        private void buttonCancelar_Click(object sender, EventArgs e)
-        {
-            var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
-            if (resultado == DialogResult.OK)
-            {
-                obraBindingSource.CancelEdit();
-                EstadoControlesCancelar();
-                errorProvider1.Clear();
-            }
-
-            RefrescarToolstripLabelObra();
         }
 
         private void EstadoControlesAceptar()
@@ -509,9 +589,30 @@ namespace GestionRecoDuero
             toolStripButtonGuardar.Enabled = true;
         }
 
+        //CANCELAR
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
+            if (resultado == DialogResult.OK)
+            {
+                obraBindingSource.CancelEdit();
+                EstadoControlesCancelar();
+                errorProvider1.Clear();
+                datosGuardados = false;
+            }
+
+            RefrescarToolstripLabelObra();
+        }
+
         private void EstadoControlesCancelar()
         {
             HabilitarControlesComunes();
+        }
+
+        //MÉTODOS
+        private void RefrescarToolstripLabelObra()
+        {
+            this.toolstripLabelContadorObras.Text = $"Obra {obraBindingSource.Position + 1} de {obraBindingSource.Count}";
         }
 
         private void HabilitarControlesComunes()
@@ -547,96 +648,6 @@ namespace GestionRecoDuero
             toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
         }
 
-        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Imprimiendo...";
-
-            PrintDocument printDocument1 = new PrintDocument();
-
-            // Manejar el evento PrintPage para imprimir los campos y la imagen
-            printDocument1.PrintPage += (sender1, e1) =>
-            {
-                using (var font = new Font("Times New Roman", 12))
-                {
-                    float y = 100;
-
-                    // Crear un método para imprimir cada línea
-                    void PrintLine(string label, string value)
-                    {
-                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                        y += 25;
-                    }
-
-                    PrintLine("Id: ", idObraLabel1.Text);
-                    PrintLine("Nombre: ", nombreTextBox.Text);
-                    PrintLine("Ubicación: ", ubicacionTextBox.Text);
-                    PrintLine("Estado: ", estadoComboBox.Text);
-                    PrintLine("Tipo: ", tipoComboBox.Text);
-                    PrintLine("Responsable: ", responsableComboBox.Text);
-                    PrintLine("Duración estimada en meses: ", duracionEstimadaNumericUpDown.Text);
-                    PrintLine("Fecha de inico: ", fechaInicioDateTimePicker.Text);
-                    PrintLine("Fecha de finalización: ", fechaFinDateTimePicker.Text);
-                    PrintLine("Observaciones: ", observacionesTextBox.Text);
-                }
-            };
-
-            // Mostrar el cuadro de diálogo de impresión
-            PrintDialog printDialog1 = new PrintDialog();
-            printDialog1.AllowPrintToFile = false;
-            printDialog1.AllowSelection = false;
-            printDialog1.AllowSomePages = false;
-            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
-
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    printDocument1.Print();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-
-        private void toolStripButtonInforme_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Informe Obras";
-            Boolean abierto = false;
-
-            //comprobamos que no esta abierto el formulario;
-            foreach (Form frm in Application.OpenForms)
-            {
-                if (frm.GetType() == typeof(InformeObras))
-                {
-                    if (frm.WindowState == FormWindowState.Minimized)
-                    {
-                        frm.WindowState = FormWindowState.Normal;
-                    }
-                    frm.BringToFront();
-                    abierto = true;
-                    break;
-                }
-            }
-            if (!abierto)
-            {
-                InformeObras informeObras = new InformeObras();
-                informeObras.ShowDialog();
-            }
-        }
-
-        //TODO: NO FUNCIONA COMO DEBERIA 
-        private void Obra_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
-        private void RefrescarToolstripLabelObra()
-        {
-            this.toolstripLabelContadorObras.Text = $"Obra {obraBindingSource.Position + 1} de {obraBindingSource.Count}";
-        }
-
         private void OcultarCampos()
         {
             idObraLabel1.Enabled = false;
@@ -667,6 +678,7 @@ namespace GestionRecoDuero
             observacionesTextBox.Enabled = true;
         }
 
+        //COMPROBAR DATOS
         private bool ComprobarDatosIntroducidos()
         {
             //Nombre 
@@ -701,6 +713,9 @@ namespace GestionRecoDuero
             return true;
         }
 
+        //TODO: VALIDATINGS
+
+        //Atajos de teclado
         private void Obra_KeyDown(object sender, KeyEventArgs e)
         {
             //Añadir
@@ -811,6 +826,31 @@ namespace GestionRecoDuero
             {
                 Comun.MostrarMensajeDeError("La fecha de inicio no puede ser posterior a la fecha de finalización", "Error al seleccionar la fecha");
                 fechaInicioDateTimePicker.Value = DateTime.Today;
+            }
+        }
+
+        private void Obra_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (datosGuardados == false)
+            {
+                DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
+                    "Tiene cambios sin guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (ComprobarDatosIntroducidos())
+                    {
+                        this.obraBindingSource.EndEdit();
+                        this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
+                    }
+                    else
+                    {
+                        Comun.MostrarMensajeDeError("Hay datos erróneos porfavor reviselo", "Error al guardar");
+                        // Cancela el cierre del formulario
+                        e.Cancel = true;
+                    }
+
+                }
             }
         }
     }

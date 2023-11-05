@@ -8,6 +8,8 @@ namespace GestionRecoDuero
 {
     public partial class Cliente : Form
     {
+        private bool datosGuardados = true;
+
         public Cliente()
         {
             InitializeComponent();
@@ -154,7 +156,7 @@ namespace GestionRecoDuero
             NavegarRegistro(clienteBindingSource.Count - 1); // Ir al último registro
         }
 
-        //BOTONES
+        //AÑADIR
         private void toolStripButtonAnadir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Añadir cliente";
@@ -167,6 +169,7 @@ namespace GestionRecoDuero
             HabilitarControlesEnAnadir();
 
             RefrescarToolstripLabelCliente();
+            datosGuardados = false;
         }
 
         private void HabilitarControlesEnAnadir()
@@ -183,9 +186,9 @@ namespace GestionRecoDuero
             tipoComboBox.SelectedIndex = 0;
         }
 
-        //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
         private void DeshabilitarBotonesEnAnadir()
         {
+            //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
             toolStripButtonAnadir.Enabled = false;
             toolStripButtonAnterior.Enabled = false;
             toolStripButtonInicio.Enabled = false;
@@ -198,6 +201,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //ELIMINAR
         private void toolStripButtonEliminar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Eliminar cliente";
@@ -240,11 +244,13 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelCliente();
         }
 
+        //EDITAR
         private void toolStripButtonEditar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Editar cliente";
             EstadoControlesEditar();
             ComprobarDatosIntroducidos();
+            datosGuardados = false;
         }
 
         private void EstadoControlesEditar()
@@ -270,6 +276,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //GUARDAR
         private void toolStripButtonGuardar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -283,6 +290,7 @@ namespace GestionRecoDuero
                 RefrescarToolstripLabelCliente();
 
                 Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
+                datosGuardados = true;
             }
         }
 
@@ -353,6 +361,87 @@ namespace GestionRecoDuero
             OcultarCampos();
         }
 
+        //IMPRIMIR
+        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Imprimiendo...";
+
+            PrintDocument printDocument1 = new PrintDocument();
+
+            // Manejar el evento PrintPage para imprimir los campos y la imagen
+            printDocument1.PrintPage += (sender1, e1) =>
+            {
+                using (var font = new Font("Times New Roman", 12))
+                {
+                    float y = 100;
+
+                    // Crear un método para imprimir cada línea
+                    void PrintLine(string label, string value)
+                    {
+                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
+                        y += 25;
+                    }
+
+                    //TODO: ARREGLAR CAMPOS
+                    PrintLine("Id: ", idClienteLabel1.Text);
+                    PrintLine("Nombre: ", nombreTextBox.Text);
+                    PrintLine("Apellidos: ", apellidosTextBox.Text);
+                    PrintLine("Dirección: ", direccionTextBox.Text);
+                    PrintLine("Teléfono: ", telefonoTextBox.Text);
+                    PrintLine("Email: ", emailTextBox.Text);
+                    PrintLine("Tipo: ", tipoComboBox.Text);
+                    PrintLine("Observaciones: ", observacionesTextBox.Text);
+                }
+            };
+
+            // Mostrar el cuadro de diálogo de impresión
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.AllowPrintToFile = false;
+            printDialog1.AllowSelection = false;
+            printDialog1.AllowSomePages = false;
+            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
+
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    printDocument1.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        //INFORME
+        private void toolStripButtonInforme_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Informe Clientes";
+            Boolean abierto = false;
+
+            //comprobamos que no esta abierto el formulario;
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(InformeClientes))
+                {
+                    if (frm.WindowState == FormWindowState.Minimized)
+                    {
+                        frm.WindowState = FormWindowState.Normal;
+                    }
+                    frm.BringToFront();
+                    abierto = true;
+                    break;
+                }
+            }
+            if (!abierto)
+            {
+                InformeClientes informeClientes = new InformeClientes();
+                informeClientes.ShowDialog();
+            }
+        }
+
+        //BUSCAR
         private void toolStripButtonBuscar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Buscar cliente";
@@ -466,6 +555,7 @@ namespace GestionRecoDuero
             }
         }
 
+        //ACEPTAR
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -473,20 +563,8 @@ namespace GestionRecoDuero
                 errorProvider1.Clear();
                 clienteBindingSource.EndEdit(); //Lo guarda en memoria
                 EstadoControlesAceptar();
+                datosGuardados = false;
             }
-        }
-
-        private void buttonCancelar_Click(object sender, EventArgs e)
-        {
-            var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
-            if (resultado == DialogResult.OK)
-            {
-                clienteBindingSource.CancelEdit();
-                EstadoControlesCancelar();
-                errorProvider1.Clear();
-            }
-
-            RefrescarToolstripLabelCliente();
         }
 
         private void EstadoControlesAceptar()
@@ -495,45 +573,27 @@ namespace GestionRecoDuero
             toolStripButtonGuardar.Enabled = true;
         }
 
+        //CANCELAR
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
+            if (resultado == DialogResult.OK)
+            {
+                clienteBindingSource.CancelEdit();
+                EstadoControlesCancelar();
+                errorProvider1.Clear();
+                datosGuardados = false;
+            }
+
+            RefrescarToolstripLabelCliente();
+        }
+
         private void EstadoControlesCancelar()
         {
             HabilitarControlesComunes();
         }
 
-        private void HabilitarControlesComunes()
-        {
-            // Botones
-            toolStripButtonAnadir.Enabled = true;
-            toolStripButtonEditar.Enabled = true;
-            toolStripButtonEliminar.Enabled = true;
-            toolStripButtonBuscar.Enabled = true;
-            toolStripComboBoxBuscarClientes.Enabled = true;
-            toolStripTextBoxBuscar.Enabled = true;
-
-            // Campos
-            OcultarCampos();
-
-            // Botones
-            buttonAceptar.Visible = false;
-            buttonCancelar.Visible = false;
-
-            // Flechas
-            ActualizarEstadoFlechas();
-        }
-
-        private void ActualizarEstadoFlechas()
-        {
-            bool tieneRegistros = clienteBindingSource.Count > 0;
-            bool esElPrimero = clienteBindingSource.Position == 0;
-            bool esElUltimo = clienteBindingSource.Position == clienteBindingSource.Count - 1;
-
-            toolStripButtonInicio.Enabled = !esElPrimero && tieneRegistros;
-            toolStripButtonAnterior.Enabled = !esElPrimero && tieneRegistros;
-            toolStripButtonSiguiente.Enabled = !esElUltimo && tieneRegistros;
-            toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
-        }
-
-        //TODO: REVISAR
+        //IMÁGEN
         private void contratoPictureBox_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
@@ -570,104 +630,43 @@ namespace GestionRecoDuero
             }
         }
 
-        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Imprimiendo...";
-
-            PrintDocument printDocument1 = new PrintDocument();
-
-            // Manejar el evento PrintPage para imprimir los campos y la imagen
-            printDocument1.PrintPage += (sender1, e1) =>
-            {
-                using (var font = new Font("Times New Roman", 12))
-                {
-                    float y = 100;
-
-                    // Crear un método para imprimir cada línea
-                    void PrintLine(string label, string value)
-                    {
-                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                        y += 25;
-                    }
-
-                    //TODO: ARREGLAR CAMPOS
-                    PrintLine("Id: ", idClienteLabel1.Text);
-                    PrintLine("Nombre: ", nombreTextBox.Text);
-                    PrintLine("Apellidos: ", apellidosTextBox.Text);
-                    PrintLine("Dirección: ", direccionTextBox.Text);
-                    PrintLine("Teléfono: ", telefonoTextBox.Text);
-                    PrintLine("Email: ", emailTextBox.Text);
-                    PrintLine("Tipo: ", tipoComboBox.Text);
-                    PrintLine("Observaciones: ", observacionesTextBox.Text);
-                }
-            };
-
-            // Mostrar el cuadro de diálogo de impresión
-            PrintDialog printDialog1 = new PrintDialog();
-            printDialog1.AllowPrintToFile = false;
-            printDialog1.AllowSelection = false;
-            printDialog1.AllowSomePages = false;
-            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
-
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    printDocument1.Print();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-
-        private void toolStripButtonInforme_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Informe Clientes";
-            Boolean abierto = false;
-
-            //comprobamos que no esta abierto el formulario;
-            foreach (Form frm in Application.OpenForms)
-            {
-                if (frm.GetType() == typeof(InformeClientes))
-                {
-                    if (frm.WindowState == FormWindowState.Minimized)
-                    {
-                        frm.WindowState = FormWindowState.Normal;
-                    }
-                    frm.BringToFront();
-                    abierto = true;
-                    break;
-                }
-            }
-            if (!abierto)
-            {
-                InformeClientes informeClientes = new InformeClientes();
-                informeClientes.ShowDialog();
-            }
-        }
-
-        //TODO: NO FUNCIONA COMO DEBERIA
-        private void Cliente_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //if (recoDueroDataSet.HasChanges())
-            //{
-            //    DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
-            //        this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
-
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        this.Validate();
-            //        this.clienteBindingSource.EndEdit();
-            //        this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
-            //    }
-            //}
-        }
-
+        //MÉTODOS
         private void RefrescarToolstripLabelCliente()
         {
             this.toolstripLabelContadorClientes.Text = $"Cliente {clienteBindingSource.Position + 1} de {clienteBindingSource.Count}";
+        }
+
+        private void HabilitarControlesComunes()
+        {
+            // Botones
+            toolStripButtonAnadir.Enabled = true;
+            toolStripButtonEditar.Enabled = true;
+            toolStripButtonEliminar.Enabled = true;
+            toolStripButtonBuscar.Enabled = true;
+            toolStripComboBoxBuscarClientes.Enabled = true;
+            toolStripTextBoxBuscar.Enabled = true;
+
+            // Campos
+            OcultarCampos();
+
+            // Botones
+            buttonAceptar.Visible = false;
+            buttonCancelar.Visible = false;
+
+            // Flechas
+            ActualizarEstadoFlechas();
+        }
+
+        private void ActualizarEstadoFlechas()
+        {
+            bool tieneRegistros = clienteBindingSource.Count > 0;
+            bool esElPrimero = clienteBindingSource.Position == 0;
+            bool esElUltimo = clienteBindingSource.Position == clienteBindingSource.Count - 1;
+
+            toolStripButtonInicio.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonAnterior.Enabled = !esElPrimero && tieneRegistros;
+            toolStripButtonSiguiente.Enabled = !esElUltimo && tieneRegistros;
+            toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
         }
 
         private void OcultarCampos() 
@@ -698,6 +697,7 @@ namespace GestionRecoDuero
             contratoPictureBox.Enabled = true;
         }
 
+        //COMPROBAR DATOS
         private bool ComprobarDatosIntroducidos()
         {
             //Nombre 
@@ -774,6 +774,7 @@ namespace GestionRecoDuero
             return true;
         }
 
+        //VALIDATINGS
         private void nombreTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (nombreTextBox.TextLength > 30)
@@ -885,6 +886,31 @@ namespace GestionRecoDuero
             {
                 buttonCancelar_Click(this, EventArgs.Empty);
                 e.Handled = true; // Evita que el evento de teclado se propague.
+            }
+        }
+
+        private void Cliente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (datosGuardados == false)
+            {
+                DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
+                    "Tiene cambios sin guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (ComprobarDatosIntroducidos())
+                    {
+                        this.clienteBindingSource.EndEdit();
+                        this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
+                    }
+                    else
+                    {
+                        Comun.MostrarMensajeDeError("Hay datos erróneos porfavor reviselo", "Error al guardar");
+                        // Cancela el cierre del formulario
+                        e.Cancel = true;
+                    }
+
+                }
             }
         }
     }

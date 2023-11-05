@@ -75,9 +75,9 @@
             this.fechaAdquisicionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelEuros = new System.Windows.Forms.Label();
             this.materialTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.MaterialTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
-            this.labelEuros = new System.Windows.Forms.Label();
             idMaterialLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             cantidadLabel = new System.Windows.Forms.Label();
@@ -132,7 +132,7 @@
             costeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             costeLabel.Location = new System.Drawing.Point(26, 248);
             costeLabel.Name = "costeLabel";
-            costeLabel.Size = new System.Drawing.Size(188, 28);
+            costeLabel.Size = new System.Drawing.Size(150, 22);
             costeLabel.TabIndex = 42;
             costeLabel.Text = "Coste x Unidad *";
             // 
@@ -337,7 +337,6 @@
             // 
             // toolStripComboBoxBuscarMateriales
             // 
-            this.toolStripComboBoxBuscarMateriales.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarMateriales.Items.AddRange(new object[] {
             "Id",
             "Nombre"});
@@ -557,6 +556,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de los materiales";
             // 
+            // labelEuros
+            // 
+            this.labelEuros.AutoSize = true;
+            this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEuros.Location = new System.Drawing.Point(455, 248);
+            this.labelEuros.Name = "labelEuros";
+            this.labelEuros.Size = new System.Drawing.Size(20, 22);
+            this.labelEuros.TabIndex = 55;
+            this.labelEuros.Text = "€";
+            // 
             // materialTableAdapter
             // 
             this.materialTableAdapter.ClearBeforeFill = true;
@@ -574,16 +583,6 @@
             this.tableAdapterManager.UpdateOrder = GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsuarioTableAdapter = null;
             this.tableAdapterManager.VehiculoTableAdapter = null;
-            // 
-            // labelEuros
-            // 
-            this.labelEuros.AutoSize = true;
-            this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEuros.Location = new System.Drawing.Point(455, 248);
-            this.labelEuros.Name = "labelEuros";
-            this.labelEuros.Size = new System.Drawing.Size(20, 22);
-            this.labelEuros.TabIndex = 55;
-            this.labelEuros.Text = "€";
             // 
             // Material
             // 
@@ -606,7 +605,7 @@
             this.Name = "Material";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Material";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Material_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Material_FormClosing);
             this.Load += new System.EventHandler(this.Material_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Material_KeyDown);
             this.toolStrip1.ResumeLayout(false);

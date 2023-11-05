@@ -353,7 +353,6 @@
             // 
             // toolStripComboBoxBuscarObras
             // 
-            this.toolStripComboBoxBuscarObras.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarObras.Items.AddRange(new object[] {
             "Id",
             "Nombre",
@@ -654,7 +653,7 @@
             this.Name = "Obra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Obra";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Obra_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Obra_FormClosing);
             this.Load += new System.EventHandler(this.Obra_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Obra_KeyDown);
             this.toolStrip1.ResumeLayout(false);

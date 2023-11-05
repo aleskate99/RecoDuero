@@ -7,6 +7,8 @@ namespace GestionRecoDuero
 {
     public partial class Material : Form
     {
+        private bool datosGuardados = true;
+
         public Material()
         {
             InitializeComponent();
@@ -151,6 +153,7 @@ namespace GestionRecoDuero
             NavegarRegistro(materialBindingSource.Count - 1); // Ir al último registro
         }
 
+        //AÑADIR
         private void toolStripButtonAnadir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Añadir material";
@@ -163,6 +166,7 @@ namespace GestionRecoDuero
             HabilitarControlesEnAnadir();
 
             RefrescarToolstripLabelMaterial();
+            datosGuardados = false;
         }
 
         private void HabilitarControlesEnAnadir()
@@ -179,9 +183,9 @@ namespace GestionRecoDuero
             estadoComboBox.SelectedIndex = 0;
         }
 
-        //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
         private void DeshabilitarBotonesEnAnadir()
         {
+            //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
             toolStripButtonAnadir.Enabled = false;
             toolStripButtonAnterior.Enabled = false;
             toolStripButtonInicio.Enabled = false;
@@ -194,6 +198,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //ELIMINAR
         private void toolStripButtonEliminar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Eliminar material";
@@ -236,11 +241,13 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelMaterial();
         }
 
+        //EDITAR
         private void toolStripButtonEditar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Editar material";
             EstadoControlesEditar();
             ComprobarDatosIntroducidos();
+            datosGuardados = false;
         }
 
         private void EstadoControlesEditar()
@@ -266,6 +273,7 @@ namespace GestionRecoDuero
             toolStripTextBoxBuscar.Enabled = false;
         }
 
+        //GUARDAR
         private void toolStripButtonGuardar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -279,6 +287,7 @@ namespace GestionRecoDuero
                 RefrescarToolstripLabelMaterial();
 
                 Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
+                datosGuardados = true;
             }
         }
 
@@ -347,6 +356,87 @@ namespace GestionRecoDuero
             OcultarCampos();
         }
 
+        //IMPRIMIR
+        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Imprimiendo...";
+
+            PrintDocument printDocument1 = new PrintDocument();
+
+            // Manejar el evento PrintPage para imprimir los campos y la imagen
+            printDocument1.PrintPage += (sender1, e1) =>
+            {
+                using (var font = new Font("Times New Roman", 12))
+                {
+                    float y = 100;
+
+                    // Crear un método para imprimir cada línea
+                    void PrintLine(string label, string value)
+                    {
+                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
+                        y += 25;
+                    }
+
+                    PrintLine("Id: ", idMaterialLabel1.Text);
+                    PrintLine("Nombre: ", nombreTextBox.Text);
+                    PrintLine("Cantidad: ", cantidadTextBox.Text);
+                    PrintLine("Coste: ", costeTextBox.Text);
+                    PrintLine("Distribuidor: ", distribuidorTextBox.Text);
+                    PrintLine("Estado: ", estadoComboBox.Text);
+                    PrintLine("Garantía: ", garantiaCheckBox.Text);
+                    PrintLine("Fecha de adquisición: ", fechaAdquisicionDateTimePicker.Text);
+                    PrintLine("Descripción: ", descripcionTextBox.Text);
+                }
+            };
+
+            // Mostrar el cuadro de diálogo de impresión
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.AllowPrintToFile = false;
+            printDialog1.AllowSelection = false;
+            printDialog1.AllowSomePages = false;
+            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
+
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    printDocument1.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        //INFORME
+        private void toolStripButtonInforme_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Informe Materiales";
+            Boolean abierto = false;
+
+            //comprobamos que no esta abierto el formulario;
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(InformeMateriales))
+                {
+                    if (frm.WindowState == FormWindowState.Minimized)
+                    {
+                        frm.WindowState = FormWindowState.Normal;
+                    }
+                    frm.BringToFront();
+                    abierto = true;
+                    break;
+                }
+            }
+            if (!abierto)
+            {
+                InformeMateriales informeMateriales = new InformeMateriales();
+                informeMateriales.ShowDialog();
+            }
+        }
+
+        //BUSCAR
         private void toolStripButtonBuscar_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Buscar material";
@@ -460,6 +550,7 @@ namespace GestionRecoDuero
             }
         }
 
+        //ACEPTAR
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidos())
@@ -467,20 +558,8 @@ namespace GestionRecoDuero
                 errorProvider1.Clear();
                 materialBindingSource.EndEdit();
                 EstadoControlesAceptar();
+                datosGuardados = false;
             }
-        }
-
-        private void buttonCancelar_Click(object sender, EventArgs e)
-        {
-            var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
-            if (resultado == DialogResult.OK)
-            {
-                materialBindingSource.CancelEdit();
-                EstadoControlesCancelar();
-                errorProvider1.Clear();
-            }
-
-            RefrescarToolstripLabelMaterial();
         }
 
         private void EstadoControlesAceptar()
@@ -489,9 +568,30 @@ namespace GestionRecoDuero
             toolStripButtonGuardar.Enabled = true;
         }
 
+        //CANCELAR
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
+            if (resultado == DialogResult.OK)
+            {
+                materialBindingSource.CancelEdit();
+                EstadoControlesCancelar();
+                errorProvider1.Clear();
+                datosGuardados = false;
+            }
+
+            RefrescarToolstripLabelMaterial();
+        }
+        
         private void EstadoControlesCancelar()
         {
             HabilitarControlesComunes();
+        }
+
+        //MÉTODOS
+        private void RefrescarToolstripLabelMaterial()
+        {
+            this.toolstripLabelContadorMateriales.Text = $"Material {materialBindingSource.Position + 1} de {materialBindingSource.Count}";
         }
 
         private void HabilitarControlesComunes()
@@ -527,95 +627,6 @@ namespace GestionRecoDuero
             toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
         }
 
-        private void toolStripButtonImprimir_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Imprimiendo...";
-
-            PrintDocument printDocument1 = new PrintDocument();
-
-            // Manejar el evento PrintPage para imprimir los campos y la imagen
-            printDocument1.PrintPage += (sender1, e1) =>
-            {
-                using (var font = new Font("Times New Roman", 12))
-                {
-                    float y = 100;
-
-                    // Crear un método para imprimir cada línea
-                    void PrintLine(string label, string value)
-                    {
-                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
-                        y += 25;
-                    }
-
-                    PrintLine("Id: ", idMaterialLabel1.Text);
-                    PrintLine("Nombre: ", nombreTextBox.Text);
-                    PrintLine("Cantidad: ", cantidadTextBox.Text);
-                    PrintLine("Coste: ", costeTextBox.Text);
-                    PrintLine("Distribuidor: ", distribuidorTextBox.Text);
-                    PrintLine("Estado: ", estadoComboBox.Text);
-                    PrintLine("Garantía: ", garantiaCheckBox.Text);
-                    PrintLine("Fecha de adquisición: ", fechaAdquisicionDateTimePicker.Text);
-                    PrintLine("Descripción: ", descripcionTextBox.Text);
-                }
-            };
-
-            // Mostrar el cuadro de diálogo de impresión
-            PrintDialog printDialog1 = new PrintDialog();
-            printDialog1.AllowPrintToFile = false;
-            printDialog1.AllowSelection = false;
-            printDialog1.AllowSomePages = false;
-            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
-
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    printDocument1.Print();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-        }
-
-        private void toolStripButtonInforme_Click(object sender, EventArgs e)
-        {
-            toolStripStatusLabel1.Text = "Informe Materiales";
-            Boolean abierto = false;
-
-            //comprobamos que no esta abierto el formulario;
-            foreach (Form frm in Application.OpenForms)
-            {
-                if (frm.GetType() == typeof(InformeMateriales))
-                {
-                    if (frm.WindowState == FormWindowState.Minimized)
-                    {
-                        frm.WindowState = FormWindowState.Normal;
-                    }
-                    frm.BringToFront();
-                    abierto = true;
-                    break;
-                }
-            }
-            if (!abierto)
-            {
-                InformeMateriales informeMateriales = new InformeMateriales();
-                informeMateriales.ShowDialog();
-            }
-        }
-
-        //TODO: NO FUNCIONA COMO DEBERIA
-        private void Material_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
-        private void RefrescarToolstripLabelMaterial()
-        {
-            this.toolstripLabelContadorMateriales.Text = $"Material {materialBindingSource.Position + 1} de {materialBindingSource.Count}";
-        }
-
         private void OcultarCampos()
         {
             idMaterialLabel1.Enabled = false;
@@ -644,6 +655,7 @@ namespace GestionRecoDuero
             descripcionTextBox.Enabled = true;
         }
 
+        //COMPROBAR DATOS
         private bool ComprobarDatosIntroducidos()
         {
             //Nombre 
@@ -711,6 +723,8 @@ namespace GestionRecoDuero
             //si todo es valido
             return true;
         }
+
+        //TODO: VALIDATINGS
 
         private void Material_KeyDown(object sender, KeyEventArgs e)
         {
@@ -780,6 +794,31 @@ namespace GestionRecoDuero
                 if (seleccion.Equals("Agotado"))
                 {
                     cantidadTextBox.Text = "0";
+                }
+            }
+        }
+
+        private void Material_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (datosGuardados == false)
+            {
+                DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
+                    "Tiene cambios sin guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (ComprobarDatosIntroducidos())
+                    {
+                        this.materialBindingSource.EndEdit();
+                        this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
+                    }
+                    else
+                    {
+                        Comun.MostrarMensajeDeError("Hay datos erróneos porfavor reviselo", "Error al guardar");
+                        // Cancela el cierre del formulario
+                        e.Cancel = true;
+                    }
+
                 }
             }
         }
