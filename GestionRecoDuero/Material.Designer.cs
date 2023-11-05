@@ -77,6 +77,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.materialTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.MaterialTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
+            this.labelEuros = new System.Windows.Forms.Label();
             idMaterialLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             cantidadLabel = new System.Windows.Forms.Label();
@@ -131,9 +132,9 @@
             costeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             costeLabel.Location = new System.Drawing.Point(26, 248);
             costeLabel.Name = "costeLabel";
-            costeLabel.Size = new System.Drawing.Size(71, 22);
+            costeLabel.Size = new System.Drawing.Size(188, 28);
             costeLabel.TabIndex = 42;
-            costeLabel.Text = "Coste *";
+            costeLabel.Text = "Coste x Unidad *";
             // 
             // distribuidorLabel
             // 
@@ -209,7 +210,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1693, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(1354, 28);
             this.toolStrip1.TabIndex = 31;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -219,7 +220,7 @@
             this.toolStripButtonInicio.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInicio.Image")));
             this.toolStripButtonInicio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInicio.Name = "toolStripButtonInicio";
-            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 36);
+            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonInicio.ToolTipText = "Ir al principio";
             this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click_1);
             // 
@@ -270,7 +271,7 @@
             this.toolStripButtonAnadir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnadir.Image")));
             this.toolStripButtonAnadir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
-            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 36);
+            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonAnadir.ToolTipText = "Añadir material";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
             // 
@@ -280,7 +281,7 @@
             this.toolStripButtonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEliminar.Image")));
             this.toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 36);
+            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonEliminar.ToolTipText = "Eliminar material";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
             // 
@@ -290,7 +291,7 @@
             this.toolStripButtonEditar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditar.Image")));
             this.toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
-            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 36);
+            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonEditar.ToolTipText = "Editar material";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
             // 
@@ -336,6 +337,7 @@
             // 
             // toolStripComboBoxBuscarMateriales
             // 
+            this.toolStripComboBoxBuscarMateriales.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarMateriales.Items.AddRange(new object[] {
             "Id",
             "Nombre"});
@@ -534,6 +536,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelEuros);
             this.groupBox1.Controls.Add(idMaterialLabel);
             this.groupBox1.Controls.Add(this.estadoComboBox);
             this.groupBox1.Controls.Add(this.idMaterialLabel1);
@@ -571,6 +574,16 @@
             this.tableAdapterManager.UpdateOrder = GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsuarioTableAdapter = null;
             this.tableAdapterManager.VehiculoTableAdapter = null;
+            // 
+            // labelEuros
+            // 
+            this.labelEuros.AutoSize = true;
+            this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEuros.Location = new System.Drawing.Point(455, 248);
+            this.labelEuros.Name = "labelEuros";
+            this.labelEuros.Size = new System.Drawing.Size(20, 22);
+            this.labelEuros.TabIndex = 55;
+            this.labelEuros.Text = "€";
             // 
             // Material
             // 
@@ -651,5 +664,6 @@
         private System.Windows.Forms.DateTimePicker fechaAdquisicionDateTimePicker;
         private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelEuros;
     }
 }

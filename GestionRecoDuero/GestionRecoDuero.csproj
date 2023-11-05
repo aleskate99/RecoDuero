@@ -170,6 +170,7 @@
     <Compile Include="Obra.Designer.cs">
       <DependentUpon>Obra.cs</DependentUpon>
     </Compile>
+    <Compile Include="PersonalizarControles.cs" />
     <Compile Include="Program.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>

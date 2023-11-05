@@ -200,7 +200,7 @@
             duracionEstimadaLabel.Name = "duracionEstimadaLabel";
             duracionEstimadaLabel.Size = new System.Drawing.Size(183, 22);
             duracionEstimadaLabel.TabIndex = 57;
-            duracionEstimadaLabel.Text = "Duracion Estimada *\r\n";
+            duracionEstimadaLabel.Text = "Duración Estimada *\r\n";
             // 
             // toolStrip1
             // 
@@ -353,6 +353,7 @@
             // 
             // toolStripComboBoxBuscarObras
             // 
+            this.toolStripComboBoxBuscarObras.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarObras.Items.AddRange(new object[] {
             "Id",
             "Nombre",

@@ -80,6 +80,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelEuros = new System.Windows.Forms.Label();
             idServicioExternoLabel = new System.Windows.Forms.Label();
             empresaLabel = new System.Windows.Forms.Label();
             telefonoLabel = new System.Windows.Forms.Label();
@@ -484,6 +485,7 @@
             // 
             // toolStripComboBoxBuscarServiciosExternos
             // 
+            this.toolStripComboBoxBuscarServiciosExternos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarServiciosExternos.Items.AddRange(new object[] {
             "Nombre"});
             this.toolStripComboBoxBuscarServiciosExternos.Name = "toolStripComboBoxBuscarServiciosExternos";
@@ -611,11 +613,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del servicio externo";
             // 
+            // labelEuros
+            // 
+            this.labelEuros.AutoSize = true;
+            this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEuros.Location = new System.Drawing.Point(1140, 184);
+            this.labelEuros.Name = "labelEuros";
+            this.labelEuros.Size = new System.Drawing.Size(20, 22);
+            this.labelEuros.TabIndex = 62;
+            this.labelEuros.Text = "€";
+            // 
             // ServicioExterno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1341, 794);
+            this.Controls.Add(this.labelEuros);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonVolverInicio);
@@ -693,5 +706,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelEuros;
     }
 }

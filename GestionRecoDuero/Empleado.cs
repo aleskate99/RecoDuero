@@ -9,10 +9,16 @@ namespace GestionRecoDuero
 {
     public partial class Empleado : Form
     {
+        private bool datosGuardados = true;
+
         public Empleado()
         {
             InitializeComponent();
             KeyPreview = true;
+
+            //Redondear controles
+            Bordes.BordesRedondosBoton(buttonAceptar);
+            Bordes.BordesRedondosBoton(buttonCancelar);
         }
 
         private void Empleado_Load(object sender, EventArgs e)
@@ -169,6 +175,7 @@ namespace GestionRecoDuero
             HabilitarControlesEnAnadir();
 
             RefrescarToolstripLabelEmpleado();
+            datosGuardados = false;
         }
 
         private void HabilitarControlesEnAnadir()
@@ -252,6 +259,7 @@ namespace GestionRecoDuero
             toolStripStatusLabel1.Text = "Editar empleado";
             EstadoControlesEditar();
             ComprobarDatosIntroducidos();
+            datosGuardados = false;
         }
 
         private void EstadoControlesEditar()
@@ -290,6 +298,7 @@ namespace GestionRecoDuero
                 RefrescarToolstripLabelEmpleado();
 
                 Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
+                datosGuardados = true;
             }
         }
 
@@ -499,6 +508,7 @@ namespace GestionRecoDuero
                 errorProvider1.Clear();
                 empleadoBindingSource.EndEdit();
                 EstadoControlesAceptar();
+                datosGuardados = false;
             }
         }
 
@@ -510,6 +520,7 @@ namespace GestionRecoDuero
                 empleadoBindingSource.CancelEdit();
                 EstadoControlesCancelar();
                 errorProvider1.Clear();
+                datosGuardados = false;
             }
 
             RefrescarToolstripLabelEmpleado();
@@ -676,23 +687,6 @@ namespace GestionRecoDuero
             }
         }
 
-        //TODO: NO FUNCIONA COMO DEBERIA 
-        private void Empleado_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //if (recoDueroDataSet.HasChanges())
-            //{
-            //    DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
-            //        this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
-
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        this.Validate();
-            //        this.empleadoBindingSource.EndEdit();
-            //        this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
-            //    }
-            //}
-        }
-
         private void RefrescarToolstripLabelEmpleado()
         {
             this.toolstripLabelContadorEmpleados.Text = $"Empleado {empleadoBindingSource.Position + 1} de {empleadoBindingSource.Count}";
@@ -783,7 +777,7 @@ namespace GestionRecoDuero
             }
             else if (!Comun.ComprobarDni(dNITextBox.Text))
             {
-                errorProvider1.SetError(dNITextBox, "Debe tener 8 números y 1 letra");
+                errorProvider1.SetError(dNITextBox, "Debe tener 8 números y 1 letra mayúscula");
                 dNITextBox.Clear();
                 return false;
             }
@@ -854,7 +848,7 @@ namespace GestionRecoDuero
         {
             if (Comun.ComprobarDni(dNITextBox.Text) == false && (dNITextBox.Text.Length != 0))
             {
-                errorProvider1.SetError(dNITextBox, "El DNI debe tener 8 números y 1 letra");
+                errorProvider1.SetError(dNITextBox, "El DNI debe tener 8 números y 1 letra mayúscula");
                 dNITextBox.Clear();
             }
             else
@@ -972,6 +966,31 @@ namespace GestionRecoDuero
                 }
             }
            
+        }
+
+        private void Empleado_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (datosGuardados == false)
+            {
+                DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
+                    "Tiene cambios sin guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (ComprobarDatosIntroducidos())
+                    {
+                        this.empleadoBindingSource.EndEdit();
+                        this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
+                    }
+                    else
+                    {
+                        Comun.MostrarMensajeDeError("Hay datos erróneos porfavor reviselo", "Error al guardar");
+                        // Cancela el cierre del formulario
+                        e.Cancel = true;
+                    }
+                   
+                }
+            }
         }
     }
 }

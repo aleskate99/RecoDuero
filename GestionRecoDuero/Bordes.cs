@@ -13,6 +13,13 @@ namespace GestionRecoDuero
             formulario.Region = new Region(path);   
         }
 
+        public static void BordesRedondosBoton(Button button)
+        {
+            int borderRadius = 20;
+            GraphicsPath path = GetRoundedPath(button.ClientRectangle, borderRadius);
+            button.Region = new Region(path);
+        }
+
         private static GraphicsPath GetRoundedPath(Rectangle rect, int borderRadius)
         {
             GraphicsPath path = new GraphicsPath();

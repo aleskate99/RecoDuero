@@ -273,7 +273,7 @@
             this.fechaNacimientoDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaNacimientoDateTimePicker.Location = new System.Drawing.Point(223, 255);
             this.fechaNacimientoDateTimePicker.Name = "fechaNacimientoDateTimePicker";
-            this.fechaNacimientoDateTimePicker.Size = new System.Drawing.Size(245, 30);
+            this.fechaNacimientoDateTimePicker.Size = new System.Drawing.Size(254, 30);
             this.fechaNacimientoDateTimePicker.TabIndex = 4;
             this.fechaNacimientoDateTimePicker.ValueChanged += new System.EventHandler(this.fechaNacimientoDateTimePicker_ValueChanged);
             // 
@@ -293,7 +293,7 @@
             this.dNITextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dNITextBox.Location = new System.Drawing.Point(223, 199);
             this.dNITextBox.Name = "dNITextBox";
-            this.dNITextBox.Size = new System.Drawing.Size(245, 30);
+            this.dNITextBox.Size = new System.Drawing.Size(254, 30);
             this.dNITextBox.TabIndex = 3;
             // 
             // generoComboBox
@@ -308,7 +308,7 @@
             "Otro"});
             this.generoComboBox.Location = new System.Drawing.Point(223, 419);
             this.generoComboBox.Name = "generoComboBox";
-            this.generoComboBox.Size = new System.Drawing.Size(245, 30);
+            this.generoComboBox.Size = new System.Drawing.Size(254, 30);
             this.generoComboBox.TabIndex = 7;
             // 
             // idEmpleadoLabel1
@@ -327,7 +327,7 @@
             this.nombreTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nombreTextBox.Location = new System.Drawing.Point(223, 88);
             this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(245, 30);
+            this.nombreTextBox.Size = new System.Drawing.Size(254, 30);
             this.nombreTextBox.TabIndex = 1;
             // 
             // apellidosTextBox
@@ -336,7 +336,7 @@
             this.apellidosTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.apellidosTextBox.Location = new System.Drawing.Point(223, 141);
             this.apellidosTextBox.Name = "apellidosTextBox";
-            this.apellidosTextBox.Size = new System.Drawing.Size(245, 30);
+            this.apellidosTextBox.Size = new System.Drawing.Size(254, 30);
             this.apellidosTextBox.TabIndex = 2;
             // 
             // emailTextBox
@@ -345,7 +345,7 @@
             this.emailTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailTextBox.Location = new System.Drawing.Point(223, 369);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(245, 30);
+            this.emailTextBox.Size = new System.Drawing.Size(254, 30);
             this.emailTextBox.TabIndex = 6;
             // 
             // telefonoTextBox
@@ -354,7 +354,7 @@
             this.telefonoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.telefonoTextBox.Location = new System.Drawing.Point(223, 311);
             this.telefonoTextBox.Name = "telefonoTextBox";
-            this.telefonoTextBox.Size = new System.Drawing.Size(245, 30);
+            this.telefonoTextBox.Size = new System.Drawing.Size(254, 30);
             this.telefonoTextBox.TabIndex = 5;
             // 
             // groupBox2
@@ -369,7 +369,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(703, 122);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(480, 229);
+            this.groupBox2.Size = new System.Drawing.Size(493, 229);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos de cobro";
@@ -396,7 +396,7 @@
             "Vacaciones"});
             this.situacionLaboralComboBox.Location = new System.Drawing.Point(216, 93);
             this.situacionLaboralComboBox.Name = "situacionLaboralComboBox";
-            this.situacionLaboralComboBox.Size = new System.Drawing.Size(237, 30);
+            this.situacionLaboralComboBox.Size = new System.Drawing.Size(254, 30);
             this.situacionLaboralComboBox.TabIndex = 9;
             // 
             // puestoComboBox
@@ -409,9 +409,9 @@
             "Maestro de obra",
             "Capataz",
             "Albañil"});
-            this.puestoComboBox.Location = new System.Drawing.Point(216, 35);
+            this.puestoComboBox.Location = new System.Drawing.Point(216, 40);
             this.puestoComboBox.Name = "puestoComboBox";
-            this.puestoComboBox.Size = new System.Drawing.Size(237, 30);
+            this.puestoComboBox.Size = new System.Drawing.Size(254, 30);
             this.puestoComboBox.TabIndex = 8;
             this.puestoComboBox.SelectedIndexChanged += new System.EventHandler(this.puestoComboBox_SelectedIndexChanged);
             // 
@@ -439,7 +439,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1357, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1357, 31);
             this.toolStrip1.TabIndex = 30;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -566,6 +566,7 @@
             // 
             // toolStripComboBoxBuscarEmpleados
             // 
+            this.toolStripComboBoxBuscarEmpleados.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarEmpleados.Items.AddRange(new object[] {
             "Id",
             "DNI",
@@ -617,7 +618,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(1070, 615);
+            this.buttonCancelar.Location = new System.Drawing.Point(1065, 633);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -635,7 +636,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(825, 615);
+            this.buttonAceptar.Location = new System.Drawing.Point(820, 633);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
@@ -658,7 +659,7 @@
             this.imagenPictureBox.InitialImage = null;
             this.imagenPictureBox.Location = new System.Drawing.Point(919, 377);
             this.imagenPictureBox.Name = "imagenPictureBox";
-            this.imagenPictureBox.Size = new System.Drawing.Size(273, 231);
+            this.imagenPictureBox.Size = new System.Drawing.Size(277, 231);
             this.imagenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imagenPictureBox.TabIndex = 21;
             this.imagenPictureBox.TabStop = false;
@@ -704,7 +705,7 @@
             this.Name = "Empleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleado";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Empleado_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Empleado_FormClosing);
             this.Load += new System.EventHandler(this.Empleado_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Empleado_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();

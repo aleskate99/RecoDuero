@@ -709,7 +709,6 @@ namespace GestionRecoDuero
             }
 
             //si todo es valido
-            errorProvider1.Clear();
             return true;
         }
 
