@@ -1,6 +1,8 @@
-﻿using System;
+﻿using GestionRecoDuero.RecoDueroDataSetTableAdapters;
+using System;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -20,6 +22,7 @@ namespace GestionRecoDuero
             EstadoControlesInicioApp();
             RefrescarToolstripLabelVehiculo();
             toolStripStatusLabel1.Text = "Inicio";
+            CargarEmpleados();
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -177,7 +180,6 @@ namespace GestionRecoDuero
             //ComboBox por defecto a una opción
             tipoComboBox.SelectedIndex = 0;
             estadoComboBox.SelectedIndex = 0;
-            conductorComboBox.SelectedIndex = 0;
         }
 
         //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
@@ -507,6 +509,42 @@ namespace GestionRecoDuero
             toolStripButtonFinal.Enabled = !esElUltimo && tieneRegistros;
         }
 
+        private void fotoPictureBox_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
+            openFileDialog1.FilterIndex = 1;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string imagenPath = openFileDialog1.FileName;
+
+                // Verificar el tamaño de la imagen
+                using (var img = Image.FromFile(imagenPath))
+                {
+                    if (img.Width > 800 || img.Height > 600)
+                    {
+                        MessageBox.Show("La imagen es demasiado grande. Seleccione una imagen más pequeña.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                fotoPictureBox.ImageLocation = imagenPath;
+                fotoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage; // PictureBoxSizeMode.Zoom;
+
+                // Mostrar información adicional sobre la imagen
+                FileInfo fileInfo = new FileInfo(imagenPath);
+                long fileSize = fileInfo.Length;
+                DateTime lastModified = fileInfo.LastWriteTime;
+
+                string info = $"Tamaño: {fileSize / 1024} KB\nÚltima modificación: {lastModified}";
+                MessageBox.Show(info, "Información de la imagen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                fotoPictureBox.Image = null;
+            }
+        }
+
         private void toolStripButtonImprimir_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Imprimiendo...";
@@ -630,10 +668,51 @@ namespace GestionRecoDuero
             fotoPictureBox.Enabled = true;
         }
 
-        //TODO: COMPROBAR
         private bool ComprobarDatosIntroducidos()
         {
-            //Nombre 
+            //Marca
+            if (string.IsNullOrWhiteSpace(marcaTextBox.Text))
+            {
+                errorProvider1.SetError(marcaTextBox, "Marca obligatoria");
+                marcaTextBox.Clear();
+                return false;
+            }
+
+            //Modelo
+            if (string.IsNullOrWhiteSpace(modeloTextBox.Text))
+            {
+                errorProvider1.SetError(modeloTextBox, "Modelo obligatorio");
+                modeloTextBox.Clear();
+                return false;
+            }
+
+            //Matrícula
+            if (string.IsNullOrWhiteSpace(matrículaTextBox.Text))
+            {
+                errorProvider1.SetError(matrículaTextBox, "Matrícula obligatoria");
+                matrículaTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ComprobarMatricula(matrículaTextBox.Text))
+            {
+                errorProvider1.SetError(matrículaTextBox, "Formato de matrícula erróneo, debe tener 4 números y 3 letras mayúsculas");
+                matrículaTextBox.Clear();
+                return false;
+            }
+
+            //Coste
+            if (string.IsNullOrWhiteSpace(costeAdquisicionTextBox.Text))
+            {
+                errorProvider1.SetError(costeAdquisicionTextBox, "Coste obligatorio");
+                costeAdquisicionTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ContieneNumeros(costeAdquisicionTextBox.Text))
+            {
+                errorProvider1.SetError(costeAdquisicionTextBox, "Solo puede introducir números en el campo coste");
+                costeAdquisicionTextBox.Clear();
+                return false;
+            }
 
             //si todo es valido
             return true;
@@ -697,5 +776,26 @@ namespace GestionRecoDuero
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
         }
+
+        private void CargarEmpleados()
+        {
+            EmpleadoTableAdapter empleadoTableAdapter = new EmpleadoTableAdapter();
+            RecoDueroDataSet.EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData(); 
+
+            conductorComboBox.DataSource = empleadosData;
+            conductorComboBox.DisplayMember = "Nombre";
+
+            if (conductorComboBox.Items.Count > 0)
+            {
+                conductorComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                conductorComboBox.Text = "No hay empleados";
+            }
+
+        }
+
+        
     }
 }

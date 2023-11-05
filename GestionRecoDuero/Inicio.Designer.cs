@@ -90,7 +90,7 @@
             this.buttonFactura.Name = "buttonFactura";
             this.buttonFactura.Size = new System.Drawing.Size(210, 60);
             this.buttonFactura.TabIndex = 8;
-            this.buttonFactura.Text = "Factura";
+            this.buttonFactura.Text = "Factura      ";
             this.buttonFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonFactura, "Factura");
             this.buttonFactura.UseVisualStyleBackColor = true;
@@ -109,7 +109,7 @@
             this.buttonPresupuesto.Name = "buttonPresupuesto";
             this.buttonPresupuesto.Size = new System.Drawing.Size(210, 60);
             this.buttonPresupuesto.TabIndex = 7;
-            this.buttonPresupuesto.Text = "Presupuesto";
+            this.buttonPresupuesto.Text = " Presupuesto";
             this.buttonPresupuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonPresupuesto, "Presupuesto");
             this.buttonPresupuesto.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@
             this.buttonServiciosExternos.Name = "buttonServiciosExternos";
             this.buttonServiciosExternos.Size = new System.Drawing.Size(210, 60);
             this.buttonServiciosExternos.TabIndex = 6;
-            this.buttonServiciosExternos.Text = "         Servicios Externos";
+            this.buttonServiciosExternos.Text = "Servicios    ";
             this.buttonServiciosExternos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonServiciosExternos, "Servicios Externos");
             this.buttonServiciosExternos.UseVisualStyleBackColor = true;
@@ -157,7 +157,7 @@
             this.buttonVehiculos.Name = "buttonVehiculos";
             this.buttonVehiculos.Size = new System.Drawing.Size(210, 60);
             this.buttonVehiculos.TabIndex = 5;
-            this.buttonVehiculos.Text = "Vehículos";
+            this.buttonVehiculos.Text = "Vehículos   ";
             this.buttonVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonVehiculos, "Vehículos");
             this.buttonVehiculos.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
             this.buttonObras.Name = "buttonObras";
             this.buttonObras.Size = new System.Drawing.Size(210, 60);
             this.buttonObras.TabIndex = 4;
-            this.buttonObras.Text = "Obras";
+            this.buttonObras.Text = "Obras        ";
             this.buttonObras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonObras, "Obras");
             this.buttonObras.UseVisualStyleBackColor = true;
@@ -195,7 +195,7 @@
             this.buttonMateriales.Name = "buttonMateriales";
             this.buttonMateriales.Size = new System.Drawing.Size(210, 60);
             this.buttonMateriales.TabIndex = 3;
-            this.buttonMateriales.Text = "Materiales";
+            this.buttonMateriales.Text = "Materiales ";
             this.buttonMateriales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonMateriales, "Materiales");
             this.buttonMateriales.UseVisualStyleBackColor = true;
@@ -227,7 +227,7 @@
             this.buttonClientes.Name = "buttonClientes";
             this.buttonClientes.Size = new System.Drawing.Size(210, 60);
             this.buttonClientes.TabIndex = 2;
-            this.buttonClientes.Text = "Clientes";
+            this.buttonClientes.Text = "Clientes     ";
             this.buttonClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.buttonClientes, "Clientes");
             this.buttonClientes.UseVisualStyleBackColor = true;

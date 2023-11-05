@@ -164,7 +164,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.ClientSize = new System.Drawing.Size(1369, 762);
+            this.ClientSize = new System.Drawing.Size(1369, 756);
             this.Controls.Add(this.comboBoxFiltrarEstado);
             this.Controls.Add(this.buttonFiltrarEstado);
             this.Controls.Add(this.buttonFiltrarDistribuidor);

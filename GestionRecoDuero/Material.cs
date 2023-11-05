@@ -771,5 +771,18 @@ namespace GestionRecoDuero
                 e.Handled = true; // Evita que el evento de teclado se propague.
             }
         }
+
+        private void estadoComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (estadoComboBox.SelectedIndex >= 0)
+            {
+                string seleccion = estadoComboBox.SelectedItem.ToString();
+
+                if (seleccion.Equals("Agotado"))
+                {
+                    cantidadTextBox.Text = "0";
+                }
+            }
+        }
     }
 }

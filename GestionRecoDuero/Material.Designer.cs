@@ -99,7 +99,7 @@
             // 
             idMaterialLabel.AutoSize = true;
             idMaterialLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idMaterialLabel.Location = new System.Drawing.Point(46, 44);
+            idMaterialLabel.Location = new System.Drawing.Point(26, 44);
             idMaterialLabel.Name = "idMaterialLabel";
             idMaterialLabel.Size = new System.Drawing.Size(119, 22);
             idMaterialLabel.TabIndex = 36;
@@ -109,7 +109,7 @@
             // 
             nombreLabel.AutoSize = true;
             nombreLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nombreLabel.Location = new System.Drawing.Point(46, 94);
+            nombreLabel.Location = new System.Drawing.Point(26, 110);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(88, 22);
             nombreLabel.TabIndex = 38;
@@ -119,7 +119,7 @@
             // 
             cantidadLabel.AutoSize = true;
             cantidadLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cantidadLabel.Location = new System.Drawing.Point(46, 150);
+            cantidadLabel.Location = new System.Drawing.Point(26, 178);
             cantidadLabel.Name = "cantidadLabel";
             cantidadLabel.Size = new System.Drawing.Size(100, 22);
             cantidadLabel.TabIndex = 40;
@@ -129,7 +129,7 @@
             // 
             costeLabel.AutoSize = true;
             costeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            costeLabel.Location = new System.Drawing.Point(46, 206);
+            costeLabel.Location = new System.Drawing.Point(26, 248);
             costeLabel.Name = "costeLabel";
             costeLabel.Size = new System.Drawing.Size(71, 22);
             costeLabel.TabIndex = 42;
@@ -139,7 +139,7 @@
             // 
             distribuidorLabel.AutoSize = true;
             distribuidorLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            distribuidorLabel.Location = new System.Drawing.Point(46, 261);
+            distribuidorLabel.Location = new System.Drawing.Point(26, 316);
             distribuidorLabel.Name = "distribuidorLabel";
             distribuidorLabel.Size = new System.Drawing.Size(127, 22);
             distribuidorLabel.TabIndex = 44;
@@ -149,7 +149,7 @@
             // 
             estadoLabel.AutoSize = true;
             estadoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            estadoLabel.Location = new System.Drawing.Point(46, 317);
+            estadoLabel.Location = new System.Drawing.Point(26, 383);
             estadoLabel.Name = "estadoLabel";
             estadoLabel.Size = new System.Drawing.Size(81, 22);
             estadoLabel.TabIndex = 46;
@@ -169,7 +169,7 @@
             // 
             fechaAdquisicionLabel.AutoSize = true;
             fechaAdquisicionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fechaAdquisicionLabel.Location = new System.Drawing.Point(657, 236);
+            fechaAdquisicionLabel.Location = new System.Drawing.Point(657, 247);
             fechaAdquisicionLabel.Name = "fechaAdquisicionLabel";
             fechaAdquisicionLabel.Size = new System.Drawing.Size(176, 22);
             fechaAdquisicionLabel.TabIndex = 50;
@@ -179,7 +179,7 @@
             // 
             descripcionLabel.AutoSize = true;
             descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            descripcionLabel.Location = new System.Drawing.Point(657, 292);
+            descripcionLabel.Location = new System.Drawing.Point(657, 314);
             descripcionLabel.Name = "descripcionLabel";
             descripcionLabel.Size = new System.Drawing.Size(109, 22);
             descripcionLabel.TabIndex = 52;
@@ -209,7 +209,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1354, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1693, 39);
             this.toolStrip1.TabIndex = 31;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -219,7 +219,7 @@
             this.toolStripButtonInicio.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInicio.Image")));
             this.toolStripButtonInicio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInicio.Name = "toolStripButtonInicio";
-            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonInicio.ToolTipText = "Ir al principio";
             this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click_1);
             // 
@@ -270,7 +270,7 @@
             this.toolStripButtonAnadir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnadir.Image")));
             this.toolStripButtonAnadir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
-            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonAnadir.ToolTipText = "Añadir material";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
             // 
@@ -280,7 +280,7 @@
             this.toolStripButtonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEliminar.Image")));
             this.toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonEliminar.ToolTipText = "Eliminar material";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
             // 
@@ -290,7 +290,7 @@
             this.toolStripButtonEditar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditar.Image")));
             this.toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
-            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonEditar.ToolTipText = "Editar material";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
             // 
@@ -398,7 +398,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(1047, 517);
+            this.buttonCancelar.Location = new System.Drawing.Point(1004, 524);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -416,7 +416,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(809, 517);
+            this.buttonAceptar.Location = new System.Drawing.Point(766, 524);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
@@ -434,7 +434,7 @@
             // 
             this.idMaterialLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "IdMaterial", true));
             this.idMaterialLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idMaterialLabel1.Location = new System.Drawing.Point(219, 44);
+            this.idMaterialLabel1.Location = new System.Drawing.Point(199, 44);
             this.idMaterialLabel1.Name = "idMaterialLabel1";
             this.idMaterialLabel1.Size = new System.Drawing.Size(200, 23);
             this.idMaterialLabel1.TabIndex = 37;
@@ -454,7 +454,7 @@
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Nombre", true));
             this.nombreTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreTextBox.Location = new System.Drawing.Point(219, 91);
+            this.nombreTextBox.Location = new System.Drawing.Point(199, 107);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(250, 30);
             this.nombreTextBox.TabIndex = 1;
@@ -463,7 +463,7 @@
             // 
             this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Cantidad", true));
             this.cantidadTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadTextBox.Location = new System.Drawing.Point(219, 147);
+            this.cantidadTextBox.Location = new System.Drawing.Point(199, 175);
             this.cantidadTextBox.Name = "cantidadTextBox";
             this.cantidadTextBox.Size = new System.Drawing.Size(250, 30);
             this.cantidadTextBox.TabIndex = 2;
@@ -472,7 +472,7 @@
             // 
             this.costeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Coste", true));
             this.costeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeTextBox.Location = new System.Drawing.Point(219, 203);
+            this.costeTextBox.Location = new System.Drawing.Point(199, 245);
             this.costeTextBox.Name = "costeTextBox";
             this.costeTextBox.Size = new System.Drawing.Size(250, 30);
             this.costeTextBox.TabIndex = 3;
@@ -481,7 +481,7 @@
             // 
             this.distribuidorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Distribuidor", true));
             this.distribuidorTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.distribuidorTextBox.Location = new System.Drawing.Point(219, 258);
+            this.distribuidorTextBox.Location = new System.Drawing.Point(199, 313);
             this.distribuidorTextBox.Name = "distribuidorTextBox";
             this.distribuidorTextBox.Size = new System.Drawing.Size(250, 30);
             this.distribuidorTextBox.TabIndex = 4;
@@ -496,10 +496,11 @@
             "Disponible",
             "Pendiente",
             "Agotado"});
-            this.estadoComboBox.Location = new System.Drawing.Point(219, 314);
+            this.estadoComboBox.Location = new System.Drawing.Point(199, 380);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(250, 30);
             this.estadoComboBox.TabIndex = 5;
+            this.estadoComboBox.SelectedIndexChanged += new System.EventHandler(this.estadoComboBox_SelectedIndexChanged);
             // 
             // garantiaCheckBox
             // 
@@ -516,7 +517,7 @@
             // 
             this.fechaAdquisicionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.materialBindingSource, "FechaAdquisicion", true));
             this.fechaAdquisicionDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaAdquisicionDateTimePicker.Location = new System.Drawing.Point(878, 236);
+            this.fechaAdquisicionDateTimePicker.Location = new System.Drawing.Point(878, 247);
             this.fechaAdquisicionDateTimePicker.Name = "fechaAdquisicionDateTimePicker";
             this.fechaAdquisicionDateTimePicker.Size = new System.Drawing.Size(250, 30);
             this.fechaAdquisicionDateTimePicker.TabIndex = 7;
@@ -525,7 +526,7 @@
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Descripcion", true));
             this.descripcionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descripcionTextBox.Location = new System.Drawing.Point(878, 293);
+            this.descripcionTextBox.Location = new System.Drawing.Point(878, 315);
             this.descripcionTextBox.Multiline = true;
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(250, 132);
@@ -548,7 +549,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(33, 137);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(556, 383);
+            this.groupBox1.Size = new System.Drawing.Size(536, 467);
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de los materiales";

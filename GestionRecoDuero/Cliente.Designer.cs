@@ -101,7 +101,7 @@
             // 
             idClienteLabel.AutoSize = true;
             idClienteLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idClienteLabel.Location = new System.Drawing.Point(21, 48);
+            idClienteLabel.Location = new System.Drawing.Point(20, 51);
             idClienteLabel.Name = "idClienteLabel";
             idClienteLabel.Size = new System.Drawing.Size(106, 22);
             idClienteLabel.TabIndex = 1;
@@ -111,7 +111,7 @@
             // 
             nombreLabel.AutoSize = true;
             nombreLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nombreLabel.Location = new System.Drawing.Point(21, 93);
+            nombreLabel.Location = new System.Drawing.Point(20, 121);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(88, 22);
             nombreLabel.TabIndex = 3;
@@ -121,7 +121,7 @@
             // 
             apellidosLabel.AutoSize = true;
             apellidosLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            apellidosLabel.Location = new System.Drawing.Point(21, 146);
+            apellidosLabel.Location = new System.Drawing.Point(20, 192);
             apellidosLabel.Name = "apellidosLabel";
             apellidosLabel.Size = new System.Drawing.Size(101, 22);
             apellidosLabel.TabIndex = 5;
@@ -131,7 +131,7 @@
             // 
             direccionLabel.AutoSize = true;
             direccionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            direccionLabel.Location = new System.Drawing.Point(21, 200);
+            direccionLabel.Location = new System.Drawing.Point(20, 263);
             direccionLabel.Name = "direccionLabel";
             direccionLabel.Size = new System.Drawing.Size(105, 22);
             direccionLabel.TabIndex = 7;
@@ -141,7 +141,7 @@
             // 
             telefonoLabel.AutoSize = true;
             telefonoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            telefonoLabel.Location = new System.Drawing.Point(21, 261);
+            telefonoLabel.Location = new System.Drawing.Point(20, 335);
             telefonoLabel.Name = "telefonoLabel";
             telefonoLabel.Size = new System.Drawing.Size(94, 22);
             telefonoLabel.TabIndex = 9;
@@ -151,7 +151,7 @@
             // 
             emailLabel.AutoSize = true;
             emailLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            emailLabel.Location = new System.Drawing.Point(21, 322);
+            emailLabel.Location = new System.Drawing.Point(20, 404);
             emailLabel.Name = "emailLabel";
             emailLabel.Size = new System.Drawing.Size(58, 22);
             emailLabel.TabIndex = 11;
@@ -161,7 +161,7 @@
             // 
             tipoLabel.AutoSize = true;
             tipoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tipoLabel.Location = new System.Drawing.Point(669, 214);
+            tipoLabel.Location = new System.Drawing.Point(664, 191);
             tipoLabel.Name = "tipoLabel";
             tipoLabel.Size = new System.Drawing.Size(61, 22);
             tipoLabel.TabIndex = 13;
@@ -171,7 +171,7 @@
             // 
             contratoLabel.AutoSize = true;
             contratoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            contratoLabel.Location = new System.Drawing.Point(669, 403);
+            contratoLabel.Location = new System.Drawing.Point(664, 381);
             contratoLabel.Name = "contratoLabel";
             contratoLabel.Size = new System.Drawing.Size(83, 22);
             contratoLabel.TabIndex = 15;
@@ -181,7 +181,7 @@
             // 
             observacionesLabel.AutoSize = true;
             observacionesLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            observacionesLabel.Location = new System.Drawing.Point(669, 279);
+            observacionesLabel.Location = new System.Drawing.Point(664, 265);
             observacionesLabel.Name = "observacionesLabel";
             observacionesLabel.Size = new System.Drawing.Size(130, 22);
             observacionesLabel.TabIndex = 17;
@@ -219,7 +219,7 @@
             // 
             this.idClienteLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "IdCliente", true));
             this.idClienteLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idClienteLabel1.Location = new System.Drawing.Point(161, 51);
+            this.idClienteLabel1.Location = new System.Drawing.Point(160, 54);
             this.idClienteLabel1.Name = "idClienteLabel1";
             this.idClienteLabel1.Size = new System.Drawing.Size(121, 23);
             this.idClienteLabel1.TabIndex = 2;
@@ -229,7 +229,7 @@
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Nombre", true));
             this.nombreTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreTextBox.Location = new System.Drawing.Point(161, 93);
+            this.nombreTextBox.Location = new System.Drawing.Point(160, 121);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(237, 30);
             this.nombreTextBox.TabIndex = 1;
@@ -239,7 +239,7 @@
             // 
             this.apellidosTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Apellidos", true));
             this.apellidosTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apellidosTextBox.Location = new System.Drawing.Point(161, 146);
+            this.apellidosTextBox.Location = new System.Drawing.Point(160, 192);
             this.apellidosTextBox.Name = "apellidosTextBox";
             this.apellidosTextBox.Size = new System.Drawing.Size(237, 30);
             this.apellidosTextBox.TabIndex = 2;
@@ -249,7 +249,7 @@
             // 
             this.direccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Direccion", true));
             this.direccionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.direccionTextBox.Location = new System.Drawing.Point(161, 200);
+            this.direccionTextBox.Location = new System.Drawing.Point(160, 263);
             this.direccionTextBox.Name = "direccionTextBox";
             this.direccionTextBox.Size = new System.Drawing.Size(237, 30);
             this.direccionTextBox.TabIndex = 3;
@@ -258,7 +258,7 @@
             // 
             this.telefonoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Telefono", true));
             this.telefonoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telefonoTextBox.Location = new System.Drawing.Point(161, 261);
+            this.telefonoTextBox.Location = new System.Drawing.Point(160, 335);
             this.telefonoTextBox.Name = "telefonoTextBox";
             this.telefonoTextBox.Size = new System.Drawing.Size(237, 30);
             this.telefonoTextBox.TabIndex = 4;
@@ -268,7 +268,7 @@
             // 
             this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Email", true));
             this.emailTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailTextBox.Location = new System.Drawing.Point(161, 322);
+            this.emailTextBox.Location = new System.Drawing.Point(160, 404);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(237, 30);
             this.emailTextBox.TabIndex = 5;
@@ -282,21 +282,20 @@
             this.tipoComboBox.Items.AddRange(new object[] {
             "Normal",
             "VIP"});
-            this.tipoComboBox.Location = new System.Drawing.Point(823, 214);
+            this.tipoComboBox.Location = new System.Drawing.Point(818, 191);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(237, 30);
             this.tipoComboBox.TabIndex = 6;
             // 
             // contratoPictureBox
             // 
-            this.contratoPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("contratoPictureBox.BackgroundImage")));
             this.contratoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.contratoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.clienteBindingSource, "Contrato", true));
             this.contratoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("contratoPictureBox.Image")));
             this.contratoPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("contratoPictureBox.InitialImage")));
-            this.contratoPictureBox.Location = new System.Drawing.Point(823, 403);
+            this.contratoPictureBox.Location = new System.Drawing.Point(818, 381);
             this.contratoPictureBox.Name = "contratoPictureBox";
-            this.contratoPictureBox.Size = new System.Drawing.Size(237, 158);
+            this.contratoPictureBox.Size = new System.Drawing.Size(237, 218);
             this.contratoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contratoPictureBox.TabIndex = 16;
             this.contratoPictureBox.TabStop = false;
@@ -306,7 +305,7 @@
             // 
             this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Observaciones", true));
             this.observacionesTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.observacionesTextBox.Location = new System.Drawing.Point(823, 279);
+            this.observacionesTextBox.Location = new System.Drawing.Point(818, 265);
             this.observacionesTextBox.Multiline = true;
             this.observacionesTextBox.Name = "observacionesTextBox";
             this.observacionesTextBox.Size = new System.Drawing.Size(237, 85);
@@ -327,9 +326,9 @@
             this.groupBox1.Controls.Add(this.apellidosTextBox);
             this.groupBox1.Controls.Add(direccionLabel);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(42, 166);
+            this.groupBox1.Location = new System.Drawing.Point(37, 136);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(440, 395);
+            this.groupBox1.Size = new System.Drawing.Size(440, 463);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos personales del cliente";
@@ -525,7 +524,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(957, 606);
+            this.buttonCancelar.Location = new System.Drawing.Point(970, 638);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -543,7 +542,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(712, 606);
+            this.buttonAceptar.Location = new System.Drawing.Point(725, 638);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
@@ -582,7 +581,7 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1285, 174);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1285, 136);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -607,6 +606,7 @@
             this.Controls.Add(this.contratoPictureBox);
             this.Controls.Add(observacionesLabel);
             this.Controls.Add(this.observacionesTextBox);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

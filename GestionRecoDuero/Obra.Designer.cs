@@ -79,6 +79,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.obraTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.ObraTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             idObraLabel = new System.Windows.Forms.Label();
             ubicacionLabel = new System.Windows.Forms.Label();
             estadoLabel = new System.Windows.Forms.Label();
@@ -96,13 +98,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.duracionEstimadaNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // idObraLabel
             // 
             idObraLabel.AutoSize = true;
             idObraLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idObraLabel.Location = new System.Drawing.Point(78, 157);
+            idObraLabel.Location = new System.Drawing.Point(22, 52);
             idObraLabel.Name = "idObraLabel";
             idObraLabel.Size = new System.Drawing.Size(89, 22);
             idObraLabel.TabIndex = 39;
@@ -112,91 +116,91 @@
             // 
             ubicacionLabel.AutoSize = true;
             ubicacionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            ubicacionLabel.Location = new System.Drawing.Point(78, 272);
+            ubicacionLabel.Location = new System.Drawing.Point(22, 167);
             ubicacionLabel.Name = "ubicacionLabel";
-            ubicacionLabel.Size = new System.Drawing.Size(101, 22);
+            ubicacionLabel.Size = new System.Drawing.Size(109, 22);
             ubicacionLabel.TabIndex = 41;
-            ubicacionLabel.Text = "Ubicacion:";
+            ubicacionLabel.Text = "Ubicación *";
             // 
             // estadoLabel
             // 
             estadoLabel.AutoSize = true;
             estadoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            estadoLabel.Location = new System.Drawing.Point(78, 332);
+            estadoLabel.Location = new System.Drawing.Point(22, 227);
             estadoLabel.Name = "estadoLabel";
-            estadoLabel.Size = new System.Drawing.Size(73, 22);
+            estadoLabel.Size = new System.Drawing.Size(81, 22);
             estadoLabel.TabIndex = 43;
-            estadoLabel.Text = "Estado:";
+            estadoLabel.Text = "Estado *";
             // 
             // observacionesLabel
             // 
             observacionesLabel.AutoSize = true;
             observacionesLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            observacionesLabel.Location = new System.Drawing.Point(662, 337);
+            observacionesLabel.Location = new System.Drawing.Point(29, 236);
             observacionesLabel.Name = "observacionesLabel";
-            observacionesLabel.Size = new System.Drawing.Size(137, 22);
+            observacionesLabel.Size = new System.Drawing.Size(130, 22);
             observacionesLabel.TabIndex = 45;
-            observacionesLabel.Text = "Observaciones:";
+            observacionesLabel.Text = "Observaciones";
             // 
             // fechaInicioLabel
             // 
             fechaInicioLabel.AutoSize = true;
             fechaInicioLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fechaInicioLabel.Location = new System.Drawing.Point(662, 219);
+            fechaInicioLabel.Location = new System.Drawing.Point(29, 118);
             fechaInicioLabel.Name = "fechaInicioLabel";
-            fechaInicioLabel.Size = new System.Drawing.Size(120, 22);
+            fechaInicioLabel.Size = new System.Drawing.Size(151, 22);
             fechaInicioLabel.TabIndex = 47;
-            fechaInicioLabel.Text = "Fecha Inicio:";
+            fechaInicioLabel.Text = "Fecha de inicio *";
             // 
             // fechaFinLabel
             // 
             fechaFinLabel.AutoSize = true;
             fechaFinLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fechaFinLabel.Location = new System.Drawing.Point(662, 277);
+            fechaFinLabel.Location = new System.Drawing.Point(29, 176);
             fechaFinLabel.Name = "fechaFinLabel";
-            fechaFinLabel.Size = new System.Drawing.Size(100, 22);
+            fechaFinLabel.Size = new System.Drawing.Size(201, 22);
             fechaFinLabel.TabIndex = 49;
-            fechaFinLabel.Text = "Fecha Fin:";
+            fechaFinLabel.Text = "Fecha de finalización *";
             // 
             // responsableLabel
             // 
             responsableLabel.AutoSize = true;
             responsableLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            responsableLabel.Location = new System.Drawing.Point(78, 463);
+            responsableLabel.Location = new System.Drawing.Point(22, 358);
             responsableLabel.Name = "responsableLabel";
-            responsableLabel.Size = new System.Drawing.Size(119, 22);
+            responsableLabel.Size = new System.Drawing.Size(127, 22);
             responsableLabel.TabIndex = 51;
-            responsableLabel.Text = "Responsable:";
+            responsableLabel.Text = "Responsable *";
             // 
             // tipoLabel
             // 
             tipoLabel.AutoSize = true;
             tipoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tipoLabel.Location = new System.Drawing.Point(78, 396);
+            tipoLabel.Location = new System.Drawing.Point(22, 291);
             tipoLabel.Name = "tipoLabel";
-            tipoLabel.Size = new System.Drawing.Size(53, 22);
+            tipoLabel.Size = new System.Drawing.Size(61, 22);
             tipoLabel.TabIndex = 53;
-            tipoLabel.Text = "Tipo:";
+            tipoLabel.Text = "Tipo *";
             // 
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
             nombreLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nombreLabel.Location = new System.Drawing.Point(78, 214);
+            nombreLabel.Location = new System.Drawing.Point(22, 109);
             nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(80, 22);
+            nombreLabel.Size = new System.Drawing.Size(88, 22);
             nombreLabel.TabIndex = 55;
-            nombreLabel.Text = "Nombre:";
+            nombreLabel.Text = "Nombre *";
             // 
             // duracionEstimadaLabel
             // 
             duracionEstimadaLabel.AutoSize = true;
             duracionEstimadaLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            duracionEstimadaLabel.Location = new System.Drawing.Point(662, 158);
+            duracionEstimadaLabel.Location = new System.Drawing.Point(29, 57);
             duracionEstimadaLabel.Name = "duracionEstimadaLabel";
-            duracionEstimadaLabel.Size = new System.Drawing.Size(175, 22);
+            duracionEstimadaLabel.Size = new System.Drawing.Size(183, 22);
             duracionEstimadaLabel.TabIndex = 57;
-            duracionEstimadaLabel.Text = "Duracion Estimada:";
+            duracionEstimadaLabel.Text = "Duracion Estimada *\r\n";
             // 
             // toolStrip1
             // 
@@ -350,7 +354,9 @@
             // toolStripComboBoxBuscarObras
             // 
             this.toolStripComboBoxBuscarObras.Items.AddRange(new object[] {
-            "Nombre"});
+            "Id",
+            "Nombre",
+            "Ubicacion"});
             this.toolStripComboBoxBuscarObras.Name = "toolStripComboBoxBuscarObras";
             this.toolStripComboBoxBuscarObras.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBoxBuscarObras.Text = "Buscar obra";
@@ -398,11 +404,11 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(1076, 579);
+            this.buttonCancelar.Location = new System.Drawing.Point(1079, 601);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
-            this.buttonCancelar.TabIndex = 37;
+            this.buttonCancelar.TabIndex = 11;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCancelar.UseVisualStyleBackColor = false;
@@ -416,11 +422,11 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(831, 579);
+            this.buttonAceptar.Location = new System.Drawing.Point(823, 601);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
-            this.buttonAceptar.TabIndex = 36;
+            this.buttonAceptar.TabIndex = 10;
             this.buttonAceptar.Text = "Aceptar";
             this.buttonAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAceptar.UseVisualStyleBackColor = false;
@@ -442,7 +448,7 @@
             // 
             this.idObraLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.obraBindingSource, "IdObra", true));
             this.idObraLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idObraLabel1.Location = new System.Drawing.Point(285, 157);
+            this.idObraLabel1.Location = new System.Drawing.Point(229, 52);
             this.idObraLabel1.Name = "idObraLabel1";
             this.idObraLabel1.Size = new System.Drawing.Size(200, 23);
             this.idObraLabel1.TabIndex = 40;
@@ -462,10 +468,10 @@
             // 
             this.ubicacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.obraBindingSource, "Ubicacion", true));
             this.ubicacionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ubicacionTextBox.Location = new System.Drawing.Point(285, 269);
+            this.ubicacionTextBox.Location = new System.Drawing.Point(229, 164);
             this.ubicacionTextBox.Name = "ubicacionTextBox";
             this.ubicacionTextBox.Size = new System.Drawing.Size(250, 30);
-            this.ubicacionTextBox.TabIndex = 42;
+            this.ubicacionTextBox.TabIndex = 2;
             // 
             // estadoComboBox
             // 
@@ -477,38 +483,40 @@
             "Pendiente",
             "En curso",
             "Finalizada"});
-            this.estadoComboBox.Location = new System.Drawing.Point(285, 329);
+            this.estadoComboBox.Location = new System.Drawing.Point(229, 224);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(250, 30);
-            this.estadoComboBox.TabIndex = 44;
+            this.estadoComboBox.TabIndex = 3;
             // 
             // observacionesTextBox
             // 
             this.observacionesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.obraBindingSource, "Observaciones", true));
             this.observacionesTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.observacionesTextBox.Location = new System.Drawing.Point(869, 334);
+            this.observacionesTextBox.Location = new System.Drawing.Point(264, 233);
             this.observacionesTextBox.Multiline = true;
             this.observacionesTextBox.Name = "observacionesTextBox";
             this.observacionesTextBox.Size = new System.Drawing.Size(254, 89);
-            this.observacionesTextBox.TabIndex = 46;
+            this.observacionesTextBox.TabIndex = 9;
             // 
             // fechaInicioDateTimePicker
             // 
             this.fechaInicioDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.obraBindingSource, "FechaInicio", true));
             this.fechaInicioDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaInicioDateTimePicker.Location = new System.Drawing.Point(869, 215);
+            this.fechaInicioDateTimePicker.Location = new System.Drawing.Point(264, 114);
             this.fechaInicioDateTimePicker.Name = "fechaInicioDateTimePicker";
             this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(250, 30);
-            this.fechaInicioDateTimePicker.TabIndex = 48;
+            this.fechaInicioDateTimePicker.TabIndex = 7;
+            this.fechaInicioDateTimePicker.ValueChanged += new System.EventHandler(this.fechaInicioDateTimePicker_ValueChanged);
             // 
             // fechaFinDateTimePicker
             // 
             this.fechaFinDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.obraBindingSource, "FechaFin", true));
             this.fechaFinDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaFinDateTimePicker.Location = new System.Drawing.Point(869, 273);
+            this.fechaFinDateTimePicker.Location = new System.Drawing.Point(264, 172);
             this.fechaFinDateTimePicker.Name = "fechaFinDateTimePicker";
             this.fechaFinDateTimePicker.Size = new System.Drawing.Size(250, 30);
-            this.fechaFinDateTimePicker.TabIndex = 50;
+            this.fechaFinDateTimePicker.TabIndex = 8;
+            this.fechaFinDateTimePicker.ValueChanged += new System.EventHandler(this.fechaFinDateTimePicker_ValueChanged);
             // 
             // responsableComboBox
             // 
@@ -516,10 +524,10 @@
             this.responsableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.responsableComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.responsableComboBox.FormattingEnabled = true;
-            this.responsableComboBox.Location = new System.Drawing.Point(285, 460);
+            this.responsableComboBox.Location = new System.Drawing.Point(229, 355);
             this.responsableComboBox.Name = "responsableComboBox";
             this.responsableComboBox.Size = new System.Drawing.Size(250, 30);
-            this.responsableComboBox.TabIndex = 52;
+            this.responsableComboBox.TabIndex = 5;
             // 
             // tipoComboBox
             // 
@@ -531,28 +539,29 @@
             "Residencial",
             "Comercial",
             "Institucional"});
-            this.tipoComboBox.Location = new System.Drawing.Point(285, 393);
+            this.tipoComboBox.Location = new System.Drawing.Point(229, 288);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(250, 30);
-            this.tipoComboBox.TabIndex = 54;
+            this.tipoComboBox.TabIndex = 4;
             // 
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.obraBindingSource, "Nombre", true));
             this.nombreTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreTextBox.Location = new System.Drawing.Point(285, 211);
+            this.nombreTextBox.Location = new System.Drawing.Point(229, 106);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(250, 30);
-            this.nombreTextBox.TabIndex = 56;
+            this.nombreTextBox.TabIndex = 1;
             // 
             // duracionEstimadaNumericUpDown
             // 
             this.duracionEstimadaNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.obraBindingSource, "DuracionEstimada", true));
             this.duracionEstimadaNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.duracionEstimadaNumericUpDown.Location = new System.Drawing.Point(869, 158);
+            this.duracionEstimadaNumericUpDown.Location = new System.Drawing.Point(264, 57);
             this.duracionEstimadaNumericUpDown.Name = "duracionEstimadaNumericUpDown";
             this.duracionEstimadaNumericUpDown.Size = new System.Drawing.Size(250, 30);
-            this.duracionEstimadaNumericUpDown.TabIndex = 58;
+            this.duracionEstimadaNumericUpDown.TabIndex = 6;
+            this.duracionEstimadaNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.duracionEstimadaNumericUpDown.ValueChanged += new System.EventHandler(this.duracionEstimadaNumericUpDown_ValueChanged);
             // 
             // errorProvider1
@@ -563,7 +572,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1135, 160);
+            this.label1.Location = new System.Drawing.Point(530, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 22);
             this.label1.TabIndex = 59;
@@ -587,32 +596,54 @@
             this.tableAdapterManager.UsuarioTableAdapter = null;
             this.tableAdapterManager.VehiculoTableAdapter = null;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(idObraLabel);
+            this.groupBox1.Controls.Add(this.nombreTextBox);
+            this.groupBox1.Controls.Add(nombreLabel);
+            this.groupBox1.Controls.Add(this.idObraLabel1);
+            this.groupBox1.Controls.Add(this.tipoComboBox);
+            this.groupBox1.Controls.Add(ubicacionLabel);
+            this.groupBox1.Controls.Add(tipoLabel);
+            this.groupBox1.Controls.Add(this.ubicacionTextBox);
+            this.groupBox1.Controls.Add(this.responsableComboBox);
+            this.groupBox1.Controls.Add(estadoLabel);
+            this.groupBox1.Controls.Add(responsableLabel);
+            this.groupBox1.Controls.Add(this.estadoComboBox);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(22, 146);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(554, 415);
+            this.groupBox1.TabIndex = 60;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Información de la obra";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(duracionEstimadaLabel);
+            this.groupBox2.Controls.Add(this.duracionEstimadaNumericUpDown);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.fechaFinDateTimePicker);
+            this.groupBox2.Controls.Add(observacionesLabel);
+            this.groupBox2.Controls.Add(fechaFinLabel);
+            this.groupBox2.Controls.Add(this.observacionesTextBox);
+            this.groupBox2.Controls.Add(this.fechaInicioDateTimePicker);
+            this.groupBox2.Controls.Add(fechaInicioLabel);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(639, 146);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(591, 415);
+            this.groupBox2.TabIndex = 61;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Duración de la obra";
+            // 
             // Obra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1328, 758);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(idObraLabel);
-            this.Controls.Add(this.idObraLabel1);
-            this.Controls.Add(ubicacionLabel);
-            this.Controls.Add(this.ubicacionTextBox);
-            this.Controls.Add(estadoLabel);
-            this.Controls.Add(this.estadoComboBox);
-            this.Controls.Add(observacionesLabel);
-            this.Controls.Add(this.observacionesTextBox);
-            this.Controls.Add(fechaInicioLabel);
-            this.Controls.Add(this.fechaInicioDateTimePicker);
-            this.Controls.Add(fechaFinLabel);
-            this.Controls.Add(this.fechaFinDateTimePicker);
-            this.Controls.Add(responsableLabel);
-            this.Controls.Add(this.responsableComboBox);
-            this.Controls.Add(tipoLabel);
-            this.Controls.Add(this.tipoComboBox);
-            this.Controls.Add(nombreLabel);
-            this.Controls.Add(this.nombreTextBox);
-            this.Controls.Add(duracionEstimadaLabel);
-            this.Controls.Add(this.duracionEstimadaNumericUpDown);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonVolverInicio);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
@@ -634,6 +665,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.duracionEstimadaNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -680,5 +715,7 @@
         private System.Windows.Forms.NumericUpDown duracionEstimadaNumericUpDown;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

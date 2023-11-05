@@ -27,7 +27,28 @@ namespace GestionRecoDuero
         {
             vehiculoBindingSource.RemoveFilter();
             reportViewer1.RefreshReport();
-            //textBoxFiltrarTelefono.Clear();
+            textBoxFiltrarMarca.Clear();
+        }
+
+        private void buttonFiltrarMarca_Click(object sender, EventArgs e)
+        {
+            vehiculoBindingSource.Filter = "Marca='" + textBoxFiltrarMarca.Text + "'";
+            reportViewer1.RefreshReport();
+            textBoxFiltrarMarca.Clear();
+        }
+
+        private void buttonFiltrarEstado_Click(object sender, EventArgs e)
+        {
+            vehiculoBindingSource.Filter = "Estado='" + comboBoxFiltrarEstado.Text + "'";
+            reportViewer1.RefreshReport();
+            comboBoxFiltrarEstado.Text = (" ");
+        }
+
+        private void buttonFiltrarTipo_Click(object sender, EventArgs e)
+        {
+            vehiculoBindingSource.Filter = "Tipo='" + comboBoxFiltrarTipo.Text + "'";
+            reportViewer1.RefreshReport();
+            comboBoxFiltrarTipo.Text = (" ");
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)

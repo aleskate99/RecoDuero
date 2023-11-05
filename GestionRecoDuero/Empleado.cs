@@ -185,6 +185,9 @@ namespace GestionRecoDuero
             generoComboBox.SelectedIndex = 0;
             puestoComboBox.SelectedIndex = 0;
             situacionLaboralComboBox.SelectedIndex = 0;
+
+            //Imagen
+            //imagenPictureBox.Image = 
         }
 
         //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
@@ -884,7 +887,7 @@ namespace GestionRecoDuero
 
             if (fechaSeleccionada > DateTime.Today)
             {
-                MessageBox.Show("No puedes seleccionar una fecha futura al día de hoy.");
+                Comun.MostrarMensajeDeError("No puede seleccionar una fecha futura al día de hoy.","Error al seleccionar fecha");
                 fechaNacimientoDateTimePicker.Value = DateTime.Today;
             }
         }

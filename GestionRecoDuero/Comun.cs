@@ -24,6 +24,12 @@ namespace GestionRecoDuero
             return Regex.IsMatch(telefono, patronTelefono);
         }
 
+        public static bool ComprobarMatricula(String matricula)
+        {
+            string patronMatricula = @"^\d{4}[A-Z]{3}$";
+            return Regex.IsMatch(matricula, patronMatricula);
+        }
+
         //Controla mayusculas,minusculas,Ñ,ñ y vocales acentuadas
         public static bool ContieneSoloLetras(String texto)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionRecoDuero.RecoDueroDataSetTableAdapters;
+using System;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace GestionRecoDuero
             EstadoControlesInicioApp();
             RefrescarToolstripLabelObra();
             toolStripStatusLabel1.Text = "Inicio";
+            CargarEmpleados();
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -181,7 +183,6 @@ namespace GestionRecoDuero
             //ComboBox por defecto a una opción
             estadoComboBox.SelectedIndex = 0;
             tipoComboBox.SelectedIndex = 0;
-            responsableComboBox.SelectedIndex = 0;
         }
 
         //Deshabilita todos los botones en Añadir salvo aceptar cancelar y guardar
@@ -402,6 +403,20 @@ namespace GestionRecoDuero
                         else
                         {
                             obraBindingSource.Position = obraBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text);
+                        }
+                    }
+
+                    //Ubicacion
+                    if (toolStripComboBoxBuscarObras.Text.Equals("Ubicacion"))
+                    {
+                        if (obraBindingSource.Find("Ubicacion", toolStripTextBoxBuscar.Text) == -1)
+                        {
+                            Comun.MostrarMensajeDeError("La obra no existe.", "Obra no encontrada");
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                        }
+                        else
+                        {
+                            obraBindingSource.Position = obraBindingSource.Find("Ubicacion", toolStripTextBoxBuscar.Text);
                         }
                     }
 
@@ -652,7 +667,6 @@ namespace GestionRecoDuero
             observacionesTextBox.Enabled = true;
         }
 
-        //TODO: COMPROBAR
         private bool ComprobarDatosIntroducidos()
         {
             //Nombre 
@@ -672,6 +686,14 @@ namespace GestionRecoDuero
             {
                 errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
                 nombreTextBox.Clear();
+                return false;
+            }
+
+            //Ubicación
+            if (string.IsNullOrWhiteSpace(ubicacionTextBox.Text))
+            {
+                errorProvider1.SetError(ubicacionTextBox, " Ubicación obligatoria");
+                ubicacionTextBox.Clear();
                 return false;
             }
 
@@ -747,6 +769,48 @@ namespace GestionRecoDuero
             else
             {
                 label1.Text = "meses";
+            }
+        }
+
+        //TODO: Mirar para sacar solo los que sean Maestro de obra
+        private void CargarEmpleados()
+        {
+            EmpleadoTableAdapter empleadoTableAdapter = new EmpleadoTableAdapter();
+            RecoDueroDataSet.EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData();
+
+            responsableComboBox.DataSource = empleadosData;
+            responsableComboBox.DisplayMember = "Nombre";
+
+            //if (empleadosData.PuestoColumn.Equals("Maestro de obra"))
+            //{
+            //    responsableComboBox.DisplayMember = "Nombre";
+            //}
+
+            if (responsableComboBox.Items.Count > 0)
+            {
+                responsableComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                responsableComboBox.Text = "";
+            }
+        }
+
+        private void fechaFinDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (fechaFinDateTimePicker.Value < fechaInicioDateTimePicker.Value)
+            {
+                Comun.MostrarMensajeDeError("La fecha de finalización no puede ser anterior a la fecha de inicio", "Error al seleccionar la fecha");
+                fechaFinDateTimePicker.Value = DateTime.Today;
+            }
+        }
+
+        private void fechaInicioDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (fechaInicioDateTimePicker.Value > fechaFinDateTimePicker.Value)
+            {
+                Comun.MostrarMensajeDeError("La fecha de inicio no puede ser posterior a la fecha de finalización", "Error al seleccionar la fecha");
+                fechaInicioDateTimePicker.Value = DateTime.Today;
             }
         }
     }

@@ -594,7 +594,7 @@ namespace GestionRecoDuero
 
         private void RefrescarToolstripLabelServicioExterno()
         {
-            this.toolstripLabelContadorVehiculos.Text = $"Servicio externo {servicioExternoBindingSource.Position + 1} de {servicioExternoBindingSource.Count}";
+            this.toolstripLabelContadorServicioExterno.Text = $"Servicio externo {servicioExternoBindingSource.Position + 1} de {servicioExternoBindingSource.Count}";
         }
 
         private void OcultarCampos()
@@ -627,10 +627,71 @@ namespace GestionRecoDuero
             descripcionTextBox.Enabled = true;
         }
 
-        //TODO: COMPROBAR
         private bool ComprobarDatosIntroducidos()
         {
-            //Nombre 
+            //Empresa 
+            if (string.IsNullOrWhiteSpace(empresaTextBox.Text))
+            {
+                errorProvider1.SetError(empresaTextBox, " Empresa obligatoria");
+                empresaTextBox.Clear();
+                return false;
+            }
+
+            //Telefono
+            if (string.IsNullOrWhiteSpace(telefonoTextBox.Text))
+            {
+                errorProvider1.SetError(telefonoTextBox, " Teléfono obligatorio");
+                telefonoTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ComprobarTelefono(telefonoTextBox.Text))
+            {
+                errorProvider1.SetError(telefonoTextBox, "Formato de teléfono no válido, debe empezar por 6,7 o 9 y contener 9 números");
+                telefonoTextBox.Clear();
+                return false;
+            }
+
+            //Email
+            if (string.IsNullOrWhiteSpace(emailTextBox.Text))
+            {
+                errorProvider1.SetError(emailTextBox, " Email obligatorio");
+                emailTextBox.Clear();
+                return false;
+            }
+            else if (!(Comun.EsDireccionCorreoValida(emailTextBox.Text)) && emailTextBox.Text.Length != 0)
+            {
+                errorProvider1.SetError(emailTextBox, "Formato de email no válido");
+                emailTextBox.Clear();
+                return false;
+            }
+
+            //Coste
+            if (string.IsNullOrWhiteSpace(costeTextBox.Text))
+            {
+                errorProvider1.SetError(costeTextBox, " Coste obligatorio");
+                costeTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ContieneNumeros(costeTextBox.Text))
+            {
+                errorProvider1.SetError(costeTextBox, "Solo puede introducir números en el campo coste");
+                costeTextBox.Clear();
+                return false;
+            }
+
+            //Duración servicio
+            if (string.IsNullOrWhiteSpace(duracionServicioTextBox.Text))
+            {
+                errorProvider1.SetError(duracionServicioTextBox, "Duración servicio obligatorio");
+                duracionServicioTextBox.Clear();
+                return false;
+            }
+            else if (!Comun.ContieneNumeros(duracionServicioTextBox.Text))
+            {
+                errorProvider1.SetError(duracionServicioTextBox, "Solo puede introducir números en el campo duración servicio");
+                duracionServicioTextBox.Clear();
+                return false;
+            }
 
             //si todo es valido
             return true;
