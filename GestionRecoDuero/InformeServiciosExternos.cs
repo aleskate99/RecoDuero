@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -19,10 +12,45 @@ namespace GestionRecoDuero
 
         private void InformeServiciosExternos_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'recoDueroDataSet.ServicioExterno' Puede moverla o quitarla según sea necesario.
             this.servicioExternoTableAdapter.Fill(this.recoDueroDataSet.ServicioExterno);
-
             this.reportViewer1.RefreshReport();
+        }
+
+        private void buttonQuitarFiltro_Click(object sender, EventArgs e)
+        {
+            servicioExternoBindingSource.RemoveFilter();
+            reportViewer1.RefreshReport();
+            textBoxFiltrarEmpresa.Clear();
+        }
+
+        private void buttonFiltrarEmpresa_Click(object sender, EventArgs e)
+        {
+            servicioExternoBindingSource.Filter = "Empresa='" + textBoxFiltrarEmpresa.Text + "'";
+            reportViewer1.RefreshReport();
+            textBoxFiltrarEmpresa.Clear();
+        }
+
+        private void buttonFiltrarEstado_Click(object sender, EventArgs e)
+        {
+            servicioExternoBindingSource.Filter = "Estado='" + comboBoxFiltrarEstado.Text + "'";
+            reportViewer1.RefreshReport();
+            comboBoxFiltrarEstado.Text = (" ");
+        }
+
+        private void buttonFiltrarTipo_Click(object sender, EventArgs e)
+        {
+            servicioExternoBindingSource.Filter = "Tipo='" + comboBoxFiltrarTipo.Text + "'";
+            reportViewer1.RefreshReport();
+            comboBoxFiltrarTipo.Text = (" ");
+        }
+
+        private void buttonVolverInicio_Click(object sender, EventArgs e)
+        {
+            var volver = MessageBox.Show("¿Quiere volver a la ventana de servicios externos?", "Cerrar informe servicios externos", MessageBoxButtons.OKCancel);
+            if (volver == DialogResult.OK)
+            {
+                this.Close();
+            }
         }
     }
 }

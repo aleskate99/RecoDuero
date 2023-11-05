@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InformeObras));
             this.obraBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
@@ -59,9 +59,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource3.Name = "DataSet1";
-            reportDataSource3.Value = this.obraBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.obraBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "GestionRecoDuero.InformeObra.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1, 2);
             this.reportViewer1.Name = "reportViewer1";
@@ -83,7 +83,7 @@
             this.buttonVolverInicio.Margin = new System.Windows.Forms.Padding(4);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(88, 68);
-            this.buttonVolverInicio.TabIndex = 26;
+            this.buttonVolverInicio.TabIndex = 8;
             this.buttonVolverInicio.UseVisualStyleBackColor = false;
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
@@ -98,7 +98,7 @@
             this.comboBoxFiltrarTipo.Location = new System.Drawing.Point(1000, 413);
             this.comboBoxFiltrarTipo.Name = "comboBoxFiltrarTipo";
             this.comboBoxFiltrarTipo.Size = new System.Drawing.Size(146, 24);
-            this.comboBoxFiltrarTipo.TabIndex = 31;
+            this.comboBoxFiltrarTipo.TabIndex = 5;
             // 
             // buttonFiltrarTipo
             // 
@@ -106,7 +106,7 @@
             this.buttonFiltrarTipo.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarTipo.Name = "buttonFiltrarTipo";
             this.buttonFiltrarTipo.Size = new System.Drawing.Size(143, 31);
-            this.buttonFiltrarTipo.TabIndex = 32;
+            this.buttonFiltrarTipo.TabIndex = 6;
             this.buttonFiltrarTipo.Text = "Filtrar por tipo";
             this.buttonFiltrarTipo.UseVisualStyleBackColor = true;
             this.buttonFiltrarTipo.Click += new System.EventHandler(this.buttonFiltrarTipo_Click);
@@ -117,7 +117,7 @@
             this.buttonFiltrarEstado.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarEstado.Name = "buttonFiltrarEstado";
             this.buttonFiltrarEstado.Size = new System.Drawing.Size(143, 28);
-            this.buttonFiltrarEstado.TabIndex = 30;
+            this.buttonFiltrarEstado.TabIndex = 4;
             this.buttonFiltrarEstado.Text = "Filtrar por estado";
             this.buttonFiltrarEstado.UseVisualStyleBackColor = true;
             this.buttonFiltrarEstado.Click += new System.EventHandler(this.buttonFiltrarEstado_Click);
@@ -128,7 +128,7 @@
             this.buttonFiltrarNombre.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarNombre.Name = "buttonFiltrarNombre";
             this.buttonFiltrarNombre.Size = new System.Drawing.Size(143, 28);
-            this.buttonFiltrarNombre.TabIndex = 28;
+            this.buttonFiltrarNombre.TabIndex = 2;
             this.buttonFiltrarNombre.Text = "Filtrar por nombre";
             this.buttonFiltrarNombre.UseVisualStyleBackColor = true;
             this.buttonFiltrarNombre.Click += new System.EventHandler(this.buttonFiltrarNombre_Click);
@@ -139,14 +139,14 @@
             this.textBoxFiltrarNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFiltrarNombre.Name = "textBoxFiltrarNombre";
             this.textBoxFiltrarNombre.Size = new System.Drawing.Size(146, 22);
-            this.textBoxFiltrarNombre.TabIndex = 27;
+            this.textBoxFiltrarNombre.TabIndex = 1;
             // 
             // buttonQuitarFiltro
             // 
             this.buttonQuitarFiltro.Location = new System.Drawing.Point(1110, 500);
             this.buttonQuitarFiltro.Name = "buttonQuitarFiltro";
             this.buttonQuitarFiltro.Size = new System.Drawing.Size(123, 23);
-            this.buttonQuitarFiltro.TabIndex = 33;
+            this.buttonQuitarFiltro.TabIndex = 7;
             this.buttonQuitarFiltro.Text = "Quitar filtros";
             this.buttonQuitarFiltro.UseVisualStyleBackColor = true;
             this.buttonQuitarFiltro.Click += new System.EventHandler(this.buttonQuitarFiltro_Click);
@@ -162,7 +162,7 @@
             this.comboBoxFiltrarEstado.Location = new System.Drawing.Point(1000, 319);
             this.comboBoxFiltrarEstado.Name = "comboBoxFiltrarEstado";
             this.comboBoxFiltrarEstado.Size = new System.Drawing.Size(146, 24);
-            this.comboBoxFiltrarEstado.TabIndex = 34;
+            this.comboBoxFiltrarEstado.TabIndex = 3;
             // 
             // InformeObras
             // 

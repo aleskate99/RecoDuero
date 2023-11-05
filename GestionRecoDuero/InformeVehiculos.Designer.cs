@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InformeVehiculos));
             this.vehiculoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
@@ -59,9 +59,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "DataSet1";
-            reportDataSource2.Value = this.vehiculoBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.vehiculoBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "GestionRecoDuero.InformeVehiculo.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(-1, 1);
             this.reportViewer1.Name = "reportViewer1";
@@ -83,7 +83,7 @@
             this.buttonVolverInicio.Margin = new System.Windows.Forms.Padding(4);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(88, 68);
-            this.buttonVolverInicio.TabIndex = 26;
+            this.buttonVolverInicio.TabIndex = 8;
             this.buttonVolverInicio.UseVisualStyleBackColor = false;
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
@@ -92,7 +92,7 @@
             this.buttonQuitarFiltro.Location = new System.Drawing.Point(1140, 488);
             this.buttonQuitarFiltro.Name = "buttonQuitarFiltro";
             this.buttonQuitarFiltro.Size = new System.Drawing.Size(123, 23);
-            this.buttonQuitarFiltro.TabIndex = 36;
+            this.buttonQuitarFiltro.TabIndex = 7;
             this.buttonQuitarFiltro.Text = "Quitar filtros";
             this.buttonQuitarFiltro.UseVisualStyleBackColor = true;
             this.buttonQuitarFiltro.Click += new System.EventHandler(this.buttonQuitarFiltro_Click);
@@ -108,7 +108,7 @@
             this.comboBoxFiltrarEstado.Location = new System.Drawing.Point(1025, 302);
             this.comboBoxFiltrarEstado.Name = "comboBoxFiltrarEstado";
             this.comboBoxFiltrarEstado.Size = new System.Drawing.Size(154, 24);
-            this.comboBoxFiltrarEstado.TabIndex = 42;
+            this.comboBoxFiltrarEstado.TabIndex = 3;
             // 
             // comboBoxFiltrarTipo
             // 
@@ -121,7 +121,7 @@
             this.comboBoxFiltrarTipo.Location = new System.Drawing.Point(1025, 396);
             this.comboBoxFiltrarTipo.Name = "comboBoxFiltrarTipo";
             this.comboBoxFiltrarTipo.Size = new System.Drawing.Size(154, 24);
-            this.comboBoxFiltrarTipo.TabIndex = 40;
+            this.comboBoxFiltrarTipo.TabIndex = 5;
             // 
             // buttonFiltrarTipo
             // 
@@ -129,7 +129,7 @@
             this.buttonFiltrarTipo.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarTipo.Name = "buttonFiltrarTipo";
             this.buttonFiltrarTipo.Size = new System.Drawing.Size(143, 31);
-            this.buttonFiltrarTipo.TabIndex = 41;
+            this.buttonFiltrarTipo.TabIndex = 6;
             this.buttonFiltrarTipo.Text = "Filtrar por tipo";
             this.buttonFiltrarTipo.UseVisualStyleBackColor = true;
             this.buttonFiltrarTipo.Click += new System.EventHandler(this.buttonFiltrarTipo_Click);
@@ -140,7 +140,7 @@
             this.buttonFiltrarEstado.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarEstado.Name = "buttonFiltrarEstado";
             this.buttonFiltrarEstado.Size = new System.Drawing.Size(143, 28);
-            this.buttonFiltrarEstado.TabIndex = 39;
+            this.buttonFiltrarEstado.TabIndex = 4;
             this.buttonFiltrarEstado.Text = "Filtrar por estado";
             this.buttonFiltrarEstado.UseVisualStyleBackColor = true;
             this.buttonFiltrarEstado.Click += new System.EventHandler(this.buttonFiltrarEstado_Click);
@@ -151,7 +151,7 @@
             this.buttonFiltrarMarca.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarMarca.Name = "buttonFiltrarMarca";
             this.buttonFiltrarMarca.Size = new System.Drawing.Size(143, 28);
-            this.buttonFiltrarMarca.TabIndex = 38;
+            this.buttonFiltrarMarca.TabIndex = 2;
             this.buttonFiltrarMarca.Text = "Filtrar por marca";
             this.buttonFiltrarMarca.UseVisualStyleBackColor = true;
             this.buttonFiltrarMarca.Click += new System.EventHandler(this.buttonFiltrarMarca_Click);
@@ -162,7 +162,7 @@
             this.textBoxFiltrarMarca.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFiltrarMarca.Name = "textBoxFiltrarMarca";
             this.textBoxFiltrarMarca.Size = new System.Drawing.Size(154, 22);
-            this.textBoxFiltrarMarca.TabIndex = 37;
+            this.textBoxFiltrarMarca.TabIndex = 1;
             // 
             // InformeVehiculos
             // 
