@@ -386,8 +386,8 @@ namespace GestionRecoDuero
                     PrintLine("Tipo: ", tipoComboBox.Text);
                     PrintLine("Estado: ", estadoComboBox.Text);
 
-                    PrintLine("Coste: ", costeTextBox.Text);
-                    PrintLine("Duración: ", duracionServicioTextBox.Text);
+                    PrintLine("Coste: ", costeNumericUpDown.Text);
+                    PrintLine("Duración: ", duracionServicioNumericUpDown.Text);
                     PrintLine("Descripción: ", descripcionTextBox.Text);
                 }
             };
@@ -619,8 +619,8 @@ namespace GestionRecoDuero
             tipoComboBox.Enabled = false;
             estadoComboBox.Enabled = false;
 
-            costeTextBox.Enabled = false;
-            duracionServicioTextBox.Enabled = false;
+            costeNumericUpDown.Enabled = false;
+            duracionServicioNumericUpDown.Enabled = false;
             descripcionTextBox.Enabled = false;
         }
 
@@ -634,9 +634,21 @@ namespace GestionRecoDuero
             tipoComboBox.Enabled = true;
             estadoComboBox.Enabled = true;
 
-            costeTextBox.Enabled = true;
-            duracionServicioTextBox.Enabled = true;
+            costeNumericUpDown.Enabled = true;
+            duracionServicioNumericUpDown.Enabled = true;
             descripcionTextBox.Enabled = true;
+        }
+
+        private void duracionServicioNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (duracionServicioNumericUpDown.Value == 1)
+            {
+                label1.Text = "mes";
+            }
+            else
+            {
+                label1.Text = "meses";
+            }
         }
 
         //COMPROBAR DATOS
@@ -675,34 +687,6 @@ namespace GestionRecoDuero
             {
                 errorProvider1.SetError(emailTextBox, "Formato de email no válido");
                 emailTextBox.Clear();
-                return false;
-            }
-
-            //Coste
-            if (string.IsNullOrWhiteSpace(costeTextBox.Text))
-            {
-                errorProvider1.SetError(costeTextBox, " Coste obligatorio");
-                costeTextBox.Clear();
-                return false;
-            }
-            else if (!Comun.ContieneNumeros(costeTextBox.Text))
-            {
-                errorProvider1.SetError(costeTextBox, "Solo puede introducir números en el campo coste");
-                costeTextBox.Clear();
-                return false;
-            }
-
-            //Duración servicio
-            if (string.IsNullOrWhiteSpace(duracionServicioTextBox.Text))
-            {
-                errorProvider1.SetError(duracionServicioTextBox, "Duración servicio obligatorio");
-                duracionServicioTextBox.Clear();
-                return false;
-            }
-            else if (!Comun.ContieneNumeros(duracionServicioTextBox.Text))
-            {
-                errorProvider1.SetError(duracionServicioTextBox, "Solo puede introducir números en el campo duración servicio");
-                duracionServicioTextBox.Clear();
                 return false;
             }
 

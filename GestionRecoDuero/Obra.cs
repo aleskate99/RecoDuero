@@ -24,6 +24,7 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelObra();
             toolStripStatusLabel1.Text = "Inicio";
             CargarEmpleados();
+            fechaInicioDateTimePicker.Value = DateTime.Today.AddDays(-1); //TODO: REVISAR 
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)

@@ -74,13 +74,13 @@
             this.fotoPictureBox = new System.Windows.Forms.PictureBox();
             this.tipoComboBox = new System.Windows.Forms.ComboBox();
             this.estadoComboBox = new System.Windows.Forms.ComboBox();
-            this.costeAdquisicionTextBox = new System.Windows.Forms.TextBox();
             this.marcaTextBox = new System.Windows.Forms.TextBox();
             this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.vehiculoTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.VehiculoTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.costeAdquisicionNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.labelEuros = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             idVehiculoLabel = new System.Windows.Forms.Label();
@@ -102,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costeAdquisicionNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // idVehiculoLabel
@@ -468,7 +469,7 @@
             this.matrículaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matrículaTextBox.Location = new System.Drawing.Point(195, 260);
             this.matrículaTextBox.Name = "matrículaTextBox";
-            this.matrículaTextBox.Size = new System.Drawing.Size(200, 30);
+            this.matrículaTextBox.Size = new System.Drawing.Size(229, 30);
             this.matrículaTextBox.TabIndex = 3;
             // 
             // modeloTextBox
@@ -477,7 +478,7 @@
             this.modeloTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modeloTextBox.Location = new System.Drawing.Point(195, 200);
             this.modeloTextBox.Name = "modeloTextBox";
-            this.modeloTextBox.Size = new System.Drawing.Size(200, 30);
+            this.modeloTextBox.Size = new System.Drawing.Size(229, 30);
             this.modeloTextBox.TabIndex = 2;
             // 
             // fechaItvDateTimePicker
@@ -535,7 +536,7 @@
             "Furgoneta"});
             this.tipoComboBox.Location = new System.Drawing.Point(195, 323);
             this.tipoComboBox.Name = "tipoComboBox";
-            this.tipoComboBox.Size = new System.Drawing.Size(200, 30);
+            this.tipoComboBox.Size = new System.Drawing.Size(229, 30);
             this.tipoComboBox.TabIndex = 4;
             // 
             // estadoComboBox
@@ -550,17 +551,8 @@
             "Fuera de servicio"});
             this.estadoComboBox.Location = new System.Drawing.Point(195, 386);
             this.estadoComboBox.Name = "estadoComboBox";
-            this.estadoComboBox.Size = new System.Drawing.Size(200, 30);
+            this.estadoComboBox.Size = new System.Drawing.Size(229, 30);
             this.estadoComboBox.TabIndex = 5;
-            // 
-            // costeAdquisicionTextBox
-            // 
-            this.costeAdquisicionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "CosteAdquisicion", true));
-            this.costeAdquisicionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeAdquisicionTextBox.Location = new System.Drawing.Point(198, 451);
-            this.costeAdquisicionTextBox.Name = "costeAdquisicionTextBox";
-            this.costeAdquisicionTextBox.Size = new System.Drawing.Size(200, 30);
-            this.costeAdquisicionTextBox.TabIndex = 6;
             // 
             // marcaTextBox
             // 
@@ -568,7 +560,7 @@
             this.marcaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.marcaTextBox.Location = new System.Drawing.Point(195, 134);
             this.marcaTextBox.Name = "marcaTextBox";
-            this.marcaTextBox.Size = new System.Drawing.Size(200, 30);
+            this.marcaTextBox.Size = new System.Drawing.Size(229, 30);
             this.marcaTextBox.TabIndex = 1;
             // 
             // buttonVolverInicio
@@ -607,12 +599,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.costeAdquisicionNumericUpDown);
             this.groupBox1.Controls.Add(this.labelEuros);
             this.groupBox1.Controls.Add(idVehiculoLabel);
             this.groupBox1.Controls.Add(this.marcaTextBox);
             this.groupBox1.Controls.Add(marcaLabel);
             this.groupBox1.Controls.Add(this.idVehiculoLabel1);
-            this.groupBox1.Controls.Add(this.costeAdquisicionTextBox);
             this.groupBox1.Controls.Add(matrículaLabel);
             this.groupBox1.Controls.Add(costeAdquisicionLabel);
             this.groupBox1.Controls.Add(this.matrículaTextBox);
@@ -630,11 +622,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del vehículo";
             // 
+            // costeAdquisicionNumericUpDown
+            // 
+            this.costeAdquisicionNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vehiculoBindingSource, "CosteAdquisicion", true));
+            this.costeAdquisicionNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costeAdquisicionNumericUpDown.Location = new System.Drawing.Point(195, 452);
+            this.costeAdquisicionNumericUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.costeAdquisicionNumericUpDown.Name = "costeAdquisicionNumericUpDown";
+            this.costeAdquisicionNumericUpDown.Size = new System.Drawing.Size(229, 30);
+            this.costeAdquisicionNumericUpDown.TabIndex = 6;
+            this.costeAdquisicionNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // labelEuros
             // 
             this.labelEuros.AutoSize = true;
             this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEuros.Location = new System.Drawing.Point(404, 454);
+            this.labelEuros.Location = new System.Drawing.Point(440, 454);
             this.labelEuros.Name = "labelEuros";
             this.labelEuros.Size = new System.Drawing.Size(20, 22);
             this.labelEuros.TabIndex = 59;
@@ -681,6 +688,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costeAdquisicionNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -723,12 +731,12 @@
         private System.Windows.Forms.PictureBox fotoPictureBox;
         private System.Windows.Forms.ComboBox tipoComboBox;
         private System.Windows.Forms.ComboBox estadoComboBox;
-        private System.Windows.Forms.TextBox costeAdquisicionTextBox;
         private System.Windows.Forms.TextBox marcaTextBox;
         private System.Windows.Forms.PictureBox buttonVolverInicio;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label labelEuros;
+        private System.Windows.Forms.NumericUpDown costeAdquisicionNumericUpDown;
     }
 }

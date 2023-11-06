@@ -22,12 +22,12 @@ namespace GestionRecoDuero
             var volver = MessageBox.Show("¿Quiere volver a la ventana Login?", "Cerrar Sesión", MessageBoxButtons.OKCancel);
             if (volver == DialogResult.OK)
             {
-                EmpleadoAbierto();
-                ClienteAbierto();
-                MaterialAbierto();
-                ObraAbierto();
-                VehiculoAbierto();
-                ServicioExternoAbierto();
+                //EmpleadoAbierto();
+                //ClienteAbierto();
+                //MaterialAbierto();
+                //ObraAbierto();
+                //VehiculoAbierto();
+                //ServicioExternoAbierto();
                 //PresupuestoAbierto();
                 //FacturaAbierto();
                 this.Close();
@@ -396,7 +396,8 @@ namespace GestionRecoDuero
             var volver = MessageBox.Show("¿Está seguro que desea cerrar la aplicación?", "Cerrar Aplicación", MessageBoxButtons.OKCancel);
             if (volver == DialogResult.OK)
             {
-                Application.Exit();
+                //Application.Exit();
+                Environment.Exit(0);
             }
         }
     }

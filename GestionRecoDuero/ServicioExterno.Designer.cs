@@ -52,8 +52,6 @@
             this.tipoComboBox = new System.Windows.Forms.ComboBox();
             this.estadoComboBox = new System.Windows.Forms.ComboBox();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
-            this.costeTextBox = new System.Windows.Forms.TextBox();
-            this.duracionServicioTextBox = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonInicio = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonAnterior = new System.Windows.Forms.ToolStripButton();
@@ -81,6 +79,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelEuros = new System.Windows.Forms.Label();
+            this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.duracionServicioNumericUpDown = new System.Windows.Forms.NumericUpDown();
             idServicioExternoLabel = new System.Windows.Forms.Label();
             empresaLabel = new System.Windows.Forms.Label();
             telefonoLabel = new System.Windows.Forms.Label();
@@ -98,6 +98,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.duracionServicioNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // idServicioExternoLabel
@@ -315,24 +317,6 @@
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(249, 152);
             this.descripcionTextBox.TabIndex = 9;
-            // 
-            // costeTextBox
-            // 
-            this.costeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.servicioExternoBindingSource, "Coste", true));
-            this.costeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeTextBox.Location = new System.Drawing.Point(878, 181);
-            this.costeTextBox.Name = "costeTextBox";
-            this.costeTextBox.Size = new System.Drawing.Size(249, 30);
-            this.costeTextBox.TabIndex = 7;
-            // 
-            // duracionServicioTextBox
-            // 
-            this.duracionServicioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.servicioExternoBindingSource, "DuracionServicio", true));
-            this.duracionServicioTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.duracionServicioTextBox.Location = new System.Drawing.Point(878, 243);
-            this.duracionServicioTextBox.Name = "duracionServicioTextBox";
-            this.duracionServicioTextBox.Size = new System.Drawing.Size(249, 30);
-            this.duracionServicioTextBox.TabIndex = 8;
             // 
             // toolStrip1
             // 
@@ -622,11 +606,44 @@
             this.labelEuros.TabIndex = 62;
             this.labelEuros.Text = "€";
             // 
+            // costeNumericUpDown
+            // 
+            this.costeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.servicioExternoBindingSource, "Coste", true));
+            this.costeNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costeNumericUpDown.Location = new System.Drawing.Point(878, 180);
+            this.costeNumericUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.costeNumericUpDown.Name = "costeNumericUpDown";
+            this.costeNumericUpDown.Size = new System.Drawing.Size(249, 30);
+            this.costeNumericUpDown.TabIndex = 7;
+            this.costeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // duracionServicioNumericUpDown
+            // 
+            this.duracionServicioNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.servicioExternoBindingSource, "DuracionServicio", true));
+            this.duracionServicioNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.duracionServicioNumericUpDown.Location = new System.Drawing.Point(878, 244);
+            this.duracionServicioNumericUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.duracionServicioNumericUpDown.Name = "duracionServicioNumericUpDown";
+            this.duracionServicioNumericUpDown.Size = new System.Drawing.Size(249, 30);
+            this.duracionServicioNumericUpDown.TabIndex = 8;
+            this.duracionServicioNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.duracionServicioNumericUpDown.ValueChanged += new System.EventHandler(this.duracionServicioNumericUpDown_ValueChanged);
+            // 
             // ServicioExterno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1341, 794);
+            this.Controls.Add(this.duracionServicioNumericUpDown);
+            this.Controls.Add(this.costeNumericUpDown);
             this.Controls.Add(this.labelEuros);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -638,9 +655,7 @@
             this.Controls.Add(descripcionLabel);
             this.Controls.Add(this.descripcionTextBox);
             this.Controls.Add(costeLabel);
-            this.Controls.Add(this.costeTextBox);
             this.Controls.Add(duracionServicioLabel);
-            this.Controls.Add(this.duracionServicioTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ServicioExterno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -658,6 +673,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.duracionServicioNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -677,8 +694,6 @@
         private System.Windows.Forms.ComboBox tipoComboBox;
         private System.Windows.Forms.ComboBox estadoComboBox;
         private System.Windows.Forms.TextBox descripcionTextBox;
-        private System.Windows.Forms.TextBox costeTextBox;
-        private System.Windows.Forms.TextBox duracionServicioTextBox;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonInicio;
         private System.Windows.Forms.ToolStripButton toolStripButtonAnterior;
@@ -706,5 +721,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelEuros;
+        private System.Windows.Forms.NumericUpDown duracionServicioNumericUpDown;
+        private System.Windows.Forms.NumericUpDown costeNumericUpDown;
     }
 }

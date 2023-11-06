@@ -379,8 +379,8 @@ namespace GestionRecoDuero
 
                     PrintLine("Id: ", idMaterialLabel1.Text);
                     PrintLine("Nombre: ", nombreTextBox.Text);
-                    PrintLine("Cantidad: ", cantidadTextBox.Text);
-                    PrintLine("Coste: ", costeTextBox.Text);
+                    PrintLine("Cantidad: ", cantidadNumericUpDown.Text);
+                    PrintLine("Coste: ", costeNumericUpDown.Text);
                     PrintLine("Distribuidor: ", distribuidorTextBox.Text);
                     PrintLine("Estado: ", estadoComboBox.Text);
                     PrintLine("Garantía: ", garantiaCheckBox.Text);
@@ -631,8 +631,8 @@ namespace GestionRecoDuero
         {
             idMaterialLabel1.Enabled = false;
             nombreTextBox.Enabled = false;
-            cantidadTextBox.Enabled = false;
-            costeTextBox.Enabled = false;
+            cantidadNumericUpDown.Enabled = false;
+            costeNumericUpDown.Enabled = false;
             distribuidorTextBox.Enabled = false;
             estadoComboBox.Enabled = false;
 
@@ -645,8 +645,8 @@ namespace GestionRecoDuero
         {
             idMaterialLabel1.Enabled = true;
             nombreTextBox.Enabled = true;
-            cantidadTextBox.Enabled = true;
-            costeTextBox.Enabled = true;
+            cantidadNumericUpDown.Enabled = true;
+            costeNumericUpDown.Enabled = true;
             distribuidorTextBox.Enabled = true;
             estadoComboBox.Enabled = true;
 
@@ -678,34 +678,6 @@ namespace GestionRecoDuero
                 return false;
             }
 
-            //Cantidad
-            if (string.IsNullOrWhiteSpace(cantidadTextBox.Text))
-            {
-                errorProvider1.SetError(cantidadTextBox, " Cantidad obligatoria");
-                cantidadTextBox.Clear();
-                return false;
-            }
-            else if (!Comun.ContieneNumeros(cantidadTextBox.Text))
-            {
-                errorProvider1.SetError(cantidadTextBox, "Solo puede introducir números en el campo cantidad");
-                cantidadTextBox.Clear();
-                return false;
-            }
-
-            //Coste
-            if (string.IsNullOrWhiteSpace(costeTextBox.Text))
-            {
-                errorProvider1.SetError(costeTextBox, " Coste obligatorio");
-                costeTextBox.Clear();
-                return false;
-            }
-            else if (!Comun.ContieneNumeros(costeTextBox.Text))
-            {
-                errorProvider1.SetError(costeTextBox, "Solo puede introducir números en el campo coste");
-                costeTextBox.Clear();
-                return false;
-            }
-
             //Distribuidor
             if (string.IsNullOrWhiteSpace(distribuidorTextBox.Text))
             {
@@ -724,8 +696,31 @@ namespace GestionRecoDuero
             return true;
         }
 
-        //TODO: VALIDATINGS
+        //VALIDATINGS
+        private void nombreTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (nombreTextBox.TextLength > 30 && !string.IsNullOrWhiteSpace(nombreTextBox.Text))
+            {
+                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
+                nombreTextBox.Clear();
+            }
+            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text) && !string.IsNullOrWhiteSpace(nombreTextBox.Text))
+            {
+                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
+                nombreTextBox.Clear();
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
 
+        private void distribuidorTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        //Atajos de teclado
         private void Material_KeyDown(object sender, KeyEventArgs e)
         {
             //Añadir
@@ -793,7 +788,7 @@ namespace GestionRecoDuero
 
                 if (seleccion.Equals("Agotado"))
                 {
-                    cantidadTextBox.Text = "0";
+                    cantidadNumericUpDown.Text = "0";
                 }
             }
         }
@@ -821,6 +816,6 @@ namespace GestionRecoDuero
 
                 }
             }
-        }
+        } 
     }
 }

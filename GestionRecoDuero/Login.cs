@@ -20,7 +20,8 @@ namespace GestionRecoDuero
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            Environment.Exit(0);
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)

@@ -67,14 +67,14 @@
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
-            this.cantidadTextBox = new System.Windows.Forms.TextBox();
-            this.costeTextBox = new System.Windows.Forms.TextBox();
             this.distribuidorTextBox = new System.Windows.Forms.TextBox();
             this.estadoComboBox = new System.Windows.Forms.ComboBox();
             this.garantiaCheckBox = new System.Windows.Forms.CheckBox();
             this.fechaAdquisicionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.cantidadNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.labelEuros = new System.Windows.Forms.Label();
             this.materialTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.MaterialTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
@@ -94,6 +94,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cantidadNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // idMaterialLabel
@@ -459,24 +461,7 @@
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(250, 30);
             this.nombreTextBox.TabIndex = 1;
-            // 
-            // cantidadTextBox
-            // 
-            this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Cantidad", true));
-            this.cantidadTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadTextBox.Location = new System.Drawing.Point(199, 175);
-            this.cantidadTextBox.Name = "cantidadTextBox";
-            this.cantidadTextBox.Size = new System.Drawing.Size(250, 30);
-            this.cantidadTextBox.TabIndex = 2;
-            // 
-            // costeTextBox
-            // 
-            this.costeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Coste", true));
-            this.costeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeTextBox.Location = new System.Drawing.Point(199, 245);
-            this.costeTextBox.Name = "costeTextBox";
-            this.costeTextBox.Size = new System.Drawing.Size(250, 30);
-            this.costeTextBox.TabIndex = 3;
+            this.nombreTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.nombreTextBox_Validating);
             // 
             // distribuidorTextBox
             // 
@@ -486,6 +471,7 @@
             this.distribuidorTextBox.Name = "distribuidorTextBox";
             this.distribuidorTextBox.Size = new System.Drawing.Size(250, 30);
             this.distribuidorTextBox.TabIndex = 4;
+            this.distribuidorTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.distribuidorTextBox_Validating);
             // 
             // estadoComboBox
             // 
@@ -535,6 +521,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.costeNumericUpDown);
+            this.groupBox1.Controls.Add(this.cantidadNumericUpDown);
             this.groupBox1.Controls.Add(this.labelEuros);
             this.groupBox1.Controls.Add(idMaterialLabel);
             this.groupBox1.Controls.Add(this.estadoComboBox);
@@ -545,8 +533,6 @@
             this.groupBox1.Controls.Add(this.nombreTextBox);
             this.groupBox1.Controls.Add(distribuidorLabel);
             this.groupBox1.Controls.Add(cantidadLabel);
-            this.groupBox1.Controls.Add(this.costeTextBox);
-            this.groupBox1.Controls.Add(this.cantidadTextBox);
             this.groupBox1.Controls.Add(costeLabel);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(33, 137);
@@ -555,6 +541,36 @@
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de los materiales";
+            // 
+            // costeNumericUpDown
+            // 
+            this.costeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.materialBindingSource, "Coste", true));
+            this.costeNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costeNumericUpDown.Location = new System.Drawing.Point(199, 245);
+            this.costeNumericUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.costeNumericUpDown.Name = "costeNumericUpDown";
+            this.costeNumericUpDown.Size = new System.Drawing.Size(250, 30);
+            this.costeNumericUpDown.TabIndex = 3;
+            this.costeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cantidadNumericUpDown
+            // 
+            this.cantidadNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.materialBindingSource, "Cantidad", true));
+            this.cantidadNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cantidadNumericUpDown.Location = new System.Drawing.Point(199, 170);
+            this.cantidadNumericUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.cantidadNumericUpDown.Name = "cantidadNumericUpDown";
+            this.cantidadNumericUpDown.Size = new System.Drawing.Size(250, 30);
+            this.cantidadNumericUpDown.TabIndex = 2;
+            this.cantidadNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelEuros
             // 
@@ -618,6 +634,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cantidadNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -655,8 +673,6 @@
         private RecoDueroDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Label idMaterialLabel1;
         private System.Windows.Forms.TextBox nombreTextBox;
-        private System.Windows.Forms.TextBox cantidadTextBox;
-        private System.Windows.Forms.TextBox costeTextBox;
         private System.Windows.Forms.TextBox distribuidorTextBox;
         private System.Windows.Forms.ComboBox estadoComboBox;
         private System.Windows.Forms.CheckBox garantiaCheckBox;
@@ -664,5 +680,7 @@
         private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelEuros;
+        private System.Windows.Forms.NumericUpDown costeNumericUpDown;
+        private System.Windows.Forms.NumericUpDown cantidadNumericUpDown;
     }
 }

@@ -387,7 +387,7 @@ namespace GestionRecoDuero
                     PrintLine("Matrícula: ", matrículaTextBox.Text);
                     PrintLine("Tipo: ", tipoComboBox.Text);
                     PrintLine("Estado: ", estadoComboBox.Text);
-                    PrintLine("Coste de adquisición: ", costeAdquisicionTextBox.Text);
+                    PrintLine("Coste de adquisición: ", costeAdquisicionNumericUpDown.Text);
 
                     PrintLine("Conductor: ", conductorComboBox.Text);
                     PrintLine("Seguro: ", seguroTextBox.Text);
@@ -657,7 +657,7 @@ namespace GestionRecoDuero
             matrículaTextBox.Enabled = false;
             tipoComboBox.Enabled = false;
             estadoComboBox.Enabled = false;
-            costeAdquisicionTextBox.Enabled = false;
+            costeAdquisicionNumericUpDown.Enabled = false;
 
             conductorComboBox.Enabled = false;
             seguroTextBox.Enabled = false;
@@ -673,7 +673,7 @@ namespace GestionRecoDuero
             matrículaTextBox.Enabled = true;
             tipoComboBox.Enabled = true;
             estadoComboBox.Enabled = true;
-            costeAdquisicionTextBox.Enabled = true;
+            costeAdquisicionNumericUpDown.Enabled = true;
 
             conductorComboBox.Enabled = true;
             seguroTextBox.Enabled = true;
@@ -730,20 +730,6 @@ namespace GestionRecoDuero
             {
                 errorProvider1.SetError(matrículaTextBox, "Formato de matrícula erróneo, debe tener 4 números y 3 letras mayúsculas");
                 matrículaTextBox.Clear();
-                return false;
-            }
-
-            //Coste
-            if (string.IsNullOrWhiteSpace(costeAdquisicionTextBox.Text))
-            {
-                errorProvider1.SetError(costeAdquisicionTextBox, "Coste obligatorio");
-                costeAdquisicionTextBox.Clear();
-                return false;
-            }
-            else if (!Comun.ContieneNumeros(costeAdquisicionTextBox.Text))
-            {
-                errorProvider1.SetError(costeAdquisicionTextBox, "Solo puede introducir números en el campo coste");
-                costeAdquisicionTextBox.Clear();
                 return false;
             }
 

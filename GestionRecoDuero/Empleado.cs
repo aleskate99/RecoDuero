@@ -821,12 +821,12 @@ namespace GestionRecoDuero
         //VALIDATINGS
         private void nombreTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (nombreTextBox.TextLength > 30)
+            if (nombreTextBox.TextLength > 30 && !string.IsNullOrWhiteSpace(nombreTextBox.Text))
             {
                 errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
                 nombreTextBox.Clear();
             }
-            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text))
+            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text) && !string.IsNullOrWhiteSpace(nombreTextBox.Text))
             {
                 errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
                 nombreTextBox.Clear();
@@ -839,12 +839,12 @@ namespace GestionRecoDuero
 
         private void apellidosTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (apellidosTextBox.TextLength > 50)
+            if (apellidosTextBox.TextLength > 50 && !string.IsNullOrWhiteSpace(apellidosTextBox.Text))
             {
                 errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
                 apellidosTextBox.Clear();
             }
-            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text))
+            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text) && !string.IsNullOrWhiteSpace(apellidosTextBox.Text))
             {
                 errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
                 apellidosTextBox.Clear();
@@ -998,8 +998,7 @@ namespace GestionRecoDuero
                         Comun.MostrarMensajeDeError("Hay datos erróneos porfavor reviselo", "Error al guardar");
                         // Cancela el cierre del formulario
                         e.Cancel = true;
-                    }
-                   
+                    }  
                 }
             }
         }

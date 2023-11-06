@@ -558,6 +558,11 @@
             this.duracionEstimadaNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.obraBindingSource, "DuracionEstimada", true));
             this.duracionEstimadaNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.duracionEstimadaNumericUpDown.Location = new System.Drawing.Point(264, 57);
+            this.duracionEstimadaNumericUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.duracionEstimadaNumericUpDown.Name = "duracionEstimadaNumericUpDown";
             this.duracionEstimadaNumericUpDown.Size = new System.Drawing.Size(250, 30);
             this.duracionEstimadaNumericUpDown.TabIndex = 6;
@@ -632,7 +637,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(639, 146);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(591, 415);
+            this.groupBox2.Size = new System.Drawing.Size(623, 415);
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Duración de la obra";
