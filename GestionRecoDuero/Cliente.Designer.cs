@@ -290,6 +290,7 @@
             // contratoPictureBox
             // 
             this.contratoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.contratoPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.contratoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.clienteBindingSource, "Contrato", true));
             this.contratoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("contratoPictureBox.Image")));
             this.contratoPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("contratoPictureBox.InitialImage")));
@@ -491,7 +492,6 @@
             // 
             // toolStripComboBoxBuscarClientes
             // 
-            this.toolStripComboBoxBuscarClientes.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarClientes.Items.AddRange(new object[] {
             "Id",
             "Nombre"});
@@ -607,7 +607,7 @@
             this.Controls.Add(this.contratoPictureBox);
             this.Controls.Add(observacionesLabel);
             this.Controls.Add(this.observacionesTextBox);
-            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

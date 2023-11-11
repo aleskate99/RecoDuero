@@ -353,6 +353,7 @@
             // 
             // toolStripComboBoxBuscarObras
             // 
+            this.toolStripComboBoxBuscarObras.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarObras.Items.AddRange(new object[] {
             "Id",
             "Nombre",
@@ -404,7 +405,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(1079, 601);
+            this.buttonCancelar.Location = new System.Drawing.Point(1078, 598);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -422,7 +423,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(823, 601);
+            this.buttonAceptar.Location = new System.Drawing.Point(822, 598);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
@@ -470,7 +471,7 @@
             this.ubicacionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ubicacionTextBox.Location = new System.Drawing.Point(229, 164);
             this.ubicacionTextBox.Name = "ubicacionTextBox";
-            this.ubicacionTextBox.Size = new System.Drawing.Size(250, 30);
+            this.ubicacionTextBox.Size = new System.Drawing.Size(278, 30);
             this.ubicacionTextBox.TabIndex = 2;
             // 
             // estadoComboBox
@@ -485,7 +486,7 @@
             "Finalizada"});
             this.estadoComboBox.Location = new System.Drawing.Point(229, 224);
             this.estadoComboBox.Name = "estadoComboBox";
-            this.estadoComboBox.Size = new System.Drawing.Size(250, 30);
+            this.estadoComboBox.Size = new System.Drawing.Size(278, 30);
             this.estadoComboBox.TabIndex = 3;
             // 
             // observacionesTextBox
@@ -495,7 +496,7 @@
             this.observacionesTextBox.Location = new System.Drawing.Point(264, 233);
             this.observacionesTextBox.Multiline = true;
             this.observacionesTextBox.Name = "observacionesTextBox";
-            this.observacionesTextBox.Size = new System.Drawing.Size(254, 89);
+            this.observacionesTextBox.Size = new System.Drawing.Size(324, 152);
             this.observacionesTextBox.TabIndex = 9;
             // 
             // fechaInicioDateTimePicker
@@ -504,7 +505,7 @@
             this.fechaInicioDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaInicioDateTimePicker.Location = new System.Drawing.Point(264, 114);
             this.fechaInicioDateTimePicker.Name = "fechaInicioDateTimePicker";
-            this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(250, 30);
+            this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(324, 30);
             this.fechaInicioDateTimePicker.TabIndex = 7;
             this.fechaInicioDateTimePicker.ValueChanged += new System.EventHandler(this.fechaInicioDateTimePicker_ValueChanged);
             // 
@@ -514,7 +515,7 @@
             this.fechaFinDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaFinDateTimePicker.Location = new System.Drawing.Point(264, 172);
             this.fechaFinDateTimePicker.Name = "fechaFinDateTimePicker";
-            this.fechaFinDateTimePicker.Size = new System.Drawing.Size(250, 30);
+            this.fechaFinDateTimePicker.Size = new System.Drawing.Size(324, 30);
             this.fechaFinDateTimePicker.TabIndex = 8;
             this.fechaFinDateTimePicker.ValueChanged += new System.EventHandler(this.fechaFinDateTimePicker_ValueChanged);
             // 
@@ -526,7 +527,7 @@
             this.responsableComboBox.FormattingEnabled = true;
             this.responsableComboBox.Location = new System.Drawing.Point(229, 355);
             this.responsableComboBox.Name = "responsableComboBox";
-            this.responsableComboBox.Size = new System.Drawing.Size(250, 30);
+            this.responsableComboBox.Size = new System.Drawing.Size(278, 30);
             this.responsableComboBox.TabIndex = 5;
             // 
             // tipoComboBox
@@ -541,7 +542,7 @@
             "Institucional"});
             this.tipoComboBox.Location = new System.Drawing.Point(229, 288);
             this.tipoComboBox.Name = "tipoComboBox";
-            this.tipoComboBox.Size = new System.Drawing.Size(250, 30);
+            this.tipoComboBox.Size = new System.Drawing.Size(278, 30);
             this.tipoComboBox.TabIndex = 4;
             // 
             // nombreTextBox
@@ -550,7 +551,7 @@
             this.nombreTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nombreTextBox.Location = new System.Drawing.Point(229, 106);
             this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(250, 30);
+            this.nombreTextBox.Size = new System.Drawing.Size(278, 30);
             this.nombreTextBox.TabIndex = 1;
             // 
             // duracionEstimadaNumericUpDown
@@ -564,7 +565,7 @@
             0,
             0});
             this.duracionEstimadaNumericUpDown.Name = "duracionEstimadaNumericUpDown";
-            this.duracionEstimadaNumericUpDown.Size = new System.Drawing.Size(250, 30);
+            this.duracionEstimadaNumericUpDown.Size = new System.Drawing.Size(324, 30);
             this.duracionEstimadaNumericUpDown.TabIndex = 6;
             this.duracionEstimadaNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.duracionEstimadaNumericUpDown.ValueChanged += new System.EventHandler(this.duracionEstimadaNumericUpDown_ValueChanged);
@@ -577,7 +578,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(530, 59);
+            this.label1.Location = new System.Drawing.Point(601, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 22);
             this.label1.TabIndex = 59;
@@ -616,9 +617,9 @@
             this.groupBox1.Controls.Add(responsableLabel);
             this.groupBox1.Controls.Add(this.estadoComboBox);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(22, 146);
+            this.groupBox1.Location = new System.Drawing.Point(22, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(554, 415);
+            this.groupBox1.Size = new System.Drawing.Size(540, 415);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de la obra";
@@ -635,9 +636,9 @@
             this.groupBox2.Controls.Add(this.fechaInicioDateTimePicker);
             this.groupBox2.Controls.Add(fechaInicioLabel);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(639, 146);
+            this.groupBox2.Location = new System.Drawing.Point(597, 160);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(623, 415);
+            this.groupBox2.Size = new System.Drawing.Size(665, 415);
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Duración de la obra";

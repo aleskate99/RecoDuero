@@ -695,12 +695,6 @@ namespace GestionRecoDuero
                 nombreTextBox.Clear();
                 return false;
             }
-            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text))
-            {
-                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
-                nombreTextBox.Clear();
-                return false;
-            }
 
             //Ubicación
             if (string.IsNullOrWhiteSpace(ubicacionTextBox.Text))

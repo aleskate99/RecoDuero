@@ -82,9 +82,9 @@
             this.buttonAceptar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.imagenPictureBox = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.empleadoTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.EmpleadoTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             idEmpleadoLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             apellidosLabel = new System.Windows.Forms.Label();
@@ -262,7 +262,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(25, 122);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(534, 486);
+            this.groupBox1.Size = new System.Drawing.Size(601, 486);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del empeado";
@@ -273,7 +273,7 @@
             this.fechaNacimientoDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaNacimientoDateTimePicker.Location = new System.Drawing.Point(223, 255);
             this.fechaNacimientoDateTimePicker.Name = "fechaNacimientoDateTimePicker";
-            this.fechaNacimientoDateTimePicker.Size = new System.Drawing.Size(254, 30);
+            this.fechaNacimientoDateTimePicker.Size = new System.Drawing.Size(335, 30);
             this.fechaNacimientoDateTimePicker.TabIndex = 4;
             this.fechaNacimientoDateTimePicker.ValueChanged += new System.EventHandler(this.fechaNacimientoDateTimePicker_ValueChanged);
             // 
@@ -293,7 +293,7 @@
             this.dNITextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dNITextBox.Location = new System.Drawing.Point(223, 199);
             this.dNITextBox.Name = "dNITextBox";
-            this.dNITextBox.Size = new System.Drawing.Size(254, 30);
+            this.dNITextBox.Size = new System.Drawing.Size(335, 30);
             this.dNITextBox.TabIndex = 3;
             // 
             // generoComboBox
@@ -308,7 +308,7 @@
             "Otro"});
             this.generoComboBox.Location = new System.Drawing.Point(223, 419);
             this.generoComboBox.Name = "generoComboBox";
-            this.generoComboBox.Size = new System.Drawing.Size(254, 30);
+            this.generoComboBox.Size = new System.Drawing.Size(335, 30);
             this.generoComboBox.TabIndex = 7;
             // 
             // idEmpleadoLabel1
@@ -327,7 +327,7 @@
             this.nombreTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nombreTextBox.Location = new System.Drawing.Point(223, 88);
             this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(254, 30);
+            this.nombreTextBox.Size = new System.Drawing.Size(335, 30);
             this.nombreTextBox.TabIndex = 1;
             // 
             // apellidosTextBox
@@ -336,7 +336,7 @@
             this.apellidosTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.apellidosTextBox.Location = new System.Drawing.Point(223, 141);
             this.apellidosTextBox.Name = "apellidosTextBox";
-            this.apellidosTextBox.Size = new System.Drawing.Size(254, 30);
+            this.apellidosTextBox.Size = new System.Drawing.Size(335, 30);
             this.apellidosTextBox.TabIndex = 2;
             // 
             // emailTextBox
@@ -345,7 +345,7 @@
             this.emailTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailTextBox.Location = new System.Drawing.Point(223, 369);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(254, 30);
+            this.emailTextBox.Size = new System.Drawing.Size(335, 30);
             this.emailTextBox.TabIndex = 6;
             // 
             // telefonoTextBox
@@ -354,7 +354,7 @@
             this.telefonoTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.telefonoTextBox.Location = new System.Drawing.Point(223, 311);
             this.telefonoTextBox.Name = "telefonoTextBox";
-            this.telefonoTextBox.Size = new System.Drawing.Size(254, 30);
+            this.telefonoTextBox.Size = new System.Drawing.Size(335, 30);
             this.telefonoTextBox.TabIndex = 5;
             // 
             // groupBox2
@@ -664,6 +664,10 @@
             this.imagenPictureBox.TabStop = false;
             this.imagenPictureBox.Click += new System.EventHandler(this.imagenPictureBox_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // empleadoTableAdapter
             // 
             this.empleadoTableAdapter.ClearBeforeFill = true;
@@ -681,10 +685,6 @@
             this.tableAdapterManager.UpdateOrder = GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsuarioTableAdapter = null;
             this.tableAdapterManager.VehiculoTableAdapter = null;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Empleado
             // 

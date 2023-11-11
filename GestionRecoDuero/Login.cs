@@ -169,7 +169,7 @@ namespace GestionRecoDuero
                 tableAdapterManager.UpdateAll(recoDueroDataSet);
 
                 mail.envioCorreo(emailTextBox.Text, true);
-                MessageBox.Show("Correo enviado!");
+                //MessageBox.Show("Correo enviado!");
             }
             else
             {

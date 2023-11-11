@@ -22,14 +22,14 @@ namespace GestionRecoDuero
             var volver = MessageBox.Show("¿Quiere volver a la ventana Login?", "Cerrar Sesión", MessageBoxButtons.OKCancel);
             if (volver == DialogResult.OK)
             {
-                //EmpleadoAbierto();
-                //ClienteAbierto();
-                //MaterialAbierto();
-                //ObraAbierto();
-                //VehiculoAbierto();
-                //ServicioExternoAbierto();
-                //PresupuestoAbierto();
-                //FacturaAbierto();
+                EmpleadoAbierto();
+                ClienteAbierto();
+                MaterialAbierto();
+                ObraAbierto();
+                VehiculoAbierto();
+                ServicioExternoAbierto();
+                PresupuestoAbierto();
+                FacturaAbierto();
                 this.Close();
                 Login login = new Login();
                 login.Show();
@@ -242,57 +242,57 @@ namespace GestionRecoDuero
             }
         }
 
-        //private void PresupuestoAbierto()
-        //{
-        //    Boolean abierto = false;
-        //    Form formAbierto = null;
+        private void PresupuestoAbierto()
+        {
+            Boolean abierto = false;
+            Form formAbierto = null;
 
-        //    //comprobamos que no esta abierto el formulario cliente
-        //    foreach (Form frm in Application.OpenForms)
-        //    {
-        //        if (frm.GetType() == typeof(Presupuesto))
-        //        {
-        //            if (frm.WindowState == FormWindowState.Minimized)
-        //            {
-        //                frm.WindowState = FormWindowState.Normal;
-        //            }
-        //            frm.BringToFront();
-        //            abierto = true;
-        //            formAbierto = frm;
-        //            break;
-        //        }
-        //    }
-        //    if (abierto)
-        //    {
-        //        CerrarFormInPanel(formAbierto);
-        //    }
-        //}
+            //comprobamos que no esta abierto el formulario cliente
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(Presupuesto))
+                {
+                    if (frm.WindowState == FormWindowState.Minimized)
+                    {
+                        frm.WindowState = FormWindowState.Normal;
+                    }
+                    frm.BringToFront();
+                    abierto = true;
+                    formAbierto = frm;
+                    break;
+                }
+            }
+            if (abierto)
+            {
+                CerrarFormInPanel(formAbierto);
+            }
+        }
 
-        //private void FacturaAbierto()
-        //{
-        //    Boolean abierto = false;
-        //    Form formAbierto = null;
+        private void FacturaAbierto()
+        {
+            Boolean abierto = false;
+            Form formAbierto = null;
 
-        //    //comprobamos que no esta abierto el formulario cliente
-        //    foreach (Form frm in Application.OpenForms)
-        //    {
-        //        if (frm.GetType() == typeof(Factura))
-        //        {
-        //            if (frm.WindowState == FormWindowState.Minimized)
-        //            {
-        //                frm.WindowState = FormWindowState.Normal;
-        //            }
-        //            frm.BringToFront();
-        //            abierto = true;
-        //            formAbierto = frm;
-        //            break;
-        //        }
-        //    }
-        //    if (abierto)
-        //    {
-        //        CerrarFormInPanel(formAbierto);
-        //    }
-        //}
+            //comprobamos que no esta abierto el formulario cliente
+            foreach (Form frm in Application.OpenForms)
+            {
+                if (frm.GetType() == typeof(Factura))
+                {
+                    if (frm.WindowState == FormWindowState.Minimized)
+                    {
+                        frm.WindowState = FormWindowState.Normal;
+                    }
+                    frm.BringToFront();
+                    abierto = true;
+                    formAbierto = frm;
+                    break;
+                }
+            }
+            if (abierto)
+            {
+                CerrarFormInPanel(formAbierto);
+            }
+        }
 
         // BOTONES
         private void buttonEmpleados_Click(object sender, EventArgs e)
@@ -302,8 +302,8 @@ namespace GestionRecoDuero
             ObraAbierto();
             VehiculoAbierto();
             ServicioExternoAbierto();
-            //PresupuestoAbierto();
-            //FacturaAbierto();
+            PresupuestoAbierto();
+            FacturaAbierto();
             AbrirFormInPanel(new Empleado());
         }
 
@@ -314,8 +314,8 @@ namespace GestionRecoDuero
             ObraAbierto();
             VehiculoAbierto();
             ServicioExternoAbierto();
-            //PresupuestoAbierto();
-            //FacturaAbierto();
+            PresupuestoAbierto();
+            FacturaAbierto();
             AbrirFormInPanel(new Cliente());
         }
 
@@ -326,8 +326,8 @@ namespace GestionRecoDuero
             ObraAbierto();
             VehiculoAbierto();
             ServicioExternoAbierto();
-            //PresupuestoAbierto();
-            //FacturaAbierto();
+            PresupuestoAbierto();
+            FacturaAbierto();
             AbrirFormInPanel(new Material());
         }
 
@@ -338,8 +338,8 @@ namespace GestionRecoDuero
             MaterialAbierto();
             VehiculoAbierto();
             ServicioExternoAbierto();
-            //PresupuestoAbierto();
-            //FacturaAbierto();
+            PresupuestoAbierto();
+            FacturaAbierto();
             AbrirFormInPanel(new Obra());
         }
 
@@ -350,8 +350,8 @@ namespace GestionRecoDuero
             MaterialAbierto();
             ObraAbierto();
             ServicioExternoAbierto();
-            //PresupuestoAbierto();
-            //FacturaAbierto();
+            PresupuestoAbierto();
+            FacturaAbierto();
             AbrirFormInPanel(new Vehiculo());
         }
 
@@ -362,33 +362,33 @@ namespace GestionRecoDuero
             MaterialAbierto();
             ObraAbierto();
             VehiculoAbierto();
-            //PresupuestoAbierto();
-            //FacturaAbierto();
+            PresupuestoAbierto();
+            FacturaAbierto();
             AbrirFormInPanel(new ServicioExterno());
         }
 
         private void buttonPresupuesto_Click(object sender, EventArgs e)
         {
-            //EmpleadoAbierto();
-            //ClienteAbierto();
-            //MaterialAbierto();
-            //ObraAbierto();
-            //VehiculoAbierto();
-            //ServicioExternoAbierto();
-            //FacturaAbierto();
-            //AbrirFormInPanel(new Presupuesto());
+            EmpleadoAbierto();
+            ClienteAbierto();
+            MaterialAbierto();
+            ObraAbierto();
+            VehiculoAbierto();
+            ServicioExternoAbierto();
+            FacturaAbierto();
+            AbrirFormInPanel(new Presupuesto());
         }
 
         private void buttonFactura_Click(object sender, EventArgs e)
         {
-            //EmpleadoAbierto();
-            //ClienteAbierto();
-            //MaterialAbierto();
-            //ObraAbierto();
-            //VehiculoAbierto();
-            //ServicioExternoAbierto();
-            //PresupuestoAbierto();
-            //AbrirFormInPanel(new Factura());
+            EmpleadoAbierto();
+            ClienteAbierto();
+            MaterialAbierto();
+            ObraAbierto();
+            VehiculoAbierto();
+            ServicioExternoAbierto();
+            PresupuestoAbierto();
+            AbrirFormInPanel(new Factura());
         }
 
         private void pictureBoxCerrarApp_Click(object sender, EventArgs e)

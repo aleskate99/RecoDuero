@@ -113,7 +113,7 @@
             idVehiculoLabel.Name = "idVehiculoLabel";
             idVehiculoLabel.Size = new System.Drawing.Size(117, 22);
             idVehiculoLabel.TabIndex = 38;
-            idVehiculoLabel.Text = "Id Vehiculo *";
+            idVehiculoLabel.Text = "Id Vehículo *";
             // 
             // matrículaLabel
             // 

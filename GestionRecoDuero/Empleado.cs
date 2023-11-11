@@ -115,8 +115,6 @@ namespace GestionRecoDuero
                 toolStripTextBoxBuscar.Enabled = true;
                 toolStripButtonBuscar.Enabled = true;
             }
-
-
         }
 
         //FLECHAS

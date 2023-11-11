@@ -71,13 +71,13 @@
             this.estadoComboBox = new System.Windows.Forms.ComboBox();
             this.garantiaCheckBox = new System.Windows.Forms.CheckBox();
             this.fechaAdquisicionDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.cantidadNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.labelEuros = new System.Windows.Forms.Label();
             this.materialTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.MaterialTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
+            this.descripcionTextBox = new System.Windows.Forms.TextBox();
             idMaterialLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             cantidadLabel = new System.Windows.Forms.Label();
@@ -506,18 +506,8 @@
             this.fechaAdquisicionDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaAdquisicionDateTimePicker.Location = new System.Drawing.Point(878, 247);
             this.fechaAdquisicionDateTimePicker.Name = "fechaAdquisicionDateTimePicker";
-            this.fechaAdquisicionDateTimePicker.Size = new System.Drawing.Size(250, 30);
+            this.fechaAdquisicionDateTimePicker.Size = new System.Drawing.Size(336, 30);
             this.fechaAdquisicionDateTimePicker.TabIndex = 7;
-            // 
-            // descripcionTextBox
-            // 
-            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Descripcion", true));
-            this.descripcionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descripcionTextBox.Location = new System.Drawing.Point(878, 315);
-            this.descripcionTextBox.Multiline = true;
-            this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(250, 132);
-            this.descripcionTextBox.TabIndex = 8;
             // 
             // groupBox1
             // 
@@ -600,18 +590,28 @@
             this.tableAdapterManager.UsuarioTableAdapter = null;
             this.tableAdapterManager.VehiculoTableAdapter = null;
             // 
+            // descripcionTextBox
+            // 
+            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Descripcion", true));
+            this.descripcionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descripcionTextBox.Location = new System.Drawing.Point(878, 316);
+            this.descripcionTextBox.Multiline = true;
+            this.descripcionTextBox.Name = "descripcionTextBox";
+            this.descripcionTextBox.Size = new System.Drawing.Size(336, 164);
+            this.descripcionTextBox.TabIndex = 56;
+            // 
             // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1354, 788);
+            this.Controls.Add(this.descripcionTextBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(garantiaLabel);
             this.Controls.Add(this.garantiaCheckBox);
             this.Controls.Add(fechaAdquisicionLabel);
             this.Controls.Add(this.fechaAdquisicionDateTimePicker);
             this.Controls.Add(descripcionLabel);
-            this.Controls.Add(this.descripcionTextBox);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.buttonVolverInicio);
@@ -677,10 +677,10 @@
         private System.Windows.Forms.ComboBox estadoComboBox;
         private System.Windows.Forms.CheckBox garantiaCheckBox;
         private System.Windows.Forms.DateTimePicker fechaAdquisicionDateTimePicker;
-        private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelEuros;
         private System.Windows.Forms.NumericUpDown costeNumericUpDown;
         private System.Windows.Forms.NumericUpDown cantidadNumericUpDown;
+        private System.Windows.Forms.TextBox descripcionTextBox;
     }
 }

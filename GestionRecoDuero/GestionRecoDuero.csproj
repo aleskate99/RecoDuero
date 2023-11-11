@@ -109,6 +109,12 @@
     </Compile>
     <Compile Include="Encriptar.cs" />
     <Compile Include="EnvioMail.cs" />
+    <Compile Include="Factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factura.Designer.cs">
+      <DependentUpon>Factura.cs</DependentUpon>
+    </Compile>
     <Compile Include="InformeClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,12 @@
       <DependentUpon>Obra.cs</DependentUpon>
     </Compile>
     <Compile Include="PersonalizarControles.cs" />
+    <Compile Include="Presupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presupuesto.Designer.cs">
+      <DependentUpon>Presupuesto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -217,6 +229,9 @@
     <EmbeddedResource Include="Empleado.resx">
       <DependentUpon>Empleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Factura.resx">
+      <DependentUpon>Factura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InformeCliente.rdlc" />
     <EmbeddedResource Include="InformeClientes.resx">
       <DependentUpon>InformeClientes.cs</DependentUpon>
@@ -252,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Obra.resx">
       <DependentUpon>Obra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto.resx">
+      <DependentUpon>Presupuesto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
