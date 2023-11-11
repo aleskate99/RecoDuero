@@ -139,7 +139,7 @@
             // 
             fechaItvLabel.AutoSize = true;
             fechaItvLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fechaItvLabel.Location = new System.Drawing.Point(615, 304);
+            fechaItvLabel.Location = new System.Drawing.Point(639, 304);
             fechaItvLabel.Name = "fechaItvLabel";
             fechaItvLabel.Size = new System.Drawing.Size(110, 22);
             fechaItvLabel.TabIndex = 44;
@@ -149,7 +149,7 @@
             // 
             seguroLabel.AutoSize = true;
             seguroLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            seguroLabel.Location = new System.Drawing.Point(615, 240);
+            seguroLabel.Location = new System.Drawing.Point(639, 240);
             seguroLabel.Name = "seguroLabel";
             seguroLabel.Size = new System.Drawing.Size(66, 22);
             seguroLabel.TabIndex = 46;
@@ -159,7 +159,7 @@
             // 
             conductorLabel.AutoSize = true;
             conductorLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            conductorLabel.Location = new System.Drawing.Point(615, 174);
+            conductorLabel.Location = new System.Drawing.Point(639, 174);
             conductorLabel.Name = "conductorLabel";
             conductorLabel.Size = new System.Drawing.Size(111, 22);
             conductorLabel.TabIndex = 48;
@@ -169,7 +169,7 @@
             // 
             fotoLabel.AutoSize = true;
             fotoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fotoLabel.Location = new System.Drawing.Point(615, 372);
+            fotoLabel.Location = new System.Drawing.Point(639, 372);
             fotoLabel.Name = "fotoLabel";
             fotoLabel.Size = new System.Drawing.Size(48, 22);
             fotoLabel.TabIndex = 50;
@@ -366,6 +366,7 @@
             // 
             // toolStripComboBoxBuscarVehiculos
             // 
+            this.toolStripComboBoxBuscarVehiculos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarVehiculos.Items.AddRange(new object[] {
             "Nombre"});
             this.toolStripComboBoxBuscarVehiculos.Name = "toolStripComboBoxBuscarVehiculos";
@@ -415,7 +416,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(901, 575);
+            this.buttonCancelar.Location = new System.Drawing.Point(907, 618);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -433,7 +434,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(652, 575);
+            this.buttonAceptar.Location = new System.Drawing.Point(658, 618);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
@@ -469,7 +470,7 @@
             this.matrículaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matrículaTextBox.Location = new System.Drawing.Point(195, 260);
             this.matrículaTextBox.Name = "matrículaTextBox";
-            this.matrículaTextBox.Size = new System.Drawing.Size(229, 30);
+            this.matrículaTextBox.Size = new System.Drawing.Size(323, 30);
             this.matrículaTextBox.TabIndex = 3;
             // 
             // modeloTextBox
@@ -478,25 +479,25 @@
             this.modeloTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modeloTextBox.Location = new System.Drawing.Point(195, 200);
             this.modeloTextBox.Name = "modeloTextBox";
-            this.modeloTextBox.Size = new System.Drawing.Size(229, 30);
+            this.modeloTextBox.Size = new System.Drawing.Size(323, 30);
             this.modeloTextBox.TabIndex = 2;
             // 
             // fechaItvDateTimePicker
             // 
             this.fechaItvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vehiculoBindingSource, "FechaItv", true));
             this.fechaItvDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaItvDateTimePicker.Location = new System.Drawing.Point(780, 300);
+            this.fechaItvDateTimePicker.Location = new System.Drawing.Point(804, 300);
             this.fechaItvDateTimePicker.Name = "fechaItvDateTimePicker";
-            this.fechaItvDateTimePicker.Size = new System.Drawing.Size(250, 30);
+            this.fechaItvDateTimePicker.Size = new System.Drawing.Size(323, 30);
             this.fechaItvDateTimePicker.TabIndex = 9;
             // 
             // seguroTextBox
             // 
             this.seguroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "Seguro", true));
             this.seguroTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seguroTextBox.Location = new System.Drawing.Point(780, 237);
+            this.seguroTextBox.Location = new System.Drawing.Point(804, 237);
             this.seguroTextBox.Name = "seguroTextBox";
-            this.seguroTextBox.Size = new System.Drawing.Size(250, 30);
+            this.seguroTextBox.Size = new System.Drawing.Size(323, 30);
             this.seguroTextBox.TabIndex = 8;
             // 
             // conductorComboBox
@@ -505,9 +506,9 @@
             this.conductorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.conductorComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.conductorComboBox.FormattingEnabled = true;
-            this.conductorComboBox.Location = new System.Drawing.Point(780, 171);
+            this.conductorComboBox.Location = new System.Drawing.Point(804, 171);
             this.conductorComboBox.Name = "conductorComboBox";
-            this.conductorComboBox.Size = new System.Drawing.Size(250, 30);
+            this.conductorComboBox.Size = new System.Drawing.Size(323, 30);
             this.conductorComboBox.TabIndex = 7;
             // 
             // fotoPictureBox
@@ -516,9 +517,9 @@
             this.fotoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.vehiculoBindingSource, "Foto", true));
             this.fotoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("fotoPictureBox.Image")));
             this.fotoPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("fotoPictureBox.InitialImage")));
-            this.fotoPictureBox.Location = new System.Drawing.Point(780, 372);
+            this.fotoPictureBox.Location = new System.Drawing.Point(804, 372);
             this.fotoPictureBox.Name = "fotoPictureBox";
-            this.fotoPictureBox.Size = new System.Drawing.Size(250, 176);
+            this.fotoPictureBox.Size = new System.Drawing.Size(323, 214);
             this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.fotoPictureBox.TabIndex = 51;
             this.fotoPictureBox.TabStop = false;
@@ -536,7 +537,7 @@
             "Furgoneta"});
             this.tipoComboBox.Location = new System.Drawing.Point(195, 323);
             this.tipoComboBox.Name = "tipoComboBox";
-            this.tipoComboBox.Size = new System.Drawing.Size(229, 30);
+            this.tipoComboBox.Size = new System.Drawing.Size(323, 30);
             this.tipoComboBox.TabIndex = 4;
             // 
             // estadoComboBox
@@ -551,16 +552,16 @@
             "Fuera de servicio"});
             this.estadoComboBox.Location = new System.Drawing.Point(195, 386);
             this.estadoComboBox.Name = "estadoComboBox";
-            this.estadoComboBox.Size = new System.Drawing.Size(229, 30);
+            this.estadoComboBox.Size = new System.Drawing.Size(323, 30);
             this.estadoComboBox.TabIndex = 5;
             // 
             // marcaTextBox
             // 
             this.marcaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "Marca", true));
             this.marcaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.marcaTextBox.Location = new System.Drawing.Point(195, 134);
+            this.marcaTextBox.Location = new System.Drawing.Point(195, 128);
             this.marcaTextBox.Name = "marcaTextBox";
-            this.marcaTextBox.Size = new System.Drawing.Size(229, 30);
+            this.marcaTextBox.Size = new System.Drawing.Size(323, 30);
             this.marcaTextBox.TabIndex = 1;
             // 
             // buttonVolverInicio
@@ -617,7 +618,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(46, 104);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(479, 535);
+            this.groupBox1.Size = new System.Drawing.Size(563, 535);
             this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del vehículo";
@@ -633,7 +634,7 @@
             0,
             0});
             this.costeAdquisicionNumericUpDown.Name = "costeAdquisicionNumericUpDown";
-            this.costeAdquisicionNumericUpDown.Size = new System.Drawing.Size(229, 30);
+            this.costeAdquisicionNumericUpDown.Size = new System.Drawing.Size(323, 30);
             this.costeAdquisicionNumericUpDown.TabIndex = 6;
             this.costeAdquisicionNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -641,7 +642,7 @@
             // 
             this.labelEuros.AutoSize = true;
             this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEuros.Location = new System.Drawing.Point(440, 454);
+            this.labelEuros.Location = new System.Drawing.Point(524, 454);
             this.labelEuros.Name = "labelEuros";
             this.labelEuros.Size = new System.Drawing.Size(20, 22);
             this.labelEuros.TabIndex = 59;

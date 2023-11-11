@@ -686,8 +686,14 @@ namespace GestionRecoDuero
             EmpleadoTableAdapter empleadoTableAdapter = new EmpleadoTableAdapter();
             RecoDueroDataSet.EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData();
 
+            empleadosData.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
+            //conductorComboBox.DataSource = empleadosData;
+            //conductorComboBox.DisplayMember = "Nombre";
+           
+
+            // Configurar el ComboBox
             conductorComboBox.DataSource = empleadosData;
-            conductorComboBox.DisplayMember = "Nombre";
+            conductorComboBox.DisplayMember = "NombreCompleto";
 
             if (conductorComboBox.Items.Count > 0)
             {

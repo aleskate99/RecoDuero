@@ -15,7 +15,26 @@ namespace GestionRecoDuero
         public static bool ComprobarDni(String dni)
         {
             string patronDNI = @"^\d{8}[A-Z]$";
-            return Regex.IsMatch(dni, patronDNI);
+
+            if (Regex.IsMatch(dni, patronDNI))
+            {
+                // Extraer los números del DNI
+                string numerosDNI = dni.Substring(0, 8);
+
+                // Extraer la letra del DNI
+                char letraDNI = char.ToUpper(dni[8]);
+
+                // Calcular la letra correspondiente a los números
+                string letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+                int resto = int.Parse(numerosDNI) % 23;
+                char letraCalculada = letras[resto];
+
+                // Comprobar si la letra calculada es igual a la letra del DNI
+                return letraDNI == letraCalculada;
+            }
+
+            return false;
+
         }
 
         public static bool ComprobarTelefono(String telefono)

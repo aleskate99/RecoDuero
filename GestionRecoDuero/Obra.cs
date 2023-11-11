@@ -1,5 +1,6 @@
 ﻿using GestionRecoDuero.RecoDueroDataSetTableAdapters;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -770,31 +771,27 @@ namespace GestionRecoDuero
             }
         }
 
-        private void duracionEstimadaNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            if (duracionEstimadaNumericUpDown.Value==1)
-            {
-                label1.Text = "mes";
-            }
-            else
-            {
-                label1.Text = "meses";
-            }
-        }
-
-        //TODO: Mirar para sacar solo los que sean Maestro de obra
         private void CargarEmpleados()
         {
             EmpleadoTableAdapter empleadoTableAdapter = new EmpleadoTableAdapter();
             RecoDueroDataSet.EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData();
 
-            responsableComboBox.DataSource = empleadosData;
-            responsableComboBox.DisplayMember = "Nombre";
+            // Filtrar los empleados cuyo puesto sea "Maestro de obra"
+            DataRow[] maestrosDeObra = empleadosData.Select("Puesto = 'Maestro de obra'");
 
-            //if (empleadosData.PuestoColumn.Equals("Maestro de obra"))
-            //{
-            //    responsableComboBox.DisplayMember = "Nombre";
-            //}
+            // Crear un nuevo DataTable con los maestros de obra
+            RecoDueroDataSet.EmpleadoDataTable maestrosDeObraDataTable = (RecoDueroDataSet.EmpleadoDataTable)empleadosData.Clone();
+
+            foreach (DataRow maestro in maestrosDeObra)
+            {
+                maestrosDeObraDataTable.ImportRow(maestro);
+            }
+
+            maestrosDeObraDataTable.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
+
+            // Configurar el ComboBox
+            responsableComboBox.DataSource = maestrosDeObraDataTable;
+            responsableComboBox.DisplayMember = "NombreCompleto";
 
             if (responsableComboBox.Items.Count > 0)
             {
@@ -806,24 +803,50 @@ namespace GestionRecoDuero
             }
         }
 
-        private void fechaFinDateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void duracionEstimadaNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (fechaFinDateTimePicker.Value < fechaInicioDateTimePicker.Value)
+            if (duracionEstimadaNumericUpDown.Value == 1)
             {
-                Comun.MostrarMensajeDeError("La fecha de finalización no puede ser anterior a la fecha de inicio", "Error al seleccionar la fecha");
-                fechaFinDateTimePicker.Value = DateTime.Today;
+                label1.Text = "mes";
             }
+            else
+            {
+                label1.Text = "meses";
+            }
+
+            CalcularFechaFin();
         }
 
         private void fechaInicioDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            if (fechaInicioDateTimePicker.Value > fechaFinDateTimePicker.Value)
-            {
-                Comun.MostrarMensajeDeError("La fecha de inicio no puede ser posterior a la fecha de finalización", "Error al seleccionar la fecha");
-                fechaInicioDateTimePicker.Value = DateTime.Today;
-            }
+            //if (fechaInicioDateTimePicker.Value > fechaFinDateTimePicker.Value)
+            //{
+            //    Comun.MostrarMensajeDeError("La fecha de inicio no puede ser posterior a la fecha de finalización", "Error al seleccionar la fecha");
+            //    fechaInicioDateTimePicker.Value = DateTime.Today;
+            //}
+            CalcularFechaFin();
         }
 
+        private void fechaFinDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            //if (fechaFinDateTimePicker.Value < fechaInicioDateTimePicker.Value)
+            //{
+            //    Comun.MostrarMensajeDeError("La fecha de finalización no puede ser anterior a la fecha de inicio", "Error al seleccionar la fecha");
+            //    fechaFinDateTimePicker.Value = DateTime.Today;
+            //}
+        }
+
+        private void CalcularFechaFin()
+        {
+            DateTime fechaInicio = fechaInicioDateTimePicker.Value;
+            int duracion = (int)duracionEstimadaNumericUpDown.Value;
+
+            // Calculamos la fecha de fin
+            DateTime fechaFin = fechaInicio.AddMonths(duracion);
+
+            fechaFinDateTimePicker.Value = fechaFin;
+        }
+     
         private void Obra_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (datosGuardados == false)

@@ -785,7 +785,7 @@ namespace GestionRecoDuero
             }
             else if (!Comun.ComprobarDni(dNITextBox.Text))
             {
-                errorProvider1.SetError(dNITextBox, "Debe tener 8 números y 1 letra mayúscula");
+                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\nFormato o letra no válido o DNI duplicado");
                 dNITextBox.Clear();
                 return false;
             }
@@ -857,7 +857,7 @@ namespace GestionRecoDuero
         {
             if (Comun.ComprobarDni(dNITextBox.Text) == false && (dNITextBox.Text.Length != 0))
             {
-                errorProvider1.SetError(dNITextBox, "El DNI debe tener 8 números y 1 letra mayúscula");
+                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\nFormato o letra no válido o DNI duplicado");
                 dNITextBox.Clear();
             }
             else
