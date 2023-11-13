@@ -129,9 +129,163 @@
     <TableUISetting Name="Material">
       <ColumnUISettings>
         <ColumnUISetting Name="Descripcion">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+      </ColumnUISettings>
+    </TableUISetting>
+    <TableUISetting Name="Presupuesto">
+      <ColumnUISettings>
+        <ColumnUISetting Name="IdPresupuesto">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="Label" Type="System.Windows.Forms.Label" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Cliente">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Comentarios">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Estado">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Responsable">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Metodo">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="FechaEmision">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="DateTimePicker" Type="System.Windows.Forms.DateTimePicker" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Coste">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="NumericUpDown" Type="System.Windows.Forms.NumericUpDown" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+      </ColumnUISettings>
+    </TableUISetting>
+    <TableUISetting Name="DetallePresupuesto">
+      <ColumnUISettings>
+        <ColumnUISetting Name="IdDetallePresupuesto">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="Label" Type="System.Windows.Forms.Label" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Obra">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Coste">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="NumericUpDown" Type="System.Windows.Forms.NumericUpDown" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="IdPresupuesto">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+      </ColumnUISettings>
+    </TableUISetting>
+    <TableUISetting Name="Factura">
+      <ColumnUISettings>
+        <ColumnUISetting Name="IdFactura">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="Label" Type="System.Windows.Forms.Label" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Obra">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="FechaEmision">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="DateTimePicker" Type="System.Windows.Forms.DateTimePicker" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Cliente">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Impuestos">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="EstadoPago">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="MetodoPago">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Empleado">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="TotalFactura">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+      </ColumnUISettings>
+    </TableUISetting>
+    <TableUISetting Name="DetalleFactura">
+      <ColumnUISettings>
+        <ColumnUISetting Name="IdDetalleFactura">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="Label" Type="System.Windows.Forms.Label" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Obra">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="IdFactura">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Coste">
           <ControlSettings>
             <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
               <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="Cliente">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Forms.ComboBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
             </ControlSetting>
           </ControlSettings>
         </ColumnUISetting>

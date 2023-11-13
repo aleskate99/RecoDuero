@@ -127,6 +127,12 @@
     <Compile Include="InformeEmpleados.Designer.cs">
       <DependentUpon>InformeEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="InformeFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformeFacturas.Designer.cs">
+      <DependentUpon>InformeFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="InformeMateriales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,12 @@
     </Compile>
     <Compile Include="InformeObras.Designer.cs">
       <DependentUpon>InformeObras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InformePresupuestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformePresupuestos.Designer.cs">
+      <DependentUpon>InformePresupuestos.cs</DependentUpon>
     </Compile>
     <Compile Include="InformeServiciosExternos.cs">
       <SubType>Form</SubType>
@@ -240,6 +252,9 @@
     <EmbeddedResource Include="InformeEmpleados.resx">
       <DependentUpon>InformeEmpleados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InformeFacturas.resx">
+      <DependentUpon>InformeFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InformeMaterial.rdlc" />
     <EmbeddedResource Include="InformeMateriales.resx">
       <DependentUpon>InformeMateriales.cs</DependentUpon>
@@ -247,6 +262,9 @@
     <EmbeddedResource Include="InformeObra.rdlc" />
     <EmbeddedResource Include="InformeObras.resx">
       <DependentUpon>InformeObras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformePresupuestos.resx">
+      <DependentUpon>InformePresupuestos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InformeServicioExterno.rdlc" />
     <EmbeddedResource Include="InformeServiciosExternos.resx">
