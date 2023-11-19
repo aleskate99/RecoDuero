@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -133,22 +134,22 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelMaterial();
         }
 
-        private void toolStripButtonInicio_Click_1(object sender, EventArgs e)
+        private void toolStripButtonInicio_Click(object sender, EventArgs e)
         {
             NavegarRegistro(0); // Ir al primer registro (con índice 0)
         }
 
-        private void toolStripButtonAnterior_Click_1(object sender, EventArgs e)
+        private void toolStripButtonAnterior_Click(object sender, EventArgs e)
         {
             NavegarRegistro(materialBindingSource.Position - 1); // Ir al registro anterior (índice actual menos 1)
         }
 
-        private void toolStripButtonSiguiente_Click_1(object sender, EventArgs e)
+        private void toolStripButtonSiguiente_Click(object sender, EventArgs e)
         {
             NavegarRegistro(materialBindingSource.Position + 1); // Ir al registro siguiente (índice actual más 1)
         }
 
-        private void toolStripButtonFinal_Click_1(object sender, EventArgs e)
+        private void toolStripButtonFinal_Click(object sender, EventArgs e)
         {
             NavegarRegistro(materialBindingSource.Count - 1); // Ir al último registro
         }
@@ -167,6 +168,13 @@ namespace GestionRecoDuero
 
             RefrescarToolstripLabelMaterial();
             datosGuardados = false;
+
+            // Actualiza la fuente de datos con el valor predeterminado antes de guardar
+            ((DataRowView)materialBindingSource.Current)["Cantidad"] = (int)cantidadNumericUpDown.Value;
+            ((DataRowView)materialBindingSource.Current)["Coste"] = (int)costeNumericUpDown.Value;
+            ((DataRowView)materialBindingSource.Current)["Estado"] = estadoComboBox.SelectedItem.ToString();
+
+            ((DataRowView)materialBindingSource.Current)["FechaAdquisicion"] = fechaAdquisicionDateTimePicker.Value;
         }
 
         private void HabilitarControlesEnAnadir()
@@ -179,8 +187,11 @@ namespace GestionRecoDuero
             //Campos
             MostrarCampos();
 
-            //ComboBox por defecto a una opción
+            //Campos por defecto a una opción
             estadoComboBox.SelectedIndex = 0;
+            cantidadNumericUpDown.Value = 0;
+            costeNumericUpDown.Value = 0;
+            fechaAdquisicionDateTimePicker.Value = DateTime.Today;
         }
 
         private void DeshabilitarBotonesEnAnadir()
@@ -466,6 +477,7 @@ namespace GestionRecoDuero
                         else
                         {
                             materialBindingSource.Position = materialBindingSource.Find("IdMaterial", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
@@ -487,6 +499,22 @@ namespace GestionRecoDuero
                         else
                         {
                             materialBindingSource.Position = materialBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                        }
+                    }
+
+                    //Distribuidor
+                    if (toolStripComboBoxBuscarMateriales.Text.Equals("Distribuidor"))
+                    {
+                        if (materialBindingSource.Find("Distribuidor", toolStripTextBoxBuscar.Text) == -1)
+                        {
+                            Comun.MostrarMensajeDeError("El material no existe.", "Material no encontrado");
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                        }
+                        else
+                        {
+                            materialBindingSource.Position = materialBindingSource.Find("Distribuidor", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 

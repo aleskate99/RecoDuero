@@ -1,6 +1,7 @@
 ﻿using GestionRecoDuero.RecoDueroDataSetTableAdapters;
 using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -25,7 +26,7 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelObra();
             toolStripStatusLabel1.Text = "Inicio";
             CargarEmpleados();
-            fechaInicioDateTimePicker.Value = DateTime.Today.AddDays(-1); //TODO: REVISAR 
+            //fechaInicioDateTimePicker.Value = DateTime.Today.AddDays(-1); //TODO: REVISAR 
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -174,6 +175,21 @@ namespace GestionRecoDuero
 
             RefrescarToolstripLabelObra();
             datosGuardados = false;
+
+            // Actualiza la fuente de datos con el valor predeterminado antes de guardar
+            ((DataRowView)obraBindingSource.Current)["Estado"] = estadoComboBox.SelectedItem.ToString();
+            ((DataRowView)obraBindingSource.Current)["Tipo"] = tipoComboBox.SelectedItem.ToString();
+
+            if (responsableComboBox.Items.Count > 0)
+            {
+                CargarEmpleados();
+                ((DataRowView)obraBindingSource.Current)["Responsable"] = responsableComboBox.SelectedItem.ToString();
+            }
+
+            ((DataRowView)obraBindingSource.Current)["DuracionEstimada"] = (int)duracionEstimadaNumericUpDown.Value;
+            ((DataRowView)obraBindingSource.Current)["FechaInicio"] = fechaInicioDateTimePicker.Value;
+            ((DataRowView)obraBindingSource.Current)["FechaFin"] = fechaFinDateTimePicker.Value;
+
         }
 
         private void HabilitarControlesEnAnadir()
@@ -186,9 +202,16 @@ namespace GestionRecoDuero
             //Campos
             MostrarCampos();
 
-            //ComboBox por defecto a una opción
+            //Campos por defecto a una opción
             estadoComboBox.SelectedIndex = 0;
             tipoComboBox.SelectedIndex = 0;
+
+            duracionEstimadaNumericUpDown.Value = 1;
+
+            DateTime fechaActual = DateTime.Today;
+            fechaInicioDateTimePicker.Value = fechaActual;
+            DateTime fechaFutura = fechaActual.AddMonths(1);
+            fechaFinDateTimePicker.Value = fechaFutura;   
         }
 
         private void DeshabilitarBotonesEnAnadir()
@@ -475,6 +498,7 @@ namespace GestionRecoDuero
                         else
                         {
                             obraBindingSource.Position = obraBindingSource.Find("IdObra", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
@@ -496,6 +520,7 @@ namespace GestionRecoDuero
                         else
                         {
                             obraBindingSource.Position = obraBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
@@ -510,6 +535,7 @@ namespace GestionRecoDuero
                         else
                         {
                             obraBindingSource.Position = obraBindingSource.Find("Ubicacion", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
@@ -801,6 +827,9 @@ namespace GestionRecoDuero
             {
                 responsableComboBox.Text = "";
             }
+
+            // Agregar mensajes de depuración
+            Debug.WriteLine("Número de empleados cargados: " + maestrosDeObraDataTable.Rows.Count);
         }
 
         private void duracionEstimadaNumericUpDown_ValueChanged(object sender, EventArgs e)

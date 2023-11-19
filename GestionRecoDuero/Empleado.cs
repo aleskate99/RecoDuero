@@ -1,8 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Windows.Forms;
 
 namespace GestionRecoDuero
@@ -174,6 +177,14 @@ namespace GestionRecoDuero
 
             RefrescarToolstripLabelEmpleado();
             datosGuardados = false;
+
+            // Actualiza la fuente de datos con el valor predeterminado antes de guardar
+            ((DataRowView)empleadoBindingSource.Current)["FechaNacimiento"] = fechaNacimientoDateTimePicker.Value;
+            ((DataRowView)empleadoBindingSource.Current)["Genero"] = generoComboBox.SelectedItem.ToString();
+
+            ((DataRowView)empleadoBindingSource.Current)["Puesto"] = puestoComboBox.SelectedItem.ToString();
+            ((DataRowView)empleadoBindingSource.Current)["SituacionLaboral"] = situacionLaboralComboBox.SelectedItem.ToString();
+            ActualizarSalario();
         }
 
         private void HabilitarControlesEnAnadir()
@@ -186,7 +197,9 @@ namespace GestionRecoDuero
             //Campos
             MostrarCampos();
 
-            //ComboBox por defecto a una opción
+            //Campos por defecto a una opción
+            fechaNacimientoDateTimePicker.Value = DateTime.Today;
+
             generoComboBox.SelectedIndex = 0;
             puestoComboBox.SelectedIndex = 0;
             situacionLaboralComboBox.SelectedIndex = 0;
@@ -480,6 +493,7 @@ namespace GestionRecoDuero
                         else
                         {
                             empleadoBindingSource.Position = empleadoBindingSource.Find("DNI", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
@@ -501,6 +515,7 @@ namespace GestionRecoDuero
                         else
                         {
                             empleadoBindingSource.Position = empleadoBindingSource.Find("IdEmpleado", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
@@ -522,6 +537,7 @@ namespace GestionRecoDuero
                         else
                         {
                             empleadoBindingSource.Position = empleadoBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
@@ -785,7 +801,13 @@ namespace GestionRecoDuero
             }
             else if (!Comun.ComprobarDni(dNITextBox.Text))
             {
-                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\nFormato o letra no válido o DNI duplicado");
+                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\nFormato o letra no válido.");
+                dNITextBox.Clear();
+                return false;
+            }
+            else if (DniEstaDuplicado(dNITextBox.Text))
+            {
+                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\n DNI duplicado");
                 dNITextBox.Clear();
                 return false;
             }
@@ -857,7 +879,12 @@ namespace GestionRecoDuero
         {
             if (Comun.ComprobarDni(dNITextBox.Text) == false && (dNITextBox.Text.Length != 0))
             {
-                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\nFormato o letra no válido o DNI duplicado");
+                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\nFormato o letra no válido");
+                dNITextBox.Clear();
+            }
+            else if (DniEstaDuplicado(dNITextBox.Text))
+            {
+                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\n DNI duplicado");
                 dNITextBox.Clear();
             }
             else
@@ -974,7 +1001,39 @@ namespace GestionRecoDuero
                         break;
                 }
             }
-           
+        }
+
+        private void ActualizarSalario()
+        {
+            if (puestoComboBox.SelectedIndex >= 0)
+            {
+                string seleccion = puestoComboBox.SelectedItem.ToString();
+
+                switch (seleccion)
+                {
+                    case "Maestro de obra":
+                        salarioLabel1.Text = "2000€";
+                        break;
+                    case "Capataz":
+                        salarioLabel1.Text = "1500€";
+                        break;
+                    case "Albañil":
+                        salarioLabel1.Text = "1000€";
+                        break;
+                }
+            }
+        }
+
+        private bool DniEstaDuplicado(string dni)
+        {
+            // Obtener el DataTable asociado al BindingSource
+            DataTable dataTable = ((DataView)empleadoBindingSource.List).Table;
+
+            // Filtrar las filas del DataTable para encontrar duplicados del DNI
+            DataRow[] duplicados = dataTable.Select($"DNI = '{dni}'");
+
+            // Verificar si se encontraron duplicados y ninguno está en la posición actual
+            return duplicados.Length > 0 && duplicados.All(row => dataTable.Rows.IndexOf(row) != empleadoBindingSource.Position);
         }
 
         private void Empleado_FormClosing(object sender, FormClosingEventArgs e)

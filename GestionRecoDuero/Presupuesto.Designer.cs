@@ -42,6 +42,9 @@
             System.Windows.Forms.Label costeLabel1;
             System.Windows.Forms.Label idPresupuestoLabel2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Presupuesto));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonEditarLinea = new System.Windows.Forms.Button();
             this.buttonCancelarDetallePresupuesto = new System.Windows.Forms.Button();
             this.buttonAceptarDetallePresupuesto = new System.Windows.Forms.Button();
@@ -96,8 +99,8 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelEuros = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.costeNumericUpDownDetalle = new System.Windows.Forms.NumericUpDown();
             this.idPresupuestoComboBox = new System.Windows.Forms.ComboBox();
+            this.costeNumericUpDownDetalle = new System.Windows.Forms.NumericUpDown();
             idPresupuestoLabel = new System.Windows.Forms.Label();
             clienteLabel = new System.Windows.Forms.Label();
             comentariosLabel = new System.Windows.Forms.Label();
@@ -337,7 +340,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1409, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1409, 31);
             this.toolStrip1.TabIndex = 31;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -347,7 +350,7 @@
             this.toolStripButtonInicio.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInicio.Image")));
             this.toolStripButtonInicio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInicio.Name = "toolStripButtonInicio";
-            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonInicio.ToolTipText = "Ir al principio";
             this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click);
             // 
@@ -357,14 +360,14 @@
             this.toolStripButtonAnterior.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnterior.Image")));
             this.toolStripButtonAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnterior.Name = "toolStripButtonAnterior";
-            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonAnterior.ToolTipText = "Anterior";
             this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click);
             // 
             // toolstripLabelContadorPresupuestos
             // 
             this.toolstripLabelContadorPresupuestos.Name = "toolstripLabelContadorPresupuestos";
-            this.toolstripLabelContadorPresupuestos.Size = new System.Drawing.Size(111, 25);
+            this.toolstripLabelContadorPresupuestos.Size = new System.Drawing.Size(111, 28);
             this.toolstripLabelContadorPresupuestos.Text = "toolStripLabel1";
             // 
             // toolStripButtonSiguiente
@@ -373,7 +376,7 @@
             this.toolStripButtonSiguiente.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSiguiente.Image")));
             this.toolStripButtonSiguiente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSiguiente.Name = "toolStripButtonSiguiente";
-            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonSiguiente.ToolTipText = "Siguiente";
             this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click);
             // 
@@ -383,14 +386,14 @@
             this.toolStripButtonFinal.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFinal.Image")));
             this.toolStripButtonFinal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFinal.Name = "toolStripButtonFinal";
-            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonFinal.ToolTipText = "Ir al final";
             this.toolStripButtonFinal.Click += new System.EventHandler(this.toolStripButtonFinal_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripButtonAnadir
             // 
@@ -398,7 +401,7 @@
             this.toolStripButtonAnadir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnadir.Image")));
             this.toolStripButtonAnadir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
-            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonAnadir.ToolTipText = "Añadir presupuesto";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
             // 
@@ -408,7 +411,7 @@
             this.toolStripButtonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEliminar.Image")));
             this.toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonEliminar.ToolTipText = "Eliminar presupuesto";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
             // 
@@ -418,14 +421,14 @@
             this.toolStripButtonEditar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditar.Image")));
             this.toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
-            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonEditar.ToolTipText = "Editar presupuesto";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripButtonGuardar
             // 
@@ -433,7 +436,7 @@
             this.toolStripButtonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGuardar.Image")));
             this.toolStripButtonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGuardar.Name = "toolStripButtonGuardar";
-            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonGuardar.ToolTipText = "Guardar ";
             this.toolStripButtonGuardar.Click += new System.EventHandler(this.toolStripButtonGuardar_Click);
             // 
@@ -443,7 +446,7 @@
             this.toolStripButtonImprimir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImprimir.Image")));
             this.toolStripButtonImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonImprimir.Name = "toolStripButtonImprimir";
-            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonImprimir.ToolTipText = "Imprimir ";
             this.toolStripButtonImprimir.Click += new System.EventHandler(this.toolStripButtonImprimir_Click);
             // 
@@ -453,23 +456,24 @@
             this.toolStripButtonInforme.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInforme.Image")));
             this.toolStripButtonInforme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInforme.Name = "toolStripButtonInforme";
-            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonInforme.ToolTipText = "Informe";
             this.toolStripButtonInforme.Click += new System.EventHandler(this.toolStripButtonInforme_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripComboBoxBuscarPresupuestos
             // 
+            this.toolStripComboBoxBuscarPresupuestos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarPresupuestos.Items.AddRange(new object[] {
             "Id",
             "DNI",
             "Nombre"});
             this.toolStripComboBoxBuscarPresupuestos.Name = "toolStripComboBoxBuscarPresupuestos";
-            this.toolStripComboBoxBuscarPresupuestos.Size = new System.Drawing.Size(160, 28);
+            this.toolStripComboBoxBuscarPresupuestos.Size = new System.Drawing.Size(160, 31);
             this.toolStripComboBoxBuscarPresupuestos.Text = "Buscar presupuesto";
             this.toolStripComboBoxBuscarPresupuestos.ToolTipText = "Seleccione mediante que campo desea buscar el presupuesto\r\n";
             // 
@@ -477,7 +481,7 @@
             // 
             this.toolStripTextBoxBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxBuscar.Name = "toolStripTextBoxBuscar";
-            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 28);
+            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 31);
             this.toolStripTextBoxBuscar.ToolTipText = "Escribe el empleado que desee buscar";
             // 
             // toolStripButtonBuscar
@@ -486,7 +490,7 @@
             this.toolStripButtonBuscar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBuscar.Image")));
             this.toolStripButtonBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBuscar.Name = "toolStripButtonBuscar";
-            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 28);
             this.toolStripButtonBuscar.ToolTipText = "Buscar";
             this.toolStripButtonBuscar.Click += new System.EventHandler(this.toolStripButtonBuscar_Click);
             // 
@@ -573,6 +577,7 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClienteTableAdapter = null;
+            this.tableAdapterManager.DetalleFacturaTableAdapter = null;
             this.tableAdapterManager.DetallePresupuestoTableAdapter = this.detallePresupuestoTableAdapter;
             this.tableAdapterManager.EmpleadoTableAdapter = null;
             this.tableAdapterManager.FacturaTableAdapter = null;
@@ -616,7 +621,7 @@
             this.comentariosTextBox.Location = new System.Drawing.Point(844, 290);
             this.comentariosTextBox.Multiline = true;
             this.comentariosTextBox.Name = "comentariosTextBox";
-            this.comentariosTextBox.Size = new System.Drawing.Size(318, 105);
+            this.comentariosTextBox.Size = new System.Drawing.Size(349, 105);
             this.comentariosTextBox.TabIndex = 7;
             // 
             // estadoComboBox
@@ -631,7 +636,7 @@
             "Rechazado"});
             this.estadoComboBox.Location = new System.Drawing.Point(844, 191);
             this.estadoComboBox.Name = "estadoComboBox";
-            this.estadoComboBox.Size = new System.Drawing.Size(318, 30);
+            this.estadoComboBox.Size = new System.Drawing.Size(349, 30);
             this.estadoComboBox.TabIndex = 5;
             // 
             // responsableComboBox
@@ -656,7 +661,7 @@
             "Tarjeta"});
             this.metodoComboBox.Location = new System.Drawing.Point(844, 238);
             this.metodoComboBox.Name = "metodoComboBox";
-            this.metodoComboBox.Size = new System.Drawing.Size(318, 30);
+            this.metodoComboBox.Size = new System.Drawing.Size(349, 30);
             this.metodoComboBox.TabIndex = 6;
             // 
             // fechaEmisionDateTimePicker
@@ -665,7 +670,7 @@
             this.fechaEmisionDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaEmisionDateTimePicker.Location = new System.Drawing.Point(844, 135);
             this.fechaEmisionDateTimePicker.Name = "fechaEmisionDateTimePicker";
-            this.fechaEmisionDateTimePicker.Size = new System.Drawing.Size(318, 30);
+            this.fechaEmisionDateTimePicker.Size = new System.Drawing.Size(349, 30);
             this.fechaEmisionDateTimePicker.TabIndex = 4;
             // 
             // labelDinero
@@ -711,6 +716,11 @@
             this.costeNumericUpDown.Size = new System.Drawing.Size(282, 30);
             this.costeNumericUpDown.TabIndex = 3;
             this.costeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.costeNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // errorProvider1
             // 
@@ -744,7 +754,17 @@
             // 
             // detallePresupuestoDataGridView
             // 
+            this.detallePresupuestoDataGridView.AllowUserToAddRows = false;
             this.detallePresupuestoDataGridView.AutoGenerateColumns = false;
+            this.detallePresupuestoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.detallePresupuestoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.detallePresupuestoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.detallePresupuestoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -752,12 +772,28 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
             this.detallePresupuestoDataGridView.DataSource = this.detallePresupuestoBindingSource;
-            this.detallePresupuestoDataGridView.Location = new System.Drawing.Point(739, 463);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.detallePresupuestoDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.detallePresupuestoDataGridView.Location = new System.Drawing.Point(742, 463);
             this.detallePresupuestoDataGridView.Name = "detallePresupuestoDataGridView";
             this.detallePresupuestoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.detallePresupuestoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.detallePresupuestoDataGridView.RowHeadersWidth = 51;
             this.detallePresupuestoDataGridView.RowTemplate.Height = 24;
-            this.detallePresupuestoDataGridView.Size = new System.Drawing.Size(550, 247);
+            this.detallePresupuestoDataGridView.Size = new System.Drawing.Size(542, 247);
             this.detallePresupuestoDataGridView.TabIndex = 60;
             // 
             // dataGridViewTextBoxColumn1
@@ -766,6 +802,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "IdDetallePresupuesto";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // dataGridViewTextBoxColumn2
@@ -774,6 +811,7 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Obra";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 125;
             // 
             // dataGridViewTextBoxColumn3
@@ -782,6 +820,7 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Coste";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 125;
             // 
             // dataGridViewTextBoxColumn4
@@ -790,6 +829,7 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "IdPresupuesto";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 125;
             // 
             // labelEuros
@@ -821,6 +861,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle del presupuesto";
             // 
+            // idPresupuestoComboBox
+            // 
+            this.idPresupuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detallePresupuestoBindingSource, "IdPresupuesto", true));
+            this.idPresupuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.idPresupuestoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idPresupuestoComboBox.FormattingEnabled = true;
+            this.idPresupuestoComboBox.Location = new System.Drawing.Point(238, 88);
+            this.idPresupuestoComboBox.Name = "idPresupuestoComboBox";
+            this.idPresupuestoComboBox.Size = new System.Drawing.Size(250, 30);
+            this.idPresupuestoComboBox.TabIndex = 63;
+            // 
             // costeNumericUpDownDetalle
             // 
             this.costeNumericUpDownDetalle.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detallePresupuestoBindingSource, "Coste", true));
@@ -835,17 +886,11 @@
             this.costeNumericUpDownDetalle.Size = new System.Drawing.Size(250, 30);
             this.costeNumericUpDownDetalle.TabIndex = 63;
             this.costeNumericUpDownDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // idPresupuestoComboBox
-            // 
-            this.idPresupuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detallePresupuestoBindingSource, "IdPresupuesto", true));
-            this.idPresupuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.idPresupuestoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idPresupuestoComboBox.FormattingEnabled = true;
-            this.idPresupuestoComboBox.Location = new System.Drawing.Point(238, 88);
-            this.idPresupuestoComboBox.Name = "idPresupuestoComboBox";
-            this.idPresupuestoComboBox.Size = new System.Drawing.Size(250, 30);
-            this.idPresupuestoComboBox.TabIndex = 63;
+            this.costeNumericUpDownDetalle.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Presupuesto
             // 

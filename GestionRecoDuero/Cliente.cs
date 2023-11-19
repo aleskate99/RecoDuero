@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
@@ -170,6 +171,9 @@ namespace GestionRecoDuero
 
             RefrescarToolstripLabelCliente();
             datosGuardados = false;
+
+            // Actualiza la fuente de datos con el valor predeterminado antes de guardar
+            ((DataRowView)clienteBindingSource.Current)["Tipo"] = tipoComboBox.SelectedItem.ToString();
         }
 
         private void HabilitarControlesEnAnadir()
@@ -471,6 +475,7 @@ namespace GestionRecoDuero
                         else
                         {
                             clienteBindingSource.Position = clienteBindingSource.Find("IdCliente", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
@@ -492,6 +497,7 @@ namespace GestionRecoDuero
                         else
                         {
                             clienteBindingSource.Position = clienteBindingSource.Find("Nombre", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
@@ -598,7 +604,7 @@ namespace GestionRecoDuero
         {
             openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
             openFileDialog1.FilterIndex = 1;
-
+ 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string imagenPath = openFileDialog1.FileName;
@@ -623,11 +629,14 @@ namespace GestionRecoDuero
 
                 string info = $"Tamaño: {fileSize / 1024} KB\nÚltima modificación: {lastModified}";
                 MessageBox.Show(info, "Información de la imagen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {
                 contratoPictureBox.Image = null;
             }
+            
+           
         }
 
         //MÉTODOS

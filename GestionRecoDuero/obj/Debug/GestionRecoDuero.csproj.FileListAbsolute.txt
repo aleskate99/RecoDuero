@@ -74,6 +74,7 @@ C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\Gestio
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.Factura.resources
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.InformeClientes.resources
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.InformeEmpleados.resources
+C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.InformeFacturas.resources
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.InformeMateriales.resources
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.InformeObras.resources
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.InformePresupuestos.resources

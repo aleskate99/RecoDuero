@@ -83,6 +83,7 @@
             this.costeAdquisicionNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.labelEuros = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             idVehiculoLabel = new System.Windows.Forms.Label();
             matrículaLabel = new System.Windows.Forms.Label();
             modeloLabel = new System.Windows.Forms.Label();
@@ -368,7 +369,8 @@
             // 
             this.toolStripComboBoxBuscarVehiculos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarVehiculos.Items.AddRange(new object[] {
-            "Nombre"});
+            "Id",
+            "Matrícula"});
             this.toolStripComboBoxBuscarVehiculos.Name = "toolStripComboBoxBuscarVehiculos";
             this.toolStripComboBoxBuscarVehiculos.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBoxBuscarVehiculos.Text = "Buscar vehículo";
@@ -513,6 +515,8 @@
             // 
             // fotoPictureBox
             // 
+            this.fotoPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.fotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fotoPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.fotoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.vehiculoBindingSource, "Foto", true));
             this.fotoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("fotoPictureBox.Image")));
@@ -520,9 +524,10 @@
             this.fotoPictureBox.Location = new System.Drawing.Point(804, 372);
             this.fotoPictureBox.Name = "fotoPictureBox";
             this.fotoPictureBox.Size = new System.Drawing.Size(323, 214);
-            this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fotoPictureBox.TabIndex = 51;
             this.fotoPictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.fotoPictureBox, "Haga clic para insertar la imágen");
             this.fotoPictureBox.Click += new System.EventHandler(this.fotoPictureBox_Click);
             // 
             // tipoComboBox
@@ -588,6 +593,8 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClienteTableAdapter = null;
+            this.tableAdapterManager.DetalleFacturaTableAdapter = null;
+            this.tableAdapterManager.DetallePresupuestoTableAdapter = null;
             this.tableAdapterManager.EmpleadoTableAdapter = null;
             this.tableAdapterManager.FacturaTableAdapter = null;
             this.tableAdapterManager.MaterialTableAdapter = null;
@@ -739,5 +746,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label labelEuros;
         private System.Windows.Forms.NumericUpDown costeAdquisicionNumericUpDown;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

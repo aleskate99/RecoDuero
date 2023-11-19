@@ -1,5 +1,6 @@
 ﻿using GestionRecoDuero.RecoDueroDataSetTableAdapters;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
@@ -170,6 +171,18 @@ namespace GestionRecoDuero
 
             RefrescarToolstripLabelVehiculo();
             datosGuardados = false;
+
+            ((DataRowView)vehiculoBindingSource.Current)["Tipo"] = tipoComboBox.SelectedItem.ToString();
+            ((DataRowView)vehiculoBindingSource.Current)["Estado"] = estadoComboBox.SelectedItem.ToString();
+            ((DataRowView)vehiculoBindingSource.Current)["CosteAdquisicion"] = (int)costeAdquisicionNumericUpDown.Value;
+
+            if (conductorComboBox.Items.Count > 0)
+            {
+                CargarEmpleados();
+                ((DataRowView)vehiculoBindingSource.Current)["Conductor"] = conductorComboBox.SelectedItem.ToString();
+            }
+
+            ((DataRowView)vehiculoBindingSource.Current)["FechaItv"] = fechaItvDateTimePicker.Value;      
         }
 
         private void HabilitarControlesEnAnadir()
@@ -182,9 +195,11 @@ namespace GestionRecoDuero
             //Campos
             MostrarCampos();
 
-            //ComboBox por defecto a una opción
+            //Campos por defecto a una opción
             tipoComboBox.SelectedIndex = 0;
             estadoComboBox.SelectedIndex = 0;
+            costeAdquisicionNumericUpDown.Value = 0;
+            fechaItvDateTimePicker.Value = DateTime.Today;
         }
 
         private void DeshabilitarBotonesEnAnadir()
@@ -455,7 +470,7 @@ namespace GestionRecoDuero
                 else
                 {
                     //ID
-                    if (toolStripComboBoxBuscarVehiculos.Text.Equals("IdVehiculo"))
+                    if (toolStripComboBoxBuscarVehiculos.Text.Equals("Id"))
                     {
                         if (!Comun.ContieneNumeros(toolStripTextBoxBuscar.Text))
                         {
@@ -466,12 +481,35 @@ namespace GestionRecoDuero
 
                         if (vehiculoBindingSource.Find("IdVehiculo", toolStripTextBoxBuscar.Text) == -1)
                         {
-                            Comun.MostrarMensajeDeError("El vehículo no existe.", "Vehículo no encontrada");
+                            Comun.MostrarMensajeDeError("El vehículo no existe.", "Vehículo no encontrado");
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                         else
                         {
                             vehiculoBindingSource.Position = vehiculoBindingSource.Find("IdVehiculo", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                        }
+                    }
+
+                    //Matrícula
+                    if (toolStripComboBoxBuscarVehiculos.Text.Equals("Matrícula"))
+                    {
+                        if (!Comun.ComprobarMatricula(toolStripTextBoxBuscar.Text))
+                        {
+                            MessageBox.Show("Formato de matrícula erróneo, debe tener 4 números y 3 letras mayúsculas.", "Formato no válido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                            return;
+                        }
+
+                        if (vehiculoBindingSource.Find("Matrícula", toolStripTextBoxBuscar.Text) == -1)
+                        {
+                            Comun.MostrarMensajeDeError("El vehículo no existe.", "Vehículo no encontrado");
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                        }
+                        else
+                        {
+                            vehiculoBindingSource.Position = vehiculoBindingSource.Find("Matricula", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 

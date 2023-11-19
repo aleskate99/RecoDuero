@@ -174,9 +174,9 @@
             fechaAdquisicionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             fechaAdquisicionLabel.Location = new System.Drawing.Point(657, 247);
             fechaAdquisicionLabel.Name = "fechaAdquisicionLabel";
-            fechaAdquisicionLabel.Size = new System.Drawing.Size(176, 22);
+            fechaAdquisicionLabel.Size = new System.Drawing.Size(199, 22);
             fechaAdquisicionLabel.TabIndex = 50;
-            fechaAdquisicionLabel.Text = "Fecha Adquisición *";
+            fechaAdquisicionLabel.Text = "Fecha de adquisición *";
             // 
             // descripcionLabel
             // 
@@ -224,7 +224,7 @@
             this.toolStripButtonInicio.Name = "toolStripButtonInicio";
             this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonInicio.ToolTipText = "Ir al principio";
-            this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click_1);
+            this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click);
             // 
             // toolStripButtonAnterior
             // 
@@ -234,7 +234,7 @@
             this.toolStripButtonAnterior.Name = "toolStripButtonAnterior";
             this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonAnterior.ToolTipText = "Anterior";
-            this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click_1);
+            this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click);
             // 
             // toolstripLabelContadorMateriales
             // 
@@ -250,7 +250,7 @@
             this.toolStripButtonSiguiente.Name = "toolStripButtonSiguiente";
             this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonSiguiente.ToolTipText = "Siguiente";
-            this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click_1);
+            this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click);
             // 
             // toolStripButtonFinal
             // 
@@ -260,7 +260,7 @@
             this.toolStripButtonFinal.Name = "toolStripButtonFinal";
             this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonFinal.ToolTipText = "Ir al final";
-            this.toolStripButtonFinal.Click += new System.EventHandler(this.toolStripButtonFinal_Click_1);
+            this.toolStripButtonFinal.Click += new System.EventHandler(this.toolStripButtonFinal_Click);
             // 
             // toolStripSeparator1
             // 
@@ -339,9 +339,11 @@
             // 
             // toolStripComboBoxBuscarMateriales
             // 
+            this.toolStripComboBoxBuscarMateriales.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarMateriales.Items.AddRange(new object[] {
             "Id",
-            "Nombre"});
+            "Nombre",
+            "Distribuidor"});
             this.toolStripComboBoxBuscarMateriales.Name = "toolStripComboBoxBuscarMateriales";
             this.toolStripComboBoxBuscarMateriales.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBoxBuscarMateriales.Text = "Buscar material";
@@ -580,6 +582,8 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClienteTableAdapter = null;
+            this.tableAdapterManager.DetalleFacturaTableAdapter = null;
+            this.tableAdapterManager.DetallePresupuestoTableAdapter = null;
             this.tableAdapterManager.EmpleadoTableAdapter = null;
             this.tableAdapterManager.FacturaTableAdapter = null;
             this.tableAdapterManager.MaterialTableAdapter = this.materialTableAdapter;

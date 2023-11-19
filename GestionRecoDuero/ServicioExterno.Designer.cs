@@ -74,13 +74,13 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonAceptar = new System.Windows.Forms.Button();
-            this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelEuros = new System.Windows.Forms.Label();
             this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.duracionServicioNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             idServicioExternoLabel = new System.Windows.Forms.Label();
             empresaLabel = new System.Windows.Forms.Label();
             telefonoLabel = new System.Windows.Forms.Label();
@@ -95,11 +95,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.servicioExternoBindingSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.duracionServicioNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
             this.SuspendLayout();
             // 
             // idServicioExternoLabel
@@ -220,6 +220,8 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClienteTableAdapter = null;
+            this.tableAdapterManager.DetalleFacturaTableAdapter = null;
+            this.tableAdapterManager.DetallePresupuestoTableAdapter = null;
             this.tableAdapterManager.EmpleadoTableAdapter = null;
             this.tableAdapterManager.FacturaTableAdapter = null;
             this.tableAdapterManager.MaterialTableAdapter = null;
@@ -342,7 +344,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1341, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1362, 28);
             this.toolStrip1.TabIndex = 34;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -362,14 +364,14 @@
             this.toolStripButtonAnterior.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnterior.Image")));
             this.toolStripButtonAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnterior.Name = "toolStripButtonAnterior";
-            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonAnterior.ToolTipText = "Anterior";
             this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click);
             // 
             // toolstripLabelContadorServicioExterno
             // 
             this.toolstripLabelContadorServicioExterno.Name = "toolstripLabelContadorServicioExterno";
-            this.toolstripLabelContadorServicioExterno.Size = new System.Drawing.Size(111, 25);
+            this.toolstripLabelContadorServicioExterno.Size = new System.Drawing.Size(111, 36);
             this.toolstripLabelContadorServicioExterno.Text = "toolStripLabel1";
             // 
             // toolStripButtonSiguiente
@@ -378,7 +380,7 @@
             this.toolStripButtonSiguiente.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSiguiente.Image")));
             this.toolStripButtonSiguiente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSiguiente.Name = "toolStripButtonSiguiente";
-            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonSiguiente.ToolTipText = "Siguiente";
             this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click);
             // 
@@ -388,14 +390,14 @@
             this.toolStripButtonFinal.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFinal.Image")));
             this.toolStripButtonFinal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFinal.Name = "toolStripButtonFinal";
-            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonFinal.ToolTipText = "Ir al final";
             this.toolStripButtonFinal.Click += new System.EventHandler(this.toolStripButtonFinal_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // toolStripButtonAnadir
             // 
@@ -403,7 +405,7 @@
             this.toolStripButtonAnadir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnadir.Image")));
             this.toolStripButtonAnadir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
-            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonAnadir.ToolTipText = "Añadir servicio externo";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
             // 
@@ -413,7 +415,7 @@
             this.toolStripButtonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEliminar.Image")));
             this.toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonEliminar.ToolTipText = "Eliminar servicio externo";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
             // 
@@ -423,14 +425,14 @@
             this.toolStripButtonEditar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditar.Image")));
             this.toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
-            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonEditar.ToolTipText = "Editar servicio externo";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
             // 
             // toolStripButtonGuardar
             // 
@@ -438,7 +440,7 @@
             this.toolStripButtonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGuardar.Image")));
             this.toolStripButtonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGuardar.Name = "toolStripButtonGuardar";
-            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonGuardar.ToolTipText = "Guardar ";
             this.toolStripButtonGuardar.Click += new System.EventHandler(this.toolStripButtonGuardar_Click);
             // 
@@ -448,7 +450,7 @@
             this.toolStripButtonImprimir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImprimir.Image")));
             this.toolStripButtonImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonImprimir.Name = "toolStripButtonImprimir";
-            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonImprimir.ToolTipText = "Imprimir ";
             this.toolStripButtonImprimir.Click += new System.EventHandler(this.toolStripButtonImprimir_Click);
             // 
@@ -458,19 +460,21 @@
             this.toolStripButtonInforme.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInforme.Image")));
             this.toolStripButtonInforme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInforme.Name = "toolStripButtonInforme";
-            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonInforme.ToolTipText = "Informe";
             this.toolStripButtonInforme.Click += new System.EventHandler(this.toolStripButtonInforme_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
             // 
             // toolStripComboBoxBuscarServiciosExternos
             // 
+            this.toolStripComboBoxBuscarServiciosExternos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarServiciosExternos.Items.AddRange(new object[] {
-            "Nombre"});
+            "Id",
+            "Empresa"});
             this.toolStripComboBoxBuscarServiciosExternos.Name = "toolStripComboBoxBuscarServiciosExternos";
             this.toolStripComboBoxBuscarServiciosExternos.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBoxBuscarServiciosExternos.Text = "Buscar servicio";
@@ -480,7 +484,7 @@
             // 
             this.toolStripTextBoxBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxBuscar.Name = "toolStripTextBoxBuscar";
-            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 28);
+            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 39);
             this.toolStripTextBoxBuscar.ToolTipText = "Escribe el servicio externo que desee buscar";
             // 
             // toolStripButtonBuscar
@@ -489,7 +493,7 @@
             this.toolStripButtonBuscar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBuscar.Image")));
             this.toolStripButtonBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBuscar.Name = "toolStripButtonBuscar";
-            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 36);
             this.toolStripButtonBuscar.ToolTipText = "Buscar";
             this.toolStripButtonBuscar.Click += new System.EventHandler(this.toolStripButtonBuscar_Click);
             // 
@@ -498,9 +502,9 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 768);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 764);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1341, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1362, 26);
             this.statusStrip1.TabIndex = 35;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -546,18 +550,6 @@
             this.buttonAceptar.UseVisualStyleBackColor = false;
             this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
             // 
-            // buttonVolverInicio
-            // 
-            this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1245, 126);
-            this.buttonVolverInicio.Name = "buttonVolverInicio";
-            this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
-            this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.buttonVolverInicio.TabIndex = 40;
-            this.buttonVolverInicio.TabStop = false;
-            this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -602,9 +594,9 @@
             this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEuros.Location = new System.Drawing.Point(1140, 184);
             this.labelEuros.Name = "labelEuros";
-            this.labelEuros.Size = new System.Drawing.Size(20, 22);
+            this.labelEuros.Size = new System.Drawing.Size(76, 28);
             this.labelEuros.TabIndex = 62;
-            this.labelEuros.Text = "€";
+            this.labelEuros.Text = "€/hora";
             // 
             // costeNumericUpDown
             // 
@@ -637,17 +629,29 @@
             this.duracionServicioNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.duracionServicioNumericUpDown.ValueChanged += new System.EventHandler(this.duracionServicioNumericUpDown_ValueChanged);
             // 
+            // buttonVolverInicio
+            // 
+            this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1270, 89);
+            this.buttonVolverInicio.Name = "buttonVolverInicio";
+            this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
+            this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buttonVolverInicio.TabIndex = 63;
+            this.buttonVolverInicio.TabStop = false;
+            this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
+            // 
             // ServicioExterno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1341, 794);
+            this.ClientSize = new System.Drawing.Size(1362, 790);
+            this.Controls.Add(this.buttonVolverInicio);
             this.Controls.Add(this.duracionServicioNumericUpDown);
             this.Controls.Add(this.costeNumericUpDown);
             this.Controls.Add(this.labelEuros);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonVolverInicio);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.statusStrip1);
@@ -669,12 +673,12 @@
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.duracionServicioNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -716,12 +720,12 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonAceptar;
-        private System.Windows.Forms.PictureBox buttonVolverInicio;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelEuros;
         private System.Windows.Forms.NumericUpDown duracionServicioNumericUpDown;
         private System.Windows.Forms.NumericUpDown costeNumericUpDown;
+        private System.Windows.Forms.PictureBox buttonVolverInicio;
     }
 }

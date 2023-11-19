@@ -85,6 +85,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.empleadoTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.EmpleadoTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             idEmpleadoLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             apellidosLabel = new System.Windows.Forms.Label();
@@ -194,9 +195,9 @@
             situacionLaboralLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             situacionLaboralLabel.Location = new System.Drawing.Point(27, 96);
             situacionLaboralLabel.Name = "situacionLaboralLabel";
-            situacionLaboralLabel.Size = new System.Drawing.Size(172, 22);
+            situacionLaboralLabel.Size = new System.Drawing.Size(167, 22);
             situacionLaboralLabel.TabIndex = 16;
-            situacionLaboralLabel.Text = "Situación Laboral *";
+            situacionLaboralLabel.Text = "Situación laboral *";
             // 
             // dNILabel
             // 
@@ -566,6 +567,7 @@
             // 
             // toolStripComboBoxBuscarEmpleados
             // 
+            this.toolStripComboBoxBuscarEmpleados.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarEmpleados.Items.AddRange(new object[] {
             "Id",
             "DNI",
@@ -651,17 +653,19 @@
             // 
             // imagenPictureBox
             // 
-            this.imagenPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.imagenPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.imagenPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imagenPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imagenPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.empleadoBindingSource, "Imagen", true));
-            this.imagenPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("imagenPictureBox.Image")));
+            this.imagenPictureBox.ErrorImage = null;
             this.imagenPictureBox.InitialImage = null;
             this.imagenPictureBox.Location = new System.Drawing.Point(919, 377);
             this.imagenPictureBox.Name = "imagenPictureBox";
             this.imagenPictureBox.Size = new System.Drawing.Size(277, 231);
-            this.imagenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imagenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imagenPictureBox.TabIndex = 21;
             this.imagenPictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.imagenPictureBox, "Haga clic para insertar la imágen");
             this.imagenPictureBox.Click += new System.EventHandler(this.imagenPictureBox_Click);
             // 
             // openFileDialog1
@@ -676,6 +680,8 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClienteTableAdapter = null;
+            this.tableAdapterManager.DetalleFacturaTableAdapter = null;
+            this.tableAdapterManager.DetallePresupuestoTableAdapter = null;
             this.tableAdapterManager.EmpleadoTableAdapter = this.empleadoTableAdapter;
             this.tableAdapterManager.FacturaTableAdapter = null;
             this.tableAdapterManager.MaterialTableAdapter = null;
@@ -770,5 +776,6 @@
         private System.Windows.Forms.DateTimePicker fechaNacimientoDateTimePicker;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label salarioLabel1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

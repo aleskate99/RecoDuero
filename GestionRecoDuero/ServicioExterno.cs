@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -167,6 +168,12 @@ namespace GestionRecoDuero
 
             RefrescarToolstripLabelServicioExterno();
             datosGuardados = false;
+
+            ((DataRowView)servicioExternoBindingSource.Current)["Tipo"] = tipoComboBox.SelectedItem.ToString();
+            ((DataRowView)servicioExternoBindingSource.Current)["Estado"] = estadoComboBox.SelectedItem.ToString();
+
+            ((DataRowView)servicioExternoBindingSource.Current)["Coste"] = (int)costeNumericUpDown.Value;
+            ((DataRowView)servicioExternoBindingSource.Current)["DuracionServicio"] = (int)duracionServicioNumericUpDown.Value;
         }
 
         private void HabilitarControlesEnAnadir()
@@ -179,9 +186,11 @@ namespace GestionRecoDuero
             //Campos
             MostrarCampos();
 
-            //ComboBox por defecto a una opción
+            //Campos por defecto a una opción
             tipoComboBox.SelectedIndex = 0;
             estadoComboBox.SelectedIndex = 0;
+            costeNumericUpDown.Value = 0;
+            duracionServicioNumericUpDown.Value = 0;
         }
 
         private void DeshabilitarBotonesEnAnadir()
@@ -452,7 +461,7 @@ namespace GestionRecoDuero
                 else
                 {
                     //ID
-                    if (toolStripComboBoxBuscarServiciosExternos.Text.Equals("IdServicioExterno"))
+                    if (toolStripComboBoxBuscarServiciosExternos.Text.Equals("Id"))
                     {
                         if (!Comun.ContieneNumeros(toolStripTextBoxBuscar.Text))
                         {
@@ -469,6 +478,22 @@ namespace GestionRecoDuero
                         else
                         {
                             servicioExternoBindingSource.Position = servicioExternoBindingSource.Find("IdServicioExterno", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                        }
+                    }
+
+                    //Empresa
+                    if (toolStripComboBoxBuscarServiciosExternos.Text.Equals("Empresa"))
+                    {
+                        if (servicioExternoBindingSource.Find("Empresa", toolStripTextBoxBuscar.Text) == -1)
+                        {
+                            Comun.MostrarMensajeDeError("El servicio externo no existe.", "Servicio externo no encontrado");
+                            toolStripTextBoxBuscar.Text = String.Empty;
+                        }
+                        else
+                        {
+                            servicioExternoBindingSource.Position = servicioExternoBindingSource.Find("Empresa", toolStripTextBoxBuscar.Text);
+                            toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
 
