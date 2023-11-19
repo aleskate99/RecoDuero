@@ -339,7 +339,6 @@
             // 
             // toolStripComboBoxBuscarMateriales
             // 
-            this.toolStripComboBoxBuscarMateriales.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarMateriales.Items.AddRange(new object[] {
             "Id",
             "Nombre",
@@ -602,7 +601,7 @@
             this.descripcionTextBox.Multiline = true;
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(336, 164);
-            this.descripcionTextBox.TabIndex = 56;
+            this.descripcionTextBox.TabIndex = 8;
             // 
             // Material
             // 

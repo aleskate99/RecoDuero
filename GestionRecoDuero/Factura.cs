@@ -39,7 +39,7 @@ namespace GestionRecoDuero
             CargarObras(); //Para cargar la ubicación de las obras
             CargarClientes(); //Para cargar la info de los clientes
             CargarResponsableEmpleados(); //Para cargar el responsable
-            CargarFacturas();
+            CargarFacturas(); // Para cargar los ids de las facturas
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -188,10 +188,10 @@ namespace GestionRecoDuero
             datosGuardados = false;
 
             // Actualiza la fuente de datos con el valor predeterminado antes de guardar
-            if (obraComboBox.Items.Count > 0)
+            if (idPresupuestoComboBox.Items.Count > 0)
             {
-                CargarObras();
-                ((DataRowView)facturaBindingSource.Current)["Obra"] = obraComboBox.SelectedItem.ToString();
+                CargarPresupuestos();
+                ((DataRowView)facturaBindingSource.Current)["IdPresupuesto"] = idPresupuestoComboBox.SelectedItem.ToString();
             }
 
             if (clienteComboBox.Items.Count > 0)
@@ -222,12 +222,10 @@ namespace GestionRecoDuero
             MostrarCampos();
 
             //Campos por defecto a una opción
+            totalFacturaLabel2.Text = "0";
             fechaEmisionDateTimePicker.Value = DateTime.Today;
             estadoPagoComboBox.SelectedIndex = 0;
             metodoPagoComboBox.SelectedIndex = 0;
-
-            //Imagen
-            //imagenPictureBox.Image = 
         }
 
         private void DeshabilitarBotonesEnAnadir()
@@ -430,10 +428,10 @@ namespace GestionRecoDuero
                     }
 
                     PrintLine("Id Factura: ", idFacturaLabel1.Text);
-                    PrintLine("Obra: ", obraComboBox.Text);
+                    PrintLine("Id Presupuesto: ", idPresupuestoComboBox.Text);
                     PrintLine("Cliente: ", clienteComboBox.Text);
                     PrintLine("Responsable: ", empleadoComboBox.Text);
-                    PrintLine("Total factura: ", totalFacturaTextBox.Text);
+                    PrintLine("Total factura: ", totalFacturaLabel2.Text);
 
                     PrintLine("Fecha de emisión: ", fechaEmisionDateTimePicker.Text);
                     PrintLine("Estado: ", estadoPagoComboBox.Text);
@@ -662,10 +660,10 @@ namespace GestionRecoDuero
         private void OcultarCampos()
         {
             idFacturaLabel1.Enabled = false;
-            obraComboBox.Enabled = false;
+            idPresupuestoComboBox.Enabled = false;
             clienteComboBox.Enabled = false;
             empleadoComboBox.Enabled = false;
-            totalFacturaTextBox.Enabled = false;
+            totalFacturaLabel2.Enabled = false;
 
             fechaEmisionDateTimePicker.Enabled = false;
             estadoPagoComboBox.Enabled = false;
@@ -676,10 +674,10 @@ namespace GestionRecoDuero
         private void MostrarCampos()
         {
             idFacturaLabel1.Enabled = true;
-            obraComboBox.Enabled = true;
+            idPresupuestoComboBox.Enabled = true;
             clienteComboBox.Enabled = true;
             empleadoComboBox.Enabled = true;
-            totalFacturaTextBox.Enabled = true;
+            totalFacturaLabel2.Enabled = true;
 
             fechaEmisionDateTimePicker.Enabled = true;
             estadoPagoComboBox.Enabled = true;
@@ -754,16 +752,35 @@ namespace GestionRecoDuero
             ObraDataTable obrasData = obraTableAdapter.GetData();
 
             // Configurar el ComboBox
-            obraComboBox.DataSource = obrasData;
-            obraComboBox.DisplayMember = "Ubicacion";
+            obraDetalleComboBox.DataSource = obrasData;
+            obraDetalleComboBox.DisplayMember = "Ubicacion";
 
-            if (obraComboBox.Items.Count > 0)
+            if (obraDetalleComboBox.Items.Count > 0)
             {
-                obraComboBox.SelectedIndex = 0;
+                obraDetalleComboBox.SelectedIndex = 0;
             }
             else
             {
-                obraComboBox.Text = "No hay obras";
+                obraDetalleComboBox.Text = "No hay obras";
+            }
+        }
+
+        private void CargarPresupuestos()
+        {
+            PresupuestoTableAdapter presupuestoTableAdapter = new PresupuestoTableAdapter();
+            PresupuestoDataTable presupuestosData = presupuestoTableAdapter.GetData();
+
+            // Configurar el ComboBox
+            idPresupuestoComboBox.DataSource = presupuestosData;
+            idPresupuestoComboBox.DisplayMember = "IdPresupuesto";
+
+            if (idPresupuestoComboBox.Items.Count > 0)
+            {
+                idPresupuestoComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                idPresupuestoComboBox.Text = "No hay presupuestos";
             }
         }
 
@@ -811,10 +828,10 @@ namespace GestionRecoDuero
                 HabilitarControlesEnAnadirLinea();
 
                 // Actualiza la fuente de datos con el valor predeterminado antes de guardar
-                if (obraComboBox.Items.Count > 0)
+                if (obraDetalleComboBox.Items.Count > 0)
                 {
                     CargarObras();
-                    ((DataRowView)detalleFacturaBindingSource.Current)["Obra"] = obraComboBox.SelectedItem.ToString();
+                    ((DataRowView)detalleFacturaBindingSource.Current)["Obra"] = obraDetalleComboBox.SelectedItem.ToString();
                 }
 
                 if (idFacturaComboBox.Items.Count > 0)
@@ -830,13 +847,8 @@ namespace GestionRecoDuero
                     //((DataRowView)detallePresupuestoBindingSource.Current)["IdPresupuesto"] = idPresupuestoComboBox.SelectedItem.ToString();
                 }
 
-                //((DataRowView)detalleFacturaBindingSource.Current)["Coste"] = (int)costeNumericUpDownDetalle.Value;
+                ((DataRowView)detalleFacturaBindingSource.Current)["Coste"] = (int)costeNumericUpDown.Value;
 
-                if (clienteComboBoxDetalle.Items.Count > 0)
-                {
-                    CargarClientes();
-                    ((DataRowView)detalleFacturaBindingSource.Current)["Cliente"] = clienteComboBoxDetalle.SelectedItem.ToString();
-                }
 
                 detalleFacturaDataGridView.ReadOnly = true;
 
@@ -905,10 +917,9 @@ namespace GestionRecoDuero
         {
             //Campos
             idDetalleFacturaLabel1.Enabled = false;
-            obraComboBoxDetalle.Enabled = false;
             idFacturaComboBox.Enabled = false;
-            costeTextBox.Enabled = false;
-            clienteComboBoxDetalle.Enabled = false;
+            obraDetalleComboBox.Enabled = false;
+            costeNumericUpDown.Enabled = false;
 
             //Botones
             buttonAceptarDetalleFactura.Visible = false;
@@ -919,10 +930,9 @@ namespace GestionRecoDuero
         {
             //Campos
             idDetalleFacturaLabel1.Enabled = true;
-            obraComboBoxDetalle.Enabled = true;
             idFacturaComboBox.Enabled = true;
-            costeTextBox.Enabled = true;
-            clienteComboBoxDetalle.Enabled = true;
+            obraDetalleComboBox.Enabled = true;
+            costeNumericUpDown.Enabled = true;
 
             //Botones
             buttonAceptarDetalleFactura.Visible = true;

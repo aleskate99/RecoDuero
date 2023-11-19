@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label idFacturaLabel;
-            System.Windows.Forms.Label obraLabel;
             System.Windows.Forms.Label fechaEmisionLabel;
             System.Windows.Forms.Label clienteLabel;
             System.Windows.Forms.Label impuestosLabel;
@@ -42,11 +41,8 @@
             System.Windows.Forms.Label obraLabel1;
             System.Windows.Forms.Label idFacturaLabel2;
             System.Windows.Forms.Label costeLabel;
-            System.Windows.Forms.Label clienteLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Factura));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label idPresupuestoLabel;
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -80,35 +76,32 @@
             this.facturaTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.FacturaTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             this.idFacturaLabel1 = new System.Windows.Forms.Label();
-            this.obraComboBox = new System.Windows.Forms.ComboBox();
             this.fechaEmisionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.clienteComboBox = new System.Windows.Forms.ComboBox();
             this.impuestosTextBox = new System.Windows.Forms.TextBox();
             this.estadoPagoComboBox = new System.Windows.Forms.ComboBox();
             this.metodoPagoComboBox = new System.Windows.Forms.ComboBox();
             this.empleadoComboBox = new System.Windows.Forms.ComboBox();
-            this.totalFacturaTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.totalFacturaLabel2 = new System.Windows.Forms.Label();
             this.labelDinero = new System.Windows.Forms.Label();
             this.labelPorcentaje = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.detalleFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.detalleFacturaTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.DetalleFacturaTableAdapter();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.idDetalleFacturaLabel1 = new System.Windows.Forms.Label();
-            this.obraComboBoxDetalle = new System.Windows.Forms.ComboBox();
+            this.obraDetalleComboBox = new System.Windows.Forms.ComboBox();
             this.idFacturaComboBox = new System.Windows.Forms.ComboBox();
-            this.costeTextBox = new System.Windows.Forms.TextBox();
-            this.clienteComboBoxDetalle = new System.Windows.Forms.ComboBox();
+            this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.detalleFacturaDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.idPresupuestoComboBox = new System.Windows.Forms.ComboBox();
             idFacturaLabel = new System.Windows.Forms.Label();
-            obraLabel = new System.Windows.Forms.Label();
             fechaEmisionLabel = new System.Windows.Forms.Label();
             clienteLabel = new System.Windows.Forms.Label();
             impuestosLabel = new System.Windows.Forms.Label();
@@ -120,7 +113,7 @@
             obraLabel1 = new System.Windows.Forms.Label();
             idFacturaLabel2 = new System.Windows.Forms.Label();
             costeLabel = new System.Windows.Forms.Label();
-            clienteLabel1 = new System.Windows.Forms.Label();
+            idPresupuestoLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
@@ -129,8 +122,9 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // idFacturaLabel
@@ -142,16 +136,6 @@
             idFacturaLabel.Size = new System.Drawing.Size(112, 22);
             idFacturaLabel.TabIndex = 42;
             idFacturaLabel.Text = "Id Factura *";
-            // 
-            // obraLabel
-            // 
-            obraLabel.AutoSize = true;
-            obraLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            obraLabel.Location = new System.Drawing.Point(25, 90);
-            obraLabel.Name = "obraLabel";
-            obraLabel.Size = new System.Drawing.Size(67, 22);
-            obraLabel.TabIndex = 44;
-            obraLabel.Text = "Obra *";
             // 
             // fechaEmisionLabel
             // 
@@ -179,7 +163,7 @@
             impuestosLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             impuestosLabel.Location = new System.Drawing.Point(687, 297);
             impuestosLabel.Name = "impuestosLabel";
-            impuestosLabel.Size = new System.Drawing.Size(115, 28);
+            impuestosLabel.Size = new System.Drawing.Size(92, 22);
             impuestosLabel.TabIndex = 50;
             impuestosLabel.Text = "Impuestos";
             // 
@@ -219,59 +203,49 @@
             totalFacturaLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             totalFacturaLabel.Location = new System.Drawing.Point(25, 274);
             totalFacturaLabel.Name = "totalFacturaLabel";
-            totalFacturaLabel.Size = new System.Drawing.Size(128, 22);
+            totalFacturaLabel.Size = new System.Drawing.Size(136, 22);
             totalFacturaLabel.TabIndex = 58;
-            totalFacturaLabel.Text = "Total Factura:";
+            totalFacturaLabel.Text = "Total Factura *";
             // 
             // idDetalleFacturaLabel
             // 
             idDetalleFacturaLabel.AutoSize = true;
             idDetalleFacturaLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idDetalleFacturaLabel.Location = new System.Drawing.Point(22, 32);
+            idDetalleFacturaLabel.Location = new System.Drawing.Point(25, 43);
             idDetalleFacturaLabel.Name = "idDetalleFacturaLabel";
-            idDetalleFacturaLabel.Size = new System.Drawing.Size(169, 22);
+            idDetalleFacturaLabel.Size = new System.Drawing.Size(177, 22);
             idDetalleFacturaLabel.TabIndex = 61;
-            idDetalleFacturaLabel.Text = "Id Detalle Factura:";
+            idDetalleFacturaLabel.Text = "Id Detalle Factura *";
             // 
             // obraLabel1
             // 
             obraLabel1.AutoSize = true;
             obraLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            obraLabel1.Location = new System.Drawing.Point(22, 85);
+            obraLabel1.Location = new System.Drawing.Point(25, 151);
             obraLabel1.Name = "obraLabel1";
-            obraLabel1.Size = new System.Drawing.Size(59, 22);
+            obraLabel1.Size = new System.Drawing.Size(67, 22);
             obraLabel1.TabIndex = 63;
-            obraLabel1.Text = "Obra:";
+            obraLabel1.Text = "Obra *";
             // 
             // idFacturaLabel2
             // 
             idFacturaLabel2.AutoSize = true;
             idFacturaLabel2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idFacturaLabel2.Location = new System.Drawing.Point(22, 131);
+            idFacturaLabel2.Location = new System.Drawing.Point(25, 99);
             idFacturaLabel2.Name = "idFacturaLabel2";
-            idFacturaLabel2.Size = new System.Drawing.Size(104, 22);
+            idFacturaLabel2.Size = new System.Drawing.Size(112, 22);
             idFacturaLabel2.TabIndex = 65;
-            idFacturaLabel2.Text = "Id Factura:";
+            idFacturaLabel2.Text = "Id Factura *";
             // 
             // costeLabel
             // 
             costeLabel.AutoSize = true;
             costeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            costeLabel.Location = new System.Drawing.Point(22, 185);
+            costeLabel.Location = new System.Drawing.Point(25, 216);
             costeLabel.Name = "costeLabel";
-            costeLabel.Size = new System.Drawing.Size(63, 22);
+            costeLabel.Size = new System.Drawing.Size(71, 22);
             costeLabel.TabIndex = 67;
-            costeLabel.Text = "Coste:";
-            // 
-            // clienteLabel1
-            // 
-            clienteLabel1.AutoSize = true;
-            clienteLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            clienteLabel1.Location = new System.Drawing.Point(22, 236);
-            clienteLabel1.Name = "clienteLabel1";
-            clienteLabel1.Size = new System.Drawing.Size(76, 22);
-            clienteLabel1.TabIndex = 69;
-            clienteLabel1.Text = "Cliente:";
+            costeLabel.Text = "Coste *";
             // 
             // statusStrip1
             // 
@@ -314,7 +288,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1336, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1336, 28);
             this.toolStrip1.TabIndex = 33;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -324,7 +298,7 @@
             this.toolStripButtonInicio.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInicio.Image")));
             this.toolStripButtonInicio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInicio.Name = "toolStripButtonInicio";
-            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonInicio.ToolTipText = "Ir al principio";
             this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click);
             // 
@@ -334,14 +308,14 @@
             this.toolStripButtonAnterior.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnterior.Image")));
             this.toolStripButtonAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnterior.Name = "toolStripButtonAnterior";
-            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonAnterior.ToolTipText = "Anterior";
             this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click);
             // 
             // toolstripLabelContadorFacturas
             // 
             this.toolstripLabelContadorFacturas.Name = "toolstripLabelContadorFacturas";
-            this.toolstripLabelContadorFacturas.Size = new System.Drawing.Size(111, 28);
+            this.toolstripLabelContadorFacturas.Size = new System.Drawing.Size(111, 25);
             this.toolstripLabelContadorFacturas.Text = "toolStripLabel1";
             // 
             // toolStripButtonSiguiente
@@ -350,7 +324,7 @@
             this.toolStripButtonSiguiente.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSiguiente.Image")));
             this.toolStripButtonSiguiente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSiguiente.Name = "toolStripButtonSiguiente";
-            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonSiguiente.ToolTipText = "Siguiente";
             this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click);
             // 
@@ -360,14 +334,14 @@
             this.toolStripButtonFinal.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFinal.Image")));
             this.toolStripButtonFinal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFinal.Name = "toolStripButtonFinal";
-            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonFinal.ToolTipText = "Ir al final";
             this.toolStripButtonFinal.Click += new System.EventHandler(this.toolStripButtonFinal_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButtonAnadir
             // 
@@ -375,7 +349,7 @@
             this.toolStripButtonAnadir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnadir.Image")));
             this.toolStripButtonAnadir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
-            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonAnadir.ToolTipText = "Añadir factura";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
             // 
@@ -385,7 +359,7 @@
             this.toolStripButtonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEliminar.Image")));
             this.toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonEliminar.ToolTipText = "Eliminar factura";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
             // 
@@ -395,14 +369,14 @@
             this.toolStripButtonEditar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditar.Image")));
             this.toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
-            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonEditar.ToolTipText = "Editar factura";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButtonGuardar
             // 
@@ -410,7 +384,7 @@
             this.toolStripButtonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGuardar.Image")));
             this.toolStripButtonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGuardar.Name = "toolStripButtonGuardar";
-            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonGuardar.ToolTipText = "Guardar ";
             this.toolStripButtonGuardar.Click += new System.EventHandler(this.toolStripButtonGuardar_Click);
             // 
@@ -420,7 +394,7 @@
             this.toolStripButtonImprimir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImprimir.Image")));
             this.toolStripButtonImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonImprimir.Name = "toolStripButtonImprimir";
-            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonImprimir.ToolTipText = "Imprimir ";
             this.toolStripButtonImprimir.Click += new System.EventHandler(this.toolStripButtonImprimir_Click);
             // 
@@ -430,24 +404,23 @@
             this.toolStripButtonInforme.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInforme.Image")));
             this.toolStripButtonInforme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInforme.Name = "toolStripButtonInforme";
-            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonInforme.ToolTipText = "Informe";
             this.toolStripButtonInforme.Click += new System.EventHandler(this.toolStripButtonInforme_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripComboBoxBuscarFacturas
             // 
-            this.toolStripComboBoxBuscarFacturas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarFacturas.Items.AddRange(new object[] {
             "Id",
             "DNI",
             "Nombre"});
             this.toolStripComboBoxBuscarFacturas.Name = "toolStripComboBoxBuscarFacturas";
-            this.toolStripComboBoxBuscarFacturas.Size = new System.Drawing.Size(160, 31);
+            this.toolStripComboBoxBuscarFacturas.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBoxBuscarFacturas.Text = "Buscar factura";
             this.toolStripComboBoxBuscarFacturas.ToolTipText = "Seleccione mediante que campo desea buscar la factura";
             // 
@@ -455,7 +428,7 @@
             // 
             this.toolStripTextBoxBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxBuscar.Name = "toolStripTextBoxBuscar";
-            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 31);
+            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 28);
             this.toolStripTextBoxBuscar.ToolTipText = "Escribe la factura que desee buscar";
             // 
             // toolStripButtonBuscar
@@ -464,13 +437,13 @@
             this.toolStripButtonBuscar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBuscar.Image")));
             this.toolStripButtonBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBuscar.Name = "toolStripButtonBuscar";
-            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonBuscar.ToolTipText = "Buscar";
             this.toolStripButtonBuscar.Click += new System.EventHandler(this.toolStripButtonBuscar_Click);
             // 
             // buttonEditarLinea
             // 
-            this.buttonEditarLinea.Location = new System.Drawing.Point(563, 609);
+            this.buttonEditarLinea.Location = new System.Drawing.Point(584, 609);
             this.buttonEditarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditarLinea.Name = "buttonEditarLinea";
             this.buttonEditarLinea.Size = new System.Drawing.Size(100, 28);
@@ -517,7 +490,7 @@
             // 
             // buttonBorrarLinea
             // 
-            this.buttonBorrarLinea.Location = new System.Drawing.Point(563, 555);
+            this.buttonBorrarLinea.Location = new System.Drawing.Point(584, 555);
             this.buttonBorrarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBorrarLinea.Name = "buttonBorrarLinea";
             this.buttonBorrarLinea.Size = new System.Drawing.Size(100, 28);
@@ -528,7 +501,7 @@
             // 
             // buttonAniadirLinea
             // 
-            this.buttonAniadirLinea.Location = new System.Drawing.Point(563, 508);
+            this.buttonAniadirLinea.Location = new System.Drawing.Point(584, 508);
             this.buttonAniadirLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAniadirLinea.Name = "buttonAniadirLinea";
             this.buttonAniadirLinea.Size = new System.Drawing.Size(100, 28);
@@ -625,17 +598,6 @@
             this.idFacturaLabel1.TabIndex = 43;
             this.idFacturaLabel1.Text = "label1";
             // 
-            // obraComboBox
-            // 
-            this.obraComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.facturaBindingSource, "Obra", true));
-            this.obraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.obraComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.obraComboBox.FormattingEnabled = true;
-            this.obraComboBox.Location = new System.Drawing.Point(211, 87);
-            this.obraComboBox.Name = "obraComboBox";
-            this.obraComboBox.Size = new System.Drawing.Size(278, 30);
-            this.obraComboBox.TabIndex = 45;
-            // 
             // fechaEmisionDateTimePicker
             // 
             this.fechaEmisionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.facturaBindingSource, "FechaEmision", true));
@@ -705,23 +667,14 @@
             this.empleadoComboBox.Size = new System.Drawing.Size(278, 30);
             this.empleadoComboBox.TabIndex = 57;
             // 
-            // totalFacturaTextBox
-            // 
-            this.totalFacturaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.facturaBindingSource, "TotalFactura", true));
-            this.totalFacturaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalFacturaTextBox.Location = new System.Drawing.Point(211, 271);
-            this.totalFacturaTextBox.Name = "totalFacturaTextBox";
-            this.totalFacturaTextBox.Size = new System.Drawing.Size(278, 30);
-            this.totalFacturaTextBox.TabIndex = 59;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(idPresupuestoLabel);
+            this.groupBox1.Controls.Add(this.idPresupuestoComboBox);
+            this.groupBox1.Controls.Add(this.totalFacturaLabel2);
             this.groupBox1.Controls.Add(this.labelDinero);
             this.groupBox1.Controls.Add(idFacturaLabel);
-            this.groupBox1.Controls.Add(this.totalFacturaTextBox);
             this.groupBox1.Controls.Add(this.idFacturaLabel1);
-            this.groupBox1.Controls.Add(obraLabel);
-            this.groupBox1.Controls.Add(this.obraComboBox);
             this.groupBox1.Controls.Add(totalFacturaLabel);
             this.groupBox1.Controls.Add(clienteLabel);
             this.groupBox1.Controls.Add(this.clienteComboBox);
@@ -730,16 +683,26 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(27, 84);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(538, 320);
+            this.groupBox1.Size = new System.Drawing.Size(538, 322);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de la factura";
+            // 
+            // totalFacturaLabel2
+            // 
+            this.totalFacturaLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.facturaBindingSource, "TotalFactura", true));
+            this.totalFacturaLabel2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalFacturaLabel2.Location = new System.Drawing.Point(207, 274);
+            this.totalFacturaLabel2.Name = "totalFacturaLabel2";
+            this.totalFacturaLabel2.Size = new System.Drawing.Size(140, 23);
+            this.totalFacturaLabel2.TabIndex = 63;
+            this.totalFacturaLabel2.Text = "0";
             // 
             // labelDinero
             // 
             this.labelDinero.AutoSize = true;
             this.labelDinero.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDinero.Location = new System.Drawing.Point(495, 274);
+            this.labelDinero.Location = new System.Drawing.Point(353, 274);
             this.labelDinero.Name = "labelDinero";
             this.labelDinero.Size = new System.Drawing.Size(20, 22);
             this.labelDinero.TabIndex = 62;
@@ -768,26 +731,45 @@
             // 
             this.detalleFacturaTableAdapter.ClearBeforeFill = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.idDetalleFacturaLabel1);
+            this.groupBox2.Controls.Add(this.obraDetalleComboBox);
+            this.groupBox2.Controls.Add(this.idFacturaComboBox);
+            this.groupBox2.Controls.Add(this.costeNumericUpDown);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(idDetalleFacturaLabel);
+            this.groupBox2.Controls.Add(obraLabel1);
+            this.groupBox2.Controls.Add(costeLabel);
+            this.groupBox2.Controls.Add(idFacturaLabel2);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(27, 429);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(538, 262);
+            this.groupBox2.TabIndex = 71;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Detalle de la factura";
+            // 
             // idDetalleFacturaLabel1
             // 
             this.idDetalleFacturaLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleFacturaBindingSource, "IdDetalleFactura", true));
             this.idDetalleFacturaLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idDetalleFacturaLabel1.Location = new System.Drawing.Point(197, 36);
+            this.idDetalleFacturaLabel1.Location = new System.Drawing.Point(207, 43);
             this.idDetalleFacturaLabel1.Name = "idDetalleFacturaLabel1";
             this.idDetalleFacturaLabel1.Size = new System.Drawing.Size(121, 23);
-            this.idDetalleFacturaLabel1.TabIndex = 62;
-            this.idDetalleFacturaLabel1.Text = "label1";
+            this.idDetalleFacturaLabel1.TabIndex = 73;
+            this.idDetalleFacturaLabel1.Text = "label2";
             // 
-            // obraComboBoxDetalle
+            // obraDetalleComboBox
             // 
-            this.obraComboBoxDetalle.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleFacturaBindingSource, "Obra", true));
-            this.obraComboBoxDetalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.obraComboBoxDetalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.obraComboBoxDetalle.FormattingEnabled = true;
-            this.obraComboBoxDetalle.Location = new System.Drawing.Point(197, 82);
-            this.obraComboBoxDetalle.Name = "obraComboBoxDetalle";
-            this.obraComboBoxDetalle.Size = new System.Drawing.Size(292, 30);
-            this.obraComboBoxDetalle.TabIndex = 64;
+            this.obraDetalleComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleFacturaBindingSource, "Obra", true));
+            this.obraDetalleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.obraDetalleComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obraDetalleComboBox.FormattingEnabled = true;
+            this.obraDetalleComboBox.Location = new System.Drawing.Point(211, 151);
+            this.obraDetalleComboBox.Name = "obraDetalleComboBox";
+            this.obraDetalleComboBox.Size = new System.Drawing.Size(278, 30);
+            this.obraDetalleComboBox.TabIndex = 75;
             // 
             // idFacturaComboBox
             // 
@@ -795,75 +777,47 @@
             this.idFacturaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.idFacturaComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idFacturaComboBox.FormattingEnabled = true;
-            this.idFacturaComboBox.Location = new System.Drawing.Point(197, 131);
+            this.idFacturaComboBox.Location = new System.Drawing.Point(211, 96);
             this.idFacturaComboBox.Name = "idFacturaComboBox";
-            this.idFacturaComboBox.Size = new System.Drawing.Size(292, 30);
-            this.idFacturaComboBox.TabIndex = 66;
+            this.idFacturaComboBox.Size = new System.Drawing.Size(278, 30);
+            this.idFacturaComboBox.TabIndex = 77;
             // 
-            // costeTextBox
+            // costeNumericUpDown
             // 
-            this.costeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleFacturaBindingSource, "Coste", true));
-            this.costeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeTextBox.Location = new System.Drawing.Point(197, 182);
-            this.costeTextBox.Name = "costeTextBox";
-            this.costeTextBox.Size = new System.Drawing.Size(292, 30);
-            this.costeTextBox.TabIndex = 68;
+            this.costeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detalleFacturaBindingSource, "Coste", true));
+            this.costeNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costeNumericUpDown.Location = new System.Drawing.Point(211, 208);
+            this.costeNumericUpDown.Name = "costeNumericUpDown";
+            this.costeNumericUpDown.Size = new System.Drawing.Size(282, 30);
+            this.costeNumericUpDown.TabIndex = 79;
+            this.costeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // clienteComboBoxDetalle
+            // label1
             // 
-            this.clienteComboBoxDetalle.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleFacturaBindingSource, "Cliente", true));
-            this.clienteComboBoxDetalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.clienteComboBoxDetalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteComboBoxDetalle.FormattingEnabled = true;
-            this.clienteComboBoxDetalle.Location = new System.Drawing.Point(197, 233);
-            this.clienteComboBoxDetalle.Name = "clienteComboBoxDetalle";
-            this.clienteComboBoxDetalle.Size = new System.Drawing.Size(292, 30);
-            this.clienteComboBoxDetalle.TabIndex = 70;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(499, 216);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 22);
+            this.label1.TabIndex = 72;
+            this.label1.Text = "€";
             // 
             // detalleFacturaDataGridView
             // 
-            this.detalleFacturaDataGridView.AllowUserToAddRows = false;
             this.detalleFacturaDataGridView.AutoGenerateColumns = false;
-            this.detalleFacturaDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.detalleFacturaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.detalleFacturaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.detalleFacturaDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
+            this.dataGridViewTextBoxColumn4});
             this.detalleFacturaDataGridView.DataSource = this.detalleFacturaBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.detalleFacturaDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.detalleFacturaDataGridView.Location = new System.Drawing.Point(701, 445);
+            this.detalleFacturaDataGridView.Location = new System.Drawing.Point(734, 445);
             this.detalleFacturaDataGridView.Name = "detalleFacturaDataGridView";
-            this.detalleFacturaDataGridView.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.detalleFacturaDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.detalleFacturaDataGridView.RowHeadersWidth = 51;
             this.detalleFacturaDataGridView.RowTemplate.Height = 24;
-            this.detalleFacturaDataGridView.Size = new System.Drawing.Size(506, 266);
-            this.detalleFacturaDataGridView.TabIndex = 70;
+            this.detalleFacturaDataGridView.Size = new System.Drawing.Size(548, 246);
+            this.detalleFacturaDataGridView.TabIndex = 71;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -871,7 +825,6 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "IdDetalleFactura";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // dataGridViewTextBoxColumn2
@@ -880,7 +833,6 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Obra";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 125;
             // 
             // dataGridViewTextBoxColumn3
@@ -889,7 +841,6 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "IdFactura";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 125;
             // 
             // dataGridViewTextBoxColumn4
@@ -898,56 +849,36 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Coste";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 125;
             // 
-            // dataGridViewTextBoxColumn5
+            // idPresupuestoLabel
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Cliente";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Cliente";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 125;
+            idPresupuestoLabel.AutoSize = true;
+            idPresupuestoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            idPresupuestoLabel.Location = new System.Drawing.Point(25, 90);
+            idPresupuestoLabel.Name = "idPresupuestoLabel";
+            idPresupuestoLabel.Size = new System.Drawing.Size(175, 28);
+            idPresupuestoLabel.TabIndex = 63;
+            idPresupuestoLabel.Text = "Id Presupuesto *";
             // 
-            // groupBox2
+            // idPresupuestoComboBox
             // 
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(idDetalleFacturaLabel);
-            this.groupBox2.Controls.Add(this.clienteComboBoxDetalle);
-            this.groupBox2.Controls.Add(clienteLabel1);
-            this.groupBox2.Controls.Add(this.idDetalleFacturaLabel1);
-            this.groupBox2.Controls.Add(this.costeTextBox);
-            this.groupBox2.Controls.Add(obraLabel1);
-            this.groupBox2.Controls.Add(costeLabel);
-            this.groupBox2.Controls.Add(this.obraComboBoxDetalle);
-            this.groupBox2.Controls.Add(this.idFacturaComboBox);
-            this.groupBox2.Controls.Add(idFacturaLabel2);
-            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(27, 429);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(515, 282);
-            this.groupBox2.TabIndex = 71;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Detalle de la factura";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(489, 190);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 22);
-            this.label1.TabIndex = 72;
-            this.label1.Text = "€";
+            this.idPresupuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.facturaBindingSource, "IdPresupuesto", true));
+            this.idPresupuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.idPresupuestoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idPresupuestoComboBox.FormattingEnabled = true;
+            this.idPresupuestoComboBox.Location = new System.Drawing.Point(211, 90);
+            this.idPresupuestoComboBox.Name = "idPresupuestoComboBox";
+            this.idPresupuestoComboBox.Size = new System.Drawing.Size(278, 30);
+            this.idPresupuestoComboBox.TabIndex = 64;
             // 
             // Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1336, 835);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.detalleFacturaDataGridView);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.labelPorcentaje);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonCancelar);
@@ -985,9 +916,10 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaDataGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1028,32 +960,30 @@
         private RecoDueroDataSetTableAdapters.FacturaTableAdapter facturaTableAdapter;
         private RecoDueroDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Label idFacturaLabel1;
-        private System.Windows.Forms.ComboBox obraComboBox;
         private System.Windows.Forms.DateTimePicker fechaEmisionDateTimePicker;
         private System.Windows.Forms.ComboBox clienteComboBox;
         private System.Windows.Forms.TextBox impuestosTextBox;
         private System.Windows.Forms.ComboBox estadoPagoComboBox;
         private System.Windows.Forms.ComboBox metodoPagoComboBox;
         private System.Windows.Forms.ComboBox empleadoComboBox;
-        private System.Windows.Forms.TextBox totalFacturaTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelPorcentaje;
         private System.Windows.Forms.Label labelDinero;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.BindingSource detalleFacturaBindingSource;
         private RecoDueroDataSetTableAdapters.DetalleFacturaTableAdapter detalleFacturaTableAdapter;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label idDetalleFacturaLabel1;
-        private System.Windows.Forms.ComboBox obraComboBoxDetalle;
+        private System.Windows.Forms.ComboBox obraDetalleComboBox;
         private System.Windows.Forms.ComboBox idFacturaComboBox;
-        private System.Windows.Forms.TextBox costeTextBox;
-        private System.Windows.Forms.ComboBox clienteComboBoxDetalle;
+        private System.Windows.Forms.NumericUpDown costeNumericUpDown;
         private System.Windows.Forms.DataGridView detalleFacturaDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label totalFacturaLabel2;
+        private System.Windows.Forms.ComboBox idPresupuestoComboBox;
     }
 }

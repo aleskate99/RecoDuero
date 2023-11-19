@@ -5,6 +5,7 @@ using System.Drawing;
 using GestionRecoDuero.RecoDueroDataSetTableAdapters;
 using static GestionRecoDuero.RecoDueroDataSet;
 using System.Data;
+using System.Linq;
 
 namespace GestionRecoDuero
 {
@@ -30,8 +31,10 @@ namespace GestionRecoDuero
             toolStripStatusLabel1.Text = "Inicio";
 
             AjustarImagenes();
+
             EstadoControlesInicioApp();
             RefrescarToolstripLabelPresupuesto();
+
             EstadoControlesInicioDetalle();
 
             CargarResponsableEmpleados(); //Para cargar el responsable
@@ -198,7 +201,7 @@ namespace GestionRecoDuero
                 ((DataRowView)presupuestoBindingSource.Current)["Cliente"] = clienteComboBox.SelectedItem.ToString();
             }
 
-            ((DataRowView)presupuestoBindingSource.Current)["Coste"] = (int)costeNumericUpDown.Value;
+            //((DataRowView)presupuestoBindingSource.Current)["Coste"] = (int)costeNumericUpDown.Value;
             ((DataRowView)presupuestoBindingSource.Current)["Estado"] = estadoComboBox.SelectedItem.ToString();
             ((DataRowView)presupuestoBindingSource.Current)["Metodo"] = metodoComboBox.SelectedItem.ToString();
             ((DataRowView)presupuestoBindingSource.Current)["FechaEmision"] = fechaEmisionDateTimePicker.Value;
@@ -215,13 +218,11 @@ namespace GestionRecoDuero
             MostrarCampos();
 
             //Campos por defecto a una opción
-            costeNumericUpDown.Value = 1;
+            //costeNumericUpDown.Value = 1;
+            costeLabel3.Text = "0";
             estadoComboBox.SelectedIndex = 0;
             metodoComboBox.SelectedIndex = 0;
             fechaEmisionDateTimePicker.Value = DateTime.Today;
-
-            //Imagen
-            //imagenPictureBox.Image = 
         }
 
         private void DeshabilitarBotonesEnAnadir()
@@ -323,6 +324,7 @@ namespace GestionRecoDuero
 
                 presupuestoBindingSource.EndEdit();
                 this.presupuestoTableAdapter.Update(this.recoDueroDataSet);
+                this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
 
                 EstadoControlesGuardar();
                 RefrescarToolstripLabelPresupuesto();
@@ -426,7 +428,7 @@ namespace GestionRecoDuero
                     PrintLine("Id: ", idPresupuestoLabel1.Text);
                     PrintLine("Responsable: ", responsableComboBox.Text);
                     PrintLine("Cliente: ", clienteComboBox.Text);
-                    PrintLine("Coste: ", costeNumericUpDown.Text);
+                    PrintLine("Coste: ", costeLabel3.Text);
                     PrintLine("Fecha de emisión: ", fechaEmisionDateTimePicker.Text);
                     PrintLine("Estado: ", estadoComboBox.Text);
                     PrintLine("Método: ", metodoComboBox.Text);
@@ -583,6 +585,7 @@ namespace GestionRecoDuero
                 presupuestoBindingSource.EndEdit();
                 EstadoControlesAceptar();
                 datosGuardados = false;
+                CargarPresupuestos();
             }
         }
 
@@ -656,7 +659,7 @@ namespace GestionRecoDuero
             idPresupuestoLabel1.Enabled = false;
             responsableComboBox.Enabled = false;
             clienteComboBox.Enabled = false;
-            costeNumericUpDown.Enabled = false;
+            costeLabel3.Enabled = false;
 
             fechaEmisionDateTimePicker.Enabled = false;
             estadoComboBox.Enabled = false;
@@ -669,7 +672,7 @@ namespace GestionRecoDuero
             idPresupuestoLabel1.Enabled = true;
             responsableComboBox.Enabled = true;
             clienteComboBox.Enabled = true;
-            costeNumericUpDown.Enabled = true;
+            costeLabel3.Enabled = true;
 
             fechaEmisionDateTimePicker.Enabled = true;
             estadoComboBox.Enabled = true;
@@ -760,12 +763,12 @@ namespace GestionRecoDuero
         //COMPROBAR DATOS
         private bool ComprobarDatosIntroducidos()
         {
-            if (costeNumericUpDown.Value <= 0)
-            {
-                errorProvider1.SetError(costeNumericUpDown, "El coste del presupuesto no puede ser 0");
-                costeNumericUpDown.Value = 1;
-                return false;
-            }
+            //if (costeNumericUpDown.Value <= 0)
+            //{
+            //    errorProvider1.SetError(costeNumericUpDown, "El coste del presupuesto no puede ser 0");
+            //    costeNumericUpDown.Value = 1;
+            //    return false;
+            //}
 
             //si todo es valido
             return true;
@@ -790,6 +793,7 @@ namespace GestionRecoDuero
                 buttonAniadirLinea.Enabled = true;
                 buttonBorrarLinea.Enabled = true;
                 buttonEditarLinea.Enabled = true;
+                CargarPresupuestos();
             }
         }
 
@@ -876,10 +880,26 @@ namespace GestionRecoDuero
                 this.detallePresupuestoBindingSource.EndEdit();
                 this.detallePresupuestoTableAdapter.Update(this.recoDueroDataSet);
                 this.presupuestoTableAdapter.Update(this.recoDueroDataSet);
-                //precioTotalLabel1.Text = (Convert.ToInt32(precioTotalLabel1.Text) + Convert.ToInt32(precioTextBox.Text)).ToString();
+
+                CalcularCosteTotal();
 
                 OcultarControlesDetalle();
                 datosDetalleGuardados = true;
+            }
+        }
+
+        private void CalcularCosteTotal()
+        {
+            PresupuestoTableAdapter presupuestoTableAdapter = new PresupuestoTableAdapter();
+            PresupuestoDataTable presupuestosData = presupuestoTableAdapter.GetData();
+
+            int[] ids = presupuestosData.Select(p => p.IdPresupuesto).ToArray();
+            foreach (int id in ids)
+            {
+                if (id == ids[idPresupuestoComboBox.SelectedIndex])
+                {
+                    costeLabel3.Text = (Convert.ToInt32(costeLabel3.Text) + Convert.ToInt32(costeNumericUpDownDetalle.Text)).ToString();
+                }
             }
         }
 
