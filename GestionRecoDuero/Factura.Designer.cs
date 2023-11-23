@@ -41,8 +41,8 @@
             System.Windows.Forms.Label obraLabel1;
             System.Windows.Forms.Label idFacturaLabel2;
             System.Windows.Forms.Label costeLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Factura));
             System.Windows.Forms.Label idPresupuestoLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Factura));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -83,6 +83,7 @@
             this.metodoPagoComboBox = new System.Windows.Forms.ComboBox();
             this.empleadoComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.idPresupuestoComboBox = new System.Windows.Forms.ComboBox();
             this.totalFacturaLabel2 = new System.Windows.Forms.Label();
             this.labelDinero = new System.Windows.Forms.Label();
             this.labelPorcentaje = new System.Windows.Forms.Label();
@@ -100,7 +101,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idPresupuestoComboBox = new System.Windows.Forms.ComboBox();
             idFacturaLabel = new System.Windows.Forms.Label();
             fechaEmisionLabel = new System.Windows.Forms.Label();
             clienteLabel = new System.Windows.Forms.Label();
@@ -246,6 +246,16 @@
             costeLabel.Size = new System.Drawing.Size(71, 22);
             costeLabel.TabIndex = 67;
             costeLabel.Text = "Coste *";
+            // 
+            // idPresupuestoLabel
+            // 
+            idPresupuestoLabel.AutoSize = true;
+            idPresupuestoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            idPresupuestoLabel.Location = new System.Drawing.Point(25, 90);
+            idPresupuestoLabel.Name = "idPresupuestoLabel";
+            idPresupuestoLabel.Size = new System.Drawing.Size(140, 22);
+            idPresupuestoLabel.TabIndex = 63;
+            idPresupuestoLabel.Text = "Id Presupuesto *";
             // 
             // statusStrip1
             // 
@@ -415,10 +425,9 @@
             // 
             // toolStripComboBoxBuscarFacturas
             // 
+            this.toolStripComboBoxBuscarFacturas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarFacturas.Items.AddRange(new object[] {
-            "Id",
-            "DNI",
-            "Nombre"});
+            "Id"});
             this.toolStripComboBoxBuscarFacturas.Name = "toolStripComboBoxBuscarFacturas";
             this.toolStripComboBoxBuscarFacturas.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBoxBuscarFacturas.Text = "Buscar factura";
@@ -688,6 +697,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de la factura";
             // 
+            // idPresupuestoComboBox
+            // 
+            this.idPresupuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.facturaBindingSource, "IdPresupuesto", true));
+            this.idPresupuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.idPresupuestoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idPresupuestoComboBox.FormattingEnabled = true;
+            this.idPresupuestoComboBox.Location = new System.Drawing.Point(211, 90);
+            this.idPresupuestoComboBox.Name = "idPresupuestoComboBox";
+            this.idPresupuestoComboBox.Size = new System.Drawing.Size(278, 30);
+            this.idPresupuestoComboBox.TabIndex = 64;
+            // 
             // totalFacturaLabel2
             // 
             this.totalFacturaLabel2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.facturaBindingSource, "TotalFactura", true));
@@ -850,27 +870,6 @@
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 125;
-            // 
-            // idPresupuestoLabel
-            // 
-            idPresupuestoLabel.AutoSize = true;
-            idPresupuestoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idPresupuestoLabel.Location = new System.Drawing.Point(25, 90);
-            idPresupuestoLabel.Name = "idPresupuestoLabel";
-            idPresupuestoLabel.Size = new System.Drawing.Size(175, 28);
-            idPresupuestoLabel.TabIndex = 63;
-            idPresupuestoLabel.Text = "Id Presupuesto *";
-            // 
-            // idPresupuestoComboBox
-            // 
-            this.idPresupuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.facturaBindingSource, "IdPresupuesto", true));
-            this.idPresupuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.idPresupuestoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idPresupuestoComboBox.FormattingEnabled = true;
-            this.idPresupuestoComboBox.Location = new System.Drawing.Point(211, 90);
-            this.idPresupuestoComboBox.Name = "idPresupuestoComboBox";
-            this.idPresupuestoComboBox.Size = new System.Drawing.Size(278, 30);
-            this.idPresupuestoComboBox.TabIndex = 64;
             // 
             // Factura
             // 

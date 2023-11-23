@@ -42,9 +42,9 @@
             System.Windows.Forms.Label costeLabel1;
             System.Windows.Forms.Label idPresupuestoLabel2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Presupuesto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonEditarLinea = new System.Windows.Forms.Button();
             this.buttonCancelarDetallePresupuesto = new System.Windows.Forms.Button();
             this.buttonAceptarDetallePresupuesto = new System.Windows.Forms.Button();
@@ -87,6 +87,7 @@
             this.fechaEmisionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.labelDinero = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.costeLabel3 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.detallePresupuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDetallePresupuestoLabel1 = new System.Windows.Forms.Label();
@@ -100,7 +101,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.idPresupuestoComboBox = new System.Windows.Forms.ComboBox();
             this.costeNumericUpDownDetalle = new System.Windows.Forms.NumericUpDown();
-            this.costeLabel3 = new System.Windows.Forms.Label();
             idPresupuestoLabel = new System.Windows.Forms.Label();
             clienteLabel = new System.Windows.Forms.Label();
             comentariosLabel = new System.Windows.Forms.Label();
@@ -202,7 +202,7 @@
             costeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             costeLabel.Location = new System.Drawing.Point(17, 197);
             costeLabel.Name = "costeLabel";
-            costeLabel.Size = new System.Drawing.Size(143, 28);
+            costeLabel.Size = new System.Drawing.Size(114, 22);
             costeLabel.TabIndex = 50;
             costeLabel.Text = "Coste total *";
             // 
@@ -468,9 +468,7 @@
             // 
             this.toolStripComboBoxBuscarPresupuestos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarPresupuestos.Items.AddRange(new object[] {
-            "Id",
-            "DNI",
-            "Nombre"});
+            "Id"});
             this.toolStripComboBoxBuscarPresupuestos.Name = "toolStripComboBoxBuscarPresupuestos";
             this.toolStripComboBoxBuscarPresupuestos.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBoxBuscarPresupuestos.Text = "Buscar presupuesto";
@@ -701,6 +699,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del presupuesto";
             // 
+            // costeLabel3
+            // 
+            this.costeLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presupuestoBindingSource, "Coste", true));
+            this.costeLabel3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costeLabel3.Location = new System.Drawing.Point(203, 197);
+            this.costeLabel3.Name = "costeLabel3";
+            this.costeLabel3.Size = new System.Drawing.Size(109, 23);
+            this.costeLabel3.TabIndex = 63;
+            this.costeLabel3.Text = "0";
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -736,14 +744,14 @@
             this.detallePresupuestoDataGridView.AllowUserToAddRows = false;
             this.detallePresupuestoDataGridView.AutoGenerateColumns = false;
             this.detallePresupuestoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.detallePresupuestoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.detallePresupuestoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.detallePresupuestoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.detallePresupuestoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -751,25 +759,25 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
             this.detallePresupuestoDataGridView.DataSource = this.detallePresupuestoBindingSource;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.detallePresupuestoDataGridView.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.detallePresupuestoDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.detallePresupuestoDataGridView.Location = new System.Drawing.Point(742, 463);
             this.detallePresupuestoDataGridView.Name = "detallePresupuestoDataGridView";
             this.detallePresupuestoDataGridView.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.detallePresupuestoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.detallePresupuestoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.detallePresupuestoDataGridView.RowHeadersWidth = 51;
             this.detallePresupuestoDataGridView.RowTemplate.Height = 24;
             this.detallePresupuestoDataGridView.Size = new System.Drawing.Size(542, 247);
@@ -850,6 +858,7 @@
             this.idPresupuestoComboBox.Name = "idPresupuestoComboBox";
             this.idPresupuestoComboBox.Size = new System.Drawing.Size(250, 30);
             this.idPresupuestoComboBox.TabIndex = 63;
+            this.idPresupuestoComboBox.SelectedIndexChanged += new System.EventHandler(this.idPresupuestoComboBox_SelectedIndexChanged);
             // 
             // costeNumericUpDownDetalle
             // 
@@ -870,16 +879,6 @@
             0,
             0,
             0});
-            // 
-            // costeLabel3
-            // 
-            this.costeLabel3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presupuestoBindingSource, "Coste", true));
-            this.costeLabel3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeLabel3.Location = new System.Drawing.Point(203, 197);
-            this.costeLabel3.Name = "costeLabel3";
-            this.costeLabel3.Size = new System.Drawing.Size(109, 23);
-            this.costeLabel3.TabIndex = 63;
-            this.costeLabel3.Text = "0";
             // 
             // Presupuesto
             // 

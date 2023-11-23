@@ -40,6 +40,7 @@ namespace GestionRecoDuero
             CargarClientes(); //Para cargar la info de los clientes
             CargarResponsableEmpleados(); //Para cargar el responsable
             CargarFacturas(); // Para cargar los ids de las facturas
+            CargarPresupuestos();
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -324,20 +325,19 @@ namespace GestionRecoDuero
             if (ComprobarDatosIntroducidos())
             {
                 errorProvider1.Clear();
-
-                facturaBindingSource.EndEdit();
-                this.facturaTableAdapter.Update(this.recoDueroDataSet);
-
                 EstadoControlesGuardar();
                 RefrescarToolstripLabelFactura();
 
-                Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
-                datosGuardados = true;
+                facturaBindingSource.EndEdit();
+                this.facturaTableAdapter.Update(this.recoDueroDataSet);
 
                 //MAESTRO DETALLE 
                 buttonAniadirLinea.Enabled = true;
                 buttonBorrarLinea.Enabled = true;
                 buttonEditarLinea.Enabled = true;
+
+                Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
+                datosGuardados = true;
             }
         }
 
