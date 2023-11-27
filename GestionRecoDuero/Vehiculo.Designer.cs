@@ -84,6 +84,7 @@
             this.labelEuros = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             idVehiculoLabel = new System.Windows.Forms.Label();
             matrículaLabel = new System.Windows.Forms.Label();
             modeloLabel = new System.Windows.Forms.Label();
@@ -659,6 +660,10 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // Vehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -679,7 +684,10 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.helpProvider1.SetHelpKeyword(this, "10");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "Vehiculo";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehiculo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Vehiculo_FormClosing);
@@ -747,5 +755,6 @@
         private System.Windows.Forms.Label labelEuros;
         private System.Windows.Forms.NumericUpDown costeAdquisicionNumericUpDown;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

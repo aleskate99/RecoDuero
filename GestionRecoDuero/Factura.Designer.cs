@@ -43,6 +43,7 @@
             System.Windows.Forms.Label costeLabel;
             System.Windows.Forms.Label idPresupuestoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Factura));
+            System.Windows.Forms.Label descripcionLabel;
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -71,10 +72,6 @@
             this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonAceptar = new System.Windows.Forms.Button();
-            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
-            this.facturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.facturaTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.FacturaTableAdapter();
-            this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             this.idFacturaLabel1 = new System.Windows.Forms.Label();
             this.fechaEmisionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.clienteComboBox = new System.Windows.Forms.ComboBox();
@@ -88,19 +85,26 @@
             this.labelDinero = new System.Windows.Forms.Label();
             this.labelPorcentaje = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.detalleFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.detalleFacturaTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.DetalleFacturaTableAdapter();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.detalleFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
+            this.facturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.facturaTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.FacturaTableAdapter();
+            this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
+            this.detalleFacturaTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.DetalleFacturaTableAdapter();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.idDetalleFacturaLabel1 = new System.Windows.Forms.Label();
             this.obraDetalleComboBox = new System.Windows.Forms.ComboBox();
             this.idFacturaComboBox = new System.Windows.Forms.ComboBox();
             this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.detalleFacturaDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             idFacturaLabel = new System.Windows.Forms.Label();
             fechaEmisionLabel = new System.Windows.Forms.Label();
             clienteLabel = new System.Windows.Forms.Label();
@@ -114,15 +118,16 @@
             idFacturaLabel2 = new System.Windows.Forms.Label();
             costeLabel = new System.Windows.Forms.Label();
             idPresupuestoLabel = new System.Windows.Forms.Label();
+            descripcionLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -262,9 +267,9 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 809);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 812);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1336, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1406, 26);
             this.statusStrip1.TabIndex = 32;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -298,7 +303,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1336, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1406, 28);
             this.toolStrip1.TabIndex = 33;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -425,7 +430,6 @@
             // 
             // toolStripComboBoxBuscarFacturas
             // 
-            this.toolStripComboBoxBuscarFacturas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarFacturas.Items.AddRange(new object[] {
             "Id"});
             this.toolStripComboBoxBuscarFacturas.Name = "toolStripComboBoxBuscarFacturas";
@@ -452,7 +456,7 @@
             // 
             // buttonEditarLinea
             // 
-            this.buttonEditarLinea.Location = new System.Drawing.Point(584, 609);
+            this.buttonEditarLinea.Location = new System.Drawing.Point(598, 612);
             this.buttonEditarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditarLinea.Name = "buttonEditarLinea";
             this.buttonEditarLinea.Size = new System.Drawing.Size(100, 28);
@@ -469,7 +473,7 @@
             this.buttonCancelarDetalleFactura.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelarDetalleFactura.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelarDetalleFactura.Image")));
             this.buttonCancelarDetalleFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelarDetalleFactura.Location = new System.Drawing.Point(361, 716);
+            this.buttonCancelarDetalleFactura.Location = new System.Drawing.Point(979, 722);
             this.buttonCancelarDetalleFactura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancelarDetalleFactura.Name = "buttonCancelarDetalleFactura";
             this.buttonCancelarDetalleFactura.Size = new System.Drawing.Size(169, 70);
@@ -487,7 +491,7 @@
             this.buttonAceptarDetalleFactura.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptarDetalleFactura.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptarDetalleFactura.Image")));
             this.buttonAceptarDetalleFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptarDetalleFactura.Location = new System.Drawing.Point(116, 716);
+            this.buttonAceptarDetalleFactura.Location = new System.Drawing.Point(734, 722);
             this.buttonAceptarDetalleFactura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAceptarDetalleFactura.Name = "buttonAceptarDetalleFactura";
             this.buttonAceptarDetalleFactura.Size = new System.Drawing.Size(165, 70);
@@ -499,7 +503,7 @@
             // 
             // buttonBorrarLinea
             // 
-            this.buttonBorrarLinea.Location = new System.Drawing.Point(584, 555);
+            this.buttonBorrarLinea.Location = new System.Drawing.Point(598, 558);
             this.buttonBorrarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBorrarLinea.Name = "buttonBorrarLinea";
             this.buttonBorrarLinea.Size = new System.Drawing.Size(100, 28);
@@ -510,7 +514,7 @@
             // 
             // buttonAniadirLinea
             // 
-            this.buttonAniadirLinea.Location = new System.Drawing.Point(584, 508);
+            this.buttonAniadirLinea.Location = new System.Drawing.Point(598, 511);
             this.buttonAniadirLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAniadirLinea.Name = "buttonAniadirLinea";
             this.buttonAniadirLinea.Size = new System.Drawing.Size(100, 28);
@@ -523,7 +527,7 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1252, 98);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1322, 98);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -566,36 +570,6 @@
             this.buttonAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAceptar.UseVisualStyleBackColor = false;
             this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
-            // 
-            // recoDueroDataSet
-            // 
-            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
-            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // facturaBindingSource
-            // 
-            this.facturaBindingSource.DataMember = "Factura";
-            this.facturaBindingSource.DataSource = this.recoDueroDataSet;
-            // 
-            // facturaTableAdapter
-            // 
-            this.facturaTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ClienteTableAdapter = null;
-            this.tableAdapterManager.DetalleFacturaTableAdapter = null;
-            this.tableAdapterManager.DetallePresupuestoTableAdapter = null;
-            this.tableAdapterManager.EmpleadoTableAdapter = null;
-            this.tableAdapterManager.FacturaTableAdapter = this.facturaTableAdapter;
-            this.tableAdapterManager.MaterialTableAdapter = null;
-            this.tableAdapterManager.ObraTableAdapter = null;
-            this.tableAdapterManager.PresupuestoTableAdapter = null;
-            this.tableAdapterManager.ServicioExternoTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UsuarioTableAdapter = null;
-            this.tableAdapterManager.VehiculoTableAdapter = null;
             // 
             // idFacturaLabel1
             // 
@@ -742,21 +716,14 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // detalleFacturaBindingSource
-            // 
-            this.detalleFacturaBindingSource.DataMember = "DetalleFactura";
-            this.detalleFacturaBindingSource.DataSource = this.recoDueroDataSet;
-            // 
-            // detalleFacturaTableAdapter
-            // 
-            this.detalleFacturaTableAdapter.ClearBeforeFill = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.idDetalleFacturaLabel1);
             this.groupBox2.Controls.Add(this.obraDetalleComboBox);
             this.groupBox2.Controls.Add(this.idFacturaComboBox);
             this.groupBox2.Controls.Add(this.costeNumericUpDown);
+            this.groupBox2.Controls.Add(descripcionLabel);
+            this.groupBox2.Controls.Add(this.descripcionTextBox);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(idDetalleFacturaLabel);
             this.groupBox2.Controls.Add(obraLabel1);
@@ -765,16 +732,69 @@
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(27, 429);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(538, 262);
+            this.groupBox2.Size = new System.Drawing.Size(538, 332);
             this.groupBox2.TabIndex = 71;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle de la factura";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(495, 219);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 22);
+            this.label1.TabIndex = 72;
+            this.label1.Text = "€";
+            // 
+            // detalleFacturaBindingSource
+            // 
+            this.detalleFacturaBindingSource.DataMember = "DetalleFactura";
+            this.detalleFacturaBindingSource.DataSource = this.recoDueroDataSet;
+            // 
+            // recoDueroDataSet
+            // 
+            this.recoDueroDataSet.DataSetName = "RecoDueroDataSet";
+            this.recoDueroDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // facturaBindingSource
+            // 
+            this.facturaBindingSource.DataMember = "Factura";
+            this.facturaBindingSource.DataSource = this.recoDueroDataSet;
+            // 
+            // facturaTableAdapter
+            // 
+            this.facturaTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClienteTableAdapter = null;
+            this.tableAdapterManager.DetalleFacturaTableAdapter = null;
+            this.tableAdapterManager.DetallePresupuestoTableAdapter = null;
+            this.tableAdapterManager.EmpleadoTableAdapter = null;
+            this.tableAdapterManager.FacturaTableAdapter = this.facturaTableAdapter;
+            this.tableAdapterManager.MaterialTableAdapter = null;
+            this.tableAdapterManager.ObraTableAdapter = null;
+            this.tableAdapterManager.PresupuestoTableAdapter = null;
+            this.tableAdapterManager.ServicioExternoTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UsuarioTableAdapter = null;
+            this.tableAdapterManager.VehiculoTableAdapter = null;
+            // 
+            // detalleFacturaTableAdapter
+            // 
+            this.detalleFacturaTableAdapter.ClearBeforeFill = true;
+            // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
             // 
             // idDetalleFacturaLabel1
             // 
             this.idDetalleFacturaLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleFacturaBindingSource, "IdDetalleFactura", true));
             this.idDetalleFacturaLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idDetalleFacturaLabel1.Location = new System.Drawing.Point(207, 43);
+            this.idDetalleFacturaLabel1.Location = new System.Drawing.Point(211, 43);
             this.idDetalleFacturaLabel1.Name = "idDetalleFacturaLabel1";
             this.idDetalleFacturaLabel1.Size = new System.Drawing.Size(121, 23);
             this.idDetalleFacturaLabel1.TabIndex = 73;
@@ -797,7 +817,7 @@
             this.idFacturaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.idFacturaComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idFacturaComboBox.FormattingEnabled = true;
-            this.idFacturaComboBox.Location = new System.Drawing.Point(211, 96);
+            this.idFacturaComboBox.Location = new System.Drawing.Point(211, 99);
             this.idFacturaComboBox.Name = "idFacturaComboBox";
             this.idFacturaComboBox.Size = new System.Drawing.Size(278, 30);
             this.idFacturaComboBox.TabIndex = 77;
@@ -806,21 +826,40 @@
             // 
             this.costeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detalleFacturaBindingSource, "Coste", true));
             this.costeNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeNumericUpDown.Location = new System.Drawing.Point(211, 208);
+            this.costeNumericUpDown.Location = new System.Drawing.Point(211, 216);
+            this.costeNumericUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
             this.costeNumericUpDown.Name = "costeNumericUpDown";
-            this.costeNumericUpDown.Size = new System.Drawing.Size(282, 30);
+            this.costeNumericUpDown.Size = new System.Drawing.Size(278, 30);
             this.costeNumericUpDown.TabIndex = 79;
             this.costeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.costeNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label1
+            // descripcionLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(499, 216);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 22);
-            this.label1.TabIndex = 72;
-            this.label1.Text = "€";
+            descripcionLabel.AutoSize = true;
+            descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            descripcionLabel.Location = new System.Drawing.Point(25, 267);
+            descripcionLabel.Name = "descripcionLabel";
+            descripcionLabel.Size = new System.Drawing.Size(155, 28);
+            descripcionLabel.TabIndex = 80;
+            descripcionLabel.Text = "Descripción *";
+            // 
+            // descripcionTextBox
+            // 
+            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleFacturaBindingSource, "Descripcion", true));
+            this.descripcionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descripcionTextBox.Location = new System.Drawing.Point(211, 267);
+            this.descripcionTextBox.Name = "descripcionTextBox";
+            this.descripcionTextBox.Size = new System.Drawing.Size(278, 30);
+            this.descripcionTextBox.TabIndex = 81;
             // 
             // detalleFacturaDataGridView
             // 
@@ -830,13 +869,14 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
             this.detalleFacturaDataGridView.DataSource = this.detalleFacturaBindingSource;
-            this.detalleFacturaDataGridView.Location = new System.Drawing.Point(734, 445);
+            this.detalleFacturaDataGridView.Location = new System.Drawing.Point(734, 472);
             this.detalleFacturaDataGridView.Name = "detalleFacturaDataGridView";
             this.detalleFacturaDataGridView.RowHeadersWidth = 51;
             this.detalleFacturaDataGridView.RowTemplate.Height = 24;
-            this.detalleFacturaDataGridView.Size = new System.Drawing.Size(548, 246);
+            this.detalleFacturaDataGridView.Size = new System.Drawing.Size(550, 232);
             this.detalleFacturaDataGridView.TabIndex = 71;
             // 
             // dataGridViewTextBoxColumn1
@@ -871,11 +911,19 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 125;
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Descripcion";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Descripcion";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 125;
+            // 
             // Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1336, 835);
+            this.ClientSize = new System.Drawing.Size(1406, 838);
             this.Controls.Add(this.detalleFacturaDataGridView);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.labelPorcentaje);
@@ -899,7 +947,10 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(estadoPagoLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.helpProvider1.SetHelpKeyword(this, "16");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "Factura";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Factura";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Factura_FormClosing);
@@ -909,14 +960,14 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facturaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleFacturaDataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -973,16 +1024,19 @@
         private RecoDueroDataSetTableAdapters.DetalleFacturaTableAdapter detalleFacturaTableAdapter;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label totalFacturaLabel2;
+        private System.Windows.Forms.ComboBox idPresupuestoComboBox;
+        private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Label idDetalleFacturaLabel1;
         private System.Windows.Forms.ComboBox obraDetalleComboBox;
         private System.Windows.Forms.ComboBox idFacturaComboBox;
         private System.Windows.Forms.NumericUpDown costeNumericUpDown;
+        private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.DataGridView detalleFacturaDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.Label totalFacturaLabel2;
-        private System.Windows.Forms.ComboBox idPresupuestoComboBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

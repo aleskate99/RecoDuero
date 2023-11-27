@@ -86,6 +86,7 @@
             this.empleadoTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.EmpleadoTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             idEmpleadoLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             apellidosLabel = new System.Windows.Forms.Label();
@@ -692,6 +693,10 @@
             this.tableAdapterManager.UsuarioTableAdapter = null;
             this.tableAdapterManager.VehiculoTableAdapter = null;
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // Empleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -707,7 +712,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonVolverInicio);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.helpProvider1.SetHelpKeyword(this, "2");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "Empleado";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleado";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Empleado_FormClosing);
@@ -777,5 +785,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label salarioLabel1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

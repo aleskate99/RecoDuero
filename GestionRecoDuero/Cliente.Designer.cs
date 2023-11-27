@@ -79,6 +79,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             idClienteLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             apellidosLabel = new System.Windows.Forms.Label();
@@ -498,7 +499,6 @@
             // 
             // toolStripComboBoxBuscarClientes
             // 
-            this.toolStripComboBoxBuscarClientes.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarClientes.Items.AddRange(new object[] {
             "Id",
             "Nombre"});
@@ -597,6 +597,10 @@
             this.buttonVolverInicio.TabStop = false;
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -616,7 +620,10 @@
             this.Controls.Add(this.observacionesTextBox);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.helpProvider1.SetHelpKeyword(this, "4");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "Cliente";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Cliente_FormClosing);
@@ -680,5 +687,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox buttonVolverInicio;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InformeEmpleados));
             this.empleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
@@ -45,6 +45,7 @@
             this.textBoxFiltrarNombre = new System.Windows.Forms.TextBox();
             this.comboBoxFiltrarPuesto = new System.Windows.Forms.ComboBox();
             this.buttonFiltrarPuesto = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.SuspendLayout();
@@ -61,9 +62,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "DataSet1";
-            reportDataSource2.Value = this.empleadoBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.empleadoBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "GestionRecoDuero.InformeEmpleado.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(-2, 0);
             this.reportViewer1.Name = "reportViewer1";
@@ -185,6 +186,10 @@
             this.buttonFiltrarPuesto.UseVisualStyleBackColor = true;
             this.buttonFiltrarPuesto.Click += new System.EventHandler(this.buttonFiltrarPuesto_Click);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // InformeEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -202,9 +207,12 @@
             this.Controls.Add(this.buttonVolverInicio);
             this.Controls.Add(this.buttonQuitarFiltro);
             this.Controls.Add(this.reportViewer1);
+            this.helpProvider1.SetHelpKeyword(this, "3");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "InformeEmpleados";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformeEmpleados";
             this.Load += new System.EventHandler(this.InformeEmpleados_Load);
@@ -231,5 +239,6 @@
         private System.Windows.Forms.TextBox textBoxFiltrarNombre;
         private System.Windows.Forms.ComboBox comboBoxFiltrarPuesto;
         private System.Windows.Forms.Button buttonFiltrarPuesto;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

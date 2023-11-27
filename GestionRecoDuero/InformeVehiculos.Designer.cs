@@ -43,6 +43,7 @@
             this.buttonFiltrarEstado = new System.Windows.Forms.Button();
             this.buttonFiltrarMarca = new System.Windows.Forms.Button();
             this.textBoxFiltrarMarca = new System.Windows.Forms.TextBox();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.vehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.SuspendLayout();
@@ -164,6 +165,10 @@
             this.textBoxFiltrarMarca.Size = new System.Drawing.Size(154, 22);
             this.textBoxFiltrarMarca.TabIndex = 1;
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // InformeVehiculos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -179,9 +184,12 @@
             this.Controls.Add(this.buttonQuitarFiltro);
             this.Controls.Add(this.buttonVolverInicio);
             this.Controls.Add(this.reportViewer1);
+            this.helpProvider1.SetHelpKeyword(this, "11");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "InformeVehiculos";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformeVehiculos";
             this.Load += new System.EventHandler(this.InformeVehiculos_Load);
@@ -206,5 +214,6 @@
         private System.Windows.Forms.Button buttonFiltrarEstado;
         private System.Windows.Forms.Button buttonFiltrarMarca;
         private System.Windows.Forms.TextBox textBoxFiltrarMarca;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

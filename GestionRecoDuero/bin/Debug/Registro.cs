@@ -11,11 +11,13 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
             Bordes.BordesRedondos(this);
+            //Redondear controles
+            Bordes.BordesRedondosBoton(buttonAceptar);
+            Bordes.BordesRedondosBoton(buttonCancelar);
         }
         
         private void Registro_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'recoDueroDataSet.Usuario' Puede moverla o quitarla según sea necesario.
             this.usuarioTableAdapter.Fill(this.recoDueroDataSet.Usuario);
 
             usuarioTextBox.DataBindings.Clear();

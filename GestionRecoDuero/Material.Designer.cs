@@ -78,6 +78,7 @@
             this.materialTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.MaterialTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             idMaterialLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             cantidadLabel = new System.Windows.Forms.Label();
@@ -603,6 +604,10 @@
             this.descripcionTextBox.Size = new System.Drawing.Size(336, 164);
             this.descripcionTextBox.TabIndex = 8;
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -621,7 +626,10 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.helpProvider1.SetHelpKeyword(this, "6");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "Material";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Material";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Material_FormClosing);
@@ -685,5 +693,6 @@
         private System.Windows.Forms.NumericUpDown costeNumericUpDown;
         private System.Windows.Forms.NumericUpDown cantidadNumericUpDown;
         private System.Windows.Forms.TextBox descripcionTextBox;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

@@ -45,6 +45,7 @@
             this.usuarioTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.UsuarioTableAdapter();
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             this.linkLabelRegistro = new System.Windows.Forms.LinkLabel();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
@@ -197,6 +198,8 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClienteTableAdapter = null;
+            this.tableAdapterManager.DetalleFacturaTableAdapter = null;
+            this.tableAdapterManager.DetallePresupuestoTableAdapter = null;
             this.tableAdapterManager.EmpleadoTableAdapter = null;
             this.tableAdapterManager.FacturaTableAdapter = null;
             this.tableAdapterManager.MaterialTableAdapter = null;
@@ -221,6 +224,10 @@
             this.linkLabelRegistro.Text = "Registrarse";
             this.linkLabelRegistro.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRegistro_LinkClicked);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,9 +245,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.helpProvider1.SetHelpKeyword(this, "1");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Opacity = 0.9D;
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
@@ -274,6 +284,7 @@
         private System.Windows.Forms.LinkLabel linkLabelRegistro;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }
 

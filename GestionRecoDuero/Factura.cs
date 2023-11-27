@@ -920,6 +920,7 @@ namespace GestionRecoDuero
             idFacturaComboBox.Enabled = false;
             obraDetalleComboBox.Enabled = false;
             costeNumericUpDown.Enabled = false;
+            descripcionTextBox.Enabled = false;
 
             //Botones
             buttonAceptarDetalleFactura.Visible = false;
@@ -933,6 +934,7 @@ namespace GestionRecoDuero
             idFacturaComboBox.Enabled = true;
             obraDetalleComboBox.Enabled = true;
             costeNumericUpDown.Enabled = true;
+            descripcionTextBox.Enabled = true;
 
             //Botones
             buttonAceptarDetalleFactura.Visible = true;

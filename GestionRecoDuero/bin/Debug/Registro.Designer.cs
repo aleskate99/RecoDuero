@@ -49,6 +49,7 @@
             this.repetirPassTextBox = new System.Windows.Forms.TextBox();
             this.buttonMostrarRepetirPass = new System.Windows.Forms.Button();
             this.idUsuarioLabel1 = new System.Windows.Forms.Label();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
@@ -186,7 +187,7 @@
             this.buttonMostrarPass.FlatAppearance.BorderSize = 0;
             this.buttonMostrarPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMostrarPass.Image = ((System.Drawing.Image)(resources.GetObject("buttonMostrarPass.Image")));
-            this.buttonMostrarPass.Location = new System.Drawing.Point(704, 198);
+            this.buttonMostrarPass.Location = new System.Drawing.Point(724, 198);
             this.buttonMostrarPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonMostrarPass.Name = "buttonMostrarPass";
             this.buttonMostrarPass.Size = new System.Drawing.Size(59, 49);
@@ -202,6 +203,8 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.ClienteTableAdapter = null;
+            this.tableAdapterManager.DetalleFacturaTableAdapter = null;
+            this.tableAdapterManager.DetallePresupuestoTableAdapter = null;
             this.tableAdapterManager.EmpleadoTableAdapter = null;
             this.tableAdapterManager.FacturaTableAdapter = null;
             this.tableAdapterManager.MaterialTableAdapter = null;
@@ -236,7 +239,7 @@
             this.passwordTextBox.ForeColor = System.Drawing.Color.DimGray;
             this.passwordTextBox.Location = new System.Drawing.Point(475, 208);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(223, 25);
+            this.passwordTextBox.Size = new System.Drawing.Size(243, 25);
             this.passwordTextBox.TabIndex = 3;
             this.passwordTextBox.Text = "CONTRASEÑA";
             this.passwordTextBox.Enter += new System.EventHandler(this.passwordTextBox_Enter);
@@ -285,6 +288,10 @@
             this.idUsuarioLabel1.TabIndex = 8;
             this.idUsuarioLabel1.Text = "label2";
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -305,9 +312,12 @@
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.helpProvider1.SetHelpKeyword(this, "0");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Registro";
             this.Opacity = 0.9D;
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
             this.Load += new System.EventHandler(this.Registro_Load);
@@ -344,5 +354,6 @@
         private System.Windows.Forms.TextBox repetirPassTextBox;
         private System.Windows.Forms.Button buttonMostrarRepetirPass;
         private System.Windows.Forms.Label idUsuarioLabel1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

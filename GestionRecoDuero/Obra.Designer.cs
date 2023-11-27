@@ -81,6 +81,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             idObraLabel = new System.Windows.Forms.Label();
             ubicacionLabel = new System.Windows.Forms.Label();
             estadoLabel = new System.Windows.Forms.Label();
@@ -353,7 +354,6 @@
             // 
             // toolStripComboBoxBuscarObras
             // 
-            this.toolStripComboBoxBuscarObras.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarObras.Items.AddRange(new object[] {
             "Id",
             "Nombre",
@@ -578,7 +578,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(601, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 28);
+            this.label1.Size = new System.Drawing.Size(41, 22);
             this.label1.TabIndex = 59;
             this.label1.Text = "mes";
             // 
@@ -655,6 +655,10 @@
             this.buttonVolverInicio.TabStop = false;
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // Obra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -668,7 +672,10 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.helpProvider1.SetHelpKeyword(this, "8");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "Obra";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Obra";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Obra_FormClosing);
@@ -735,5 +742,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox buttonVolverInicio;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

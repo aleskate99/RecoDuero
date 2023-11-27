@@ -42,9 +42,7 @@
             System.Windows.Forms.Label costeLabel1;
             System.Windows.Forms.Label idPresupuestoLabel2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Presupuesto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label descripcionLabel;
             this.buttonEditarLinea = new System.Windows.Forms.Button();
             this.buttonCancelarDetallePresupuesto = new System.Windows.Forms.Button();
             this.buttonAceptarDetallePresupuesto = new System.Windows.Forms.Button();
@@ -90,17 +88,20 @@
             this.costeLabel3 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.detallePresupuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelEuros = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.idDetallePresupuestoLabel1 = new System.Windows.Forms.Label();
             this.obraComboBox = new System.Windows.Forms.ComboBox();
+            this.costeNumericUpDownDetalle = new System.Windows.Forms.NumericUpDown();
+            this.idPresupuestoComboBox = new System.Windows.Forms.ComboBox();
+            this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.detallePresupuestoDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelEuros = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.idPresupuestoComboBox = new System.Windows.Forms.ComboBox();
-            this.costeNumericUpDownDetalle = new System.Windows.Forms.NumericUpDown();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             idPresupuestoLabel = new System.Windows.Forms.Label();
             clienteLabel = new System.Windows.Forms.Label();
             comentariosLabel = new System.Windows.Forms.Label();
@@ -113,6 +114,7 @@
             obraLabel = new System.Windows.Forms.Label();
             costeLabel1 = new System.Windows.Forms.Label();
             idPresupuestoLabel2 = new System.Windows.Forms.Label();
+            descripcionLabel = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
@@ -121,9 +123,9 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detallePresupuestoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detallePresupuestoDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDownDetalle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detallePresupuestoDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // idPresupuestoLabel
@@ -220,7 +222,7 @@
             // 
             obraLabel.AutoSize = true;
             obraLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            obraLabel.Location = new System.Drawing.Point(6, 138);
+            obraLabel.Location = new System.Drawing.Point(6, 142);
             obraLabel.Name = "obraLabel";
             obraLabel.Size = new System.Drawing.Size(67, 22);
             obraLabel.TabIndex = 55;
@@ -240,7 +242,7 @@
             // 
             idPresupuestoLabel2.AutoSize = true;
             idPresupuestoLabel2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idPresupuestoLabel2.Location = new System.Drawing.Point(6, 90);
+            idPresupuestoLabel2.Location = new System.Drawing.Point(6, 94);
             idPresupuestoLabel2.Name = "idPresupuestoLabel2";
             idPresupuestoLabel2.Size = new System.Drawing.Size(146, 22);
             idPresupuestoLabel2.TabIndex = 59;
@@ -248,11 +250,11 @@
             // 
             // buttonEditarLinea
             // 
-            this.buttonEditarLinea.Location = new System.Drawing.Point(606, 632);
+            this.buttonEditarLinea.Location = new System.Drawing.Point(610, 648);
             this.buttonEditarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditarLinea.Name = "buttonEditarLinea";
             this.buttonEditarLinea.Size = new System.Drawing.Size(100, 28);
-            this.buttonEditarLinea.TabIndex = 12;
+            this.buttonEditarLinea.TabIndex = 11;
             this.buttonEditarLinea.Text = "Editar línea";
             this.buttonEditarLinea.UseVisualStyleBackColor = true;
             this.buttonEditarLinea.Click += new System.EventHandler(this.buttonEditarLinea_Click);
@@ -265,11 +267,11 @@
             this.buttonCancelarDetallePresupuesto.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelarDetallePresupuesto.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelarDetallePresupuesto.Image")));
             this.buttonCancelarDetallePresupuesto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelarDetallePresupuesto.Location = new System.Drawing.Point(537, 725);
+            this.buttonCancelarDetallePresupuesto.Location = new System.Drawing.Point(1089, 730);
             this.buttonCancelarDetallePresupuesto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancelarDetallePresupuesto.Name = "buttonCancelarDetallePresupuesto";
             this.buttonCancelarDetallePresupuesto.Size = new System.Drawing.Size(169, 70);
-            this.buttonCancelarDetallePresupuesto.TabIndex = 18;
+            this.buttonCancelarDetallePresupuesto.TabIndex = 17;
             this.buttonCancelarDetallePresupuesto.Text = "Cancelar";
             this.buttonCancelarDetallePresupuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCancelarDetallePresupuesto.UseVisualStyleBackColor = false;
@@ -283,11 +285,11 @@
             this.buttonAceptarDetallePresupuesto.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptarDetallePresupuesto.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptarDetallePresupuesto.Image")));
             this.buttonAceptarDetallePresupuesto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptarDetallePresupuesto.Location = new System.Drawing.Point(292, 725);
+            this.buttonAceptarDetallePresupuesto.Location = new System.Drawing.Point(844, 730);
             this.buttonAceptarDetallePresupuesto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAceptarDetallePresupuesto.Name = "buttonAceptarDetallePresupuesto";
             this.buttonAceptarDetallePresupuesto.Size = new System.Drawing.Size(165, 70);
-            this.buttonAceptarDetallePresupuesto.TabIndex = 17;
+            this.buttonAceptarDetallePresupuesto.TabIndex = 16;
             this.buttonAceptarDetallePresupuesto.Text = "Aceptar";
             this.buttonAceptarDetallePresupuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAceptarDetallePresupuesto.UseVisualStyleBackColor = false;
@@ -295,22 +297,22 @@
             // 
             // buttonBorrarLinea
             // 
-            this.buttonBorrarLinea.Location = new System.Drawing.Point(606, 572);
+            this.buttonBorrarLinea.Location = new System.Drawing.Point(610, 601);
             this.buttonBorrarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBorrarLinea.Name = "buttonBorrarLinea";
             this.buttonBorrarLinea.Size = new System.Drawing.Size(100, 28);
-            this.buttonBorrarLinea.TabIndex = 11;
+            this.buttonBorrarLinea.TabIndex = 10;
             this.buttonBorrarLinea.Text = "Borrar línea";
             this.buttonBorrarLinea.UseVisualStyleBackColor = true;
             this.buttonBorrarLinea.Click += new System.EventHandler(this.buttonBorrarLinea_Click);
             // 
             // buttonAniadirLinea
             // 
-            this.buttonAniadirLinea.Location = new System.Drawing.Point(606, 511);
+            this.buttonAniadirLinea.Location = new System.Drawing.Point(610, 553);
             this.buttonAniadirLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAniadirLinea.Name = "buttonAniadirLinea";
             this.buttonAniadirLinea.Size = new System.Drawing.Size(100, 28);
-            this.buttonAniadirLinea.TabIndex = 10;
+            this.buttonAniadirLinea.TabIndex = 9;
             this.buttonAniadirLinea.Text = "Añadir línea";
             this.buttonAniadirLinea.UseVisualStyleBackColor = true;
             this.buttonAniadirLinea.Click += new System.EventHandler(this.buttonAniadirLinea_Click);
@@ -339,7 +341,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1417, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1425, 28);
             this.toolStrip1.TabIndex = 31;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -466,7 +468,6 @@
             // 
             // toolStripComboBoxBuscarPresupuestos
             // 
-            this.toolStripComboBoxBuscarPresupuestos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarPresupuestos.Items.AddRange(new object[] {
             "Id"});
             this.toolStripComboBoxBuscarPresupuestos.Name = "toolStripComboBoxBuscarPresupuestos";
@@ -496,9 +497,9 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 815);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 820);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1417, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1425, 26);
             this.statusStrip1.TabIndex = 32;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -512,7 +513,7 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1345, 105);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1353, 105);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -528,11 +529,11 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(537, 365);
+            this.buttonCancelar.Location = new System.Drawing.Point(1089, 366);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
-            this.buttonCancelar.TabIndex = 9;
+            this.buttonCancelar.TabIndex = 8;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCancelar.UseVisualStyleBackColor = false;
@@ -546,11 +547,11 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(292, 365);
+            this.buttonAceptar.Location = new System.Drawing.Point(844, 366);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
-            this.buttonAceptar.TabIndex = 8;
+            this.buttonAceptar.TabIndex = 7;
             this.buttonAceptar.Text = "Aceptar";
             this.buttonAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAceptar.UseVisualStyleBackColor = false;
@@ -618,8 +619,8 @@
             this.comentariosTextBox.Location = new System.Drawing.Point(844, 290);
             this.comentariosTextBox.Multiline = true;
             this.comentariosTextBox.Name = "comentariosTextBox";
-            this.comentariosTextBox.Size = new System.Drawing.Size(349, 105);
-            this.comentariosTextBox.TabIndex = 7;
+            this.comentariosTextBox.Size = new System.Drawing.Size(349, 49);
+            this.comentariosTextBox.TabIndex = 6;
             // 
             // estadoComboBox
             // 
@@ -634,7 +635,7 @@
             this.estadoComboBox.Location = new System.Drawing.Point(844, 191);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(349, 30);
-            this.estadoComboBox.TabIndex = 5;
+            this.estadoComboBox.TabIndex = 4;
             // 
             // responsableComboBox
             // 
@@ -659,7 +660,7 @@
             this.metodoComboBox.Location = new System.Drawing.Point(844, 238);
             this.metodoComboBox.Name = "metodoComboBox";
             this.metodoComboBox.Size = new System.Drawing.Size(349, 30);
-            this.metodoComboBox.TabIndex = 6;
+            this.metodoComboBox.TabIndex = 5;
             // 
             // fechaEmisionDateTimePicker
             // 
@@ -668,7 +669,7 @@
             this.fechaEmisionDateTimePicker.Location = new System.Drawing.Point(844, 135);
             this.fechaEmisionDateTimePicker.Name = "fechaEmisionDateTimePicker";
             this.fechaEmisionDateTimePicker.Size = new System.Drawing.Size(349, 30);
-            this.fechaEmisionDateTimePicker.TabIndex = 4;
+            this.fechaEmisionDateTimePicker.TabIndex = 3;
             // 
             // labelDinero
             // 
@@ -718,14 +719,45 @@
             this.detallePresupuestoBindingSource.DataMember = "DetallePresupuesto";
             this.detallePresupuestoBindingSource.DataSource = this.recoDueroDataSet;
             // 
+            // labelEuros
+            // 
+            this.labelEuros.AutoSize = true;
+            this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEuros.Location = new System.Drawing.Point(494, 193);
+            this.labelEuros.Name = "labelEuros";
+            this.labelEuros.Size = new System.Drawing.Size(20, 22);
+            this.labelEuros.TabIndex = 61;
+            this.labelEuros.Text = "€";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.idDetallePresupuestoLabel1);
+            this.groupBox2.Controls.Add(this.obraComboBox);
+            this.groupBox2.Controls.Add(this.costeNumericUpDownDetalle);
+            this.groupBox2.Controls.Add(this.idPresupuestoComboBox);
+            this.groupBox2.Controls.Add(descripcionLabel);
+            this.groupBox2.Controls.Add(this.descripcionTextBox);
+            this.groupBox2.Controls.Add(idDetallePresupuestoLabel);
+            this.groupBox2.Controls.Add(this.labelEuros);
+            this.groupBox2.Controls.Add(idPresupuestoLabel2);
+            this.groupBox2.Controls.Add(costeLabel1);
+            this.groupBox2.Controls.Add(obraLabel);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(31, 463);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(543, 294);
+            this.groupBox2.TabIndex = 62;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Detalle del presupuesto";
+            // 
             // idDetallePresupuestoLabel1
             // 
             this.idDetallePresupuestoLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detallePresupuestoBindingSource, "IdDetallePresupuesto", true));
             this.idDetallePresupuestoLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idDetallePresupuestoLabel1.Location = new System.Drawing.Point(234, 48);
+            this.idDetallePresupuestoLabel1.Location = new System.Drawing.Point(223, 48);
             this.idDetallePresupuestoLabel1.Name = "idDetallePresupuestoLabel1";
             this.idDetallePresupuestoLabel1.Size = new System.Drawing.Size(121, 23);
-            this.idDetallePresupuestoLabel1.TabIndex = 54;
+            this.idDetallePresupuestoLabel1.TabIndex = 62;
             this.idDetallePresupuestoLabel1.Text = "label1";
             // 
             // obraComboBox
@@ -734,54 +766,85 @@
             this.obraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.obraComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.obraComboBox.FormattingEnabled = true;
-            this.obraComboBox.Location = new System.Drawing.Point(238, 138);
+            this.obraComboBox.Location = new System.Drawing.Point(227, 137);
             this.obraComboBox.Name = "obraComboBox";
-            this.obraComboBox.Size = new System.Drawing.Size(250, 30);
-            this.obraComboBox.TabIndex = 56;
+            this.obraComboBox.Size = new System.Drawing.Size(261, 30);
+            this.obraComboBox.TabIndex = 13;
+            // 
+            // costeNumericUpDownDetalle
+            // 
+            this.costeNumericUpDownDetalle.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detallePresupuestoBindingSource, "Coste", true));
+            this.costeNumericUpDownDetalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costeNumericUpDownDetalle.Location = new System.Drawing.Point(227, 191);
+            this.costeNumericUpDownDetalle.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.costeNumericUpDownDetalle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.costeNumericUpDownDetalle.Name = "costeNumericUpDownDetalle";
+            this.costeNumericUpDownDetalle.Size = new System.Drawing.Size(261, 30);
+            this.costeNumericUpDownDetalle.TabIndex = 14;
+            this.costeNumericUpDownDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.costeNumericUpDownDetalle.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // idPresupuestoComboBox
+            // 
+            this.idPresupuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detallePresupuestoBindingSource, "IdPresupuesto", true));
+            this.idPresupuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.idPresupuestoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idPresupuestoComboBox.FormattingEnabled = true;
+            this.idPresupuestoComboBox.Location = new System.Drawing.Point(227, 89);
+            this.idPresupuestoComboBox.Name = "idPresupuestoComboBox";
+            this.idPresupuestoComboBox.Size = new System.Drawing.Size(261, 30);
+            this.idPresupuestoComboBox.TabIndex = 12;
+            // 
+            // descripcionLabel
+            // 
+            descripcionLabel.AutoSize = true;
+            descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            descripcionLabel.Location = new System.Drawing.Point(6, 241);
+            descripcionLabel.Name = "descripcionLabel";
+            descripcionLabel.Size = new System.Drawing.Size(124, 22);
+            descripcionLabel.TabIndex = 69;
+            descripcionLabel.Text = "Descripción *";
+            // 
+            // descripcionTextBox
+            // 
+            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detallePresupuestoBindingSource, "Descripcion", true));
+            this.descripcionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descripcionTextBox.Location = new System.Drawing.Point(227, 238);
+            this.descripcionTextBox.Name = "descripcionTextBox";
+            this.descripcionTextBox.Size = new System.Drawing.Size(261, 30);
+            this.descripcionTextBox.TabIndex = 15;
             // 
             // detallePresupuestoDataGridView
             // 
             this.detallePresupuestoDataGridView.AllowUserToAddRows = false;
             this.detallePresupuestoDataGridView.AutoGenerateColumns = false;
-            this.detallePresupuestoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.detallePresupuestoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.detallePresupuestoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.detallePresupuestoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
             this.detallePresupuestoDataGridView.DataSource = this.detallePresupuestoBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.detallePresupuestoDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.detallePresupuestoDataGridView.Location = new System.Drawing.Point(742, 463);
+            this.detallePresupuestoDataGridView.Location = new System.Drawing.Point(746, 463);
             this.detallePresupuestoDataGridView.Name = "detallePresupuestoDataGridView";
             this.detallePresupuestoDataGridView.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.detallePresupuestoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.detallePresupuestoDataGridView.RowHeadersWidth = 51;
             this.detallePresupuestoDataGridView.RowTemplate.Height = 24;
-            this.detallePresupuestoDataGridView.Size = new System.Drawing.Size(542, 247);
-            this.detallePresupuestoDataGridView.TabIndex = 60;
+            this.detallePresupuestoDataGridView.Size = new System.Drawing.Size(555, 251);
+            this.detallePresupuestoDataGridView.TabIndex = 62;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -819,74 +882,26 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 125;
             // 
-            // labelEuros
+            // dataGridViewTextBoxColumn5
             // 
-            this.labelEuros.AutoSize = true;
-            this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEuros.Location = new System.Drawing.Point(500, 199);
-            this.labelEuros.Name = "labelEuros";
-            this.labelEuros.Size = new System.Drawing.Size(20, 22);
-            this.labelEuros.TabIndex = 61;
-            this.labelEuros.Text = "€";
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Descripcion";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Descripcion";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 125;
             // 
-            // groupBox2
+            // helpProvider1
             // 
-            this.groupBox2.Controls.Add(this.idPresupuestoComboBox);
-            this.groupBox2.Controls.Add(this.costeNumericUpDownDetalle);
-            this.groupBox2.Controls.Add(idDetallePresupuestoLabel);
-            this.groupBox2.Controls.Add(this.labelEuros);
-            this.groupBox2.Controls.Add(idPresupuestoLabel2);
-            this.groupBox2.Controls.Add(this.idDetallePresupuestoLabel1);
-            this.groupBox2.Controls.Add(costeLabel1);
-            this.groupBox2.Controls.Add(obraLabel);
-            this.groupBox2.Controls.Add(this.obraComboBox);
-            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(31, 463);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(543, 247);
-            this.groupBox2.TabIndex = 62;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Detalle del presupuesto";
-            // 
-            // idPresupuestoComboBox
-            // 
-            this.idPresupuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detallePresupuestoBindingSource, "IdPresupuesto", true));
-            this.idPresupuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.idPresupuestoComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idPresupuestoComboBox.FormattingEnabled = true;
-            this.idPresupuestoComboBox.Location = new System.Drawing.Point(238, 88);
-            this.idPresupuestoComboBox.Name = "idPresupuestoComboBox";
-            this.idPresupuestoComboBox.Size = new System.Drawing.Size(250, 30);
-            this.idPresupuestoComboBox.TabIndex = 63;
-            this.idPresupuestoComboBox.SelectedIndexChanged += new System.EventHandler(this.idPresupuestoComboBox_SelectedIndexChanged);
-            // 
-            // costeNumericUpDownDetalle
-            // 
-            this.costeNumericUpDownDetalle.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detallePresupuestoBindingSource, "Coste", true));
-            this.costeNumericUpDownDetalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeNumericUpDownDetalle.Location = new System.Drawing.Point(238, 189);
-            this.costeNumericUpDownDetalle.Maximum = new decimal(new int[] {
-            2147483647,
-            0,
-            0,
-            0});
-            this.costeNumericUpDownDetalle.Name = "costeNumericUpDownDetalle";
-            this.costeNumericUpDownDetalle.Size = new System.Drawing.Size(250, 30);
-            this.costeNumericUpDownDetalle.TabIndex = 63;
-            this.costeNumericUpDownDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.costeNumericUpDownDetalle.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
             // 
             // Presupuesto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1417, 841);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(1425, 846);
             this.Controls.Add(this.detallePresupuestoDataGridView);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(comentariosLabel);
             this.Controls.Add(this.comentariosTextBox);
@@ -907,7 +922,10 @@
             this.Controls.Add(this.buttonBorrarLinea);
             this.Controls.Add(this.buttonAniadirLinea);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.helpProvider1.SetHelpKeyword(this, "14");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Name = "Presupuesto";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Presupuesto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Presupuesto_FormClosing);
@@ -923,10 +941,10 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detallePresupuestoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detallePresupuestoDataGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDownDetalle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detallePresupuestoDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -978,17 +996,20 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private RecoDueroDataSetTableAdapters.DetallePresupuestoTableAdapter detallePresupuestoTableAdapter;
         private System.Windows.Forms.BindingSource detallePresupuestoBindingSource;
+        private System.Windows.Forms.Label labelEuros;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label costeLabel3;
         private System.Windows.Forms.DataGridView detallePresupuestoDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.Label idDetallePresupuestoLabel1;
         private System.Windows.Forms.ComboBox obraComboBox;
-        private System.Windows.Forms.Label labelEuros;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown costeNumericUpDownDetalle;
         private System.Windows.Forms.ComboBox idPresupuestoComboBox;
-        private System.Windows.Forms.Label costeLabel3;
+        private System.Windows.Forms.TextBox descripcionTextBox;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

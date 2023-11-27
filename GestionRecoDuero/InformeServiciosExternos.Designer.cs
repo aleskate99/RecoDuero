@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InformeServiciosExternos));
             this.servicioExternoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
@@ -43,6 +43,7 @@
             this.textBoxFiltrarEmpresa = new System.Windows.Forms.TextBox();
             this.buttonQuitarFiltro = new System.Windows.Forms.Button();
             this.buttonVolverInicio = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.servicioExternoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.SuspendLayout();
@@ -59,9 +60,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.servicioExternoBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.servicioExternoBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "GestionRecoDuero.InformeServicioExterno.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
@@ -166,6 +167,10 @@
             this.buttonVolverInicio.UseVisualStyleBackColor = false;
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // InformeServiciosExternos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -181,9 +186,12 @@
             this.Controls.Add(this.textBoxFiltrarEmpresa);
             this.Controls.Add(this.buttonQuitarFiltro);
             this.Controls.Add(this.reportViewer1);
+            this.helpProvider1.SetHelpKeyword(this, "13");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "InformeServiciosExternos";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformeServiciosExternos";
             this.Load += new System.EventHandler(this.InformeServiciosExternos_Load);
@@ -208,5 +216,6 @@
         private System.Windows.Forms.TextBox textBoxFiltrarEmpresa;
         private System.Windows.Forms.Button buttonQuitarFiltro;
         private System.Windows.Forms.Button buttonVolverInicio;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

@@ -43,6 +43,7 @@
             this.buttonFiltrarDistribuidor = new System.Windows.Forms.Button();
             this.textBoxFiltrarDistribuidor = new System.Windows.Forms.TextBox();
             this.materialTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.MaterialTableAdapter();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.SuspendLayout();
@@ -159,6 +160,10 @@
             // 
             this.materialTableAdapter.ClearBeforeFill = true;
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // InformeMateriales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -174,9 +179,12 @@
             this.Controls.Add(this.textBoxFiltrarNombre);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.buttonVolverInicio);
+            this.helpProvider1.SetHelpKeyword(this, "7");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "InformeMateriales";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformeMateriales";
             this.Load += new System.EventHandler(this.InformeMateriales_Load);
@@ -201,5 +209,6 @@
         private RecoDueroDataSet recoDueroDataSet;
         private System.Windows.Forms.BindingSource materialBindingSource;
         private RecoDueroDataSetTableAdapters.MaterialTableAdapter materialTableAdapter;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

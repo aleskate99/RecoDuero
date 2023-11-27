@@ -15,6 +15,10 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
             KeyPreview = true;
+
+            //Redondear controles
+            Bordes.BordesRedondosBoton(buttonAceptar);
+            Bordes.BordesRedondosBoton(buttonCancelar);
         }
 
         private void Cliente_Load(object sender, EventArgs e)

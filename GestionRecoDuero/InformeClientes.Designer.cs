@@ -43,6 +43,7 @@
             this.buttonFiltrarNombre = new System.Windows.Forms.Button();
             this.textBoxFiltrarNombre = new System.Windows.Forms.TextBox();
             this.buttonQuitarFiltro = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.SuspendLayout();
@@ -158,6 +159,10 @@
             this.buttonQuitarFiltro.UseVisualStyleBackColor = true;
             this.buttonQuitarFiltro.Click += new System.EventHandler(this.buttonQuitarFiltro_Click);
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
             // InformeClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -173,9 +178,12 @@
             this.Controls.Add(this.buttonQuitarFiltro);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.buttonVolverInicio);
+            this.helpProvider1.SetHelpKeyword(this, "5");
+            this.helpProvider1.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.TopicId);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "InformeClientes";
+            this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformeClientes";
             this.Load += new System.EventHandler(this.InformeClientes_Load);
@@ -200,5 +208,6 @@
         private System.Windows.Forms.Button buttonFiltrarNombre;
         private System.Windows.Forms.TextBox textBoxFiltrarNombre;
         private System.Windows.Forms.Button buttonQuitarFiltro;
+        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

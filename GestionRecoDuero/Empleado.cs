@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GestionRecoDuero
 {
@@ -20,8 +21,8 @@ namespace GestionRecoDuero
             KeyPreview = true;
 
             //Redondear controles
-            //Bordes.BordesRedondosBoton(buttonAceptar);
-            //Bordes.BordesRedondosBoton(buttonCancelar);
+            Bordes.BordesRedondosBoton(buttonAceptar);
+            Bordes.BordesRedondosBoton(buttonCancelar);
         }
 
         private void Empleado_Load(object sender, EventArgs e)

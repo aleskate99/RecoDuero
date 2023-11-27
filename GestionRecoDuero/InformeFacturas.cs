@@ -16,5 +16,14 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
         }
+
+        private void buttonVolverInicio_Click(object sender, EventArgs e)
+        {
+            var volver = MessageBox.Show("¿Quiere volver a la ventana de facturas?", "Cerrar informe facturas", MessageBoxButtons.OKCancel);
+            if (volver == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
     }
 }
