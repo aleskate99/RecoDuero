@@ -82,6 +82,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             idObraLabel = new System.Windows.Forms.Label();
             ubicacionLabel = new System.Windows.Forms.Label();
             estadoLabel = new System.Windows.Forms.Label();
@@ -405,7 +406,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(1078, 598);
+            this.buttonCancelar.Location = new System.Drawing.Point(1049, 628);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -423,7 +424,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(822, 598);
+            this.buttonAceptar.Location = new System.Drawing.Point(793, 628);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
@@ -437,7 +438,7 @@
             // 
             this.idObraLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.obraBindingSource, "IdObra", true));
             this.idObraLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idObraLabel1.Location = new System.Drawing.Point(229, 52);
+            this.idObraLabel1.Location = new System.Drawing.Point(191, 52);
             this.idObraLabel1.Name = "idObraLabel1";
             this.idObraLabel1.Size = new System.Drawing.Size(200, 23);
             this.idObraLabel1.TabIndex = 40;
@@ -457,7 +458,7 @@
             // 
             this.ubicacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.obraBindingSource, "Ubicacion", true));
             this.ubicacionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ubicacionTextBox.Location = new System.Drawing.Point(229, 164);
+            this.ubicacionTextBox.Location = new System.Drawing.Point(195, 164);
             this.ubicacionTextBox.Name = "ubicacionTextBox";
             this.ubicacionTextBox.Size = new System.Drawing.Size(278, 30);
             this.ubicacionTextBox.TabIndex = 2;
@@ -472,7 +473,7 @@
             "Pendiente",
             "En curso",
             "Finalizada"});
-            this.estadoComboBox.Location = new System.Drawing.Point(229, 224);
+            this.estadoComboBox.Location = new System.Drawing.Point(195, 224);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(278, 30);
             this.estadoComboBox.TabIndex = 3;
@@ -505,7 +506,6 @@
             this.fechaFinDateTimePicker.Name = "fechaFinDateTimePicker";
             this.fechaFinDateTimePicker.Size = new System.Drawing.Size(324, 30);
             this.fechaFinDateTimePicker.TabIndex = 8;
-            this.fechaFinDateTimePicker.ValueChanged += new System.EventHandler(this.fechaFinDateTimePicker_ValueChanged);
             // 
             // responsableComboBox
             // 
@@ -513,7 +513,7 @@
             this.responsableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.responsableComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.responsableComboBox.FormattingEnabled = true;
-            this.responsableComboBox.Location = new System.Drawing.Point(229, 355);
+            this.responsableComboBox.Location = new System.Drawing.Point(195, 355);
             this.responsableComboBox.Name = "responsableComboBox";
             this.responsableComboBox.Size = new System.Drawing.Size(278, 30);
             this.responsableComboBox.TabIndex = 5;
@@ -528,7 +528,7 @@
             "Residencial",
             "Comercial",
             "Institucional"});
-            this.tipoComboBox.Location = new System.Drawing.Point(229, 288);
+            this.tipoComboBox.Location = new System.Drawing.Point(195, 288);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(278, 30);
             this.tipoComboBox.TabIndex = 4;
@@ -537,7 +537,7 @@
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.obraBindingSource, "Nombre", true));
             this.nombreTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreTextBox.Location = new System.Drawing.Point(229, 106);
+            this.nombreTextBox.Location = new System.Drawing.Point(195, 106);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(278, 30);
             this.nombreTextBox.TabIndex = 1;
@@ -619,7 +619,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(22, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(540, 415);
+            this.groupBox1.Size = new System.Drawing.Size(540, 435);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de la obra";
@@ -638,7 +638,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(597, 160);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(665, 415);
+            this.groupBox2.Size = new System.Drawing.Size(665, 435);
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Duración de la obra";
@@ -647,12 +647,13 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1271, 101);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1301, 99);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.buttonVolverInicio.TabIndex = 62;
             this.buttonVolverInicio.TabStop = false;
+            this.toolTip1.SetToolTip(this.buttonVolverInicio, "Volver a inicio");
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
             // helpProvider1
@@ -743,5 +744,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox buttonVolverInicio;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -1,7 +1,6 @@
 ﻿using GestionRecoDuero.RecoDueroDataSetTableAdapters;
 using System;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -16,6 +15,10 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
             KeyPreview = true;
+
+            //Redondear controles
+            Bordes.BordesRedondosBoton(buttonAceptar);
+            Bordes.BordesRedondosBoton(buttonCancelar);
         }
 
         private void Obra_Load(object sender, EventArgs e)
@@ -26,7 +29,6 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelObra();
             toolStripStatusLabel1.Text = "Inicio";
             CargarEmpleados();
-            //fechaInicioDateTimePicker.Value = DateTime.Today.AddDays(-1); //TODO: REVISAR 
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -85,7 +87,6 @@ namespace GestionRecoDuero
                 toolStripButtonSiguiente.Enabled = false;
                 toolStripButtonFinal.Enabled = false;
             }
-
             else if (obraBindingSource.Count == 1)
             {
                 toolStripButtonSiguiente.Enabled = false;
@@ -101,7 +102,6 @@ namespace GestionRecoDuero
             }
             else
             {
-
                 toolStripButtonSiguiente.Enabled = true;
                 toolStripButtonFinal.Enabled = true;
                 toolStripButtonAnterior.Enabled = false;
@@ -114,8 +114,6 @@ namespace GestionRecoDuero
                 toolStripTextBoxBuscar.Enabled = true;
                 toolStripButtonBuscar.Enabled = true;
             }
-
-
         }
 
         //FLECHAS
@@ -189,7 +187,6 @@ namespace GestionRecoDuero
             ((DataRowView)obraBindingSource.Current)["DuracionEstimada"] = (int)duracionEstimadaNumericUpDown.Value;
             ((DataRowView)obraBindingSource.Current)["FechaInicio"] = fechaInicioDateTimePicker.Value;
             ((DataRowView)obraBindingSource.Current)["FechaFin"] = fechaFinDateTimePicker.Value;
-
         }
 
         private void HabilitarControlesEnAnadir()
@@ -434,7 +431,7 @@ namespace GestionRecoDuero
                 {
                     printDocument1.Print();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -735,8 +732,6 @@ namespace GestionRecoDuero
             return true;
         }
 
-        //TODO: VALIDATINGS
-
         //Atajos de teclado
         private void Obra_KeyDown(object sender, KeyEventArgs e)
         {
@@ -827,9 +822,6 @@ namespace GestionRecoDuero
             {
                 responsableComboBox.Text = "";
             }
-
-            // Agregar mensajes de depuración
-            Debug.WriteLine("Número de empleados cargados: " + maestrosDeObraDataTable.Rows.Count);
         }
 
         private void duracionEstimadaNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -848,21 +840,7 @@ namespace GestionRecoDuero
 
         private void fechaInicioDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            //if (fechaInicioDateTimePicker.Value > fechaFinDateTimePicker.Value)
-            //{
-            //    Comun.MostrarMensajeDeError("La fecha de inicio no puede ser posterior a la fecha de finalización", "Error al seleccionar la fecha");
-            //    fechaInicioDateTimePicker.Value = DateTime.Today;
-            //}
             CalcularFechaFin();
-        }
-
-        private void fechaFinDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            //if (fechaFinDateTimePicker.Value < fechaInicioDateTimePicker.Value)
-            //{
-            //    Comun.MostrarMensajeDeError("La fecha de finalización no puede ser anterior a la fecha de inicio", "Error al seleccionar la fecha");
-            //    fechaFinDateTimePicker.Value = DateTime.Today;
-            //}
         }
 
         private void CalcularFechaFin()

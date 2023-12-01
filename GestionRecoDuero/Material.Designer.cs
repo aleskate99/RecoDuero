@@ -79,6 +79,8 @@
             this.tableAdapterManager = new GestionRecoDuero.RecoDueroDataSetTableAdapters.TableAdapterManager();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.detallePresupuestoTableAdapter1 = new GestionRecoDuero.RecoDueroDataSetTableAdapters.DetallePresupuestoTableAdapter();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             idMaterialLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             cantidadLabel = new System.Windows.Forms.Label();
@@ -173,17 +175,17 @@
             // 
             fechaAdquisicionLabel.AutoSize = true;
             fechaAdquisicionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fechaAdquisicionLabel.Location = new System.Drawing.Point(657, 247);
+            fechaAdquisicionLabel.Location = new System.Drawing.Point(657, 272);
             fechaAdquisicionLabel.Name = "fechaAdquisicionLabel";
-            fechaAdquisicionLabel.Size = new System.Drawing.Size(199, 22);
+            fechaAdquisicionLabel.Size = new System.Drawing.Size(176, 22);
             fechaAdquisicionLabel.TabIndex = 50;
-            fechaAdquisicionLabel.Text = "Fecha de adquisición *";
+            fechaAdquisicionLabel.Text = "Fecha Adquisición *";
             // 
             // descripcionLabel
             // 
             descripcionLabel.AutoSize = true;
             descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            descripcionLabel.Location = new System.Drawing.Point(657, 314);
+            descripcionLabel.Location = new System.Drawing.Point(657, 382);
             descripcionLabel.Name = "descripcionLabel";
             descripcionLabel.Size = new System.Drawing.Size(109, 22);
             descripcionLabel.TabIndex = 52;
@@ -387,12 +389,13 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1266, 117);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1294, 76);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.buttonVolverInicio.TabIndex = 33;
             this.buttonVolverInicio.TabStop = false;
+            this.toolTip1.SetToolTip(this.buttonVolverInicio, "Volver a inicio");
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
             // buttonCancelar
@@ -403,7 +406,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(1004, 524);
+            this.buttonCancelar.Location = new System.Drawing.Point(1025, 639);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -421,7 +424,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(766, 524);
+            this.buttonAceptar.Location = new System.Drawing.Point(787, 639);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
@@ -463,7 +466,6 @@
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(250, 30);
             this.nombreTextBox.TabIndex = 1;
-            this.nombreTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.nombreTextBox_Validating);
             // 
             // distribuidorTextBox
             // 
@@ -473,7 +475,6 @@
             this.distribuidorTextBox.Name = "distribuidorTextBox";
             this.distribuidorTextBox.Size = new System.Drawing.Size(250, 30);
             this.distribuidorTextBox.TabIndex = 4;
-            this.distribuidorTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.distribuidorTextBox_Validating);
             // 
             // estadoComboBox
             // 
@@ -497,16 +498,16 @@
             this.garantiaCheckBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.garantiaCheckBox.Location = new System.Drawing.Point(878, 172);
             this.garantiaCheckBox.Name = "garantiaCheckBox";
-            this.garantiaCheckBox.Size = new System.Drawing.Size(250, 42);
+            this.garantiaCheckBox.Size = new System.Drawing.Size(336, 42);
             this.garantiaCheckBox.TabIndex = 6;
-            this.garantiaCheckBox.Text = "Tiene garantía";
+            this.garantiaCheckBox.Text = "   El material tiene garantía";
             this.garantiaCheckBox.UseVisualStyleBackColor = true;
             // 
             // fechaAdquisicionDateTimePicker
             // 
             this.fechaAdquisicionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.materialBindingSource, "FechaAdquisicion", true));
             this.fechaAdquisicionDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaAdquisicionDateTimePicker.Location = new System.Drawing.Point(878, 247);
+            this.fechaAdquisicionDateTimePicker.Location = new System.Drawing.Point(878, 269);
             this.fechaAdquisicionDateTimePicker.Name = "fechaAdquisicionDateTimePicker";
             this.fechaAdquisicionDateTimePicker.Size = new System.Drawing.Size(336, 30);
             this.fechaAdquisicionDateTimePicker.TabIndex = 7;
@@ -598,15 +599,19 @@
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "Descripcion", true));
             this.descripcionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descripcionTextBox.Location = new System.Drawing.Point(878, 316);
+            this.descripcionTextBox.Location = new System.Drawing.Point(878, 384);
             this.descripcionTextBox.Multiline = true;
             this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(336, 164);
+            this.descripcionTextBox.Size = new System.Drawing.Size(336, 220);
             this.descripcionTextBox.TabIndex = 8;
             // 
             // helpProvider1
             // 
             this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
+            // 
+            // detallePresupuestoTableAdapter1
+            // 
+            this.detallePresupuestoTableAdapter1.ClearBeforeFill = true;
             // 
             // Material
             // 
@@ -694,5 +699,7 @@
         private System.Windows.Forms.NumericUpDown cantidadNumericUpDown;
         private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private RecoDueroDataSetTableAdapters.DetallePresupuestoTableAdapter detallePresupuestoTableAdapter1;
     }
 }

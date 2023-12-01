@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.25778cm</Width>
+              <Width>0.93839cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>3.21737cm</Width>
@@ -37,7 +37,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Id Empleado</Value>
+                              <Value>ID</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -442,10 +442,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>1.13453cm</Top>
-        <Left>0.29964cm</Left>
+        <Top>0.85936cm</Top>
+        <Left>1.29214cm</Left>
         <Height>1.2cm</Height>
-        <Width>18.27621cm</Width>
+        <Width>16.95682cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -453,13 +453,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>4.36667in</Height>
+    <Height>2.45in</Height>
     <Style />
   </Body>
   <Width>8.45075in</Width>
   <Page>
     <PageHeader>
-      <Height>1.92617cm</Height>
+      <Height>2.159cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -485,9 +485,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.36675cm</Top>
+          <Top>0.59958cm</Top>
+          <Left>0.27517cm</Left>
           <Height>1.19267cm</Height>
-          <Width>21.18974cm</Width>
+          <Width>20.34307cm</Width>
           <Style>
             <Border>
               <Style>None</Style>

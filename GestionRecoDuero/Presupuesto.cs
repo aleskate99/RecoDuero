@@ -230,7 +230,6 @@ namespace GestionRecoDuero
                 ((DataRowView)presupuestoBindingSource.Current)["Cliente"] = clienteComboBox.SelectedItem.ToString();
             }
 
-            //((DataRowView)presupuestoBindingSource.Current)["Coste"] = (int)costeNumericUpDown.Value;
             ((DataRowView)presupuestoBindingSource.Current)["Estado"] = estadoComboBox.SelectedItem.ToString();
             ((DataRowView)presupuestoBindingSource.Current)["Metodo"] = metodoComboBox.SelectedItem.ToString();
             ((DataRowView)presupuestoBindingSource.Current)["FechaEmision"] = fechaEmisionDateTimePicker.Value;

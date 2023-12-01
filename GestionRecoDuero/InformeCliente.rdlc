@@ -6,16 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.72536cm</Width>
+              <Width>1.06919cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.1985cm</Width>
+              <Width>3.78271cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.03483cm</Width>
+              <Width>5.65383cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -37,7 +37,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Id Cliente</Value>
+                              <Value>ID</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -133,7 +133,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Direccion</Value>
+                              <Value>Dirección</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -165,7 +165,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Telefono</Value>
+                              <Value>Teléfono</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -443,9 +443,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>1.00753cm</Top>
-        <Left>0.35983cm</Left>
+        <Left>0.74083cm</Left>
         <Height>1.2cm</Height>
-        <Width>18.45869cm</Width>
+        <Width>18.00573cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -453,7 +453,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.90833in</Height>
+    <Height>2.325in</Height>
     <Style />
   </Body>
   <Width>8.48333in</Width>
@@ -485,10 +485,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.37733cm</Top>
+          <Top>0.68411cm</Top>
           <Left>0.35983cm</Left>
           <Height>1.19267cm</Height>
-          <Width>20.93574cm</Width>
+          <Width>20.23724cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -507,7 +507,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.48167cm</Height>
+      <Height>1.43934cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

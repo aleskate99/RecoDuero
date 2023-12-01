@@ -5,9 +5,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GestionRecoDuero
 {
@@ -128,7 +126,7 @@ namespace GestionRecoDuero
             if (empleadoBindingSource.Count <= 0)
                 return;
 
-            // Mover el cursor del origen de datos al registro especificado por 'index'
+            // Mover el cursor del origen de datos al registro especificado por 'índice'
             empleadoBindingSource.Position = indice;
 
             // Determinar si el registro actual es el primer o el último
@@ -204,9 +202,6 @@ namespace GestionRecoDuero
             generoComboBox.SelectedIndex = 0;
             puestoComboBox.SelectedIndex = 0;
             situacionLaboralComboBox.SelectedIndex = 0;
-
-            //Imagen
-            //imagenPictureBox.Image = 
         }
 
         private void DeshabilitarBotonesEnAnadir()
@@ -430,7 +425,7 @@ namespace GestionRecoDuero
                 {
                     printDocument1.Print();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -643,7 +638,7 @@ namespace GestionRecoDuero
         //IMÁGEN
         private void imagenPictureBox_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
+            openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*jpeg;*.png";
             openFileDialog1.FilterIndex = 1;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -837,79 +832,6 @@ namespace GestionRecoDuero
 
             //si todo es valido
             return true;
-        }
-
-        //VALIDATINGS
-        private void nombreTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (nombreTextBox.TextLength > 30 && !string.IsNullOrWhiteSpace(nombreTextBox.Text))
-            {
-                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
-                nombreTextBox.Clear();
-            }
-            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text) && !string.IsNullOrWhiteSpace(nombreTextBox.Text))
-            {
-                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
-                nombreTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void apellidosTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (apellidosTextBox.TextLength > 50 && !string.IsNullOrWhiteSpace(apellidosTextBox.Text))
-            {
-                errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
-                apellidosTextBox.Clear();
-            }
-            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text) && !string.IsNullOrWhiteSpace(apellidosTextBox.Text))
-            {
-                errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
-                apellidosTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void dNITextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (Comun.ComprobarDni(dNITextBox.Text) == false && (dNITextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\nFormato o letra no válido");
-                dNITextBox.Clear();
-            }
-            else if (DniEstaDuplicado(dNITextBox.Text))
-            {
-                errorProvider1.SetError(dNITextBox, "Compruebe el DNI.\n DNI duplicado");
-                dNITextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void telefonoTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false)
-            {
-                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números ");
-                telefonoTextBox.Clear();
-            }
-            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
-                telefonoTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
         }
 
         private void fechaNacimientoDateTimePicker_ValueChanged(object sender, EventArgs e)

@@ -390,7 +390,6 @@ namespace GestionRecoDuero
                         y += 25;
                     }
 
-                    //TODO: ARREGLAR CAMPOS
                     PrintLine("Id: ", idClienteLabel1.Text);
                     PrintLine("Nombre: ", nombreTextBox.Text);
                     PrintLine("Apellidos: ", apellidosTextBox.Text);
@@ -415,7 +414,7 @@ namespace GestionRecoDuero
                 {
                     printDocument1.Print();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -606,7 +605,7 @@ namespace GestionRecoDuero
         //IMÁGEN
         private void contratoPictureBox_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
+            openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.jpeg;*.png";
             openFileDialog1.FilterIndex = 1;
  
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -638,9 +637,7 @@ namespace GestionRecoDuero
             else
             {
                 contratoPictureBox.Image = null;
-            }
-            
-           
+            } 
         }
 
         //MÉTODOS
@@ -785,61 +782,6 @@ namespace GestionRecoDuero
 
             //si todo es valido
             return true;
-        }
-
-        //VALIDATINGS
-        private void nombreTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (nombreTextBox.TextLength > 30)
-            {
-                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
-                nombreTextBox.Clear();
-            }
-            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text) && (nombreTextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
-                nombreTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void apellidosTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (apellidosTextBox.TextLength > 50)
-            {
-                errorProvider1.SetError(apellidosTextBox, "No debe superar los 50 dígitos introducidos ");
-                apellidosTextBox.Clear();
-            }
-            else if (!Comun.ContieneSoloLetras(apellidosTextBox.Text) && (nombreTextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(apellidosTextBox, "Solo puede introducir letras en el campo apellidos ");
-                apellidosTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void telefonoTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (Comun.ContieneNumeros(telefonoTextBox.Text) == false && (telefonoTextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(telefonoTextBox, "Solo puede introducir números ");
-                telefonoTextBox.Clear();
-            }
-            else if ((telefonoTextBox.Text.Length != 9) && (telefonoTextBox.Text.Length != 0))
-            {
-                errorProvider1.SetError(telefonoTextBox, "Debe tener 9 dígitos");
-                telefonoTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
         }
 
         //Atajos de teclado

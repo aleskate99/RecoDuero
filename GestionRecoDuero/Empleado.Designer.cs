@@ -218,7 +218,7 @@
             imagenLabel.Name = "imagenLabel";
             imagenLabel.Size = new System.Drawing.Size(66, 22);
             imagenLabel.TabIndex = 20;
-            imagenLabel.Text = "Imágen";
+            imagenLabel.Text = "Imagen";
             // 
             // fechaNacimientoLabel
             // 
@@ -240,6 +240,7 @@
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.buttonVolverInicio.TabIndex = 9;
             this.buttonVolverInicio.TabStop = false;
+            this.toolTip1.SetToolTip(this.buttonVolverInicio, "Volver a inicio");
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
             // groupBox1
@@ -568,7 +569,6 @@
             // 
             // toolStripComboBoxBuscarEmpleados
             // 
-            this.toolStripComboBoxBuscarEmpleados.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarEmpleados.Items.AddRange(new object[] {
             "Id",
             "DNI",
@@ -620,7 +620,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(1065, 633);
+            this.buttonCancelar.Location = new System.Drawing.Point(1077, 651);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -638,7 +638,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(820, 633);
+            this.buttonAceptar.Location = new System.Drawing.Point(832, 651);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);

@@ -192,20 +192,22 @@ namespace GestionRecoDuero
             if (idPresupuestoComboBox.Items.Count > 0)
             {
                 CargarPresupuestos();
-                ((DataRowView)facturaBindingSource.Current)["IdPresupuesto"] = idPresupuestoComboBox.SelectedItem.ToString();
+                int idPresupuesto;
+
+                if (int.TryParse(idPresupuestoComboBox.SelectedValue.ToString(), out idPresupuesto))
+                {
+                    ((DataRowView)facturaBindingSource.Current)["IdPresupuesto"] = idPresupuesto;
+                }
+
             }
 
-            if (clienteComboBox.Items.Count > 0)
-            {
-                CargarClientes();
-                ((DataRowView)facturaBindingSource.Current)["Cliente"] = clienteComboBox.SelectedItem.ToString();
-            }
+            CargarClientes();
+            //((DataRowView)facturaBindingSource.Current)["Cliente"] = clienteComboBox.SelectedItem.ToString();
 
-            if (empleadoComboBox.Items.Count > 0)
-            {
-                CargarResponsableEmpleados();
-                ((DataRowView)facturaBindingSource.Current)["Empleado"] = empleadoComboBox.SelectedItem.ToString();
-            }
+
+            CargarResponsableEmpleados();
+            //((DataRowView)facturaBindingSource.Current)["Empleado"] = empleadoComboBox.SelectedItem.ToString();
+ 
 
             ((DataRowView)facturaBindingSource.Current)["FechaEmision"] = fechaEmisionDateTimePicker.Value;
             ((DataRowView)facturaBindingSource.Current)["EstadoPago"] = estadoPagoComboBox.SelectedItem.ToString();
@@ -429,8 +431,8 @@ namespace GestionRecoDuero
 
                     PrintLine("Id Factura: ", idFacturaLabel1.Text);
                     PrintLine("Id Presupuesto: ", idPresupuestoComboBox.Text);
-                    PrintLine("Cliente: ", clienteComboBox.Text);
-                    PrintLine("Responsable: ", empleadoComboBox.Text);
+                    PrintLine("Cliente: ", clienteLabel2.Text);
+                    PrintLine("Responsable: ", empleadoLabel2.Text);
                     PrintLine("Total factura: ", totalFacturaLabel2.Text);
 
                     PrintLine("Fecha de emisión: ", fechaEmisionDateTimePicker.Text);
@@ -661,8 +663,8 @@ namespace GestionRecoDuero
         {
             idFacturaLabel1.Enabled = false;
             idPresupuestoComboBox.Enabled = false;
-            clienteComboBox.Enabled = false;
-            empleadoComboBox.Enabled = false;
+            clienteLabel2.Enabled = false;
+            empleadoLabel2.Enabled = false;
             totalFacturaLabel2.Enabled = false;
 
             fechaEmisionDateTimePicker.Enabled = false;
@@ -675,8 +677,8 @@ namespace GestionRecoDuero
         {
             idFacturaLabel1.Enabled = true;
             idPresupuestoComboBox.Enabled = true;
-            clienteComboBox.Enabled = true;
-            empleadoComboBox.Enabled = true;
+            clienteLabel2.Enabled = true;
+            empleadoLabel2.Enabled = true;
             totalFacturaLabel2.Enabled = true;
 
             fechaEmisionDateTimePicker.Enabled = true;
@@ -690,19 +692,31 @@ namespace GestionRecoDuero
             EmpleadoTableAdapter empleadoTableAdapter = new EmpleadoTableAdapter();
             EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData();
 
+            PresupuestoTableAdapter presupuestoTableAdapter = new PresupuestoTableAdapter();
+            PresupuestoDataTable presupuestosData = presupuestoTableAdapter.GetData();
+
             empleadosData.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
 
-            // Configurar el ComboBox
-            empleadoComboBox.DataSource = empleadosData;
-            empleadoComboBox.DisplayMember = "NombreCompleto";
-
-            if (empleadoComboBox.Items.Count > 0)
+            if (empleadosData.Rows.Count > 0)
             {
-                empleadoComboBox.SelectedIndex = 0;
+                int indiceIdPresupuesto = 0;
+                for (int i = 0; i < presupuestosData.Count; i++)
+                {
+                    if (i == idPresupuestoComboBox.SelectedIndex)
+                    {
+                        indiceIdPresupuesto = i;
+                    }
+                    
+                }
+                // Obtener el nombre completo del primer cliente
+                string nombreCompleto = empleadosData.Rows[indiceIdPresupuesto]["NombreCompleto"].ToString();
+
+                // Asignar el nombre completo al Label
+                empleadoLabel2.Text = nombreCompleto;
             }
             else
             {
-                empleadoComboBox.Text = "No hay empleados";
+                empleadoLabel2.Text = "No hay empleados";
             }
         }
 
@@ -711,19 +725,32 @@ namespace GestionRecoDuero
             ClienteTableAdapter clienteTableAdapter = new ClienteTableAdapter();
             ClienteDataTable clientesData = clienteTableAdapter.GetData();
 
+            PresupuestoTableAdapter presupuestoTableAdapter = new PresupuestoTableAdapter();
+            PresupuestoDataTable presupuestosData = presupuestoTableAdapter.GetData();
+
             clientesData.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
 
-            // Configurar el ComboBox
-            clienteComboBox.DataSource = clientesData;
-            clienteComboBox.DisplayMember = "NombreCompleto";
-
-            if (clienteComboBox.Items.Count > 0)
+            if (clientesData.Rows.Count > 0)
             {
-                clienteComboBox.SelectedIndex = 0;
+                int indiceIdPresupuesto = 0;
+                for (int i = 0; i < presupuestosData.Count; i++)
+                {
+                    if (i == idPresupuestoComboBox.SelectedIndex)
+                    {
+                        indiceIdPresupuesto = i;
+                    }
+
+                }
+
+                // Obtener el nombre completo del primer cliente
+                string nombreCompleto = clientesData.Rows[indiceIdPresupuesto]["NombreCompleto"].ToString();
+
+                // Asignar el nombre completo al Label
+                clienteLabel2.Text = nombreCompleto;
             }
             else
             {
-                clienteComboBox.Text = "No hay clientes";
+                clienteLabel2.Text = "No hay clientes";
             }
         }
 
@@ -782,6 +809,12 @@ namespace GestionRecoDuero
             {
                 idPresupuestoComboBox.Text = "No hay presupuestos";
             }
+        }
+
+        private void idPresupuestoComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarClientes();
+            CargarResponsableEmpleados();
         }
 
         //COMPROBAR DATOS

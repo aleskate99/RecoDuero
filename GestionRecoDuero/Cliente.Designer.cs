@@ -223,7 +223,7 @@
             // 
             this.idClienteLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "IdCliente", true));
             this.idClienteLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idClienteLabel1.Location = new System.Drawing.Point(160, 54);
+            this.idClienteLabel1.Location = new System.Drawing.Point(156, 51);
             this.idClienteLabel1.Name = "idClienteLabel1";
             this.idClienteLabel1.Size = new System.Drawing.Size(121, 23);
             this.idClienteLabel1.TabIndex = 2;
@@ -237,7 +237,6 @@
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(267, 30);
             this.nombreTextBox.TabIndex = 1;
-            this.nombreTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.nombreTextBox_Validating);
             // 
             // apellidosTextBox
             // 
@@ -247,7 +246,6 @@
             this.apellidosTextBox.Name = "apellidosTextBox";
             this.apellidosTextBox.Size = new System.Drawing.Size(267, 30);
             this.apellidosTextBox.TabIndex = 2;
-            this.apellidosTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.apellidosTextBox_Validating);
             // 
             // direccionTextBox
             // 
@@ -266,7 +264,6 @@
             this.telefonoTextBox.Name = "telefonoTextBox";
             this.telefonoTextBox.Size = new System.Drawing.Size(267, 30);
             this.telefonoTextBox.TabIndex = 4;
-            this.telefonoTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.telefonoTextBox_Validating);
             // 
             // emailTextBox
             // 
@@ -366,7 +363,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1357, 114);
+            this.toolStrip1.Size = new System.Drawing.Size(1357, 64);
             this.toolStrip1.TabIndex = 20;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -387,14 +384,14 @@
             this.toolStripButtonAnterior.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnterior.Image")));
             this.toolStripButtonAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnterior.Name = "toolStripButtonAnterior";
-            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 111);
+            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 61);
             this.toolStripButtonAnterior.Text = "Anterior";
             this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click);
             // 
             // toolstripLabelContadorClientes
             // 
             this.toolstripLabelContadorClientes.Name = "toolstripLabelContadorClientes";
-            this.toolstripLabelContadorClientes.Size = new System.Drawing.Size(111, 111);
+            this.toolstripLabelContadorClientes.Size = new System.Drawing.Size(111, 61);
             this.toolstripLabelContadorClientes.Text = "toolStripLabel1";
             // 
             // toolStripButtonSiguiente
@@ -403,7 +400,7 @@
             this.toolStripButtonSiguiente.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSiguiente.Image")));
             this.toolStripButtonSiguiente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSiguiente.Name = "toolStripButtonSiguiente";
-            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 111);
+            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 61);
             this.toolStripButtonSiguiente.Text = "Siguiente";
             this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click);
             // 
@@ -413,14 +410,14 @@
             this.toolStripButtonFinal.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFinal.Image")));
             this.toolStripButtonFinal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFinal.Name = "toolStripButtonFinal";
-            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 111);
+            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 61);
             this.toolStripButtonFinal.Text = "Ir al final";
             this.toolStripButtonFinal.Click += new System.EventHandler(this.toolStripButtonFinal_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 114);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 64);
             // 
             // toolStripButtonAnadir
             // 
@@ -429,7 +426,7 @@
             this.toolStripButtonAnadir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonAnadir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
-            this.toolStripButtonAnadir.Size = new System.Drawing.Size(52, 111);
+            this.toolStripButtonAnadir.Size = new System.Drawing.Size(52, 61);
             this.toolStripButtonAnadir.Text = "Añadir";
             this.toolStripButtonAnadir.ToolTipText = "Añadir cliente";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
@@ -440,7 +437,7 @@
             this.toolStripButtonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEliminar.Image")));
             this.toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 111);
+            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 61);
             this.toolStripButtonEliminar.Text = "Eliminar";
             this.toolStripButtonEliminar.ToolTipText = "Eliminar cliente";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
@@ -451,7 +448,7 @@
             this.toolStripButtonEditar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditar.Image")));
             this.toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
-            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 111);
+            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 61);
             this.toolStripButtonEditar.Text = "Editar";
             this.toolStripButtonEditar.ToolTipText = "Editar cliente";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
@@ -459,7 +456,7 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 114);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 64);
             // 
             // toolStripButtonGuardar
             // 
@@ -467,7 +464,7 @@
             this.toolStripButtonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGuardar.Image")));
             this.toolStripButtonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGuardar.Name = "toolStripButtonGuardar";
-            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 111);
+            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 61);
             this.toolStripButtonGuardar.Text = "Guardar";
             this.toolStripButtonGuardar.Click += new System.EventHandler(this.toolStripButtonGuardar_Click);
             // 
@@ -477,7 +474,7 @@
             this.toolStripButtonImprimir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImprimir.Image")));
             this.toolStripButtonImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonImprimir.Name = "toolStripButtonImprimir";
-            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 111);
+            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 61);
             this.toolStripButtonImprimir.Text = "toolStripButton1";
             this.toolStripButtonImprimir.ToolTipText = "Imprimir";
             this.toolStripButtonImprimir.Click += new System.EventHandler(this.toolStripButtonImprimir_Click);
@@ -488,14 +485,14 @@
             this.toolStripButtonInforme.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInforme.Image")));
             this.toolStripButtonInforme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInforme.Name = "toolStripButtonInforme";
-            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 111);
+            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 61);
             this.toolStripButtonInforme.ToolTipText = "Informe";
             this.toolStripButtonInforme.Click += new System.EventHandler(this.toolStripButtonInforme_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 114);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 64);
             // 
             // toolStripComboBoxBuscarClientes
             // 
@@ -503,7 +500,7 @@
             "Id",
             "Nombre"});
             this.toolStripComboBoxBuscarClientes.Name = "toolStripComboBoxBuscarClientes";
-            this.toolStripComboBoxBuscarClientes.Size = new System.Drawing.Size(160, 114);
+            this.toolStripComboBoxBuscarClientes.Size = new System.Drawing.Size(160, 64);
             this.toolStripComboBoxBuscarClientes.Text = "Buscar cliente";
             this.toolStripComboBoxBuscarClientes.ToolTipText = "Seleccione mediante que campo desea buscar al cliente";
             // 
@@ -511,7 +508,7 @@
             // 
             this.toolStripTextBoxBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxBuscar.Name = "toolStripTextBoxBuscar";
-            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(100, 114);
+            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(156, 64);
             this.toolStripTextBoxBuscar.ToolTipText = "Escribe el cliente que desee buscar";
             // 
             // toolStripButtonBuscar
@@ -520,7 +517,7 @@
             this.toolStripButtonBuscar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBuscar.Image")));
             this.toolStripButtonBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBuscar.Name = "toolStripButtonBuscar";
-            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 111);
+            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 61);
             this.toolStripButtonBuscar.Text = "Buscar";
             this.toolStripButtonBuscar.Click += new System.EventHandler(this.toolStripButtonBuscar_Click);
             // 
@@ -589,12 +586,13 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1285, 136);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1297, 88);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.buttonVolverInicio.TabIndex = 37;
             this.buttonVolverInicio.TabStop = false;
+            this.toolTip1.SetToolTip(this.buttonVolverInicio, "Volver a inicio");
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
             // helpProvider1

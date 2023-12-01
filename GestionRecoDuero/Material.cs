@@ -14,6 +14,10 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
             KeyPreview = true;
+
+            //Redondear controles
+            Bordes.BordesRedondosBoton(buttonAceptar);
+            Bordes.BordesRedondosBoton(buttonCancelar);
         }
 
         private void Material_Load(object sender, EventArgs e)
@@ -413,7 +417,7 @@ namespace GestionRecoDuero
                 {
                     printDocument1.Print();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -722,30 +726,6 @@ namespace GestionRecoDuero
 
             //si todo es valido
             return true;
-        }
-
-        //VALIDATINGS
-        private void nombreTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (nombreTextBox.TextLength > 30 && !string.IsNullOrWhiteSpace(nombreTextBox.Text))
-            {
-                errorProvider1.SetError(nombreTextBox, "No debe superar los 30 dígitos introducidos");
-                nombreTextBox.Clear();
-            }
-            else if (!Comun.ContieneSoloLetras(nombreTextBox.Text) && !string.IsNullOrWhiteSpace(nombreTextBox.Text))
-            {
-                errorProvider1.SetError(nombreTextBox, "Solo puede introducir letras en el campo nombre");
-                nombreTextBox.Clear();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
-
-        private void distribuidorTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
         }
 
         //Atajos de teclado
