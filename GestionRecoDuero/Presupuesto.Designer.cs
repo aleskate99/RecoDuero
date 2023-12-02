@@ -41,8 +41,8 @@
             System.Windows.Forms.Label obraLabel;
             System.Windows.Forms.Label costeLabel1;
             System.Windows.Forms.Label idPresupuestoLabel2;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Presupuesto));
             System.Windows.Forms.Label descripcionLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Presupuesto));
             this.buttonEditarLinea = new System.Windows.Forms.Button();
             this.buttonCancelarDetallePresupuesto = new System.Windows.Forms.Button();
             this.buttonAceptarDetallePresupuesto = new System.Windows.Forms.Button();
@@ -248,6 +248,16 @@
             idPresupuestoLabel2.TabIndex = 59;
             idPresupuestoLabel2.Text = "Id Presupuesto *";
             // 
+            // descripcionLabel
+            // 
+            descripcionLabel.AutoSize = true;
+            descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            descripcionLabel.Location = new System.Drawing.Point(6, 241);
+            descripcionLabel.Name = "descripcionLabel";
+            descripcionLabel.Size = new System.Drawing.Size(124, 22);
+            descripcionLabel.TabIndex = 69;
+            descripcionLabel.Text = "Descripción *";
+            // 
             // buttonEditarLinea
             // 
             this.buttonEditarLinea.Location = new System.Drawing.Point(610, 648);
@@ -341,7 +351,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1425, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1425, 31);
             this.toolStrip1.TabIndex = 31;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -774,6 +784,7 @@
             // costeNumericUpDownDetalle
             // 
             this.costeNumericUpDownDetalle.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detallePresupuestoBindingSource, "Coste", true));
+            this.costeNumericUpDownDetalle.DecimalPlaces = 2;
             this.costeNumericUpDownDetalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.costeNumericUpDownDetalle.Location = new System.Drawing.Point(227, 191);
             this.costeNumericUpDownDetalle.Maximum = new decimal(new int[] {
@@ -806,16 +817,6 @@
             this.idPresupuestoComboBox.Name = "idPresupuestoComboBox";
             this.idPresupuestoComboBox.Size = new System.Drawing.Size(261, 30);
             this.idPresupuestoComboBox.TabIndex = 12;
-            // 
-            // descripcionLabel
-            // 
-            descripcionLabel.AutoSize = true;
-            descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            descripcionLabel.Location = new System.Drawing.Point(6, 241);
-            descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(124, 22);
-            descripcionLabel.TabIndex = 69;
-            descripcionLabel.Text = "Descripción *";
             // 
             // descripcionTextBox
             // 

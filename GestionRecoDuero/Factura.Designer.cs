@@ -917,7 +917,7 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1352, 92);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1364, 92);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

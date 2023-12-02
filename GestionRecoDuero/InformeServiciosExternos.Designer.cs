@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InformeServiciosExternos));
             this.servicioExternoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
@@ -44,6 +44,7 @@
             this.buttonQuitarFiltro = new System.Windows.Forms.Button();
             this.buttonVolverInicio = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.servicioExternoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.SuspendLayout();
@@ -60,9 +61,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "DataSet1";
-            reportDataSource2.Value = this.servicioExternoBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.servicioExternoBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "GestionRecoDuero.InformeServicioExterno.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
@@ -164,6 +165,7 @@
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(88, 68);
             this.buttonVolverInicio.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.buttonVolverInicio, "Volver a servicios externos");
             this.buttonVolverInicio.UseVisualStyleBackColor = false;
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
@@ -217,5 +219,6 @@
         private System.Windows.Forms.Button buttonQuitarFiltro;
         private System.Windows.Forms.Button buttonVolverInicio;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

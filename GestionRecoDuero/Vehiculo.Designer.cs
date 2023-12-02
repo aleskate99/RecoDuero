@@ -141,7 +141,7 @@
             // 
             fechaItvLabel.AutoSize = true;
             fechaItvLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fechaItvLabel.Location = new System.Drawing.Point(639, 304);
+            fechaItvLabel.Location = new System.Drawing.Point(639, 340);
             fechaItvLabel.Name = "fechaItvLabel";
             fechaItvLabel.Size = new System.Drawing.Size(110, 22);
             fechaItvLabel.TabIndex = 44;
@@ -151,7 +151,7 @@
             // 
             seguroLabel.AutoSize = true;
             seguroLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            seguroLabel.Location = new System.Drawing.Point(639, 240);
+            seguroLabel.Location = new System.Drawing.Point(639, 253);
             seguroLabel.Name = "seguroLabel";
             seguroLabel.Size = new System.Drawing.Size(66, 22);
             seguroLabel.TabIndex = 46;
@@ -171,7 +171,7 @@
             // 
             fotoLabel.AutoSize = true;
             fotoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fotoLabel.Location = new System.Drawing.Point(639, 372);
+            fotoLabel.Location = new System.Drawing.Point(639, 425);
             fotoLabel.Name = "fotoLabel";
             fotoLabel.Size = new System.Drawing.Size(48, 22);
             fotoLabel.TabIndex = 50;
@@ -368,7 +368,6 @@
             // 
             // toolStripComboBoxBuscarVehiculos
             // 
-            this.toolStripComboBoxBuscarVehiculos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarVehiculos.Items.AddRange(new object[] {
             "Id",
             "Matrícula"});
@@ -419,7 +418,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(907, 618);
+            this.buttonCancelar.Location = new System.Drawing.Point(892, 662);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -437,7 +436,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(658, 618);
+            this.buttonAceptar.Location = new System.Drawing.Point(643, 662);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
@@ -489,18 +488,18 @@
             // 
             this.fechaItvDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.vehiculoBindingSource, "FechaItv", true));
             this.fechaItvDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaItvDateTimePicker.Location = new System.Drawing.Point(804, 300);
+            this.fechaItvDateTimePicker.Location = new System.Drawing.Point(804, 336);
             this.fechaItvDateTimePicker.Name = "fechaItvDateTimePicker";
-            this.fechaItvDateTimePicker.Size = new System.Drawing.Size(323, 30);
+            this.fechaItvDateTimePicker.Size = new System.Drawing.Size(328, 30);
             this.fechaItvDateTimePicker.TabIndex = 9;
             // 
             // seguroTextBox
             // 
             this.seguroTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vehiculoBindingSource, "Seguro", true));
             this.seguroTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seguroTextBox.Location = new System.Drawing.Point(804, 237);
+            this.seguroTextBox.Location = new System.Drawing.Point(804, 250);
             this.seguroTextBox.Name = "seguroTextBox";
-            this.seguroTextBox.Size = new System.Drawing.Size(323, 30);
+            this.seguroTextBox.Size = new System.Drawing.Size(328, 30);
             this.seguroTextBox.TabIndex = 8;
             // 
             // conductorComboBox
@@ -511,7 +510,7 @@
             this.conductorComboBox.FormattingEnabled = true;
             this.conductorComboBox.Location = new System.Drawing.Point(804, 171);
             this.conductorComboBox.Name = "conductorComboBox";
-            this.conductorComboBox.Size = new System.Drawing.Size(323, 30);
+            this.conductorComboBox.Size = new System.Drawing.Size(328, 30);
             this.conductorComboBox.TabIndex = 7;
             // 
             // fotoPictureBox
@@ -522,7 +521,7 @@
             this.fotoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.vehiculoBindingSource, "Foto", true));
             this.fotoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("fotoPictureBox.Image")));
             this.fotoPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("fotoPictureBox.InitialImage")));
-            this.fotoPictureBox.Location = new System.Drawing.Point(804, 372);
+            this.fotoPictureBox.Location = new System.Drawing.Point(804, 425);
             this.fotoPictureBox.Name = "fotoPictureBox";
             this.fotoPictureBox.Size = new System.Drawing.Size(323, 214);
             this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -574,12 +573,13 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1240, 115);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1278, 104);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.buttonVolverInicio.TabIndex = 60;
             this.buttonVolverInicio.TabStop = false;
+            this.toolTip1.SetToolTip(this.buttonVolverInicio, "Volver a inicio");
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
             // errorProvider1

@@ -63,7 +63,6 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonAceptar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.idMaterialLabel1 = new System.Windows.Forms.Label();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
@@ -72,7 +71,6 @@
             this.garantiaCheckBox = new System.Windows.Forms.CheckBox();
             this.fechaAdquisicionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.cantidadNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.labelEuros = new System.Windows.Forms.Label();
             this.materialTableAdapter = new GestionRecoDuero.RecoDueroDataSetTableAdapters.MaterialTableAdapter();
@@ -81,6 +79,8 @@
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.detallePresupuestoTableAdapter1 = new GestionRecoDuero.RecoDueroDataSetTableAdapters.DetallePresupuestoTableAdapter();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.idMaterialLabel1 = new System.Windows.Forms.Label();
             idMaterialLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
             cantidadLabel = new System.Windows.Forms.Label();
@@ -97,8 +97,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // idMaterialLabel
@@ -215,7 +215,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1354, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1394, 28);
             this.toolStrip1.TabIndex = 31;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -375,7 +375,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 762);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1354, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1394, 26);
             this.statusStrip1.TabIndex = 32;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -389,7 +389,7 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1294, 76);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1334, 76);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -437,16 +437,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // idMaterialLabel1
-            // 
-            this.idMaterialLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "IdMaterial", true));
-            this.idMaterialLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idMaterialLabel1.Location = new System.Drawing.Point(199, 44);
-            this.idMaterialLabel1.Name = "idMaterialLabel1";
-            this.idMaterialLabel1.Size = new System.Drawing.Size(200, 23);
-            this.idMaterialLabel1.TabIndex = 37;
-            this.idMaterialLabel1.Text = "label1";
             // 
             // materialBindingSource
             // 
@@ -514,12 +504,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.idMaterialLabel1);
             this.groupBox1.Controls.Add(this.costeNumericUpDown);
             this.groupBox1.Controls.Add(this.cantidadNumericUpDown);
             this.groupBox1.Controls.Add(this.labelEuros);
             this.groupBox1.Controls.Add(idMaterialLabel);
             this.groupBox1.Controls.Add(this.estadoComboBox);
-            this.groupBox1.Controls.Add(this.idMaterialLabel1);
             this.groupBox1.Controls.Add(estadoLabel);
             this.groupBox1.Controls.Add(nombreLabel);
             this.groupBox1.Controls.Add(this.distribuidorTextBox);
@@ -534,21 +524,6 @@
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información de los materiales";
-            // 
-            // costeNumericUpDown
-            // 
-            this.costeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.materialBindingSource, "Coste", true));
-            this.costeNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeNumericUpDown.Location = new System.Drawing.Point(199, 245);
-            this.costeNumericUpDown.Maximum = new decimal(new int[] {
-            2147483647,
-            0,
-            0,
-            0});
-            this.costeNumericUpDown.Name = "costeNumericUpDown";
-            this.costeNumericUpDown.Size = new System.Drawing.Size(250, 30);
-            this.costeNumericUpDown.TabIndex = 3;
-            this.costeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cantidadNumericUpDown
             // 
@@ -613,11 +588,42 @@
             // 
             this.detallePresupuestoTableAdapter1.ClearBeforeFill = true;
             // 
+            // costeNumericUpDown
+            // 
+            this.costeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.materialBindingSource, "Coste", true));
+            this.costeNumericUpDown.DecimalPlaces = 2;
+            this.costeNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costeNumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.costeNumericUpDown.Location = new System.Drawing.Point(199, 245);
+            this.costeNumericUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.costeNumericUpDown.Name = "costeNumericUpDown";
+            this.costeNumericUpDown.Size = new System.Drawing.Size(250, 30);
+            this.costeNumericUpDown.TabIndex = 3;
+            this.costeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // idMaterialLabel1
+            // 
+            this.idMaterialLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "IdMaterial", true));
+            this.idMaterialLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idMaterialLabel1.Location = new System.Drawing.Point(196, 44);
+            this.idMaterialLabel1.Name = "idMaterialLabel1";
+            this.idMaterialLabel1.Size = new System.Drawing.Size(253, 23);
+            this.idMaterialLabel1.TabIndex = 55;
+            this.idMaterialLabel1.Text = "label1";
+            // 
             // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1354, 788);
+            this.ClientSize = new System.Drawing.Size(1394, 788);
             this.Controls.Add(this.descripcionTextBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(garantiaLabel);
@@ -650,8 +656,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -687,7 +693,6 @@
         private RecoDueroDataSet recoDueroDataSet;
         private RecoDueroDataSetTableAdapters.MaterialTableAdapter materialTableAdapter;
         private RecoDueroDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Label idMaterialLabel1;
         private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.TextBox distribuidorTextBox;
         private System.Windows.Forms.ComboBox estadoComboBox;
@@ -695,11 +700,12 @@
         private System.Windows.Forms.DateTimePicker fechaAdquisicionDateTimePicker;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelEuros;
-        private System.Windows.Forms.NumericUpDown costeNumericUpDown;
         private System.Windows.Forms.NumericUpDown cantidadNumericUpDown;
         private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.ToolTip toolTip1;
         private RecoDueroDataSetTableAdapters.DetallePresupuestoTableAdapter detallePresupuestoTableAdapter1;
+        private System.Windows.Forms.NumericUpDown costeNumericUpDown;
+        private System.Windows.Forms.Label idMaterialLabel1;
     }
 }

@@ -388,7 +388,7 @@ namespace GestionRecoDuero
                     // Crear un método para imprimir cada línea
                     void PrintLine(string label, string value)
                     {
-                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
+                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(25, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
                         y += 25;
                     }
 

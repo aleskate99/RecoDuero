@@ -146,7 +146,7 @@
             this.buttonFiltrarDistribuidor.Name = "buttonFiltrarDistribuidor";
             this.buttonFiltrarDistribuidor.Size = new System.Drawing.Size(166, 28);
             this.buttonFiltrarDistribuidor.TabIndex = 4;
-            this.buttonFiltrarDistribuidor.Text = "Filtrar por Distribuidor";
+            this.buttonFiltrarDistribuidor.Text = "Filtrar por distribuidor";
             this.buttonFiltrarDistribuidor.UseVisualStyleBackColor = true;
             this.buttonFiltrarDistribuidor.Click += new System.EventHandler(this.buttonFiltrarDistribuidor_Click);
             // 

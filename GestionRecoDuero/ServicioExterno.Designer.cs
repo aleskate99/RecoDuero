@@ -39,6 +39,7 @@
             System.Windows.Forms.Label descripcionLabel;
             System.Windows.Forms.Label costeLabel;
             System.Windows.Forms.Label duracionServicioLabel;
+            System.Windows.Forms.Label obraLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServicioExterno));
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.servicioExternoBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -78,10 +79,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelEuros = new System.Windows.Forms.Label();
-            this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.duracionServicioNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.buttonVolverInicio = new System.Windows.Forms.PictureBox();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.obraComboBox = new System.Windows.Forms.ComboBox();
+            this.costeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             idServicioExternoLabel = new System.Windows.Forms.Label();
             empresaLabel = new System.Windows.Forms.Label();
             telefonoLabel = new System.Windows.Forms.Label();
@@ -92,15 +95,16 @@
             descripcionLabel = new System.Windows.Forms.Label();
             costeLabel = new System.Windows.Forms.Label();
             duracionServicioLabel = new System.Windows.Forms.Label();
+            obraLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.servicioExternoBindingSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.duracionServicioNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // idServicioExternoLabel
@@ -177,7 +181,7 @@
             // 
             descripcionLabel.AutoSize = true;
             descripcionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            descripcionLabel.Location = new System.Drawing.Point(656, 306);
+            descripcionLabel.Location = new System.Drawing.Point(656, 367);
             descripcionLabel.Name = "descripcionLabel";
             descripcionLabel.Size = new System.Drawing.Size(109, 22);
             descripcionLabel.TabIndex = 15;
@@ -202,6 +206,16 @@
             duracionServicioLabel.Size = new System.Drawing.Size(174, 22);
             duracionServicioLabel.TabIndex = 19;
             duracionServicioLabel.Text = "Duración Servicio *";
+            // 
+            // obraLabel
+            // 
+            obraLabel.AutoSize = true;
+            obraLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            obraLabel.Location = new System.Drawing.Point(656, 309);
+            obraLabel.Name = "obraLabel";
+            obraLabel.Size = new System.Drawing.Size(67, 22);
+            obraLabel.TabIndex = 63;
+            obraLabel.Text = "Obra *";
             // 
             // recoDueroDataSet
             // 
@@ -315,11 +329,11 @@
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.servicioExternoBindingSource, "Descripcion", true));
             this.descripcionTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descripcionTextBox.Location = new System.Drawing.Point(878, 307);
+            this.descripcionTextBox.Location = new System.Drawing.Point(855, 367);
             this.descripcionTextBox.Multiline = true;
             this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(249, 152);
-            this.descripcionTextBox.TabIndex = 9;
+            this.descripcionTextBox.Size = new System.Drawing.Size(323, 267);
+            this.descripcionTextBox.TabIndex = 10;
             // 
             // toolStrip1
             // 
@@ -522,11 +536,11 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(973, 554);
+            this.buttonCancelar.Location = new System.Drawing.Point(995, 656);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
-            this.buttonCancelar.TabIndex = 11;
+            this.buttonCancelar.TabIndex = 12;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCancelar.UseVisualStyleBackColor = false;
@@ -540,11 +554,11 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(725, 554);
+            this.buttonAceptar.Location = new System.Drawing.Point(747, 656);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
-            this.buttonAceptar.TabIndex = 10;
+            this.buttonAceptar.TabIndex = 11;
             this.buttonAceptar.Text = "Aceptar";
             this.buttonAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAceptar.UseVisualStyleBackColor = false;
@@ -558,7 +572,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1140, 246);
+            this.label1.Location = new System.Drawing.Point(1117, 246);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 22);
             this.label1.TabIndex = 60;
@@ -592,32 +606,17 @@
             // 
             this.labelEuros.AutoSize = true;
             this.labelEuros.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEuros.Location = new System.Drawing.Point(1140, 184);
+            this.labelEuros.Location = new System.Drawing.Point(1117, 184);
             this.labelEuros.Name = "labelEuros";
             this.labelEuros.Size = new System.Drawing.Size(61, 22);
             this.labelEuros.TabIndex = 62;
             this.labelEuros.Text = "€/hora";
             // 
-            // costeNumericUpDown
-            // 
-            this.costeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.servicioExternoBindingSource, "Coste", true));
-            this.costeNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costeNumericUpDown.Location = new System.Drawing.Point(878, 180);
-            this.costeNumericUpDown.Maximum = new decimal(new int[] {
-            2147483647,
-            0,
-            0,
-            0});
-            this.costeNumericUpDown.Name = "costeNumericUpDown";
-            this.costeNumericUpDown.Size = new System.Drawing.Size(249, 30);
-            this.costeNumericUpDown.TabIndex = 7;
-            this.costeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // duracionServicioNumericUpDown
             // 
             this.duracionServicioNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.servicioExternoBindingSource, "DuracionServicio", true));
             this.duracionServicioNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.duracionServicioNumericUpDown.Location = new System.Drawing.Point(878, 244);
+            this.duracionServicioNumericUpDown.Location = new System.Drawing.Point(855, 244);
             this.duracionServicioNumericUpDown.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -633,26 +632,61 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1270, 89);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1302, 88);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.buttonVolverInicio.TabIndex = 63;
             this.buttonVolverInicio.TabStop = false;
+            this.toolTip1.SetToolTip(this.buttonVolverInicio, "Volver a inicio");
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
             // helpProvider1
             // 
             this.helpProvider1.HelpNamespace = "AyudaRecoDuero.chm";
             // 
+            // obraComboBox
+            // 
+            this.obraComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.servicioExternoBindingSource, "Obra", true));
+            this.obraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.obraComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obraComboBox.FormattingEnabled = true;
+            this.obraComboBox.Location = new System.Drawing.Point(855, 301);
+            this.obraComboBox.Name = "obraComboBox";
+            this.obraComboBox.Size = new System.Drawing.Size(249, 30);
+            this.obraComboBox.TabIndex = 9;
+            // 
+            // costeNumericUpDown
+            // 
+            this.costeNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.servicioExternoBindingSource, "Coste", true));
+            this.costeNumericUpDown.DecimalPlaces = 2;
+            this.costeNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costeNumericUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.costeNumericUpDown.Location = new System.Drawing.Point(855, 178);
+            this.costeNumericUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.costeNumericUpDown.Name = "costeNumericUpDown";
+            this.costeNumericUpDown.Size = new System.Drawing.Size(249, 30);
+            this.costeNumericUpDown.TabIndex = 7;
+            this.costeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ServicioExterno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 790);
+            this.Controls.Add(this.costeNumericUpDown);
+            this.Controls.Add(obraLabel);
+            this.Controls.Add(this.obraComboBox);
             this.Controls.Add(this.buttonVolverInicio);
             this.Controls.Add(this.duracionServicioNumericUpDown);
-            this.Controls.Add(this.costeNumericUpDown);
             this.Controls.Add(this.labelEuros);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -671,6 +705,7 @@
             this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ServicioExterno";
+            this.toolTip1.SetToolTip(this, "Volver a inicio");
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServicioExterno_FormClosing);
             this.Load += new System.EventHandler(this.ServicioExterno_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ServicioExterno_KeyDown);
@@ -683,9 +718,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.duracionServicioNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonVolverInicio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costeNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -732,8 +767,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelEuros;
         private System.Windows.Forms.NumericUpDown duracionServicioNumericUpDown;
-        private System.Windows.Forms.NumericUpDown costeNumericUpDown;
         private System.Windows.Forms.PictureBox buttonVolverInicio;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.NumericUpDown costeNumericUpDown;
+        private System.Windows.Forms.ComboBox obraComboBox;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -87,7 +87,6 @@ C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\Gestio
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.Properties.Resources.resources
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.Registro.resources
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.ServicioExterno.resources
-C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.SplashScreen.resources
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.Vehiculo.resources
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.csproj.GenerateResource.cache
 C:\Users\Usuario\source\repos\GestionRecoDuero\GestionRecoDuero\obj\Debug\GestionRecoDuero.csproj.CoreCompileInputs.cache

@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.28833cm</Width>
+              <Width>1.23cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -15,7 +15,7 @@
               <Width>3.24083cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.82911cm</Width>
+              <Width>5.12261cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.58467cm</Width>
@@ -37,7 +37,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Id Vehiculo</Value>
+                              <Value>ID</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -133,7 +133,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Modelo</Value>
+                              <Value>Conductor</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -323,14 +323,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Modelo">
+                    <Textbox Name="Conductor">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Modelo.Value</Value>
+                              <Value>=Fields!Conductor.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -339,7 +339,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Modelo</rd:DefaultName>
+                      <rd:DefaultName>Conductor</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -443,9 +443,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>1.0922cm</Top>
-        <Left>0.78624cm</Left>
+        <Left>0.87896cm</Left>
         <Height>1.2cm</Height>
-        <Width>17.38744cm</Width>
+        <Width>17.62261cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -453,13 +453,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>4.05833in</Height>
+    <Height>2.98333in</Height>
     <Style />
   </Body>
   <Width>8.33408in</Width>
   <Page>
     <PageHeader>
-      <Height>1.905cm</Height>
+      <Height>1.9685cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -485,9 +485,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.40908cm</Top>
+          <Top>0.63472cm</Top>
+          <Left>0.42333cm</Left>
           <Height>1.19267cm</Height>
-          <Width>20.93574cm</Width>
+          <Width>18.07824cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -527,8 +528,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.29267cm</Top>
-          <Left>10.37968cm</Left>
+          <Top>0.22917cm</Top>
+          <Left>9.08851cm</Left>
           <Height>0.5365cm</Height>
           <Width>0.595cm</Width>
           <Style>
@@ -558,8 +559,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>PageNumber1</rd:DefaultName>
-          <Top>0.29267cm</Top>
-          <Left>6.99773cm</Left>
+          <Top>0.22917cm</Top>
+          <Left>5.70656cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>1</ZIndex>
@@ -590,8 +591,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>TotalPages</rd:DefaultName>
-          <Top>0.29267cm</Top>
-          <Left>11.67085cm</Left>
+          <Top>0.22917cm</Top>
+          <Left>10.37968cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>2</ZIndex>

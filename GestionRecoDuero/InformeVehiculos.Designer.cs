@@ -44,6 +44,7 @@
             this.buttonFiltrarMarca = new System.Windows.Forms.Button();
             this.textBoxFiltrarMarca = new System.Windows.Forms.TextBox();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.vehiculoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recoDueroDataSet)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +86,7 @@
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(88, 68);
             this.buttonVolverInicio.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.buttonVolverInicio, "Volver a vehículos");
             this.buttonVolverInicio.UseVisualStyleBackColor = false;
             this.buttonVolverInicio.Click += new System.EventHandler(this.buttonVolverInicio_Click);
             // 
@@ -215,5 +217,6 @@
         private System.Windows.Forms.Button buttonFiltrarMarca;
         private System.Windows.Forms.TextBox textBoxFiltrarMarca;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

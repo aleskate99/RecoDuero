@@ -1,8 +1,10 @@
-﻿using System;
+﻿using GestionRecoDuero.RecoDueroDataSetTableAdapters;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+using static GestionRecoDuero.RecoDueroDataSet;
 
 namespace GestionRecoDuero
 {
@@ -14,6 +16,10 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
             KeyPreview = true;
+
+            //Redondear los controles
+            Bordes.BordesRedondosBoton(buttonAceptar);
+            Bordes.BordesRedondosBoton(buttonCancelar);
         }
 
         private void ServicioExterno_Load(object sender, EventArgs e)
@@ -22,6 +28,7 @@ namespace GestionRecoDuero
             AjustarImagenes();
             EstadoControlesInicioApp();
             RefrescarToolstripLabelServicioExterno();
+            CargarObras(); //Para cargar la ubicación de las obras
             toolStripStatusLabel1.Text = "Inicio";
         }
 
@@ -81,7 +88,6 @@ namespace GestionRecoDuero
                 toolStripButtonSiguiente.Enabled = false;
                 toolStripButtonFinal.Enabled = false;
             }
-
             else if (servicioExternoBindingSource.Count == 1)
             {
                 toolStripButtonSiguiente.Enabled = false;
@@ -174,6 +180,12 @@ namespace GestionRecoDuero
 
             ((DataRowView)servicioExternoBindingSource.Current)["Coste"] = (int)costeNumericUpDown.Value;
             ((DataRowView)servicioExternoBindingSource.Current)["DuracionServicio"] = (int)duracionServicioNumericUpDown.Value;
+
+            if (obraComboBox.Items.Count > 0)
+            {
+                CargarObras();
+                ((DataRowView)servicioExternoBindingSource.Current)["Obra"] = obraComboBox.SelectedItem.ToString();
+            }
         }
 
         private void HabilitarControlesEnAnadir()
@@ -397,6 +409,7 @@ namespace GestionRecoDuero
 
                     PrintLine("Coste: ", costeNumericUpDown.Text);
                     PrintLine("Duración: ", duracionServicioNumericUpDown.Text);
+                    PrintLine("Obra: ", obraComboBox.Text);
                     PrintLine("Descripción: ", descripcionTextBox.Text);
                 }
             };
@@ -586,7 +599,6 @@ namespace GestionRecoDuero
                 errorProvider1.Clear();
                 datosGuardados = false;
             }
-
             RefrescarToolstripLabelServicioExterno();
         }
 
@@ -646,6 +658,7 @@ namespace GestionRecoDuero
 
             costeNumericUpDown.Enabled = false;
             duracionServicioNumericUpDown.Enabled = false;
+            obraComboBox.Enabled = false;
             descripcionTextBox.Enabled = false;
         }
 
@@ -661,6 +674,7 @@ namespace GestionRecoDuero
 
             costeNumericUpDown.Enabled = true;
             duracionServicioNumericUpDown.Enabled = true;
+            obraComboBox.Enabled = true;
             descripcionTextBox.Enabled = true;
         }
 
@@ -719,7 +733,24 @@ namespace GestionRecoDuero
             return true;
         }
 
-        //TODO: VALIDATINGS
+        private void CargarObras()
+        {
+            ObraTableAdapter obraTableAdapter = new ObraTableAdapter();
+            ObraDataTable obrasData = obraTableAdapter.GetData();
+
+            // Configurar el ComboBox
+            obraComboBox.DataSource = obrasData;
+            obraComboBox.DisplayMember = "Ubicacion";
+
+            if (obraComboBox.Items.Count > 0)
+            {
+                obraComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                obraComboBox.Text = "No hay obras";
+            }
+        }
 
         //Atajos de teclado
         private void ServicioExterno_KeyDown(object sender, KeyEventArgs e)
@@ -801,7 +832,6 @@ namespace GestionRecoDuero
                         // Cancela el cierre del formulario
                         e.Cancel = true;
                     }
-
                 }
             }
         }

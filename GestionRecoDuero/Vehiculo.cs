@@ -16,6 +16,10 @@ namespace GestionRecoDuero
         {
             InitializeComponent();
             KeyPreview = true;
+
+            //Redondear controles
+            Bordes.BordesRedondosBoton(buttonAceptar);
+            Bordes.BordesRedondosBoton(buttonCancelar);
         }
 
         private void Vehiculo_Load(object sender, EventArgs e)
@@ -392,7 +396,7 @@ namespace GestionRecoDuero
                     // Crear un método para imprimir cada línea
                     void PrintLine(string label, string value)
                     {
-                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(50, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
+                        e1.Graphics.DrawString(label + value, font, Brushes.Black, new RectangleF(25, y, printDocument1.DefaultPageSettings.PrintableArea.Width, printDocument1.DefaultPageSettings.PrintableArea.Height));
                         y += 25;
                     }
 
@@ -423,7 +427,7 @@ namespace GestionRecoDuero
                 {
                     printDocument1.Print();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -508,7 +512,7 @@ namespace GestionRecoDuero
                         }
                         else
                         {
-                            vehiculoBindingSource.Position = vehiculoBindingSource.Find("Matricula", toolStripTextBoxBuscar.Text);
+                            vehiculoBindingSource.Position = vehiculoBindingSource.Find("Matrícula", toolStripTextBoxBuscar.Text);
                             toolStripTextBoxBuscar.Text = String.Empty;
                         }
                     }
@@ -614,7 +618,7 @@ namespace GestionRecoDuero
         //IMÁGEN
         private void fotoPictureBox_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.png";
+            openFileDialog1.Filter = "Archivos gráficos|*.bmp;*.gif;*.jpg;*.jpeg;*.png";
             openFileDialog1.FilterIndex = 1;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -725,10 +729,7 @@ namespace GestionRecoDuero
             RecoDueroDataSet.EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData();
 
             empleadosData.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
-            //conductorComboBox.DataSource = empleadosData;
-            //conductorComboBox.DisplayMember = "Nombre";
-           
-
+         
             // Configurar el ComboBox
             conductorComboBox.DataSource = empleadosData;
             conductorComboBox.DisplayMember = "NombreCompleto";
@@ -741,7 +742,6 @@ namespace GestionRecoDuero
             {
                 conductorComboBox.Text = "No hay empleados";
             }
-
         }
 
         //COMPROBAR DATOS
@@ -780,8 +780,6 @@ namespace GestionRecoDuero
             //si todo es valido
             return true;
         }
-
-        //TODO: VALIDATINGS
 
         //Atajos de teclado
         private void Vehiculo_KeyDown(object sender, KeyEventArgs e)
