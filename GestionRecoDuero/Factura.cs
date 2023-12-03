@@ -5,13 +5,40 @@ using System.Windows.Forms;
 using static GestionRecoDuero.RecoDueroDataSet;
 using System.Drawing;
 using System.Data;
+using System.Linq;
 
 namespace GestionRecoDuero
 {
     public partial class Factura : Form
     {
+        //GUARDAR
         private bool datosGuardados = true;
         private bool datosDetalleGuardados = true;
+
+        //INSERTAR
+        private bool insertando = false;
+
+        //EDITAR
+        private float costeAdicional = 0;
+        private float costeTotalFinal = 0;
+        private int idDetalleFactura = 0;
+        private int idFacturaInicialEditado = 0;
+        private float costeInicialEditado = 0;
+        private int idFacturaFinalEditado = 0;
+        private float costeFinalEditado = 0;
+        private float costeTotalInicialEditado = 0;
+        private float costeTotalFinalEditado = 0;
+        private bool editando = false;
+        private bool editandoIdFactura = false;
+        private bool editandoIdFInicial = false;
+        private bool editandoIdFFinal = false;
+        private bool editandoCoste = false;
+
+        //BORRAR
+        private bool borrando = false;
+        private float costeBorrado = 0;
+        private int idFactura = 0;
+        private float costeTotal = 0;
 
         public Factura()
         {
@@ -21,6 +48,8 @@ namespace GestionRecoDuero
             //Redondear controles
             Bordes.BordesRedondosBoton(buttonAceptar);
             Bordes.BordesRedondosBoton(buttonCancelar);
+            Bordes.BordesRedondosBoton(buttonAceptarDetalleFactura);
+            Bordes.BordesRedondosBoton(buttonCancelarDetalleFactura);
         }
 
         private void Factura_Load(object sender, EventArgs e)
@@ -32,15 +61,16 @@ namespace GestionRecoDuero
             AjustarImagenes();
 
             EstadoControlesInicioApp();
-            EstadoControlesInicioDetalle();
+            ControlarBotonesDetalle();
 
             RefrescarToolstripLabelFactura();
 
-            CargarObras(); //Para cargar la ubicación de las obras
+            CargarPresupuestos();
             CargarClientes(); //Para cargar la info de los clientes
             CargarResponsableEmpleados(); //Para cargar el responsable
+
+            CargarObras(); //Para cargar la ubicación de las obras
             CargarFacturas(); // Para cargar los ids de las facturas
-            CargarPresupuestos();
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -202,13 +232,11 @@ namespace GestionRecoDuero
             }
 
             CargarClientes();
-            //((DataRowView)facturaBindingSource.Current)["Cliente"] = clienteComboBox.SelectedItem.ToString();
-
+            ((DataRowView)facturaBindingSource.Current)["Cliente"] = clienteLabel2.Text;
 
             CargarResponsableEmpleados();
-            //((DataRowView)facturaBindingSource.Current)["Empleado"] = empleadoComboBox.SelectedItem.ToString();
+            ((DataRowView)facturaBindingSource.Current)["Empleado"] = empleadoLabel2.Text;
  
-
             ((DataRowView)facturaBindingSource.Current)["FechaEmision"] = fechaEmisionDateTimePicker.Value;
             ((DataRowView)facturaBindingSource.Current)["EstadoPago"] = estadoPagoComboBox.SelectedItem.ToString();
             ((DataRowView)facturaBindingSource.Current)["MetodoPago"] = metodoPagoComboBox.SelectedItem.ToString();
@@ -244,6 +272,11 @@ namespace GestionRecoDuero
             toolStripButtonBuscar.Enabled = false;
             toolStripComboBoxBuscarFacturas.Enabled = false;
             toolStripTextBoxBuscar.Enabled = false;
+
+            //MAESTRO DETALLE 
+            buttonAniadirLinea.Enabled = false;
+            buttonBorrarLinea.Enabled = false;
+            buttonEditarLinea.Enabled = false;
         }
 
         //ELIMINAR
@@ -295,6 +328,12 @@ namespace GestionRecoDuero
             toolStripStatusLabel1.Text = "Editar factura";
             EstadoControlesEditar();
             ComprobarDatosIntroducidos();
+
+            //MAESTRO DETALLE 
+            buttonAniadirLinea.Enabled = false;
+            buttonBorrarLinea.Enabled = false;
+            buttonEditarLinea.Enabled = false;
+
             datosGuardados = false;
         }
 
@@ -332,11 +371,24 @@ namespace GestionRecoDuero
 
                 facturaBindingSource.EndEdit();
                 this.facturaTableAdapter.Update(this.recoDueroDataSet);
+                this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
 
-                //MAESTRO DETALLE 
-                buttonAniadirLinea.Enabled = true;
-                buttonBorrarLinea.Enabled = true;
-                buttonEditarLinea.Enabled = true;
+                CargarFacturas();
+
+                if (detalleFacturaBindingSource.Count <= 0)
+                {
+                    //MAESTRO DETALLE 
+                    buttonAniadirLinea.Enabled = true;
+                    buttonBorrarLinea.Enabled = false;
+                    buttonEditarLinea.Enabled = false;
+                }
+                else
+                {
+                    //MAESTRO DETALLE 
+                    buttonAniadirLinea.Enabled = true;
+                    buttonBorrarLinea.Enabled = true;
+                    buttonEditarLinea.Enabled = true;
+                }
 
                 Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
                 datosGuardados = true;
@@ -591,6 +643,7 @@ namespace GestionRecoDuero
                 facturaBindingSource.EndEdit();
                 EstadoControlesAceptar();
                 datosGuardados = false;
+                CargarFacturas();
             }
         }
 
@@ -606,10 +659,37 @@ namespace GestionRecoDuero
             var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
             if (resultado == DialogResult.OK)
             {
+                if (facturaBindingSource.Count > 0)
+                {
+                    if (detalleFacturaBindingSource.Count <= 0)
+                    {
+                        //MAESTRO DETALLE 
+                        buttonAniadirLinea.Enabled = true;
+                        buttonBorrarLinea.Enabled = false;
+                        buttonEditarLinea.Enabled = false;
+                    }
+                    else
+                    {
+                        //MAESTRO DETALLE 
+                        buttonAniadirLinea.Enabled = true;
+                        buttonBorrarLinea.Enabled = true;
+                        buttonEditarLinea.Enabled = true;
+                    }
+                }
+                else
+                {
+                    //MAESTRO DETALLE 
+                    buttonAniadirLinea.Enabled = false;
+                    buttonBorrarLinea.Enabled = false;
+                    buttonEditarLinea.Enabled = false;
+                }
+
                 facturaBindingSource.CancelEdit();
                 EstadoControlesCancelar();
+
                 errorProvider1.Clear();
                 datosGuardados = false;
+                RefrescarToolstripLabelFactura();
             }
 
             RefrescarToolstripLabelFactura();
@@ -663,8 +743,8 @@ namespace GestionRecoDuero
         {
             idFacturaLabel1.Enabled = false;
             idPresupuestoComboBox.Enabled = false;
-            clienteLabel2.Enabled = false;
             empleadoLabel2.Enabled = false;
+            clienteLabel2.Enabled = false;
             totalFacturaLabel2.Enabled = false;
 
             fechaEmisionDateTimePicker.Enabled = false;
@@ -677,8 +757,8 @@ namespace GestionRecoDuero
         {
             idFacturaLabel1.Enabled = true;
             idPresupuestoComboBox.Enabled = true;
-            clienteLabel2.Enabled = true;
             empleadoLabel2.Enabled = true;
+            clienteLabel2.Enabled = true;
             totalFacturaLabel2.Enabled = true;
 
             fechaEmisionDateTimePicker.Enabled = true;
@@ -730,28 +810,34 @@ namespace GestionRecoDuero
 
             clientesData.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
 
-            if (clientesData.Rows.Count > 0)
-            {
-                int indiceIdPresupuesto = 0;
+            //if (clientesData.Rows.Count > 0)
+            //{
+            int indiceIdPresupuesto = -1;
                 for (int i = 0; i < presupuestosData.Count; i++)
                 {
                     if (i == idPresupuestoComboBox.SelectedIndex)
                     {
                         indiceIdPresupuesto = i;
+                        break;
                     }
 
                 }
 
-                // Obtener el nombre completo del primer cliente
-                string nombreCompleto = clientesData.Rows[indiceIdPresupuesto]["NombreCompleto"].ToString();
+                if (clientesData.Rows.Count > 0 && indiceIdPresupuesto >= 0 && indiceIdPresupuesto < clientesData.Rows.Count)
+                {
+                    // Obtener el nombre completo del primer cliente
+                    string nombreCompleto = clientesData.Rows[indiceIdPresupuesto]["NombreCompleto"].ToString();
 
-                // Asignar el nombre completo al Label
-                clienteLabel2.Text = nombreCompleto;
-            }
-            else
-            {
-                clienteLabel2.Text = "No hay clientes";
-            }
+                    // Asignar el nombre completo al Label
+                    clienteLabel2.Text = nombreCompleto;
+
+                }
+                else
+                {
+                    clienteLabel2.Text = "No hay clientes";
+                }
+            //}
+            
         }
 
         private void CargarFacturas()
@@ -837,7 +923,7 @@ namespace GestionRecoDuero
 
         /////////////////////    MAESTRO DETALLE
 
-        private void EstadoControlesInicioDetalle()
+        private void ControlarBotonesDetalle()
         {
             if (facturaBindingSource.Count <= 0)
             {
@@ -850,49 +936,67 @@ namespace GestionRecoDuero
 
             if (facturaBindingSource.Count > 0)
             {
-                //MAESTRO DETALLE 
-                buttonAniadirLinea.Enabled = true;
-                buttonBorrarLinea.Enabled = true;
-                buttonEditarLinea.Enabled = true;
+                if (detalleFacturaBindingSource.Count <= 0)
+                {
+                    //MAESTRO DETALLE 
+                    buttonAniadirLinea.Enabled = true;
+                    buttonBorrarLinea.Enabled = false;
+                    buttonEditarLinea.Enabled = false;
+                }
+                else
+                {
+                    //MAESTRO DETALLE 
+                    buttonAniadirLinea.Enabled = true;
+                    buttonBorrarLinea.Enabled = true;
+                    buttonEditarLinea.Enabled = true;
+                }
+                OcultarControlesDetalle();
+                CargarFacturas();
             }
         }
 
         private void buttonAniadirLinea_Click(object sender, EventArgs e)
         {
-            detalleFacturaBindingSource.AddNew();
-            HabilitarControlesEnAnadirLinea();
+            toolStripStatusLabel1.Text = "Añadir detalle factura";
+            insertando = true;
+
+            //MAESTRO DETALLE 
+            buttonAniadirLinea.Enabled = false;
+            buttonBorrarLinea.Enabled = false;
+            buttonEditarLinea.Enabled = false;
+
+            //BOTONES PRINCIPALES
+            toolStripButtonAnadir.Enabled = false;
+            toolStripButtonEliminar.Enabled = false;
+            toolStripButtonEditar.Enabled = false;
 
             if (datosGuardados == true)
             {
                 detalleFacturaDataGridView.ReadOnly = false;
-                detalleFacturaDataGridView.AllowUserToAddRows = true;
+                //detalleFacturaDataGridView.AllowUserToAddRows = true;
 
                 detalleFacturaBindingSource.AddNew();
-
                 HabilitarControlesEnAnadirLinea();
 
                 // Actualiza la fuente de datos con el valor predeterminado antes de guardar
+                if (idFacturaComboBox.Items.Count > 0)
+                {
+                    CargarFacturas();
+                    int idFactura;
+
+                    if (int.TryParse(idFacturaComboBox.SelectedValue.ToString(), out idFactura))
+                    {
+                        ((DataRowView)detalleFacturaBindingSource.Current)["IdFactura"] = idFactura;
+                    }
+                }
+
                 if (obraDetalleComboBox.Items.Count > 0)
                 {
                     CargarObras();
                     ((DataRowView)detalleFacturaBindingSource.Current)["Obra"] = obraDetalleComboBox.SelectedItem.ToString();
-                }
+                }              
 
-                if (idFacturaComboBox.Items.Count > 0)
-                {
-                    CargarFacturas();
-                    int idPresupuesto;
-
-                    if (int.TryParse(idFacturaComboBox.SelectedValue.ToString(), out idPresupuesto))
-                    {
-                        // Conversión exitosa, ahora puedes asignar el valor al campo IdPresupuesto
-                        ((DataRowView)detalleFacturaBindingSource.Current)["IdPresupuesto"] = idPresupuesto;
-                    }
-                    //((DataRowView)detallePresupuestoBindingSource.Current)["IdPresupuesto"] = idPresupuestoComboBox.SelectedItem.ToString();
-                }
-
-                ((DataRowView)detalleFacturaBindingSource.Current)["Coste"] = (int)costeNumericUpDown.Value;
-
+                ((DataRowView)detalleFacturaBindingSource.Current)["Coste"] = (float)costeNumericUpDownDetalle.Value;
 
                 detalleFacturaDataGridView.ReadOnly = true;
 
@@ -903,43 +1007,127 @@ namespace GestionRecoDuero
         private void HabilitarControlesEnAnadirLinea()
         {
             MostarControlesDetalle();
+            costeNumericUpDownDetalle.Value = 1;
         }
 
         private void buttonBorrarLinea_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabel1.Text = "Borrar detalle factura";
+
             if (detalleFacturaBindingSource.Count <= 0)
             {
                 MessageBox.Show("No se puede eliminar la línea porque no hay ninguna ", "Error en la eliminación de un presupuesto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                detalleFacturaBindingSource.RemoveCurrent();
-                this.facturaTableAdapter.Update(this.recoDueroDataSet);
+                var resultado = MessageBox.Show("¿Está seguro que desea eliminar el detalle de la factura?", "Confirmación eliminar detalle de la factura", MessageBoxButtons.OKCancel);
+
+                if (resultado == DialogResult.OK)
+                {
+                    borrando = true;
+
+                    DetalleFacturaTableAdapter detalleFacturaTableAdapter = new DetalleFacturaTableAdapter();
+                    DetalleFacturaDataTable detalleFacturaData = detalleFacturaTableAdapter.GetData();
+
+                    double[] costesDetalleFactura = detalleFacturaData.Select(p => p.Coste).ToArray();
+                    costeBorrado = (float)costesDetalleFactura[detalleFacturaDataGridView.CurrentRow.Index];
+
+                    int[] idsFacturaDF = detalleFacturaData.Select(p => p.IdFactura).ToArray();
+                    idFactura = idsFacturaDF[detalleFacturaDataGridView.CurrentRow.Index];
+
+                    FacturaTableAdapter facturaTableAdapter = new FacturaTableAdapter();
+                    FacturaDataTable facturaData = facturaTableAdapter.GetData();
+
+                    int[] idsFacturaF = facturaData.Select(p => p.IdFactura).ToArray();
+                    double[] costesTotales = facturaData.Select(p => p.TotalFactura).ToArray();
+
+                    int indiceBorrado = 0;
+                    for (int i = 0; i < idsFacturaF.Length; i++)
+                    {
+                        if (idsFacturaF[i] == idFactura)
+                        {
+                            indiceBorrado = i;
+                            break;
+                        }
+                    }
+                    costeTotal = (float)costesTotales[indiceBorrado];
+
+                    CalcularCosteTotal();
+
+                    detalleFacturaBindingSource.RemoveCurrent();
+                    detalleFacturaBindingSource.EndEdit();
+                    this.detalleFacturaTableAdapter.Update(this.recoDueroDataSet);
+
+                    facturaBindingSource.EndEdit();
+                    this.facturaTableAdapter.Update(this.recoDueroDataSet);
+
+                    ControlarBotonesDetalle();
+                }
             }
         }
 
         private void buttonEditarLinea_Click(object sender, EventArgs e)
         {
-            detalleFacturaDataGridView.ReadOnly = false;
-            detalleFacturaDataGridView.AllowUserToAddRows = true;
+            toolStripStatusLabel1.Text = "Editar detalle factura";
+            editando = true;
 
-            MostarControlesDetalle();
+            if (detalleFacturaBindingSource.Count > 0)
+            {
+                //MAESTRO DETALLE 
+                buttonAniadirLinea.Enabled = true;
+                buttonBorrarLinea.Enabled = true;
+                buttonEditarLinea.Enabled = true;
 
-            detalleFacturaDataGridView.ReadOnly = true;
+                detalleFacturaDataGridView.ReadOnly = false;
+                //detalleFacturaDataGridView.AllowUserToAddRows = true;
 
-            datosDetalleGuardados = false;
+                MostarControlesDetalle();
+
+                detalleFacturaDataGridView.ReadOnly = true;
+
+                datosDetalleGuardados = false;
+
+                costeInicialEditado = (float)costeNumericUpDownDetalle.Value;
+                idFacturaInicialEditado = int.Parse(idPresupuestoComboBox.Text.ToString());
+            }
+            else
+            {
+                //MAESTRO DETALLE 
+                buttonAniadirLinea.Enabled = true;
+                buttonBorrarLinea.Enabled = false;
+                buttonEditarLinea.Enabled = false;
+            }
+
+            //BOTONES PRINCIPALES
+            toolStripButtonAnadir.Enabled = false;
+            toolStripButtonEliminar.Enabled = false;
+            toolStripButtonEditar.Enabled = false;
         }
 
         private void buttonAceptarDetalleFactura_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidosDetalle())
             {
+                CalcularCosteTotal();
+
                 this.detalleFacturaBindingSource.EndEdit();
                 this.detalleFacturaTableAdapter.Update(this.recoDueroDataSet);
+
+                this.facturaBindingSource.EndEdit();
                 this.facturaTableAdapter.Update(this.recoDueroDataSet);
-                //precioTotalLabel1.Text = (Convert.ToInt32(precioTotalLabel1.Text) + Convert.ToInt32(precioTextBox.Text)).ToString();
 
                 OcultarControlesDetalle();
+
+                //MAESTRO DETALLE 
+                buttonAniadirLinea.Enabled = true;
+                buttonBorrarLinea.Enabled = true;
+                buttonEditarLinea.Enabled = true;
+
+                //BOTONES PRINCIPALES
+                toolStripButtonAnadir.Enabled = true;
+                toolStripButtonEliminar.Enabled = true;
+                toolStripButtonEditar.Enabled = true;
+
                 datosDetalleGuardados = true;
             }
         }
@@ -948,12 +1136,163 @@ namespace GestionRecoDuero
         {
             this.detalleFacturaBindingSource.CancelEdit();
             OcultarControlesDetalle();
+
+            //MAESTRO DETALLE 
+            buttonAniadirLinea.Enabled = true;
+            buttonBorrarLinea.Enabled = true;
+            buttonEditarLinea.Enabled = true;
+
+            //BOTONES PRINCIPALES
+            toolStripButtonAnadir.Enabled = true;
+            toolStripButtonEliminar.Enabled = true;
+            toolStripButtonEditar.Enabled = true;
+
+            errorProvider1.Clear();
+        }
+
+        //TODO: ENTENDER COMO FUNCIONA
+        private void CalcularCosteTotal()
+        {
+            DetalleFacturaTableAdapter detalleFacturaTableAdapter = new DetalleFacturaTableAdapter();
+            DetalleFacturaDataTable detalleFacturaData = detalleFacturaTableAdapter.GetData();
+
+            FacturaTableAdapter facturaTableAdapter = new FacturaTableAdapter();
+            FacturaDataTable facturasData = facturaTableAdapter.GetData();
+
+            int[] idsDetalleFactura = detalleFacturaData.Select(p => p.IdDetalleFactura).ToArray();
+            double[] costesDetalleFactura = detalleFacturaData.Select(p => p.Coste).ToArray();
+            int[] idsFacturaDF = detalleFacturaData.Select(p => p.IdFactura).ToArray();
+
+            int[] idsFacturaF = facturasData.Select(p => p.IdFactura).ToArray();
+            double[] costesTotales = facturasData.Select(p => p.TotalFactura).ToArray();
+
+            if (insertando == true)
+            {
+                int[] ids = facturasData.Select(p => p.IdPresupuesto).ToArray();
+
+                foreach (int id in ids)
+                {
+                    if (id == ids[idFacturaComboBox.SelectedIndex])
+                    {
+                        totalFacturaLabel2.Text = (Convert.ToDouble(totalFacturaLabel2.Text) + Convert.ToDouble(costeNumericUpDownDetalle.Text)).ToString();
+                        this.facturaTableAdapter.Update(this.recoDueroDataSet);
+                    }
+                }
+                insertando = false;
+            }
+            else if (editando == true)
+            {
+                costeFinalEditado = (float)costeNumericUpDownDetalle.Value;
+                idFacturaFinalEditado = int.Parse(idPresupuestoComboBox.Text.ToString());
+
+                if (costeInicialEditado != costeFinalEditado)
+                {
+                    editandoCoste = true;
+                }
+
+                if (idFacturaInicialEditado != idFacturaFinalEditado)
+                {
+                    editandoIdFactura = true;
+                }
+
+                if (editandoCoste == true)
+                {
+                    costeAdicional = costeFinalEditado - costeInicialEditado;
+
+                    string costeTotalInicial = totalFacturaLabel2.Text;
+                    if (float.TryParse(costeTotalInicial, out float resultado))
+                    {
+                        costeTotalFinal = resultado + costeAdicional;
+                        totalFacturaLabel2.Text = costeTotalFinal.ToString();
+                    }
+                }
+
+                if (editandoIdFactura == true)
+                {
+                    idDetalleFactura = idsDetalleFactura[detalleFacturaDataGridView.CurrentRow.Index];
+                    float costeParcial = (float)costesDetalleFactura[detalleFacturaDataGridView.CurrentRow.Index];
+                    float costeTotalInicial = 0, costeTotalFinal = 0;
+                    int indiceInicial = 0, indiceFinal = 0;
+                    int i = 0, j = 0;
+                    foreach (int idP in idsFacturaF)
+                    {
+                        foreach (int idDP in idsDetalleFactura)
+                        {
+                            if (idP == idFacturaInicialEditado && idDP == idDetalleFactura)
+                            {
+                                costeTotalInicial = (float)costesTotales[i];
+                                indiceInicial = i;
+                                editandoIdFInicial = true;
+                            }
+
+                            if (idP == idFacturaFinalEditado && idDP == idDetalleFactura)
+                            {
+                                costeTotalFinal = (float)costesTotales[i];
+                                indiceFinal = i;
+                                editandoIdFFinal = true;
+                            }
+
+                            j++;
+                        }
+                        i++;
+                    }
+                    costeTotalInicialEditado = costeTotalInicial - costeParcial;
+
+                    NavegarRegistro(indiceInicial);
+
+                    if (editandoIdFInicial == true)
+                    {
+                        totalFacturaLabel2.Text = costeTotalInicialEditado.ToString();
+                        editandoIdFInicial = false;
+                    }
+
+                    costeTotalFinalEditado = costeTotalFinal + costeParcial;
+
+                    NavegarRegistro(indiceFinal);
+
+                    if (editandoIdFFinal == true)
+                    {
+                        totalFacturaLabel2.Text = costeTotalFinalEditado.ToString();
+                        editandoIdFFinal = false;
+                    }
+                }
+
+                editando = false;
+            }
+            else if (borrando == true)
+            {
+                costeTotal = costeTotal - costeBorrado;
+                totalFacturaLabel2.Text = costeTotal.ToString();
+
+                this.facturaTableAdapter.Update(this.recoDueroDataSet);
+                borrando = false;
+            }
         }
 
         private bool ComprobarDatosIntroducidosDetalle()
         {
+            if (costeNumericUpDownDetalle.Value <= 0)
+            {
+                errorProvider1.SetError(costeNumericUpDownDetalle, "El coste del detalle de la factura no puede ser 0");
+                costeNumericUpDownDetalle.Value = 1;
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(descripcionTextBox.Text))
+            {
+                errorProvider1.SetError(descripcionTextBox, " Descripción obligatoria");
+                descripcionTextBox.Clear();
+                return false;
+            }
+            else if (descripcionTextBox.Text.Length > 20)
+            {
+                errorProvider1.SetError(descripcionTextBox, " No puede sobrepasar los 20 caracteres");
+                descripcionTextBox.Clear();
+                return false;
+            }
 
             //si todo es valido
+            errorProvider1.Clear();
             return true;
         }
 
@@ -963,7 +1302,7 @@ namespace GestionRecoDuero
             idDetalleFacturaLabel1.Enabled = false;
             idFacturaComboBox.Enabled = false;
             obraDetalleComboBox.Enabled = false;
-            costeNumericUpDown.Enabled = false;
+            costeNumericUpDownDetalle.Enabled = false;
             descripcionTextBox.Enabled = false;
 
             //Botones
@@ -977,7 +1316,7 @@ namespace GestionRecoDuero
             idDetalleFacturaLabel1.Enabled = true;
             idFacturaComboBox.Enabled = true;
             obraDetalleComboBox.Enabled = true;
-            costeNumericUpDown.Enabled = true;
+            costeNumericUpDownDetalle.Enabled = true;
             descripcionTextBox.Enabled = true;
 
             //Botones
@@ -987,7 +1326,7 @@ namespace GestionRecoDuero
 
         private void Factura_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (datosGuardados == false) // || datosDetalleGuardados == false
+            if (datosGuardados == false  || datosDetalleGuardados == false)
             {
                 DialogResult result = MessageBox.Show("¿Desea guardar antes de salir?\nSi no lo hace perderá los datos",
                     "Tiene cambios sin guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
@@ -997,6 +1336,7 @@ namespace GestionRecoDuero
                     if (ComprobarDatosIntroducidos())
                     {
                         this.facturaBindingSource.EndEdit();
+                        this.detalleFacturaBindingSource.EndEdit();
                         this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
                     }
                     else

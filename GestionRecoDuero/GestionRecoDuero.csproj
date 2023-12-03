@@ -246,6 +246,7 @@
     <EmbeddedResource Include="InformeEmpleados.resx">
       <DependentUpon>InformeEmpleados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InformeFactura.rdlc" />
     <EmbeddedResource Include="InformeFacturas.resx">
       <DependentUpon>InformeFacturas.cs</DependentUpon>
     </EmbeddedResource>

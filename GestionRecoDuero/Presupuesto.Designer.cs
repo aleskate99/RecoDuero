@@ -152,7 +152,7 @@
             // 
             comentariosLabel.AutoSize = true;
             comentariosLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            comentariosLabel.Location = new System.Drawing.Point(629, 290);
+            comentariosLabel.Location = new System.Drawing.Point(628, 259);
             comentariosLabel.Name = "comentariosLabel";
             comentariosLabel.Size = new System.Drawing.Size(114, 22);
             comentariosLabel.TabIndex = 40;
@@ -162,7 +162,7 @@
             // 
             estadoLabel.AutoSize = true;
             estadoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            estadoLabel.Location = new System.Drawing.Point(629, 194);
+            estadoLabel.Location = new System.Drawing.Point(628, 163);
             estadoLabel.Name = "estadoLabel";
             estadoLabel.Size = new System.Drawing.Size(81, 22);
             estadoLabel.TabIndex = 42;
@@ -182,7 +182,7 @@
             // 
             metodoLabel.AutoSize = true;
             metodoLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            metodoLabel.Location = new System.Drawing.Point(629, 241);
+            metodoLabel.Location = new System.Drawing.Point(628, 210);
             metodoLabel.Name = "metodoLabel";
             metodoLabel.Size = new System.Drawing.Size(156, 22);
             metodoLabel.TabIndex = 46;
@@ -192,7 +192,7 @@
             // 
             fechaEmisionLabel.AutoSize = true;
             fechaEmisionLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            fechaEmisionLabel.Location = new System.Drawing.Point(629, 136);
+            fechaEmisionLabel.Location = new System.Drawing.Point(628, 105);
             fechaEmisionLabel.Name = "fechaEmisionLabel";
             fechaEmisionLabel.Size = new System.Drawing.Size(167, 22);
             fechaEmisionLabel.TabIndex = 48;
@@ -260,7 +260,7 @@
             // 
             // buttonEditarLinea
             // 
-            this.buttonEditarLinea.Location = new System.Drawing.Point(610, 648);
+            this.buttonEditarLinea.Location = new System.Drawing.Point(609, 620);
             this.buttonEditarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditarLinea.Name = "buttonEditarLinea";
             this.buttonEditarLinea.Size = new System.Drawing.Size(100, 28);
@@ -277,10 +277,10 @@
             this.buttonCancelarDetallePresupuesto.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelarDetallePresupuesto.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelarDetallePresupuesto.Image")));
             this.buttonCancelarDetallePresupuesto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelarDetallePresupuesto.Location = new System.Drawing.Point(1089, 730);
+            this.buttonCancelarDetallePresupuesto.Location = new System.Drawing.Point(1088, 733);
             this.buttonCancelarDetallePresupuesto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancelarDetallePresupuesto.Name = "buttonCancelarDetallePresupuesto";
-            this.buttonCancelarDetallePresupuesto.Size = new System.Drawing.Size(169, 70);
+            this.buttonCancelarDetallePresupuesto.Size = new System.Drawing.Size(183, 70);
             this.buttonCancelarDetallePresupuesto.TabIndex = 17;
             this.buttonCancelarDetallePresupuesto.Text = "Cancelar";
             this.buttonCancelarDetallePresupuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -295,10 +295,10 @@
             this.buttonAceptarDetallePresupuesto.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptarDetallePresupuesto.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptarDetallePresupuesto.Image")));
             this.buttonAceptarDetallePresupuesto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptarDetallePresupuesto.Location = new System.Drawing.Point(844, 730);
+            this.buttonAceptarDetallePresupuesto.Location = new System.Drawing.Point(843, 733);
             this.buttonAceptarDetallePresupuesto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAceptarDetallePresupuesto.Name = "buttonAceptarDetallePresupuesto";
-            this.buttonAceptarDetallePresupuesto.Size = new System.Drawing.Size(165, 70);
+            this.buttonAceptarDetallePresupuesto.Size = new System.Drawing.Size(183, 70);
             this.buttonAceptarDetallePresupuesto.TabIndex = 16;
             this.buttonAceptarDetallePresupuesto.Text = "Aceptar";
             this.buttonAceptarDetallePresupuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -307,7 +307,7 @@
             // 
             // buttonBorrarLinea
             // 
-            this.buttonBorrarLinea.Location = new System.Drawing.Point(610, 601);
+            this.buttonBorrarLinea.Location = new System.Drawing.Point(609, 573);
             this.buttonBorrarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBorrarLinea.Name = "buttonBorrarLinea";
             this.buttonBorrarLinea.Size = new System.Drawing.Size(100, 28);
@@ -318,7 +318,7 @@
             // 
             // buttonAniadirLinea
             // 
-            this.buttonAniadirLinea.Location = new System.Drawing.Point(610, 553);
+            this.buttonAniadirLinea.Location = new System.Drawing.Point(609, 525);
             this.buttonAniadirLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAniadirLinea.Name = "buttonAniadirLinea";
             this.buttonAniadirLinea.Size = new System.Drawing.Size(100, 28);
@@ -490,7 +490,7 @@
             this.toolStripTextBoxBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxBuscar.Name = "toolStripTextBoxBuscar";
             this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 28);
-            this.toolStripTextBoxBuscar.ToolTipText = "Escribe el empleado que desee buscar";
+            this.toolStripTextBoxBuscar.ToolTipText = "Escribe el presupuesto que desee buscar";
             // 
             // toolStripButtonBuscar
             // 
@@ -523,7 +523,7 @@
             // 
             this.buttonVolverInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonVolverInicio.Image = ((System.Drawing.Image)(resources.GetObject("buttonVolverInicio.Image")));
-            this.buttonVolverInicio.Location = new System.Drawing.Point(1353, 105);
+            this.buttonVolverInicio.Location = new System.Drawing.Point(1365, 80);
             this.buttonVolverInicio.Name = "buttonVolverInicio";
             this.buttonVolverInicio.Size = new System.Drawing.Size(60, 54);
             this.buttonVolverInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -539,7 +539,7 @@
             this.buttonCancelar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelar.Image")));
             this.buttonCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelar.Location = new System.Drawing.Point(1089, 366);
+            this.buttonCancelar.Location = new System.Drawing.Point(1088, 363);
             this.buttonCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(183, 80);
@@ -557,7 +557,7 @@
             this.buttonAceptar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptar.Image")));
             this.buttonAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptar.Location = new System.Drawing.Point(844, 366);
+            this.buttonAceptar.Location = new System.Drawing.Point(843, 363);
             this.buttonAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(183, 80);
@@ -626,10 +626,10 @@
             // 
             this.comentariosTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presupuestoBindingSource, "Comentarios", true));
             this.comentariosTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comentariosTextBox.Location = new System.Drawing.Point(844, 290);
+            this.comentariosTextBox.Location = new System.Drawing.Point(843, 259);
             this.comentariosTextBox.Multiline = true;
             this.comentariosTextBox.Name = "comentariosTextBox";
-            this.comentariosTextBox.Size = new System.Drawing.Size(349, 49);
+            this.comentariosTextBox.Size = new System.Drawing.Size(349, 80);
             this.comentariosTextBox.TabIndex = 6;
             // 
             // estadoComboBox
@@ -642,7 +642,7 @@
             "Pendiente",
             "Aprobado",
             "Rechazado"});
-            this.estadoComboBox.Location = new System.Drawing.Point(844, 191);
+            this.estadoComboBox.Location = new System.Drawing.Point(843, 160);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(349, 30);
             this.estadoComboBox.TabIndex = 4;
@@ -667,7 +667,7 @@
             this.metodoComboBox.Items.AddRange(new object[] {
             "Efectivo",
             "Tarjeta"});
-            this.metodoComboBox.Location = new System.Drawing.Point(844, 238);
+            this.metodoComboBox.Location = new System.Drawing.Point(843, 207);
             this.metodoComboBox.Name = "metodoComboBox";
             this.metodoComboBox.Size = new System.Drawing.Size(349, 30);
             this.metodoComboBox.TabIndex = 5;
@@ -676,7 +676,7 @@
             // 
             this.fechaEmisionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.presupuestoBindingSource, "FechaEmision", true));
             this.fechaEmisionDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaEmisionDateTimePicker.Location = new System.Drawing.Point(844, 135);
+            this.fechaEmisionDateTimePicker.Location = new System.Drawing.Point(843, 104);
             this.fechaEmisionDateTimePicker.Name = "fechaEmisionDateTimePicker";
             this.fechaEmisionDateTimePicker.Size = new System.Drawing.Size(349, 30);
             this.fechaEmisionDateTimePicker.TabIndex = 3;
@@ -754,7 +754,7 @@
             this.groupBox2.Controls.Add(costeLabel1);
             this.groupBox2.Controls.Add(obraLabel);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(31, 463);
+            this.groupBox2.Location = new System.Drawing.Point(31, 451);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(543, 294);
             this.groupBox2.TabIndex = 62;
@@ -850,7 +850,7 @@
             this.detallePresupuestoDataGridView.ReadOnly = true;
             this.detallePresupuestoDataGridView.RowHeadersWidth = 51;
             this.detallePresupuestoDataGridView.RowTemplate.Height = 24;
-            this.detallePresupuestoDataGridView.Size = new System.Drawing.Size(555, 251);
+            this.detallePresupuestoDataGridView.Size = new System.Drawing.Size(555, 256);
             this.detallePresupuestoDataGridView.TabIndex = 62;
             // 
             // dataGridViewTextBoxColumn1
