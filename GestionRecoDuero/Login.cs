@@ -155,7 +155,6 @@ namespace GestionRecoDuero
             }
         }
 
-        //TODO: REVISAR LO DEL CORREO
         private void linkLabelPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             EnvioMail mail = new EnvioMail();
@@ -169,7 +168,6 @@ namespace GestionRecoDuero
                 tableAdapterManager.UpdateAll(recoDueroDataSet);
 
                 mail.envioCorreo(emailTextBox.Text, true);
-                //MessageBox.Show("Correo enviado!");
             }
             else
             {

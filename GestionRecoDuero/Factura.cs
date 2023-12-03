@@ -19,8 +19,8 @@ namespace GestionRecoDuero
             KeyPreview = true;
 
             //Redondear controles
-            //Bordes.BordesRedondosBoton(buttonAceptar);
-            //Bordes.BordesRedondosBoton(buttonCancelar);
+            Bordes.BordesRedondosBoton(buttonAceptar);
+            Bordes.BordesRedondosBoton(buttonCancelar);
         }
 
         private void Factura_Load(object sender, EventArgs e)
@@ -455,7 +455,7 @@ namespace GestionRecoDuero
                 {
                     printDocument1.Print();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -822,6 +822,17 @@ namespace GestionRecoDuero
         {
             //si todo es valido
             return true;
+        }
+
+        private void fechaEmisionDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionada = fechaEmisionDateTimePicker.Value;
+
+            if (fechaSeleccionada > DateTime.Today)
+            {
+                Comun.MostrarMensajeDeError("No puede seleccionar una fecha futura al día de hoy.", "Error al seleccionar fecha");
+                fechaEmisionDateTimePicker.Value = DateTime.Today;
+            }
         }
 
         /////////////////////    MAESTRO DETALLE

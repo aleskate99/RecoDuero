@@ -313,7 +313,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1424, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1424, 28);
             this.toolStrip1.TabIndex = 33;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -323,7 +323,7 @@
             this.toolStripButtonInicio.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInicio.Image")));
             this.toolStripButtonInicio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInicio.Name = "toolStripButtonInicio";
-            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonInicio.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonInicio.ToolTipText = "Ir al principio";
             this.toolStripButtonInicio.Click += new System.EventHandler(this.toolStripButtonInicio_Click);
             // 
@@ -597,6 +597,7 @@
             this.fechaEmisionDateTimePicker.Name = "fechaEmisionDateTimePicker";
             this.fechaEmisionDateTimePicker.Size = new System.Drawing.Size(322, 30);
             this.fechaEmisionDateTimePicker.TabIndex = 47;
+            this.fechaEmisionDateTimePicker.ValueChanged += new System.EventHandler(this.fechaEmisionDateTimePicker_ValueChanged);
             // 
             // impuestosTextBox
             // 

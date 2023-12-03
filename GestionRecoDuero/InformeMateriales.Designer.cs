@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InformeMateriales));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.recoDueroDataSet = new GestionRecoDuero.RecoDueroDataSet();
             this.buttonVolverInicio = new System.Windows.Forms.Button();
@@ -76,9 +76,9 @@
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.materialBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.materialBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "GestionRecoDuero.InformeMaterial.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1, 1);
             this.reportViewer1.Name = "reportViewer1";
@@ -88,10 +88,10 @@
             // 
             // buttonFiltrarNombre
             // 
-            this.buttonFiltrarNombre.Location = new System.Drawing.Point(1196, 205);
+            this.buttonFiltrarNombre.Location = new System.Drawing.Point(1187, 205);
             this.buttonFiltrarNombre.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarNombre.Name = "buttonFiltrarNombre";
-            this.buttonFiltrarNombre.Size = new System.Drawing.Size(143, 28);
+            this.buttonFiltrarNombre.Size = new System.Drawing.Size(160, 28);
             this.buttonFiltrarNombre.TabIndex = 2;
             this.buttonFiltrarNombre.Text = "Filtrar por nombre";
             this.buttonFiltrarNombre.UseVisualStyleBackColor = true;
@@ -99,7 +99,7 @@
             // 
             // textBoxFiltrarNombre
             // 
-            this.textBoxFiltrarNombre.Location = new System.Drawing.Point(1031, 209);
+            this.textBoxFiltrarNombre.Location = new System.Drawing.Point(1029, 209);
             this.textBoxFiltrarNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFiltrarNombre.Name = "textBoxFiltrarNombre";
             this.textBoxFiltrarNombre.Size = new System.Drawing.Size(132, 22);
@@ -123,17 +123,17 @@
             "Disponible",
             "Pendiente",
             "Agotado"});
-            this.comboBoxFiltrarEstado.Location = new System.Drawing.Point(1031, 375);
+            this.comboBoxFiltrarEstado.Location = new System.Drawing.Point(1029, 375);
             this.comboBoxFiltrarEstado.Name = "comboBoxFiltrarEstado";
             this.comboBoxFiltrarEstado.Size = new System.Drawing.Size(132, 24);
             this.comboBoxFiltrarEstado.TabIndex = 5;
             // 
             // buttonFiltrarEstado
             // 
-            this.buttonFiltrarEstado.Location = new System.Drawing.Point(1196, 371);
+            this.buttonFiltrarEstado.Location = new System.Drawing.Point(1187, 371);
             this.buttonFiltrarEstado.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarEstado.Name = "buttonFiltrarEstado";
-            this.buttonFiltrarEstado.Size = new System.Drawing.Size(143, 31);
+            this.buttonFiltrarEstado.Size = new System.Drawing.Size(160, 31);
             this.buttonFiltrarEstado.TabIndex = 6;
             this.buttonFiltrarEstado.Text = "Filtrar por estado";
             this.buttonFiltrarEstado.UseVisualStyleBackColor = true;
@@ -141,10 +141,10 @@
             // 
             // buttonFiltrarDistribuidor
             // 
-            this.buttonFiltrarDistribuidor.Location = new System.Drawing.Point(1196, 281);
+            this.buttonFiltrarDistribuidor.Location = new System.Drawing.Point(1187, 281);
             this.buttonFiltrarDistribuidor.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFiltrarDistribuidor.Name = "buttonFiltrarDistribuidor";
-            this.buttonFiltrarDistribuidor.Size = new System.Drawing.Size(166, 28);
+            this.buttonFiltrarDistribuidor.Size = new System.Drawing.Size(160, 28);
             this.buttonFiltrarDistribuidor.TabIndex = 4;
             this.buttonFiltrarDistribuidor.Text = "Filtrar por distribuidor";
             this.buttonFiltrarDistribuidor.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@
             // 
             // textBoxFiltrarDistribuidor
             // 
-            this.textBoxFiltrarDistribuidor.Location = new System.Drawing.Point(1031, 283);
+            this.textBoxFiltrarDistribuidor.Location = new System.Drawing.Point(1029, 283);
             this.textBoxFiltrarDistribuidor.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFiltrarDistribuidor.Name = "textBoxFiltrarDistribuidor";
             this.textBoxFiltrarDistribuidor.Size = new System.Drawing.Size(132, 22);

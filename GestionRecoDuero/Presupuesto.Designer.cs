@@ -351,7 +351,7 @@
             this.toolStripButtonBuscar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1425, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1425, 28);
             this.toolStrip1.TabIndex = 31;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -680,6 +680,7 @@
             this.fechaEmisionDateTimePicker.Name = "fechaEmisionDateTimePicker";
             this.fechaEmisionDateTimePicker.Size = new System.Drawing.Size(349, 30);
             this.fechaEmisionDateTimePicker.TabIndex = 3;
+            this.fechaEmisionDateTimePicker.ValueChanged += new System.EventHandler(this.fechaEmisionDateTimePicker_ValueChanged);
             // 
             // labelDinero
             // 
@@ -786,6 +787,11 @@
             this.costeNumericUpDownDetalle.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detallePresupuestoBindingSource, "Coste", true));
             this.costeNumericUpDownDetalle.DecimalPlaces = 2;
             this.costeNumericUpDownDetalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costeNumericUpDownDetalle.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.costeNumericUpDownDetalle.Location = new System.Drawing.Point(227, 191);
             this.costeNumericUpDownDetalle.Maximum = new decimal(new int[] {
             2147483647,

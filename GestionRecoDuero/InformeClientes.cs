@@ -12,7 +12,6 @@ namespace GestionRecoDuero
 
         private void InformeClientes_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'recoDueroDataSet.Cliente' Puede moverla o quitarla según sea necesario.
             this.clienteTableAdapter.Fill(this.recoDueroDataSet.Cliente);
             this.reportViewer1.RefreshReport();
         }

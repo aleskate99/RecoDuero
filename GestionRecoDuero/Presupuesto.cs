@@ -6,7 +6,6 @@ using GestionRecoDuero.RecoDueroDataSetTableAdapters;
 using static GestionRecoDuero.RecoDueroDataSet;
 using System.Data;
 using System.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GestionRecoDuero
 {
@@ -20,15 +19,15 @@ namespace GestionRecoDuero
         private bool insertando = false;
 
         //EDITAR
-        private int costeAdicional = 0;
-        private int costeTotalFinal = 0;
+        private float costeAdicional = 0;
+        private float costeTotalFinal = 0;
         private int idDetallePresupuesto = 0;
         private int idPresupuestoInicialEditado = 0;
-        private int costeInicialEditado = 0;
+        private float costeInicialEditado = 0;
         private int idPresupuestoFinalEditado = 0;
-        private int costeFinalEditado = 0;
-        private int costeTotalInicialEditado = 0;
-        private int costeTotalFinalEditado = 0;
+        private float costeFinalEditado = 0;
+        private float costeTotalInicialEditado = 0;
+        private float costeTotalFinalEditado = 0;
         private bool editando = false;
         private bool editandoIdPresupuesto = false;
         private bool editandoIdPInicial = false;
@@ -37,9 +36,9 @@ namespace GestionRecoDuero
 
         //BORRAR
         private bool borrando = false;
-        private int costeBorrado = 0;
+        private float costeBorrado = 0;
         private int idPresupuesto = 0;
-        private int costeTotal = 0;
+        private float costeTotal = 0;
 
         public Presupuesto()
         {
@@ -144,7 +143,6 @@ namespace GestionRecoDuero
             }
             else
             {
-
                 toolStripButtonSiguiente.Enabled = true;
                 toolStripButtonFinal.Enabled = true;
                 toolStripButtonAnterior.Enabled = false;
@@ -233,11 +231,6 @@ namespace GestionRecoDuero
             ((DataRowView)presupuestoBindingSource.Current)["Estado"] = estadoComboBox.SelectedItem.ToString();
             ((DataRowView)presupuestoBindingSource.Current)["Metodo"] = metodoComboBox.SelectedItem.ToString();
             ((DataRowView)presupuestoBindingSource.Current)["FechaEmision"] = fechaEmisionDateTimePicker.Value;
-
-            //MAESTRO DETALLE 
-            buttonAniadirLinea.Enabled = false;
-            buttonBorrarLinea.Enabled = false;
-            buttonEditarLinea.Enabled = false;
         }
 
         private void HabilitarControlesEnAnadir()
@@ -251,7 +244,6 @@ namespace GestionRecoDuero
             MostrarCampos();
 
             //Campos por defecto a una opción
-            //costeNumericUpDown.Value = 1;
             costeLabel3.Text = "0";
             estadoComboBox.SelectedIndex = 0;
             metodoComboBox.SelectedIndex = 0;
@@ -271,6 +263,11 @@ namespace GestionRecoDuero
             toolStripButtonBuscar.Enabled = false;
             toolStripComboBoxBuscarPresupuestos.Enabled = false;
             toolStripTextBoxBuscar.Enabled = false;
+
+            //MAESTRO DETALLE 
+            buttonAniadirLinea.Enabled = false;
+            buttonBorrarLinea.Enabled = false;
+            buttonEditarLinea.Enabled = false;
         }
 
         //ELIMINAR
@@ -312,7 +309,6 @@ namespace GestionRecoDuero
                     toolStripButtonFinal.Enabled = false;
                 }
             }
-
             RefrescarToolstripLabelPresupuesto();
         }
 
@@ -322,6 +318,12 @@ namespace GestionRecoDuero
             toolStripStatusLabel1.Text = "Editar presupuesto";
             EstadoControlesEditar();
             ComprobarDatosIntroducidos();
+
+            //MAESTRO DETALLE 
+            buttonAniadirLinea.Enabled = false;
+            buttonBorrarLinea.Enabled = false;
+            buttonEditarLinea.Enabled = false;
+
             datosGuardados = false;
         }
 
@@ -363,10 +365,20 @@ namespace GestionRecoDuero
 
                 CargarPresupuestos();
 
-                //MAESTRO DETALLE 
-                buttonAniadirLinea.Enabled = true;
-                buttonBorrarLinea.Enabled = true;
-                buttonEditarLinea.Enabled = true;
+                if (detallePresupuestoBindingSource.Count <= 0)
+                {
+                    //MAESTRO DETALLE 
+                    buttonAniadirLinea.Enabled = true;
+                    buttonBorrarLinea.Enabled = false;
+                    buttonEditarLinea.Enabled = false;
+                }
+                else
+                {
+                    //MAESTRO DETALLE 
+                    buttonAniadirLinea.Enabled = true;
+                    buttonBorrarLinea.Enabled = true;
+                    buttonEditarLinea.Enabled = true;
+                }
 
                 Comun.MostrarMensajeDeError("Guardado con éxito.", "Guardado con éxito");
                 datosGuardados = true;
@@ -483,7 +495,7 @@ namespace GestionRecoDuero
                 {
                     printDocument1.Print();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error de impresión al imprimir el formulario", "Imprimir formulario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -635,14 +647,24 @@ namespace GestionRecoDuero
             var resultado = MessageBox.Show("¿Quiere cancelar la operación?", "Confirmación botón cancelar", MessageBoxButtons.OKCancel);
             if (resultado == DialogResult.OK)
             {
-                presupuestoBindingSource.CancelEdit();
+                //presupuestoBindingSource.CancelEdit();
 
                 if (presupuestoBindingSource.Count > 0)
                 {
-                    //MAESTRO DETALLE 
-                    buttonAniadirLinea.Enabled = true;
-                    buttonBorrarLinea.Enabled = true;
-                    buttonEditarLinea.Enabled = true;
+                    if (detallePresupuestoBindingSource.Count <= 0)
+                    {
+                        //MAESTRO DETALLE 
+                        buttonAniadirLinea.Enabled = true;
+                        buttonBorrarLinea.Enabled = false;
+                        buttonEditarLinea.Enabled = false;
+                    }
+                    else
+                    {
+                        //MAESTRO DETALLE 
+                        buttonAniadirLinea.Enabled = true;
+                        buttonBorrarLinea.Enabled = true;
+                        buttonEditarLinea.Enabled = true;
+                    }
                 }
                 else
                 {
@@ -840,11 +862,21 @@ namespace GestionRecoDuero
 
             if (presupuestoBindingSource.Count > 0)
             {
-                //MAESTRO DETALLE 
-                buttonAniadirLinea.Enabled = true;
-                buttonBorrarLinea.Enabled = true;
-                buttonEditarLinea.Enabled = true;
-
+                if (detallePresupuestoBindingSource.Count <= 0)
+                {
+                    //MAESTRO DETALLE 
+                    buttonAniadirLinea.Enabled = true;
+                    buttonBorrarLinea.Enabled = false;
+                    buttonEditarLinea.Enabled = false;
+                }
+                else
+                {
+                    //MAESTRO DETALLE 
+                    buttonAniadirLinea.Enabled = true;
+                    buttonBorrarLinea.Enabled = true;
+                    buttonEditarLinea.Enabled = true;
+                }
+                
                 OcultarControlesDetalle();
                 CargarPresupuestos();
             }
@@ -854,10 +886,16 @@ namespace GestionRecoDuero
         {
             toolStripStatusLabel1.Text = "Añadir detalle presupuesto";
             insertando = true;
+
+            //MAESTRO DETALLE 
+            buttonAniadirLinea.Enabled = false;
+            buttonBorrarLinea.Enabled = false;
+            buttonEditarLinea.Enabled = false;
+
             if (datosGuardados == true)
             {
                 detallePresupuestoDataGridView.ReadOnly = false;
-                detallePresupuestoDataGridView.AllowUserToAddRows = true;
+                //detallePresupuestoDataGridView.AllowUserToAddRows = true;
 
                 detallePresupuestoBindingSource.AddNew();
 
@@ -882,7 +920,7 @@ namespace GestionRecoDuero
                     ((DataRowView)detallePresupuestoBindingSource.Current)["Obra"] = obraComboBox.SelectedItem.ToString();
                 }
 
-                ((DataRowView)detallePresupuestoBindingSource.Current)["Coste"] = (int)costeNumericUpDownDetalle.Value;
+                ((DataRowView)detallePresupuestoBindingSource.Current)["Coste"] = (float)costeNumericUpDownDetalle.Value;
 
                 detallePresupuestoDataGridView.ReadOnly = true;
 
@@ -894,6 +932,7 @@ namespace GestionRecoDuero
         {
             MostarControlesDetalle();
             costeNumericUpDownDetalle.Value = 1;
+            
         }
 
         private void buttonBorrarLinea_Click(object sender, EventArgs e)
@@ -916,7 +955,7 @@ namespace GestionRecoDuero
                     DetallePresupuestoDataTable detallePresupuestoData = detallePresupuestoTableAdapter.GetData();
 
                     double[] costesDetallePresupuesto = detallePresupuestoData.Select(p => p.Coste).ToArray();
-                    costeBorrado = (int)costesDetallePresupuesto[detallePresupuestoDataGridView.CurrentRow.Index];
+                    costeBorrado = (float)costesDetallePresupuesto[detallePresupuestoDataGridView.CurrentRow.Index];
 
                     int[] idsPresupuestoDP = detallePresupuestoData.Select(p => p.IdPresupuesto).ToArray();
                     idPresupuesto = idsPresupuestoDP[detallePresupuestoDataGridView.CurrentRow.Index];
@@ -936,13 +975,14 @@ namespace GestionRecoDuero
                             break;
                         }
                     }
-                    costeTotal = (int)costesTotales[indiceBorrado];
+                    costeTotal = (float)costesTotales[indiceBorrado];
 
                     CalcularCosteTotal();
 
                     detallePresupuestoBindingSource.RemoveCurrent();
                     detallePresupuestoBindingSource.EndEdit();
                     this.detallePresupuestoTableAdapter.Update(this.recoDueroDataSet);
+
                     presupuestoBindingSource.EndEdit();
                     this.presupuestoTableAdapter.Update(this.recoDueroDataSet);
                 }
@@ -954,8 +994,23 @@ namespace GestionRecoDuero
             toolStripStatusLabel1.Text = "Editar detalle presupuesto";
             editando = true;
 
+            if (detallePresupuestoBindingSource.Count > 0)
+            {
+                //MAESTRO DETALLE 
+                buttonAniadirLinea.Enabled = true;
+                buttonBorrarLinea.Enabled = true;
+                buttonEditarLinea.Enabled = true;
+            }
+            else
+            {
+                //MAESTRO DETALLE 
+                buttonAniadirLinea.Enabled = false;
+                buttonBorrarLinea.Enabled = false;
+                buttonEditarLinea.Enabled = false;
+            }
+
             detallePresupuestoDataGridView.ReadOnly = false;
-            detallePresupuestoDataGridView.AllowUserToAddRows = true;
+            //detallePresupuestoDataGridView.AllowUserToAddRows = true;
 
             MostarControlesDetalle();
 
@@ -963,11 +1018,10 @@ namespace GestionRecoDuero
 
             datosDetalleGuardados = false;
 
-            costeInicialEditado = (int)costeNumericUpDownDetalle.Value;
+            costeInicialEditado = (float)costeNumericUpDownDetalle.Value;
             idPresupuestoInicialEditado = int.Parse(idPresupuestoComboBox.Text.ToString());
         }
 
-        //TODO: Revisar el coste total cuando se borra una línea
         private void buttonAceptarDetallePresupuesto_Click(object sender, EventArgs e)
         {
             if (ComprobarDatosIntroducidosDetalle())
@@ -981,10 +1035,30 @@ namespace GestionRecoDuero
                 this.presupuestoTableAdapter.Update(this.recoDueroDataSet);
 
                 OcultarControlesDetalle();
+
+                //MAESTRO DETALLE 
+                buttonAniadirLinea.Enabled = true;
+                buttonBorrarLinea.Enabled = true;
+                buttonEditarLinea.Enabled = true;
+
                 datosDetalleGuardados = true;
             }
         }
 
+        private void buttonCancelarDetallePresupuesto_Click(object sender, EventArgs e)
+        {
+            this.detallePresupuestoBindingSource.CancelEdit();
+            OcultarControlesDetalle();
+
+            //MAESTRO DETALLE 
+            buttonAniadirLinea.Enabled = true;
+            buttonBorrarLinea.Enabled = true;
+            buttonEditarLinea.Enabled = true;
+
+            errorProvider1.Clear();
+        }
+
+        //TODO: ENTENDER COMO FUNCIONA
         private void CalcularCosteTotal()
         {
             DetallePresupuestoTableAdapter detallePresupuestoTableAdapter = new DetallePresupuestoTableAdapter();
@@ -1008,7 +1082,7 @@ namespace GestionRecoDuero
                 {
                     if (id == ids[idPresupuestoComboBox.SelectedIndex])
                     {
-                        costeLabel3.Text = (Convert.ToInt32(costeLabel3.Text) + Convert.ToInt32(costeNumericUpDownDetalle.Text)).ToString();
+                        costeLabel3.Text = (Convert.ToDouble(costeLabel3.Text) + Convert.ToDouble(costeNumericUpDownDetalle.Text)).ToString();
                         this.presupuestoTableAdapter.Update(this.recoDueroDataSet);
                     }
                 }
@@ -1016,12 +1090,8 @@ namespace GestionRecoDuero
             }
             else if (editando == true)
             {
-                costeFinalEditado = (int)costeNumericUpDownDetalle.Value;
+                costeFinalEditado = (float)costeNumericUpDownDetalle.Value;
                 idPresupuestoFinalEditado = int.Parse(idPresupuestoComboBox.Text.ToString());
-                //if (int.TryParse(idPresupuestoComboBox.SelectedValue.ToString(), out int resultado2))
-                //{
-                //    idPresupuestoFinalEditado = resultado2;
-                //}
 
                 if (costeInicialEditado != costeFinalEditado)
                 {
@@ -1038,7 +1108,7 @@ namespace GestionRecoDuero
                     costeAdicional = costeFinalEditado - costeInicialEditado;
 
                     string costeTotalInicial = costeLabel3.Text;
-                    if (int.TryParse(costeTotalInicial, out int resultado))
+                    if (float.TryParse(costeTotalInicial, out float resultado))
                     {
                         costeTotalFinal = resultado + costeAdicional;
                         costeLabel3.Text = costeTotalFinal.ToString();
@@ -1048,8 +1118,8 @@ namespace GestionRecoDuero
                 if (editandoIdPresupuesto == true)
                 {
                     idDetallePresupuesto = idsDetallePresupuesto[detallePresupuestoDataGridView.CurrentRow.Index];
-                    int costeParcial = (int)costesDetallePresupuesto[detallePresupuestoDataGridView.CurrentRow.Index];
-                    int costeTotalInicial = 0, costeTotalFinal = 0;
+                    float costeParcial = (float)costesDetallePresupuesto[detallePresupuestoDataGridView.CurrentRow.Index];
+                    float costeTotalInicial = 0, costeTotalFinal = 0;
                     int indiceInicial = 0, indiceFinal = 0;
                     int i = 0, j = 0;
                     foreach (int idP in idsPresupuestoP)
@@ -1058,14 +1128,14 @@ namespace GestionRecoDuero
                         {
                             if (idP == idPresupuestoInicialEditado && idDP == idDetallePresupuesto)
                             {
-                                costeTotalInicial = (int)costesTotales[i];
+                                costeTotalInicial = (float)costesTotales[i];
                                 indiceInicial = i;
                                 editandoIdPInicial = true;
                             }
 
                             if (idP == idPresupuestoFinalEditado && idDP == idDetallePresupuesto)
                             {
-                                costeTotalFinal = (int)costesTotales[i];
+                                costeTotalFinal = (float)costesTotales[i];
                                 indiceFinal = i;
                                 editandoIdPFinal = true;
                             }
@@ -1105,12 +1175,6 @@ namespace GestionRecoDuero
                 this.presupuestoTableAdapter.Update(this.recoDueroDataSet);
                 borrando = false;
             }
-        }
-
-        private void buttonCancelarDetallePresupuesto_Click(object sender, EventArgs e)
-        {
-            this.detallePresupuestoBindingSource.CancelEdit();
-            OcultarControlesDetalle();
         }
 
         private void OcultarControlesDetalle()
@@ -1176,6 +1240,17 @@ namespace GestionRecoDuero
                 {
                     NavegarRegistro(resultado - 1);
                 }
+            }
+        }
+
+        private void fechaEmisionDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionada = fechaEmisionDateTimePicker.Value;
+
+            if (fechaSeleccionada > DateTime.Today)
+            {
+                Comun.MostrarMensajeDeError("No puede seleccionar una fecha futura al día de hoy.", "Error al seleccionar fecha");
+                fechaEmisionDateTimePicker.Value = DateTime.Today;
             }
         }
 
