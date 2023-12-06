@@ -700,7 +700,7 @@ namespace GestionRecoDuero
                 EstadoControlesCancelar();
 
                 errorProvider1.Clear();
-                datosGuardados = false;
+                datosGuardados = true;
                 RefrescarToolstripLabelPresupuesto();
             }
 

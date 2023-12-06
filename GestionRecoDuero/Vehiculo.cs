@@ -604,7 +604,7 @@ namespace GestionRecoDuero
                 vehiculoBindingSource.CancelEdit();
                 EstadoControlesCancelar();
                 errorProvider1.Clear();
-                datosGuardados = false;
+                datosGuardados = true;
             }
 
             RefrescarToolstripLabelVehiculo();

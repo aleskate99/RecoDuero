@@ -333,14 +333,14 @@
             this.toolStripButtonAnterior.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnterior.Image")));
             this.toolStripButtonAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnterior.Name = "toolStripButtonAnterior";
-            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonAnterior.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonAnterior.ToolTipText = "Anterior";
             this.toolStripButtonAnterior.Click += new System.EventHandler(this.toolStripButtonAnterior_Click);
             // 
             // toolstripLabelContadorFacturas
             // 
             this.toolstripLabelContadorFacturas.Name = "toolstripLabelContadorFacturas";
-            this.toolstripLabelContadorFacturas.Size = new System.Drawing.Size(111, 28);
+            this.toolstripLabelContadorFacturas.Size = new System.Drawing.Size(111, 25);
             this.toolstripLabelContadorFacturas.Text = "toolStripLabel1";
             // 
             // toolStripButtonSiguiente
@@ -349,7 +349,7 @@
             this.toolStripButtonSiguiente.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSiguiente.Image")));
             this.toolStripButtonSiguiente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSiguiente.Name = "toolStripButtonSiguiente";
-            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonSiguiente.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonSiguiente.ToolTipText = "Siguiente";
             this.toolStripButtonSiguiente.Click += new System.EventHandler(this.toolStripButtonSiguiente_Click);
             // 
@@ -359,14 +359,14 @@
             this.toolStripButtonFinal.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFinal.Image")));
             this.toolStripButtonFinal.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFinal.Name = "toolStripButtonFinal";
-            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonFinal.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonFinal.ToolTipText = "Ir al final";
             this.toolStripButtonFinal.Click += new System.EventHandler(this.toolStripButtonFinal_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButtonAnadir
             // 
@@ -374,7 +374,7 @@
             this.toolStripButtonAnadir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAnadir.Image")));
             this.toolStripButtonAnadir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAnadir.Name = "toolStripButtonAnadir";
-            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonAnadir.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonAnadir.ToolTipText = "Añadir factura";
             this.toolStripButtonAnadir.Click += new System.EventHandler(this.toolStripButtonAnadir_Click);
             // 
@@ -384,7 +384,7 @@
             this.toolStripButtonEliminar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEliminar.Image")));
             this.toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonEliminar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonEliminar.ToolTipText = "Eliminar factura";
             this.toolStripButtonEliminar.Click += new System.EventHandler(this.toolStripButtonEliminar_Click);
             // 
@@ -394,14 +394,14 @@
             this.toolStripButtonEditar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditar.Image")));
             this.toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditar.Name = "toolStripButtonEditar";
-            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonEditar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonEditar.ToolTipText = "Editar factura";
             this.toolStripButtonEditar.Click += new System.EventHandler(this.toolStripButtonEditar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButtonGuardar
             // 
@@ -409,7 +409,7 @@
             this.toolStripButtonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGuardar.Image")));
             this.toolStripButtonGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGuardar.Name = "toolStripButtonGuardar";
-            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonGuardar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonGuardar.ToolTipText = "Guardar ";
             this.toolStripButtonGuardar.Click += new System.EventHandler(this.toolStripButtonGuardar_Click);
             // 
@@ -419,7 +419,7 @@
             this.toolStripButtonImprimir.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonImprimir.Image")));
             this.toolStripButtonImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonImprimir.Name = "toolStripButtonImprimir";
-            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonImprimir.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonImprimir.ToolTipText = "Imprimir ";
             this.toolStripButtonImprimir.Click += new System.EventHandler(this.toolStripButtonImprimir_Click);
             // 
@@ -429,21 +429,21 @@
             this.toolStripButtonInforme.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInforme.Image")));
             this.toolStripButtonInforme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInforme.Name = "toolStripButtonInforme";
-            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonInforme.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonInforme.ToolTipText = "Informe";
             this.toolStripButtonInforme.Click += new System.EventHandler(this.toolStripButtonInforme_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripComboBoxBuscarFacturas
             // 
             this.toolStripComboBoxBuscarFacturas.Items.AddRange(new object[] {
             "Id"});
             this.toolStripComboBoxBuscarFacturas.Name = "toolStripComboBoxBuscarFacturas";
-            this.toolStripComboBoxBuscarFacturas.Size = new System.Drawing.Size(160, 31);
+            this.toolStripComboBoxBuscarFacturas.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBoxBuscarFacturas.Text = "Buscar factura";
             this.toolStripComboBoxBuscarFacturas.ToolTipText = "Seleccione mediante que campo desea buscar la factura";
             // 
@@ -451,7 +451,7 @@
             // 
             this.toolStripTextBoxBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxBuscar.Name = "toolStripTextBoxBuscar";
-            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 31);
+            this.toolStripTextBoxBuscar.Size = new System.Drawing.Size(132, 28);
             this.toolStripTextBoxBuscar.ToolTipText = "Escribe la factura que desee buscar";
             // 
             // toolStripButtonBuscar
@@ -460,13 +460,13 @@
             this.toolStripButtonBuscar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBuscar.Image")));
             this.toolStripButtonBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBuscar.Name = "toolStripButtonBuscar";
-            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButtonBuscar.Size = new System.Drawing.Size(29, 25);
             this.toolStripButtonBuscar.ToolTipText = "Buscar";
             this.toolStripButtonBuscar.Click += new System.EventHandler(this.toolStripButtonBuscar_Click);
             // 
             // buttonEditarLinea
             // 
-            this.buttonEditarLinea.Location = new System.Drawing.Point(598, 612);
+            this.buttonEditarLinea.Location = new System.Drawing.Point(601, 639);
             this.buttonEditarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditarLinea.Name = "buttonEditarLinea";
             this.buttonEditarLinea.Size = new System.Drawing.Size(100, 28);
@@ -483,7 +483,7 @@
             this.buttonCancelarDetalleFactura.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelarDetalleFactura.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancelarDetalleFactura.Image")));
             this.buttonCancelarDetalleFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelarDetalleFactura.Location = new System.Drawing.Point(979, 718);
+            this.buttonCancelarDetalleFactura.Location = new System.Drawing.Point(979, 741);
             this.buttonCancelarDetalleFactura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancelarDetalleFactura.Name = "buttonCancelarDetalleFactura";
             this.buttonCancelarDetalleFactura.Size = new System.Drawing.Size(183, 70);
@@ -501,7 +501,7 @@
             this.buttonAceptarDetalleFactura.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptarDetalleFactura.Image = ((System.Drawing.Image)(resources.GetObject("buttonAceptarDetalleFactura.Image")));
             this.buttonAceptarDetalleFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAceptarDetalleFactura.Location = new System.Drawing.Point(734, 718);
+            this.buttonAceptarDetalleFactura.Location = new System.Drawing.Point(734, 741);
             this.buttonAceptarDetalleFactura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAceptarDetalleFactura.Name = "buttonAceptarDetalleFactura";
             this.buttonAceptarDetalleFactura.Size = new System.Drawing.Size(183, 70);
@@ -513,7 +513,7 @@
             // 
             // buttonBorrarLinea
             // 
-            this.buttonBorrarLinea.Location = new System.Drawing.Point(598, 558);
+            this.buttonBorrarLinea.Location = new System.Drawing.Point(601, 585);
             this.buttonBorrarLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBorrarLinea.Name = "buttonBorrarLinea";
             this.buttonBorrarLinea.Size = new System.Drawing.Size(100, 28);
@@ -524,7 +524,7 @@
             // 
             // buttonAniadirLinea
             // 
-            this.buttonAniadirLinea.Location = new System.Drawing.Point(598, 511);
+            this.buttonAniadirLinea.Location = new System.Drawing.Point(601, 538);
             this.buttonAniadirLinea.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAniadirLinea.Name = "buttonAniadirLinea";
             this.buttonAniadirLinea.Size = new System.Drawing.Size(100, 28);
@@ -843,12 +843,12 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
             this.detalleFacturaDataGridView.DataSource = this.detalleFacturaBindingSource;
-            this.detalleFacturaDataGridView.Location = new System.Drawing.Point(734, 456);
+            this.detalleFacturaDataGridView.Location = new System.Drawing.Point(734, 467);
             this.detalleFacturaDataGridView.Name = "detalleFacturaDataGridView";
             this.detalleFacturaDataGridView.ReadOnly = true;
             this.detalleFacturaDataGridView.RowHeadersWidth = 51;
             this.detalleFacturaDataGridView.RowTemplate.Height = 24;
-            this.detalleFacturaDataGridView.Size = new System.Drawing.Size(550, 232);
+            this.detalleFacturaDataGridView.Size = new System.Drawing.Size(550, 258);
             this.detalleFacturaDataGridView.TabIndex = 71;
             // 
             // dataGridViewTextBoxColumn1

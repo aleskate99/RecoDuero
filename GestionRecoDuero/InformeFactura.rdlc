@@ -6,19 +6,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>1.12417cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.87583cm</Width>
+              <Width>4.151cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.89933cm</Width>
+              <Width>4.55783cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.20367cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.09783cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -133,7 +133,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Estado Pago</Value>
+                              <Value>Estado</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -165,7 +165,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Metodo Pago</Value>
+                              <Value>Método</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -443,9 +443,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>1.3462cm</Top>
-        <Left>0.52991cm</Left>
+        <Left>0.99325cm</Left>
         <Height>1.2cm</Height>
-        <Width>17.77517cm</Width>
+        <Width>16.6345cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -453,7 +453,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.54167in</Height>
+    <Height>3.7in</Height>
     <Style />
   </Body>
   <Width>7.70075in</Width>

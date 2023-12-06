@@ -591,7 +591,7 @@ namespace GestionRecoDuero
                 clienteBindingSource.CancelEdit();
                 EstadoControlesCancelar();
                 errorProvider1.Clear();
-                datosGuardados = false;
+                datosGuardados = true;
             }
 
             RefrescarToolstripLabelCliente();

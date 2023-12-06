@@ -623,9 +623,8 @@ namespace GestionRecoDuero
                 empleadoBindingSource.CancelEdit();
                 EstadoControlesCancelar();
                 errorProvider1.Clear();
-                datosGuardados = false;
+                datosGuardados = true;
             }
-
             RefrescarToolstripLabelEmpleado();
         }
 

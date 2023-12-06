@@ -47,14 +47,14 @@ namespace GestionRecoDuero
 
         private void buttonFiltrarEstado_Click(object sender, EventArgs e)
         {
-            facturaBindingSource.Filter = "Estado='" + comboBoxFiltrarEstado.Text + "'";
+            facturaBindingSource.Filter = "EstadoPago='" + comboBoxFiltrarEstado.Text + "'";
             reportViewer1.RefreshReport();
             comboBoxFiltrarEstado.Text = (" ");
         }
 
         private void buttonFiltrarMetodo_Click(object sender, EventArgs e)
         {
-            facturaBindingSource.Filter = "Metodo='" + comboBoxFiltrarMetodo.Text + "'";
+            facturaBindingSource.Filter = "MetodoPago='" + comboBoxFiltrarMetodo.Text + "'";
             reportViewer1.RefreshReport();
             comboBoxFiltrarMetodo.Text = (" ");
         }

@@ -10,6 +10,7 @@ namespace GestionRecoDuero
     public partial class Obra : Form
     {
         private bool datosGuardados = true;
+        private AutoCompleteStringCollection direcciones;
 
         public Obra()
         {
@@ -173,6 +174,13 @@ namespace GestionRecoDuero
 
             RefrescarToolstripLabelObra();
             datosGuardados = false;
+
+            //Autocompletado con las direcciones           
+            direcciones = new AutoCompleteStringCollection();           
+            CargarDirecciones();
+            ubicacionTextBox.AutoCompleteCustomSource = direcciones;
+            ubicacionTextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            ubicacionTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
             // Actualiza la fuente de datos con el valor predeterminado antes de guardar
             ((DataRowView)obraBindingSource.Current)["Estado"] = estadoComboBox.SelectedItem.ToString();
@@ -623,7 +631,7 @@ namespace GestionRecoDuero
                 obraBindingSource.CancelEdit();
                 EstadoControlesCancelar();
                 errorProvider1.Clear();
-                datosGuardados = false;
+                datosGuardados = true;
             }
 
             RefrescarToolstripLabelObra();
@@ -853,7 +861,60 @@ namespace GestionRecoDuero
 
             fechaFinDateTimePicker.Value = fechaFin;
         }
-     
+
+        private void CargarDirecciones()
+        {
+            direcciones.AddRange(new string[]
+            {
+                "Plaza Mayor",
+                "Calle Balboraz",
+                "Calle Santa Clara",
+                "Calle Ramos Carrión",
+                "Calle Alfonso IX",
+                "Calle Obispo Nieto",
+                "Calle San Torcuato",
+                "Calle Renova",
+                "Calle Puerta de Doña Urraca",
+                "Calle de los Herreros",
+                "Calle Rúa de los Francos",
+                "Calle San Andrés",
+                "Calle Cortinas de San Miguel",
+                "Calle San Vicente",
+                "Calle Puerta Nueva",
+                "Calle Juan Sebastián Elcano",
+                "Calle Trascastillo",
+                "Calle Tres Cruces",
+                "Calle Los Herreros",
+                "Calle Cuesta de San Cipriano",
+                "Calle Francisco de Ariño",
+                "Calle Feria",
+                "Calle Olivares",
+                "Calle Santa Clara",
+                "Calle Puente de Hierro",
+                "Calle Puente de los Poetas",
+                "Calle Cuesta del Mercado",
+                "Calle Doctor Carracido",
+                "Calle San Cipriano",
+                "Calle Sancho IV",
+                "Calle del Mercado de Abastos",
+                "Calle del Riego",
+                "Calle Fermoselle",
+                "Calle de la Horta",
+                "Calle Alcazaba",
+                "Calle Herradores",
+                "Calle Corral Pintado",
+                "Calle de San Antolín",
+                "Calle Condes de Alba y Aliste",
+                "Calle Don Lucio",
+                "Calle Estación",
+                "Calle Espinel",
+                "Calle Villalpando",
+                "Calle Juan Nicasio Gallego",
+                "Calle Quinto Cecilio Metello",
+                "Calle Paseo del Cañedo",
+            });
+        }
+
         private void Obra_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (datosGuardados == false)

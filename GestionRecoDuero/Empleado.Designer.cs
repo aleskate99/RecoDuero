@@ -569,6 +569,7 @@
             // 
             // toolStripComboBoxBuscarEmpleados
             // 
+            this.toolStripComboBoxBuscarEmpleados.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripComboBoxBuscarEmpleados.Items.AddRange(new object[] {
             "Id",
             "DNI",
