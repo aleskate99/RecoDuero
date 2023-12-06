@@ -66,11 +66,11 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelFactura();
 
             CargarPresupuestos();
-            CargarClientes(); //Para cargar la info de los clientes
             CargarResponsableEmpleados(); //Para cargar el responsable
+            CargarClientes(); //Para cargar la info de los clientes
 
-            CargarObras(); //Para cargar la ubicación de las obras
             CargarFacturas(); // Para cargar los ids de las facturas
+            CargarObras(); //Para cargar la ubicación de las obras
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -294,9 +294,13 @@ namespace GestionRecoDuero
                 }
                 else
                 {
+                    int idFactura = Convert.ToInt32(idFacturaLabel1.Text);
+
                     facturaBindingSource.RemoveCurrent();
                     facturaBindingSource.EndEdit();
                     this.facturaTableAdapter.Update(this.recoDueroDataSet);
+
+                    EliminarLineasFacturaBorrada(idFactura);
                 }
 
                 if (facturaBindingSource.Count == 1)
@@ -320,6 +324,25 @@ namespace GestionRecoDuero
             }
 
             RefrescarToolstripLabelFactura();
+        }
+
+        private void EliminarLineasFacturaBorrada(int idFactura)
+        {
+            DetalleFacturaTableAdapter detalleFacturaTableAdapter = new DetalleFacturaTableAdapter();
+            DetalleFacturaDataTable detalleFacturasData = detalleFacturaTableAdapter.GetData();
+
+            int[] ids = detalleFacturasData.Select(p => p.IdFactura).ToArray();
+
+            foreach (int id in ids)
+            {
+                if (id == idFactura)
+                {
+                    detalleFacturaBindingSource.RemoveCurrent();
+                    detalleFacturaBindingSource.EndEdit();
+                    this.detalleFacturaTableAdapter.Update(this.recoDueroDataSet);
+                }
+            }
+            this.facturaTableAdapter.Update(this.recoDueroDataSet);
         }
 
         //EDITAR
@@ -769,15 +792,12 @@ namespace GestionRecoDuero
 
         private void CargarResponsableEmpleados()
         {
-            EmpleadoTableAdapter empleadoTableAdapter = new EmpleadoTableAdapter();
-            EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData();
-
             PresupuestoTableAdapter presupuestoTableAdapter = new PresupuestoTableAdapter();
             PresupuestoDataTable presupuestosData = presupuestoTableAdapter.GetData();
 
-            empleadosData.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
+            presupuestosData.Columns.Add("NombreCompleto", typeof(string), "Responsable");
 
-            if (empleadosData.Rows.Count > 0)
+            if (presupuestosData.Rows.Count > 0)
             {
                 int indiceIdPresupuesto = 0;
                 for (int i = 0; i < presupuestosData.Count; i++)
@@ -789,7 +809,7 @@ namespace GestionRecoDuero
                     
                 }
                 // Obtener el nombre completo del primer cliente
-                string nombreCompleto = empleadosData.Rows[indiceIdPresupuesto]["NombreCompleto"].ToString();
+                string nombreCompleto = presupuestosData.Rows[indiceIdPresupuesto]["NombreCompleto"].ToString();
 
                 // Asignar el nombre completo al Label
                 empleadoLabel2.Text = nombreCompleto;
@@ -802,13 +822,10 @@ namespace GestionRecoDuero
 
         private void CargarClientes()
         {
-            ClienteTableAdapter clienteTableAdapter = new ClienteTableAdapter();
-            ClienteDataTable clientesData = clienteTableAdapter.GetData();
-
             PresupuestoTableAdapter presupuestoTableAdapter = new PresupuestoTableAdapter();
             PresupuestoDataTable presupuestosData = presupuestoTableAdapter.GetData();
 
-            clientesData.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
+            presupuestosData.Columns.Add("NombreCompleto", typeof(string), "Cliente");
 
             //if (clientesData.Rows.Count > 0)
             //{
@@ -823,10 +840,10 @@ namespace GestionRecoDuero
 
                 }
 
-                if (clientesData.Rows.Count > 0 && indiceIdPresupuesto >= 0 && indiceIdPresupuesto < clientesData.Rows.Count)
+                if (presupuestosData.Rows.Count > 0 && indiceIdPresupuesto >= 0 && indiceIdPresupuesto < presupuestosData.Rows.Count)
                 {
                     // Obtener el nombre completo del primer cliente
-                    string nombreCompleto = clientesData.Rows[indiceIdPresupuesto]["NombreCompleto"].ToString();
+                    string nombreCompleto = presupuestosData.Rows[indiceIdPresupuesto]["NombreCompleto"].ToString();
 
                     // Asignar el nombre completo al Label
                     clienteLabel2.Text = nombreCompleto;

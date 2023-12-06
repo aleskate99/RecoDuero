@@ -63,12 +63,28 @@ namespace GestionRecoDuero
             EstadoControlesInicioApp();
             ControlarBotonesDetalle();
 
-            RefrescarToolstripLabelPresupuesto();
-
-            CargarResponsableEmpleados(); //Para cargar el responsable
-            CargarClientes(); //Para cargar la info de los clientes
+            CargarResponsableEmpleados();
+            CargarClientes();
             CargarPresupuestos(); //Para cargar los presupuestos
             CargarObras(); //Para cargar la ubicación de las obras
+
+            //if (responsableComboBox.Items.Count > 0)
+            //{
+            //    ((DataRowView)presupuestoBindingSource.Current)["Responsable"] = responsableComboBox.SelectedItem.ToString();
+            //}
+
+            //if (clienteComboBox.Items.Count > 0)
+            //{
+            //    ((DataRowView)presupuestoBindingSource.Current)["Cliente"] = clienteComboBox.SelectedItem.ToString();
+            //}
+
+            presupuestoBindingSource.EndEdit();
+            detallePresupuestoBindingSource.EndEdit();
+            this.presupuestoTableAdapter.Update(this.recoDueroDataSet);
+            this.detallePresupuestoTableAdapter.Update(this.recoDueroDataSet);          
+            this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
+
+            RefrescarToolstripLabelPresupuesto();
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -779,7 +795,7 @@ namespace GestionRecoDuero
         private void CargarResponsableEmpleados()
         {
             EmpleadoTableAdapter empleadoTableAdapter = new EmpleadoTableAdapter();
-            RecoDueroDataSet.EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData();
+            EmpleadoDataTable empleadosData = empleadoTableAdapter.GetData();
 
             empleadosData.Columns.Add("NombreCompleto", typeof(string), "Nombre + ' ' + Apellidos");
 
@@ -787,9 +803,17 @@ namespace GestionRecoDuero
             responsableComboBox.DataSource = empleadosData;
             responsableComboBox.DisplayMember = "NombreCompleto";
 
-            if (responsableComboBox.Items.Count > 0)
+            // Obtener el índice del empleado seleccionado
+            int indiceEmpleadoSeleccionado = responsableComboBox.SelectedIndex;
+
+            // Si hay un empleado seleccionado, cargarlo en el ComboBox
+            if (indiceEmpleadoSeleccionado >= 0)
             {
-                responsableComboBox.SelectedIndex = 0;
+                // Obtener el valor del nombre y apellidos del empleado
+                string nombreApellidosEmpleadoSeleccionado = empleadosData.Rows[indiceEmpleadoSeleccionado]["NombreCompleto"].ToString();
+
+                // Establecer el valor del ComboBox
+                responsableComboBox.Text = nombreApellidosEmpleadoSeleccionado;
             }
             else
             {
@@ -808,9 +832,17 @@ namespace GestionRecoDuero
             clienteComboBox.DataSource = clientesData;
             clienteComboBox.DisplayMember = "NombreCompleto";
 
-            if (clienteComboBox.Items.Count > 0)
+            // Obtener el índice del cliente seleccionado
+            int indiceClienteSeleccionado = clienteComboBox.SelectedIndex;
+
+            // Si hay un cliente seleccionado, cargarlo en el ComboBox
+            if (indiceClienteSeleccionado >= 0)
             {
-                clienteComboBox.SelectedIndex = 0;
+                // Obtener el valor del nombre y apellidos del cliente
+                string nombreApellidosClienteSeleccionado = clientesData.Rows[indiceClienteSeleccionado]["NombreCompleto"].ToString();
+
+                // Establecer el valor del ComboBox
+                clienteComboBox.Text = nombreApellidosClienteSeleccionado;
             }
             else
             {
@@ -899,10 +931,11 @@ namespace GestionRecoDuero
                     buttonEditarLinea.Enabled = true;
                 }
                 OcultarControlesDetalle();
-                CargarPresupuestos();
+                //CargarPresupuestos();
             }
         }
 
+        //TODO: REVISAR
         private void buttonAniadirLinea_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Añadir detalle presupuesto";
@@ -958,6 +991,7 @@ namespace GestionRecoDuero
             costeNumericUpDownDetalle.Value = 1;
         }
 
+        // TODO: REVISAR
         private void buttonBorrarLinea_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Borrar detalle presupuesto";
@@ -1098,7 +1132,7 @@ namespace GestionRecoDuero
             errorProvider1.Clear();
         }
 
-        //TODO: ENTENDER COMO FUNCIONA
+        //TODO: ENTENDER COMO FUNCIONA y ver que falla
         private void CalcularCosteTotal()
         {
             DetallePresupuestoTableAdapter detallePresupuestoTableAdapter = new DetallePresupuestoTableAdapter();
@@ -1317,6 +1351,16 @@ namespace GestionRecoDuero
                     }
                 }
             }
+        }
+
+        private void responsableComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void clienteComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -300,8 +300,9 @@ namespace GestionRecoDuero
             {
                 errorProvider1.Clear();
 
-                empleadoBindingSource.EndEdit();
+                //empleadoBindingSource.EndEdit();
                 this.empleadoTableAdapter.Update(this.recoDueroDataSet);
+                this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
 
                 EstadoControlesGuardar();
                 RefrescarToolstripLabelEmpleado();

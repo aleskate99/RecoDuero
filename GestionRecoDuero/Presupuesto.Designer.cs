@@ -621,6 +621,7 @@
             this.clienteComboBox.Name = "clienteComboBox";
             this.clienteComboBox.Size = new System.Drawing.Size(282, 30);
             this.clienteComboBox.TabIndex = 2;
+            this.clienteComboBox.SelectedIndexChanged += new System.EventHandler(this.clienteComboBox_SelectedIndexChanged);
             // 
             // comentariosTextBox
             // 
@@ -657,6 +658,7 @@
             this.responsableComboBox.Name = "responsableComboBox";
             this.responsableComboBox.Size = new System.Drawing.Size(282, 30);
             this.responsableComboBox.TabIndex = 1;
+            this.responsableComboBox.SelectedIndexChanged += new System.EventHandler(this.responsableComboBox_SelectedIndexChanged);
             // 
             // metodoComboBox
             // 

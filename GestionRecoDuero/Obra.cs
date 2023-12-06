@@ -30,6 +30,7 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelObra();
             toolStripStatusLabel1.Text = "Inicio";
             CargarEmpleados();
+            direcciones = new AutoCompleteStringCollection();
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -175,8 +176,7 @@ namespace GestionRecoDuero
             RefrescarToolstripLabelObra();
             datosGuardados = false;
 
-            //Autocompletado con las direcciones           
-            direcciones = new AutoCompleteStringCollection();           
+            //Autocompletado con las direcciones                   
             CargarDirecciones();
             ubicacionTextBox.AutoCompleteCustomSource = direcciones;
             ubicacionTextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -284,6 +284,11 @@ namespace GestionRecoDuero
             EstadoControlesEditar();
             ComprobarDatosIntroducidos();
             datosGuardados = false;
+
+            CargarDirecciones();
+            ubicacionTextBox.AutoCompleteCustomSource = direcciones;
+            ubicacionTextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            ubicacionTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void EstadoControlesEditar()
