@@ -1167,7 +1167,6 @@ namespace GestionRecoDuero
             errorProvider1.Clear();
         }
 
-        //TODO: ENTENDER COMO FUNCIONA
         private void CalcularCosteTotal()
         {
             DetalleFacturaTableAdapter detalleFacturaTableAdapter = new DetalleFacturaTableAdapter();

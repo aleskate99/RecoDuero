@@ -68,15 +68,15 @@ namespace GestionRecoDuero
             CargarPresupuestos(); //Para cargar los presupuestos
             CargarObras(); //Para cargar la ubicación de las obras
 
-            //if (responsableComboBox.Items.Count > 0)
-            //{
-            //    ((DataRowView)presupuestoBindingSource.Current)["Responsable"] = responsableComboBox.SelectedItem.ToString();
-            //}
+            if (responsableComboBox.Items.Count > 0)
+            {
+                ((DataRowView)presupuestoBindingSource.Current)["Responsable"] = responsableComboBox.SelectedItem.ToString();
+            }
 
-            //if (clienteComboBox.Items.Count > 0)
-            //{
-            //    ((DataRowView)presupuestoBindingSource.Current)["Cliente"] = clienteComboBox.SelectedItem.ToString();
-            //}
+            if (clienteComboBox.Items.Count > 0)
+            {
+                ((DataRowView)presupuestoBindingSource.Current)["Cliente"] = clienteComboBox.SelectedItem.ToString();
+            }
 
             presupuestoBindingSource.EndEdit();
             detallePresupuestoBindingSource.EndEdit();
@@ -935,7 +935,6 @@ namespace GestionRecoDuero
             }
         }
 
-        //TODO: REVISAR
         private void buttonAniadirLinea_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Añadir detalle presupuesto";
@@ -991,7 +990,6 @@ namespace GestionRecoDuero
             costeNumericUpDownDetalle.Value = 1;
         }
 
-        // TODO: REVISAR
         private void buttonBorrarLinea_Click(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Borrar detalle presupuesto";
@@ -1132,7 +1130,6 @@ namespace GestionRecoDuero
             errorProvider1.Clear();
         }
 
-        //TODO: ENTENDER COMO FUNCIONA y ver que falla
         private void CalcularCosteTotal()
         {
             DetallePresupuestoTableAdapter detallePresupuestoTableAdapter = new DetallePresupuestoTableAdapter();
