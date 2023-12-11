@@ -71,6 +71,12 @@ namespace GestionRecoDuero
 
             CargarFacturas(); // Para cargar los ids de las facturas
             CargarObras(); //Para cargar la ubicación de las obras
+
+            facturaBindingSource.EndEdit();
+            detalleFacturaBindingSource.EndEdit();
+            this.facturaTableAdapter.Update(this.recoDueroDataSet);
+            this.detalleFacturaTableAdapter.Update(this.recoDueroDataSet);
+            this.tableAdapterManager.UpdateAll(this.recoDueroDataSet);
         }
 
         private void buttonVolverInicio_Click(object sender, EventArgs e)
@@ -1300,9 +1306,9 @@ namespace GestionRecoDuero
                 descripcionTextBox.Clear();
                 return false;
             }
-            else if (descripcionTextBox.Text.Length > 20)
+            else if (descripcionTextBox.Text.Length > 25)
             {
-                errorProvider1.SetError(descripcionTextBox, " No puede sobrepasar los 20 caracteres");
+                errorProvider1.SetError(descripcionTextBox, " No puede sobrepasar los 25 caracteres");
                 descripcionTextBox.Clear();
                 return false;
             }

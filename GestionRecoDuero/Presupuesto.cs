@@ -68,16 +68,6 @@ namespace GestionRecoDuero
             CargarPresupuestos(); //Para cargar los presupuestos
             CargarObras(); //Para cargar la ubicación de las obras
 
-            if (responsableComboBox.Items.Count > 0)
-            {
-                ((DataRowView)presupuestoBindingSource.Current)["Responsable"] = responsableComboBox.SelectedItem.ToString();
-            }
-
-            if (clienteComboBox.Items.Count > 0)
-            {
-                ((DataRowView)presupuestoBindingSource.Current)["Cliente"] = clienteComboBox.SelectedItem.ToString();
-            }
-
             presupuestoBindingSource.EndEdit();
             detallePresupuestoBindingSource.EndEdit();
             this.presupuestoTableAdapter.Update(this.recoDueroDataSet);
@@ -1291,9 +1281,9 @@ namespace GestionRecoDuero
                 descripcionTextBox.Clear();
                 return false;
             }
-            else if (descripcionTextBox.Text.Length>20)
+            else if (descripcionTextBox.Text.Length>25)
             {
-                errorProvider1.SetError(descripcionTextBox, " No puede sobrepasar los 20 caracteres");
+                errorProvider1.SetError(descripcionTextBox, " No puede sobrepasar los 25 caracteres");
                 descripcionTextBox.Clear();
                 return false;
             }
